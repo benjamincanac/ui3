@@ -20,9 +20,9 @@ const items = [{
 
 describe('DropdownMenu', () => {
   it.each([
-    ['default', { items }],
-    ['with class', { props: { items, class: 'min-w-96' } }],
-    ['with ui', { props: { items, ui: { icon: 'size-4' } } }]
+    ['basic case', { props: { open: true, portal: false, items } }],
+    ['with class', { props: { open: true, portal: false, items, class: 'min-w-96' } }],
+    ['with ui', { props: { open: true, portal: false, items, ui: { itemLeadingIcon: 'size-4' } } }]
   ])('renders %s correctly', async (nameOrHtml: string, options: { props?: DropdownMenuProps<typeof items[number]>, slots?: any }) => {
     const html = await ComponentRender(nameOrHtml, options, DropdownMenu)
     expect(html).toMatchSnapshot()

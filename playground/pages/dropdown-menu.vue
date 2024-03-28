@@ -1,42 +1,107 @@
 <script setup lang="ts">
-const items = [
+const { metaSymbol } = useShortcuts()
+
+const items = computed(() => [
+  [{
+    label: 'My account',
+    type: 'label' as const,
+    coucou: true
+  }],
   [{
     label: 'Profile',
     avatar: {
       src: 'https://avatars.githubusercontent.com/u/739984?v=4'
     },
-    active: true,
     select (e: Event) {
       e.preventDefault()
       console.log('Profile clicked')
     }
-  }], [{
-    label: 'Edit',
-    icon: 'i-heroicons-pencil-square',
-    shortcuts: ['E']
   }, {
-    label: 'Duplicate',
-    icon: 'i-heroicons-document-duplicate',
-    shortcuts: ['D'],
+    label: 'Billing',
+    icon: 'i-heroicons-credit-card',
+    shortcuts: [metaSymbol.value, 'B']
+  }, {
+    label: 'Settings',
+    icon: 'i-heroicons-cog',
+    shortcuts: [metaSymbol.value, ',']
+  }, {
+    label: 'Keyboard Shortcuts',
+    icon: 'i-heroicons-key'
+  }], [{
+    label: 'Team',
+    icon: 'i-heroicons-users'
+  }, {
+    label: 'Invite users',
+    icon: 'i-heroicons-user-plus',
+    children: [[{
+      label: 'Invite by email',
+      icon: 'i-heroicons-paper-airplane'
+    }, {
+      label: 'Invite by link',
+      icon: 'i-heroicons-link',
+      shortcuts: [metaSymbol.value, 'I'],
+      select (e: Event) {
+        e.preventDefault()
+        console.log('Invite by link clicked')
+      }
+    }], [{
+      label: 'More',
+      icon: 'i-heroicons-plus-circle',
+      children: [{
+        label: 'Import from Slack',
+        icon: 'i-simple-icons-slack',
+        to: 'https://slack.com',
+        target: '_blank',
+        select (e: Event) {
+          e.preventDefault()
+          console.log('Import from Slack clicked')
+        }
+      }, {
+        label: 'Import from Trello',
+        icon: 'i-simple-icons-trello',
+        select (e: Event) {
+          e.preventDefault()
+          console.log('Import from Trello clicked')
+        }
+      }, {
+        label: 'Import from Asana',
+        icon: 'i-simple-icons-asana',
+        select (e: Event) {
+          e.preventDefault()
+          console.log('Import from Asana clicked')
+        }
+      }]
+    }]]
+  }, {
+    label: 'New team',
+    icon: 'i-heroicons-plus',
+    shortcuts: [metaSymbol.value, 'N']
+  }], [{
+    label: 'GitHub',
+    icon: 'i-simple-icons-github',
+    to: 'https://github.com/nuxt/ui',
+    target: '_blank',
+    select (e: Event) {
+      e.preventDefault()
+    }
+  }, {
+    label: 'Support',
+    icon: 'i-heroicons-lifebuoy',
+    to: '/dropdown-menu'
+  }, {
+    label: 'API',
+    icon: 'i-heroicons-cube',
     disabled: true
   }], [{
-    label: 'Archive',
-    icon: 'i-heroicons-archive-box'
-  }, {
-    label: 'Move',
-    icon: 'i-heroicons-arrow-right-circle'
-  }], [{
-    label: 'Delete',
-    icon: 'i-heroicons-trash',
-    shortcuts: ['⌘', 'D']
+    label: 'Logout',
+    icon: 'i-heroicons-arrow-right-start-on-rectangle',
+    shortcuts: ['⇧', '⌘', 'Q']
   }]
-]
+])
 </script>
 
 <template>
-  <div>
-    <UDropdownMenu :items="items" arrow>
-      <UButton label="Open" />
-    </UDropdownMenu>
-  </div>
+  <UDropdownMenu :items="items" arrow :content="{ side: 'right' }">
+    <UButton label="Open" color="white" />
+  </UDropdownMenu>
 </template>
