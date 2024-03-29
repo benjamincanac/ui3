@@ -29,7 +29,7 @@ const optionsWithDescription = [
       <URadioGroup :options="literalOptions" />
       <URadioGroup :options="options" label="Disabled" disabled />
       <URadioGroup :options="options" color="red" default-value="1" />
-      <URadioGroup :options="options" color="red" default-value="1" orientation="horizontal" dir="rtl" />
+      <URadioGroup :options="options" color="red" default-value="1" orientation="horizontal" />
     </div>
 
     <div class="flex items-center gap-4">

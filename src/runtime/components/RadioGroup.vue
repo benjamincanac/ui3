@@ -17,7 +17,7 @@ export type RadioGroupOption<T> = {
   description: string
 }
 
-export interface RadioGroupProps extends Omit<RadioGroupRootProps, 'asChild'> {
+export interface RadioGroupProps extends Omit<RadioGroupRootProps, 'asChild' | 'dir'> {
   name?: string,
   legend?: string,
   options?: string[] | RadioGroupOption<any>[] | any[],
@@ -58,7 +58,7 @@ const props = withDefaults(defineProps<RadioGroupProps>(), {
 
 const emits = defineEmits<RadioGroupEmits>()
 
-const rootProps = useForwardPropsEmits(reactivePick(props, 'defaultValue', 'dir', 'orientation', 'disabled', 'loop', 'name', 'required'), emits)
+const rootProps = useForwardPropsEmits(reactivePick(props, 'defaultValue', 'orientation', 'disabled', 'loop', 'name', 'required'), emits)
 
 const { emitFormChange, color, name, size, inputId: _inputId } = useFormField<RadioGroupProps>(props)
 const inputId = _inputId.value ?? useId()
