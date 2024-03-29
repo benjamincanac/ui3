@@ -44,10 +44,9 @@ export interface RadioGroupSlots {
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useId } from '#imports'
+import { useId, useFormField } from '#imports'
 import { RadioGroupRoot, RadioGroupItem, RadioGroupIndicator, useForwardPropsEmits, Label } from 'radix-vue'
 import { reactivePick } from '@vueuse/core'
-import { useFormField } from '#ui/composables/useFormField'
 import { get } from '../utils'
 
 const props = withDefaults(defineProps<RadioGroupProps>(), {
