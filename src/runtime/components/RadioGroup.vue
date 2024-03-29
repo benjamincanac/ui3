@@ -1,0 +1,153 @@
+<script lang="ts">
+import { tv, type VariantProps } from 'tailwind-variants'
+import type { RadioGroupRootProps, RadioGroupRootEmits } from 'radix-vue'
+import type { AppConfig } from '@nuxt/schema'
+import _appConfig from '#build/app.config'
+import theme from '#build/ui/radioGroup'
+
+const appConfig = _appConfig as AppConfig & { ui: { radioGroup: Partial<typeof theme> } }
+
+const radioGroup = tv({ extend: tv(theme), ...(appConfig.ui?.radioGroup || {}) })
+
+type RadioGroupVariants = VariantProps<typeof radioGroup>
+
+export type RadioGroupOption<T> = {
+  label: string,
+  value: T,
+  description: string
+}
+
+export interface RadioGroupProps extends Omit<RadioGroupRootProps, 'asChild'> {
+  name?: string,
+  legend?: string,
+  options?: string[] | RadioGroupOption<any>[] | any[],
+  valueAttribute?: string,
+  optionAttribute?: string,
+  descriptionAttribute?: string,
+  disabled?: boolean,
+  class?: any,
+  size?: RadioGroupVariants['size']
+  color?: RadioGroupVariants['color']
+  ui?: Partial<typeof radioGroup.slots>
+}
+
+export type RadioGroupEmits = {
+  change: [value: any]
+} & RadioGroupRootEmits
+
+export interface RadioGroupSlots {
+  legend(): any
+  label(props: { option: RadioGroupOption<any> }): any
+  description(props: { option: RadioGroupOption<any>}): any
+}
+</script>
+
+<script setup lang="ts">
+import { computed } from 'vue'
+import { useId } from '#imports'
+import { RadioGroupRoot, RadioGroupItem, RadioGroupIndicator, useForwardPropsEmits, Label } from 'radix-vue'
+import { reactivePick } from '@vueuse/core'
+import { useFormField } from '#ui/composables/useFormField'
+import { get } from '../utils'
+
+const props = withDefaults(defineProps<RadioGroupProps>(), {
+  valueAttribute: 'value',
+  optionAttribute: 'label',
+  descriptionAttribute: 'description'
+})
+
+const emits = defineEmits<RadioGroupEmits>()
+
+const rootProps = useForwardPropsEmits(reactivePick(props, 'defaultValue', 'dir', 'orientation', 'disabled', 'loop', 'name', 'required'), emits)
+
+const { emitFormChange, color, name, size, inputId: _inputId } = useFormField<RadioGroupProps>(props)
+const inputId = _inputId.value ?? useId()
+
+const ui = computed(() => tv({ extend: radioGroup, slots: props.ui })({
+  size: size.value,
+  color: color.value,
+  disabled: props.disabled,
+  required: props.required
+}))
+
+
+const guessOptionValue = (option: any) => {
+  return get(option, props.valueAttribute, get(option, props.optionAttribute))
+}
+
+const guessOptionText = (option: any) => {
+  return get(option, props.optionAttribute, get(option, props.valueAttribute))
+}
+
+const normalizeOption = (option: any) => {
+  if (['string', 'number', 'boolean'].includes(typeof option)) {
+    return {
+      id: `${inputId}:${option}`,
+      value: option,
+      label: option
+    }
+  }
+
+  const value = guessOptionValue(option)
+  const label = guessOptionText(option)
+
+  return {
+    ...option,
+    id: `${inputId}:${value}`,
+    value,
+    label,
+    description: get(option, props.descriptionAttribute)
+  }
+}
+
+const normalizedOptions = computed(() => {
+  if (!props.options) return []
+  return props.options.map(normalizeOption)
+})
+
+const modelValue = defineModel<any>({
+  set (value) {
+    if (value != modelValue.value) {
+      emits('change', value)
+      emitFormChange()
+    }
+
+    return value
+  }
+})
+
+</script>
+
+<template>
+  <RadioGroupRoot :id="inputId" v-model="modelValue" v-bind="rootProps" :name="name" :class="ui.root({ class: props.class })">
+    <fieldset :class="ui.fieldset()">
+      <legend v-if="legend || $slots.legend" :class="ui.legend()">
+        <slot name="legend">
+          {{ legend }}
+        </slot>
+      </legend>
+      <div v-for="option in normalizedOptions" :key="option.value" :class="ui.option()">
+        <div :class="ui.container()">
+          <RadioGroupItem
+            :id="option.id"
+            :value="option.value"
+            :class="ui.base()"
+          >
+            <RadioGroupIndicator :class="ui.indicator()" />
+          </RadioGroupItem>
+        </div>
+
+        <div :class="ui.wrapper()">
+          <Label :class="ui.label()" :for="option.id">
+            <slot name="label" v-bind="{ option }">{{ option.label }}</slot>
+          </Label>
+          <p v-if="option.description || $slots.description" :class="ui.description()">
+            <slot name="description" v-bind="{ option }">
+              {{ option.description }}
+            </slot>
+          </p>
+        </div>
+      </div>
+    </fieldset>
+  </RadioGroupRoot>
+</template>
