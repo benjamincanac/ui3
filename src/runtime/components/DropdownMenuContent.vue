@@ -41,16 +41,24 @@ const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0
     <component :is="sub ? DropdownMenu.SubContent : DropdownMenu.Content" :class="props.class" v-bind="contentProps">
       <DropdownMenu.Group v-for="(group, index) in groups" :key="`group-${index}`" :class="ui.group()">
         <template v-for="(item, itemIndex) in group" :key="`group-${index}-${itemIndex}`">
-          <DropdownMenu.Label v-if="item.type === 'label'" as-child>
-            <UDropdownMenuItem :item="item" :ui="ui" :class="ui.label()">
+          <DropdownMenu.Label v-if="item.type === 'label'" :class="ui.label()">
+            <UDropdownMenuItem :item="item" :ui="ui">
               <template v-for="(_, name) in proxySlots" #[name]="slotData: any">
                 <slot :name="name" v-bind="slotData" />
               </template>
             </UDropdownMenuItem>
           </DropdownMenu.Label>
           <DropdownMenu.Sub v-else-if="item?.children?.length">
-            <DropdownMenu.SubTrigger as-child :disabled="item.disabled" :open="item.open" :default-open="item.defaultOpen" :text-value="item.label">
-              <UDropdownMenuItem :item="item" :ui="ui" :class="ui.item()">
+            <DropdownMenu.SubTrigger
+              as="button"
+              type="button"
+              :disabled="item.disabled"
+              :open="item.open"
+              :default-open="item.defaultOpen"
+              :text-value="item.label"
+              :class="ui.item()"
+            >
+              <UDropdownMenuItem :item="item" :ui="ui">
                 <template v-for="(_, name) in proxySlots" #[name]="slotData: any">
                   <slot :name="name" v-bind="slotData" />
                 </template>
@@ -76,11 +84,13 @@ const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0
           </DropdownMenu.Sub>
           <DropdownMenu.Item v-else as-child :disabled="item.disabled" :text-value="item.label" @select="item.select">
             <ULink v-slot="{ active, ...slotProps }" v-bind="omit((item as DropdownMenuItem), ['label', 'icon', 'avatar', 'shortcuts', 'slot', 'open', 'defaultOpen', 'select', 'children', 'type'])" custom>
-              <UDropdownMenuItem v-bind="slotProps" :item="item" :active="active" :ui="ui" :class="ui.item({ active })">
-                <template v-for="(_, name) in proxySlots" #[name]="slotData: any">
-                  <slot :name="name" v-bind="slotData" />
-                </template>
-              </UDropdownMenuItem>
+              <ULinkBase v-bind="slotProps" :class="ui.item({ active })">
+                <UDropdownMenuItem :item="item" :active="active" :ui="ui">
+                  <template v-for="(_, name) in proxySlots" #[name]="slotData: any">
+                    <slot :name="name" v-bind="slotData" />
+                  </template>
+                </UDropdownMenuItem>
+              </ULinkBase>
             </ULink>
           </DropdownMenu.Item>
         </template>
