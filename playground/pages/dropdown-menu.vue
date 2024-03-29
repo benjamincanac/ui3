@@ -4,14 +4,14 @@ const { metaSymbol } = useShortcuts()
 const items = computed(() => [
   [{
     label: 'My account',
-    type: 'label' as const,
-    coucou: true
-  }],
-  [{
-    label: 'Profile',
     avatar: {
       src: 'https://avatars.githubusercontent.com/u/739984?v=4'
     },
+    type: 'label' as const
+  }],
+  [{
+    label: 'Profile',
+    icon: 'i-heroicons-user',
     select (e: Event) {
       e.preventDefault()
       console.log('Profile clicked')
@@ -24,9 +24,6 @@ const items = computed(() => [
     label: 'Settings',
     icon: 'i-heroicons-cog',
     shortcuts: [metaSymbol.value, ',']
-  }, {
-    label: 'Keyboard Shortcuts',
-    icon: 'i-heroicons-key'
   }], [{
     label: 'Team',
     icon: 'i-heroicons-users'
@@ -88,6 +85,9 @@ const items = computed(() => [
     label: 'Support',
     icon: 'i-heroicons-lifebuoy',
     to: '/dropdown-menu'
+  }, {
+    label: 'Shortcuts',
+    icon: 'i-heroicons-key'
   }, {
     label: 'API',
     icon: 'i-heroicons-cube',

@@ -1,9 +1,8 @@
 <script lang="ts">
 import type { DropdownMenuContentProps as RadixDropdownMenuContentProps, DropdownMenuContentEmits as RadixDropdownMenuContentEmits } from 'radix-vue'
 import type { DropdownMenuItem } from '#ui/components/DropdownMenu.vue'
-import type { DropdownMenuItemSlots } from '#ui/components/DropdownMenuItem.vue'
 
-interface DropdownMenuContentProps<T> extends Omit<RadixDropdownMenuContentProps, 'as' | 'asChild' | 'forceMount'> {
+export interface DropdownMenuContentProps<T> extends Omit<RadixDropdownMenuContentProps, 'as' | 'asChild' | 'forceMount'> {
   items?: T[] | T[][]
   portal?: boolean
   sub?: boolean
@@ -11,10 +10,15 @@ interface DropdownMenuContentProps<T> extends Omit<RadixDropdownMenuContentProps
   ui: any
 }
 
-interface DropdownMenuContentEmits extends RadixDropdownMenuContentEmits {}
+export interface DropdownMenuContentEmits extends RadixDropdownMenuContentEmits {}
 
-interface DropdownMenuContentSlots<T> extends DropdownMenuItemSlots<T> {
+type SlotProps<T> = (props: { item: T, active?: boolean }) => any
+
+export interface DropdownMenuContentSlots<T> {
   default(): any
+  leading: SlotProps<T>
+  label: SlotProps<T>
+  trailing: SlotProps<T>
 }
 </script>
 
@@ -22,31 +26,53 @@ interface DropdownMenuContentSlots<T> extends DropdownMenuItemSlots<T> {
 import { computed } from 'vue'
 import { DropdownMenu } from 'radix-vue/namespaced'
 import { useForwardPropsEmits } from 'radix-vue'
-import { reactiveOmit } from '@vueuse/core'
-import { ULink, UDropdownMenuItem } from '#components'
+import { reactiveOmit, createReusableTemplate } from '@vueuse/core'
+import { ULink } from '#components'
 import { omit } from '#ui/utils'
+import { useAppConfig } from '#imports'
 
 const props = defineProps<DropdownMenuContentProps<T>>()
 const emits = defineEmits<DropdownMenuContentEmits>()
 const slots = defineSlots<DropdownMenuContentSlots<T>>()
 
+const appConfig = useAppConfig()
 const contentProps = useForwardPropsEmits(reactiveOmit(props, 'sub', 'items', 'portal', 'class', 'ui'), emits)
 const proxySlots = omit(slots, ['default'])
+
+const [DefineItemTemplate, ReuseItemTemplate] = createReusableTemplate()
 
 const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0]) ? props.items : [props.items]) as T[][] : [])
 </script>
 
 <template>
+  <DefineItemTemplate v-slot="{ item, active }">
+    <slot name="leading" :item="item" :active="active">
+      <UAvatar v-if="item.avatar" size="2xs" v-bind="item.avatar" :class="ui.itemLeadingAvatar({ active })" />
+      <UIcon v-else-if="item.icon" :name="item.icon" :class="ui.itemLeadingIcon({ active })" />
+    </slot>
+
+    <span v-if="item.label || $slots.default" :class="ui.itemLabel()">
+      <slot name="label" :item="item" :active="active">
+        {{ item.label }}
+      </slot>
+    </span>
+
+    <span v-if="$slots.trailing || item.children?.length || item.shortcuts?.length" :class="ui.itemTrailing()">
+      <slot name="trailing" :item="item" :active="active">
+        <UIcon v-if="item.children?.length" :name="appConfig.ui.icons.chevronRight" :class="ui.itemTrailingIcon()" />
+        <span v-else-if="item.shortcuts?.length" :class="ui.itemTrailingShortcuts()">
+          <UKbd v-for="(shortcut, shortcutIndex) in item.shortcuts" :key="shortcutIndex" size="sm" v-bind="typeof shortcut === 'string' ? { value: shortcut } : shortcut" />
+        </span>
+      </slot>
+    </span>
+  </DefineItemTemplate>
+
   <DropdownMenu.Portal :disabled="!portal">
     <component :is="sub ? DropdownMenu.SubContent : DropdownMenu.Content" :class="props.class" v-bind="contentProps">
       <DropdownMenu.Group v-for="(group, index) in groups" :key="`group-${index}`" :class="ui.group()">
         <template v-for="(item, itemIndex) in group" :key="`group-${index}-${itemIndex}`">
           <DropdownMenu.Label v-if="item.type === 'label'" :class="ui.label()">
-            <UDropdownMenuItem :item="item" :ui="ui">
-              <template v-for="(_, name) in proxySlots" #[name]="slotData: any">
-                <slot :name="name" v-bind="slotData" />
-              </template>
-            </UDropdownMenuItem>
+            <ReuseItemTemplate :item="item" />
           </DropdownMenu.Label>
           <DropdownMenu.Sub v-else-if="item?.children?.length">
             <DropdownMenu.SubTrigger
@@ -58,11 +84,7 @@ const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0
               :text-value="item.label"
               :class="ui.item()"
             >
-              <UDropdownMenuItem :item="item" :ui="ui">
-                <template v-for="(_, name) in proxySlots" #[name]="slotData: any">
-                  <slot :name="name" v-bind="slotData" />
-                </template>
-              </UDropdownMenuItem>
+              <ReuseItemTemplate :item="item" />
             </DropdownMenu.SubTrigger>
 
             <UDropdownMenuContent
@@ -85,11 +107,7 @@ const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0
           <DropdownMenu.Item v-else as-child :disabled="item.disabled" :text-value="item.label" @select="item.select">
             <ULink v-slot="{ active, ...slotProps }" v-bind="omit((item as DropdownMenuItem), ['label', 'icon', 'avatar', 'shortcuts', 'slot', 'open', 'defaultOpen', 'select', 'children', 'type'])" custom>
               <ULinkBase v-bind="slotProps" :class="ui.item({ active })">
-                <UDropdownMenuItem :item="item" :active="active" :ui="ui">
-                  <template v-for="(_, name) in proxySlots" #[name]="slotData: any">
-                    <slot :name="name" v-bind="slotData" />
-                  </template>
-                </UDropdownMenuItem>
+                <ReuseItemTemplate :item="item" :active="active" />
               </ULinkBase>
             </ULink>
           </DropdownMenu.Item>

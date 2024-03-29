@@ -8,7 +8,7 @@ import type { LinkProps } from '#ui/components/Link.vue'
 import type { AvatarProps } from '#ui/components/Avatar.vue'
 import type { IconProps } from '#ui/components/Icon.vue'
 import type { KbdProps } from '#ui/components/Kbd.vue'
-import type { DropdownMenuItemSlots } from '#ui/components/DropdownMenuItem.vue'
+import type { DropdownMenuContentSlots } from '#ui/components/DropdownMenuContent.vue'
 
 const appConfig = _appConfig as AppConfig & { ui: { dropdownMenu: Partial<typeof theme> } }
 
@@ -43,7 +43,7 @@ export interface DropdownMenuProps<T> extends Omit<DropdownMenuRootProps, 'dir'>
 
 export interface DropdownMenuEmits extends DropdownMenuRootEmits {}
 
-export interface DropdownMenuSlots<T> extends DropdownMenuItemSlots<T> {
+export interface DropdownMenuSlots<T> extends DropdownMenuContentSlots<T> {
   default (): any
 }
 </script>

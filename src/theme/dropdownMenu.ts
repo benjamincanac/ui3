@@ -3,7 +3,7 @@ export default {
     content: 'min-w-48 bg-white dark:bg-gray-900 shadow-lg rounded-md ring ring-gray-200 dark:ring-gray-800 divide-y divide-gray-200 dark:divide-gray-800 will-change-[transform,opacity] data-[state=open]:animate-[dropdown-menu-open_100ms_ease-out] data-[state=closed]:animate-[dropdown-menu-closed_100ms_ease-in]',
     arrow: 'fill-gray-200 dark:fill-gray-800',
     group: 'p-1',
-    label: 'p-1.5 text-sm font-medium',
+    label: 'w-full flex items-center gap-1.5 p-1.5 text-sm font-medium select-none',
     item: 'group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md disabled:cursor-not-allowed disabled:opacity-75',
     itemLeadingIcon: 'shrink-0 size-5',
     itemLeadingAvatar: 'shrink-0',
