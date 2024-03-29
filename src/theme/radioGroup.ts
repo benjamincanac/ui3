@@ -1,4 +1,4 @@
-export default (config: { colors: stoutline[] }) => ({
+export default (config: { colors: string[] }) => ({
   slots: {
     root: 'relative',
     fieldset: 'flex flex-col',
@@ -14,7 +14,7 @@ export default (config: { colors: stoutline[] }) => ({
     description: 'text-gray-500 dark:text-gray-400'
   },
   variants: {
-    color: Object.fromEntries(config.colors.map((color: stoutline) => [
+    color: Object.fromEntries(config.colors.map((color: string) => [
       color, {
         base: `focus-visible:outline-${color}-500 dark:focus-visible:outline-${color}-400`,
         indicator: `bg-${color}-500 dark:bg-${color}-400`
