@@ -3,8 +3,9 @@ import { tv, type VariantProps } from 'tailwind-variants'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/button'
-import type { LinkProps } from '#ui/types'
-import type { UseComponentIconsProps } from '#imports'
+import type { LinkProps } from '#ui/components/Link.vue'
+import type { UseComponentIconsProps } from '#ui/composables/useComponentIcons'
+
 
 const appConfig = _appConfig as AppConfig & { ui: { button: Partial<typeof theme> } }
 
