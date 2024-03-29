@@ -40,7 +40,7 @@ export interface TextareaSlots {
 
 <script lang="ts" setup>
 import { ref, computed, onMounted, nextTick, watch } from 'vue'
-import { useFormField } from '#ui/composables/useFormField'
+import { useFormField } from '#imports'
 
 defineOptions({ inheritAttrs: false })
 
