@@ -25,7 +25,7 @@ describe('RadioGroup', () => {
     ['with size xl', { props: { size: 'xl' as const } }],
     ['with class', { props: { class: 'bg-red-500' } }],
     ['with ui', { props: { ui: {} } }]
-  ])('renders %s correctly', async (nameOrHtml: string, options: { props?: RadioGroupProps, slots?: any }) => {
+  ])('renders %s correctly', async (nameOrHtml: string, options: { props?: RadioGroupProps<any>, slots?: any }) => {
     const html = await ComponentRender(nameOrHtml, defu(options, { props: { options: defaultOptions } }), RadioGroup)
     expect(html).toMatchSnapshot()
   })

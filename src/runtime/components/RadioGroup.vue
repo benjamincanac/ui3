@@ -17,13 +17,10 @@ export type RadioGroupOption<T> = {
   description: string
 }
 
-export interface RadioGroupProps extends Omit<RadioGroupRootProps, 'asChild' | 'dir'> {
+export interface RadioGroupProps<T> extends Omit<RadioGroupRootProps, 'asChild' | 'dir'> {
   name?: string
   legend?: string
-  options?: string[] | RadioGroupOption<any>[] | any[]
-  valueAttribute?: string
-  optionAttribute?: string
-  descriptionAttribute?: string
+  options?: string[] | RadioGroupOption<T>[]
   disabled?: boolean
   class?: any
   size?: RadioGroupVariants['size']
@@ -35,31 +32,26 @@ export type RadioGroupEmits = {
   change: [value: any]
 } & RadioGroupRootEmits
 
-export interface RadioGroupSlots {
+export interface RadioGroupSlots<T> {
   legend(): any
-  label(props: { option: RadioGroupOption<any> }): any
-  description(props: { option: RadioGroupOption<any>}): any
+  label(props: { option: RadioGroupOption<T> }): any
+  description(props: { option: RadioGroupOption<T>}): any
 }
 </script>
 
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends string | undefined">
 import { computed } from 'vue'
 import { useId, useFormField } from '#imports'
 import { RadioGroupRoot, RadioGroupItem, RadioGroupIndicator, Label, useForwardPropsEmits } from 'radix-vue'
 import { reactivePick } from '@vueuse/core'
-import { get } from '#ui/utils'
 
-const props = withDefaults(defineProps<RadioGroupProps>(), {
-  valueAttribute: 'value',
-  optionAttribute: 'label',
-  descriptionAttribute: 'description'
-})
+const props = defineProps<RadioGroupProps<T>>()
 const emits = defineEmits<RadioGroupEmits>()
-defineSlots<RadioGroupSlots>()
+defineSlots<RadioGroupSlots<T>>()
 
 const rootProps = useForwardPropsEmits(reactivePick(props, 'defaultValue', 'orientation', 'disabled', 'loop', 'name', 'required'), emits)
 
-const { emitFormChange, color, name, size, inputId: _inputId } = useFormField<RadioGroupProps>(props)
+const { emitFormChange, color, name, size, inputId: _inputId } = useFormField<RadioGroupProps<T>>(props)
 const inputId = _inputId.value ?? useId()
 
 const ui = computed(() => tv({ extend: radioGroup, slots: props.ui })({
@@ -68,14 +60,6 @@ const ui = computed(() => tv({ extend: radioGroup, slots: props.ui })({
   disabled: props.disabled,
   required: props.required
 }))
-
-function guessOptionValue (option: any) {
-  return get(option, props.valueAttribute, get(option, props.optionAttribute))
-}
-
-function guessOptionText (option: any) {
-  return get(option, props.optionAttribute, get(option, props.valueAttribute))
-}
 
 function normalizeOption (option: any) {
   if (['string', 'number', 'boolean'].includes(typeof option)) {
@@ -86,15 +70,9 @@ function normalizeOption (option: any) {
     }
   }
 
-  const value = guessOptionValue(option)
-  const label = guessOptionText(option)
-
   return {
     ...option,
-    id: `${inputId}:${value}`,
-    value,
-    label,
-    description: get(option, props.descriptionAttribute)
+    id: `${inputId}:${option.value}`
   }
 }
 
@@ -103,7 +81,7 @@ const normalizedOptions = computed(() => {
   return props.options.map(normalizeOption)
 })
 
-const modelValue = defineModel<any>({
+const modelValue = defineModel<T>({
   set (value) {
     emits('change', value)
     return value
