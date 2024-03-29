@@ -1,11 +1,11 @@
-export default (config: { colors: string[] }) => ({
+export default (config: { colors: stoutline[] }) => ({
   slots: {
     root: 'relative',
     fieldset: 'flex flex-col',
     legend: 'mb-1 block font-medium text-gray-700 dark:text-gray-200',
 
     option: 'flex items-start',
-    base: 'rounded-full ring ring-inset ring-gray-300 dark:ring-gray-700 focus:outline-none focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900',
+    base: 'rounded-full ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-offset-white dark:focus-visible:outline-offset-gray-900',
     indicator: 'flex items-center justify-center size-full rounded-full after:bg-white after:rounded-full',
     container: 'flex items-center',
 
@@ -14,9 +14,9 @@ export default (config: { colors: string[] }) => ({
     description: 'text-gray-500 dark:text-gray-400'
   },
   variants: {
-    color: Object.fromEntries(config.colors.map((color: string) => [
+    color: Object.fromEntries(config.colors.map((color: stoutline) => [
       color, {
-        base: `focus-visible:ring-${color}-500 dark:focus-visible:ring-${color}-400`,
+        base: `focus-visible:outline-${color}-500 dark:focus-visible:outline-${color}-400`,
         indicator: `bg-${color}-500 dark:bg-${color}-400`
       }
     ])),
