@@ -5,7 +5,7 @@ import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/input'
 import { looseToNumber } from '#ui/utils'
-import type { UseComponentIconsProps } from '#ui/composables/useComponentIcons'
+import type { UseComponentIconsProps } from '#imports'
 
 const appConfig = _appConfig as AppConfig & { ui: { input: Partial<typeof theme> } }
 
@@ -42,8 +42,7 @@ export interface InputSlots {
 
 <script lang="ts" setup>
 import { ref, computed, onMounted } from 'vue'
-import { useFormField } from '#ui/composables/useFormField'
-import { useComponentIcons } from '#ui/composables/useComponentIcons'
+import { useComponentIcons, useFormField } from '#imports'
 
 defineOptions({ inheritAttrs: false })
 
