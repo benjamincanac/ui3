@@ -107,19 +107,28 @@ const normalizedOptions = computed(() => {
 
 const modelValue = defineModel<any>({
   set (value) {
-    if (value != modelValue.value) {
-      emits('change', value)
-      emitFormChange()
-    }
-
+    emits('change', value)
     return value
   }
 })
 
+// FIXME: I think there's a race condition between this and the v-model event.
+// This must be triggered after the value updates, otherwise the form validates
+// the previous value.
+function onUpdate () {
+  emitFormChange()
+}
 </script>
 
 <template>
-  <RadioGroupRoot :id="inputId" v-model="modelValue" v-bind="rootProps" :name="name" :class="ui.root({ class: props.class })">
+  <RadioGroupRoot
+    :id="inputId"
+    v-model="modelValue"
+    v-bind="rootProps"
+    :name="name"
+    :class="ui.root({ class: props.class })"
+    @update:model-value="onUpdate"
+  >
     <fieldset :class="ui.fieldset()">
       <legend v-if="legend || $slots.legend" :class="ui.legend()">
         <slot name="legend">
