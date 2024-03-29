@@ -6,7 +6,6 @@ import theme from '#build/ui/button'
 import type { LinkProps } from '#ui/components/Link.vue'
 import type { UseComponentIconsProps } from '#ui/composables/useComponentIcons'
 
-
 const appConfig = _appConfig as AppConfig & { ui: { button: Partial<typeof theme> } }
 
 const button = tv({ extend: tv(theme), ...(appConfig.ui?.button || {}) })
