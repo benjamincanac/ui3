@@ -6,7 +6,7 @@ export default (config: { colors: string[] }) => ({
 
     option: 'flex items-start',
     base: 'rounded-full ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-offset-white dark:focus-visible:outline-offset-gray-900',
-    indicator: 'flex items-center justify-center size-full rounded-full after:bg-white after:rounded-full',
+    indicator: 'flex items-center justify-center size-full rounded-full after:bg-white dark:after:bg-gray-900 after:rounded-full',
     container: 'flex items-center',
 
     wrapper: 'ms-2',

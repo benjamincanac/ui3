@@ -12,20 +12,20 @@ const radioGroup = tv({ extend: tv(theme), ...(appConfig.ui?.radioGroup || {}) }
 type RadioGroupVariants = VariantProps<typeof radioGroup>
 
 export type RadioGroupOption<T> = {
-  label: string,
-  value: T,
+  label: string
+  value: T
   description: string
 }
 
 export interface RadioGroupProps extends Omit<RadioGroupRootProps, 'asChild' | 'dir'> {
-  name?: string,
-  legend?: string,
-  options?: string[] | RadioGroupOption<any>[] | any[],
-  valueAttribute?: string,
-  optionAttribute?: string,
-  descriptionAttribute?: string,
-  disabled?: boolean,
-  class?: any,
+  name?: string
+  legend?: string
+  options?: string[] | RadioGroupOption<any>[] | any[]
+  valueAttribute?: string
+  optionAttribute?: string
+  descriptionAttribute?: string
+  disabled?: boolean
+  class?: any
   size?: RadioGroupVariants['size']
   color?: RadioGroupVariants['color']
   ui?: Partial<typeof radioGroup.slots>
@@ -45,17 +45,17 @@ export interface RadioGroupSlots {
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useId, useFormField } from '#imports'
-import { RadioGroupRoot, RadioGroupItem, RadioGroupIndicator, useForwardPropsEmits, Label } from 'radix-vue'
+import { RadioGroupRoot, RadioGroupItem, RadioGroupIndicator, Label, useForwardPropsEmits } from 'radix-vue'
 import { reactivePick } from '@vueuse/core'
-import { get } from '../utils'
+import { get } from '#ui/utils'
 
 const props = withDefaults(defineProps<RadioGroupProps>(), {
   valueAttribute: 'value',
   optionAttribute: 'label',
   descriptionAttribute: 'description'
 })
-
 const emits = defineEmits<RadioGroupEmits>()
+defineSlots<RadioGroupSlots>()
 
 const rootProps = useForwardPropsEmits(reactivePick(props, 'defaultValue', 'orientation', 'disabled', 'loop', 'name', 'required'), emits)
 
@@ -68,7 +68,6 @@ const ui = computed(() => tv({ extend: radioGroup, slots: props.ui })({
   disabled: props.disabled,
   required: props.required
 }))
-
 
 function guessOptionValue (option: any) {
   return get(option, props.valueAttribute, get(option, props.optionAttribute))
