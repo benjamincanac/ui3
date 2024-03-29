@@ -71,15 +71,15 @@ const ui = computed(() => tv({ extend: radioGroup, slots: props.ui })({
 }))
 
 
-const guessOptionValue = (option: any) => {
+function guessOptionValue (option: any) {
   return get(option, props.valueAttribute, get(option, props.optionAttribute))
 }
 
-const guessOptionText = (option: any) => {
+function guessOptionText (option: any) {
   return get(option, props.optionAttribute, get(option, props.valueAttribute))
 }
 
-const normalizeOption = (option: any) => {
+function normalizeOption (option: any) {
   if (['string', 'number', 'boolean'].includes(typeof option)) {
     return {
       id: `${inputId}:${option}`,
