@@ -6,6 +6,7 @@ coverage
 .DS_Store
 .code
 *.iml
+package.json
 package-lock.json
 templates/*
 sw.js
