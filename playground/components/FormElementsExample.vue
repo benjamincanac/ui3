@@ -11,7 +11,6 @@ const state = reactive({
   select: undefined,
   selectMenu: undefined,
   checkbox: undefined,
-  toggle: undefined,
   radio: undefined,
   radioGroup: undefined,
   switch: undefined,
@@ -30,9 +29,9 @@ const schema = z.object({
   // selectMenu: z.any().refine(option => option?.value === 'option-2', {
   //   message: 'Select Option 2'
   // }),
-  // toggle: z.boolean().refine(value => value === true, {
-  //   message: 'Toggle me'
-  // }),
+  switch: z.boolean().refine(value => value === true, {
+    message: 'Toggle me'
+  }),
   checkbox: z.boolean().refine(value => value === true, {
     message: 'Check me'
   }),
@@ -79,12 +78,16 @@ function onSubmit (event: FormSubmitEvent<Schema>) {
       <URadioGroup v-model="state.radioGroup" legend="Radio group" :options="options" />
     </UFormField>
 
+    <UFormField name="switch">
+      <USwitch v-model:checked="state.switch" />
+    </UFormField>
+
     <div class="flex gap-2">
-      <UButton color="gray" type="submit">
+      <UButton color="gray" type="submit" :disabled="form?.disabled">
         Submit
       </UButton>
 
-      <UButton variant="outline" @click="form.clear()">
+      <UButton variant="outline" :disabled="form?.disabled" @click="form.clear()">
         Clear
       </UButton>
     </div>
