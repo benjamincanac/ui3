@@ -26,6 +26,6 @@
         Source
       </div>
     </div>
-    <UDivider label="As simple as it gets" type="dotted" size="lg" />
+    <UDivider label="As simple as it gets" type="dotted" size="lg" color="yellow" />
   </div>
 </template>

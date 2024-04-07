@@ -15,6 +15,7 @@ type DividerVariants = VariantProps<typeof divider>
 export interface DividerProps extends Omit<SeparatorProps, 'asChild'> {
   avatar?: AvatarProps
   class?: any
+  color?: DividerVariants['color']
   decorative?: boolean
   icon?: string
   label?: string
@@ -42,6 +43,7 @@ const props = withDefaults(defineProps<DividerProps>(), {
 defineSlots<DividerSlots>()
 
 const ui = computed(() => tv({ extend: divider, slots: props.ui })({
+  color: props.color,
   orientation: props.orientation,
   size: props.size,
   type: props.type

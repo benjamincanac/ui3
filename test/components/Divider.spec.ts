@@ -18,6 +18,10 @@ describe('Divider', () => {
     ['with orientation vertical', { props: { orientation: 'vertical' as const } }],
     ['with type dashed', { props: { type: 'dashed' as const } }],
     ['with type dotted', { props: { type: 'dotted' as const } }],
+    ['with color green', { props: { color: 'green' as const } }],
+    ['with color white', { props: { color: 'white' as const } }],
+    ['with color gray', { props: { color: 'gray' as const } }],
+    ['with color black', { props: { color: 'black' as const } }],
     ['with decorative', { props: { decorative: true } }],
     ['with ui', { props: { ui: {} } }]
   ])('renders %s correctly', async (nameOrHtml: string, options: { props?: DividerProps, slots?: any }) => {
