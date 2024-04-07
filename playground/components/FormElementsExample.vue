@@ -1,21 +1,7 @@
 <script setup lang="ts">
 import { z } from 'zod'
-import type { FormSubmitEvent } from '#ui/types/form'
+import type { FormSubmitEvent, Form } from '#ui/types/form'
 
-const form = ref()
-
-const state = reactive({
-  input: undefined,
-  inputMenu: undefined,
-  textarea: undefined,
-  select: undefined,
-  selectMenu: undefined,
-  checkbox: undefined,
-  radio: undefined,
-  radioGroup: undefined,
-  switch: undefined,
-  range: undefined
-})
 
 const schema = z.object({
   input: z.string().min(10),
@@ -42,6 +28,9 @@ const schema = z.object({
 })
 
 type Schema = z.output<typeof schema>
+
+const state = reactive<Partial<Schema>>({})
+const form = ref<Form<Schema>>()
 
 const options = [
   { label: 'Option 1', value: 'option-1' },

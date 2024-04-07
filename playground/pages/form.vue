@@ -2,22 +2,19 @@
 import { z } from 'zod'
 import type { FormSubmitEvent } from '#ui/types/form'
 
-type User = {
-  email: string
-  password: string
-  tos: boolean
-}
-
-const state = reactive<Partial<User>>({})
-const state2 = reactive<Partial<User>>({})
-
 const schema = z.object({
   email: z.string().email(),
   password: z.string().min(8),
   tos: z.literal(true)
 })
 
-function onSubmit (event: FormSubmitEvent<User>) {
+type Schema = z.output<typeof schema>
+
+const state = reactive<Partial<Schema>>({})
+const state2 = reactive<Partial<Schema>>({})
+
+
+function onSubmit (event: FormSubmitEvent<Schema>) {
   console.log(event.data)
 }
 </script>
