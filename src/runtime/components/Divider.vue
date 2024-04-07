@@ -19,6 +19,7 @@ export interface DividerProps extends Omit<SeparatorProps, 'asChild'> {
   icon?: string
   label?: string
   orientation?: DividerVariants['orientation']
+  size?: DividerVariants['size']
   type?: DividerVariants['type']
   ui?: Partial<typeof divider.slots>
 }
@@ -35,12 +36,14 @@ import { UAvatar, UIcon } from '#components'
 
 const props = withDefaults(defineProps<DividerProps>(), {
   as: 'div',
-  orientation: 'horizontal'
+  orientation: 'horizontal',
+  size: '2xs'
 })
 defineSlots<DividerSlots>()
 
 const ui = computed(() => tv({ extend: divider, slots: props.ui })({
   orientation: props.orientation,
+  size: props.size,
   type: props.type
 }))
 </script>
