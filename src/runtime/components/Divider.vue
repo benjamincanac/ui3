@@ -13,15 +13,15 @@ const divider = tv({ extend: tv(theme), ...(appConfig.ui?.divider || {}) })
 type DividerVariants = VariantProps<typeof divider>
 
 export interface DividerProps extends Omit<SeparatorProps, 'asChild'> {
-  avatar?: AvatarProps
-  class?: any
-  color?: DividerVariants['color']
-  decorative?: boolean
-  icon?: string
   label?: string
+  icon?: string
+  avatar?: AvatarProps
+  decorative?: boolean
   orientation?: DividerVariants['orientation']
+  color?: DividerVariants['color']
   size?: DividerVariants['size']
   type?: DividerVariants['type']
+  class?: any
   ui?: Partial<typeof divider.slots>
 }
 
