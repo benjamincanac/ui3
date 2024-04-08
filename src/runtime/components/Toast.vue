@@ -1,0 +1,68 @@
+<script lang="ts">
+import { isVNode, type VNode } from 'vue'
+import { tv, type VariantProps } from 'tailwind-variants'
+import type { ToastRootProps, ToastRootEmits } from 'radix-vue'
+import type { AppConfig } from '@nuxt/schema'
+import _appConfig from '#build/app.config'
+import theme from '#build/ui/toast'
+import type { ButtonProps } from '#ui/types'
+
+const appConfig = _appConfig as AppConfig & { ui: { toast: Partial<typeof theme> } }
+
+const toast = tv({ extend: tv(theme), ...(appConfig.ui?.toast || {}) })
+
+type ToastVariants = VariantProps<typeof toast>
+
+export interface ToastProps extends Omit<ToastRootProps, 'asChild' | 'forceMount'> {
+  title?: string
+  description?: string | VNode | (() => VNode)
+  color?: ToastVariants['color']
+  close?: ButtonProps | null
+  class?: any
+  ui?: Partial<typeof toast.slots>
+}
+
+export interface ToastEmits extends ToastRootEmits {}
+</script>
+
+<script setup lang="ts">
+import { computed } from 'vue'
+import { ToastRoot, ToastTitle, ToastDescription, ToastAction, ToastClose, useForwardPropsEmits } from 'radix-vue'
+import { reactivePick } from '@vueuse/core'
+import { useAppConfig } from '#imports'
+
+const props = defineProps<ToastProps>()
+const emits = defineEmits<ToastEmits>()
+
+const appConfig = useAppConfig()
+const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'defaultOpen', 'duration', 'open', 'type'), emits)
+
+const ui = computed(() => tv({ extend: toast, slots: props.ui })())
+</script>
+
+<template>
+  <ToastRoot v-bind="rootProps" :class="ui.root({ class: props.class })">
+    <ToastTitle v-if="title" :class="ui.title()">
+      {{ title }}
+    </ToastTitle>
+    <template v-if="description">
+      <ToastDescription v-if="isVNode(description)" :as="description" />
+      <ToastDescription v-else :class="ui.description()">
+        {{ description }}
+      </ToastDescription>
+    </template>
+
+    <ToastClose as-child>
+      <UButton
+        v-if="close !== null"
+        :icon="appConfig.ui.icons.close"
+        size="sm"
+        color="gray"
+        variant="ghost"
+        aria-label="Close"
+        v-bind="close"
+        :class="ui.close()"
+      />
+    </ToastClose>
+  </ToastRoot>
+</template>
