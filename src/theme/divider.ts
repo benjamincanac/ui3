@@ -110,6 +110,7 @@ export default (config: { colors: string[] }) => ({
   ],
   defaultVariants: {
     orientation: 'horizontal',
+    size: '2xs',
     type: 'solid'
   }
 })

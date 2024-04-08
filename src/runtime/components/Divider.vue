@@ -35,11 +35,7 @@ import { computed } from 'vue'
 import { Separator } from 'radix-vue'
 import { UAvatar, UIcon } from '#components'
 
-const props = withDefaults(defineProps<DividerProps>(), {
-  as: 'div',
-  orientation: 'horizontal',
-  size: '2xs'
-})
+const props = withDefaults(defineProps<DividerProps>(), { as: 'div' })
 defineSlots<DividerSlots>()
 
 const ui = computed(() => tv({ extend: divider, slots: props.ui })({
