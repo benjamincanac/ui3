@@ -16,7 +16,6 @@ export interface SeparatorProps extends Omit<_SeparatorProps, 'asChild'> {
   label?: string
   icon?: string
   avatar?: AvatarProps
-  decorative?: boolean
   color?: SeparatorVariants['color']
   size?: SeparatorVariants['size']
   type?: SeparatorVariants['type']
@@ -39,9 +38,9 @@ const props = withDefaults(defineProps<SeparatorProps>(), {
   as: 'div',
   orientation: 'horizontal'
 })
-const rootProps = useForwardProps(reactivePick(props, 'as', 'decorative', 'orientation'))
-
 defineSlots<SeparatorSlots>()
+
+const rootProps = useForwardProps(reactivePick(props, 'as', 'decorative', 'orientation'))
 
 const ui = computed(() => tv({ extend: separator, slots: props.ui })({
   color: props.color,

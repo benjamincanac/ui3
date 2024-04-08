@@ -1,7 +1,7 @@
 export default (config: { colors: string[] }) => ({
   slots: {
     root: 'flex items-center align-center text-center',
-    border: 'border-gray-200 dark:border-gray-800',
+    border: '',
     container: 'font-medium text-gray-700 dark:text-gray-200 flex',
     icon: 'shrink-0 size-5',
     avatar: 'shrink-0',
@@ -109,7 +109,6 @@ export default (config: { colors: string[] }) => ({
     }
   ],
   defaultVariants: {
-    orientation: 'horizontal',
     size: '2xs',
     type: 'solid'
   }
