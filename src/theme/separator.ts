@@ -16,12 +16,12 @@ export default (config: { colors: string[] }) => ({
     },
     orientation: {
       horizontal: {
-        root: 'w-full flex-row my-4',
+        root: 'w-full flex-row',
         border: 'w-full',
         container: 'mx-3 whitespace-nowrap'
       },
       vertical: {
-        root: 'h-full flex-col mx-4',
+        root: 'h-full flex-col',
         border: 'h-full',
         container: 'my-2'
       }
@@ -109,6 +109,7 @@ export default (config: { colors: string[] }) => ({
     }
   ],
   defaultVariants: {
+    color: 'gray',
     size: '2xs',
     type: 'solid'
   }
