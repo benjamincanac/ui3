@@ -12,7 +12,7 @@
         Blog
       </div>
       <USeparator
-        :avatar="{ src: 'https://avatars.githubusercontent.com/u/739984?v=4' }"
+        :avatar="{ size: 'sm', src: 'https://avatars.githubusercontent.com/u/739984?v=4' }"
         decorative
         orientation="vertical"
       />
