@@ -30,10 +30,9 @@ export interface SwitchEmits extends SwitchRootEmits {}
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useFormField } from '#imports'
 import { SwitchRoot, SwitchThumb, useForwardPropsEmits } from 'radix-vue'
 import { reactivePick } from '@vueuse/core'
-import { useAppConfig } from '#imports'
+import { useAppConfig, useFormField } from '#imports'
 
 const props = defineProps<SwitchProps>()
 const emits = defineEmits<SwitchEmits>()
