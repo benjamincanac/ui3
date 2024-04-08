@@ -1,7 +1,7 @@
 <script lang="ts">
 import { tv, type VariantProps } from 'tailwind-variants'
 import type { SeparatorProps as _SeparatorProps } from 'radix-vue'
-import type { AvatarProps } from './Avatar.vue'
+import type { AvatarProps } from '#ui/types'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/separator'
@@ -35,7 +35,10 @@ import { Separator, useForwardProps } from 'radix-vue'
 import { reactivePick } from '@vueuse/core'
 import { UAvatar, UIcon } from '#components'
 
-const props = withDefaults(defineProps<SeparatorProps>(), { as: 'div' })
+const props = withDefaults(defineProps<SeparatorProps>(), {
+  as: 'div',
+  orientation: 'horizontal'
+})
 const rootProps = useForwardProps(reactivePick(props, 'as', 'decorative', 'orientation'))
 
 defineSlots<SeparatorSlots>()
@@ -61,7 +64,7 @@ const ui = computed(() => tv({ extend: separator, slots: props.ui })({
           <UAvatar v-else-if="avatar" size="2xs" v-bind="avatar" :class="ui.avatar()" />
         </slot>
       </div>
+      <div :class="ui.border()" />
     </template>
-    <div :class="ui.border()" />
   </Separator>
 </template>
