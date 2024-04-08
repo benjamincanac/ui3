@@ -17,7 +17,6 @@ export interface DividerProps extends Omit<SeparatorProps, 'asChild'> {
   icon?: string
   avatar?: AvatarProps
   decorative?: boolean
-  orientation?: DividerVariants['orientation']
   color?: DividerVariants['color']
   size?: DividerVariants['size']
   type?: DividerVariants['type']
