@@ -1,7 +1,7 @@
 export default {
   slots: {
     viewport: 'fixed flex flex-col w-full sm:w-96 p-4 gap-4 z-[100]',
-    base: 'data-[swipe=move]:transition-none'
+    base: 'data-[swipe=move]:transition-none data-[swipe=cancel]:transition-[transform_200ms_ease-out]'
   },
   variants: {
     position: {
@@ -26,16 +26,16 @@ export default {
     },
     swipeDirection: {
       up: {
-        base: 'data-[swipe=end]:animate-[slide-out-to-top_200ms_ease-in-out]'
+        base: 'data-[swipe=end]:animate-[slide-out-to-top_200ms_ease-out]'
       },
       right: {
-        base: 'data-[swipe=end]:animate-[slide-out-to-right_200ms_ease-in-out]'
+        base: 'data-[swipe=end]:animate-[slide-out-to-right_200ms_ease-out]'
       },
       down: {
-        base: 'data-[swipe=end]:animate-[slide-out-to-bottom_200ms_ease-in-out]'
+        base: 'data-[swipe=end]:animate-[slide-out-to-bottom_200ms_ease-out]'
       },
       left: {
-        base: 'data-[swipe=end]:animate-[slide-out-to-left_200ms_ease-in-out]'
+        base: 'data-[swipe=end]:animate-[slide-out-to-left_200ms_ease-out]'
       }
     }
   },
