@@ -36,8 +36,7 @@ import { reactivePick } from '@vueuse/core'
 import { UAvatar, UIcon } from '#components'
 
 const props = withDefaults(defineProps<SeparatorProps>(), { as: 'div' })
-const rootProps = useForwardProps(reactivePick(props, 'decorative', 'orientation'))
-const avatarProps = useForwardProps(reactivePick(props, 'avatar'))
+const rootProps = useForwardProps(reactivePick(props, 'as', 'decorative', 'orientation'))
 
 defineSlots<SeparatorSlots>()
 
@@ -59,7 +58,7 @@ const ui = computed(() => tv({ extend: separator, slots: props.ui })({
             {{ label }}
           </span>
           <UIcon v-else-if="icon" :name="icon" :class="ui.icon()" />
-          <UAvatar v-else-if="avatarProps" size="2xs" v-bind="avatarProps" :class="ui.avatar()" />
+          <UAvatar v-else-if="avatar" size="2xs" v-bind="avatar" :class="ui.avatar()" />
         </slot>
       </div>
     </template>
