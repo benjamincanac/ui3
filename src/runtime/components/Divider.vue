@@ -31,10 +31,14 @@ export interface DividerSlots {
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { Separator } from 'radix-vue'
+import { Separator, useForwardProps } from 'radix-vue'
+import { reactivePick } from '@vueuse/core'
 import { UAvatar, UIcon } from '#components'
 
 const props = withDefaults(defineProps<DividerProps>(), { as: 'div' })
+const rootProps = useForwardProps(reactivePick(props, 'decorative', 'orientation'))
+const avatarProps = useForwardProps(reactivePick(props, 'avatar'))
+
 defineSlots<DividerSlots>()
 
 const ui = computed(() => tv({ extend: divider, slots: props.ui })({
@@ -46,7 +50,7 @@ const ui = computed(() => tv({ extend: divider, slots: props.ui })({
 </script>
 
 <template>
-  <Separator v-bind="props" :class="ui.root({ class: props.class })">
+  <Separator v-bind="rootProps" :class="ui.root({ class: props.class })">
     <div :class="ui.border()" />
     <template v-if="label || icon || avatar || $slots.default">
       <div :class="ui.container()">
@@ -55,7 +59,7 @@ const ui = computed(() => tv({ extend: divider, slots: props.ui })({
             {{ label }}
           </span>
           <UIcon v-else-if="icon" :name="icon" :class="ui.icon()" />
-          <UAvatar v-else-if="avatar" size="2xs" v-bind="avatar" :class="ui.avatar()" />
+          <UAvatar v-else-if="avatarProps" size="2xs" v-bind="avatarProps" :class="ui.avatar()" />
         </slot>
       </div>
     </template>
