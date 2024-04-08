@@ -60,7 +60,7 @@ const ui = computed(() => tv({ extend: divider, slots: props.ui })({
             {{ label }}
           </span>
           <UIcon v-else-if="icon" :name="icon" :class="ui.icon()" />
-          <UAvatar v-else-if="avatar" v-bind="avatar" :class="ui.avatar()" />
+          <UAvatar v-else-if="avatar" size="2xs" v-bind="avatar" :class="ui.avatar()" />
         </slot>
       </div>
     </template>
