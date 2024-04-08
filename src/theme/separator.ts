@@ -11,7 +11,7 @@ export default (config: { colors: string[] }) => ({
     color: {
       ...Object.fromEntries(config.colors.map((color: string) => [color, { border: `border-${color}-500 dark:border-${color}-400` }])),
       white: { border: 'border-white dark:border-gray-900' },
-      gray: { border: 'border-gray-50 dark:border-gray-800' },
+      gray: { border: 'border-gray-200 dark:border-gray-800' },
       black: { border: 'border-gray-900 dark:border-white' }
     },
     orientation: {
