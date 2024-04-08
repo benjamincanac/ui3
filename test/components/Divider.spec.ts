@@ -6,7 +6,7 @@ describe('Divider', () => {
   it.each([
     ['basic case', {}],
     ['with as', { props: { as: 'span' } }],
-    ['with class', { props: { class: '' } }],
+    ['with class', { props: { class: 'flex-row-reverse' } }],
     ['with size xs', { props: { size: 'xs' as const } }],
     ['with size sm', { props: { size: 'sm' as const } }],
     ['with size md', { props: { size: 'md' as const } }],
@@ -23,7 +23,7 @@ describe('Divider', () => {
     ['with color gray', { props: { color: 'gray' as const } }],
     ['with color black', { props: { color: 'black' as const } }],
     ['with decorative', { props: { decorative: true } }],
-    ['with ui', { props: { ui: {} } }]
+    ['with ui', { props: { ui: { label: 'text-lg' } } }]
   ])('renders %s correctly', async (nameOrHtml: string, options: { props?: DividerProps, slots?: any }) => {
     const html = await ComponentRender(nameOrHtml, options, Divider)
     expect(html).toMatchSnapshot()
