@@ -1,6 +1,6 @@
 export default (config: { colors: string[] }) => ({
   slots: {
-    base: 'flex items-center align-center text-center',
+    root: 'flex items-center align-center text-center',
     border: 'border-gray-200 dark:border-gray-800',
     container: 'font-medium text-gray-700 dark:text-gray-200 flex',
     icon: 'flex-shrink-0 w-5 h-5',

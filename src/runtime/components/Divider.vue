@@ -51,7 +51,7 @@ const ui = computed(() => tv({ extend: divider, slots: props.ui })({
 </script>
 
 <template>
-  <Separator v-bind="props" :class="ui.base({ class: props.class })">
+  <Separator v-bind="props" :class="ui.root({ class: props.class })">
     <div :class="ui.border()" />
     <template v-if="label || icon || avatar || $slots.default">
       <div :class="ui.container()">
