@@ -3,7 +3,7 @@ export default (config: { colors: string[] }) => ({
     root: 'flex items-center align-center text-center',
     border: 'border-gray-200 dark:border-gray-800',
     container: 'font-medium text-gray-700 dark:text-gray-200 flex',
-    icon: 'shrink-0 w-5 h-5',
+    icon: 'shrink-0 size-5',
     avatar: 'shrink-0',
     label: 'text-sm'
   },

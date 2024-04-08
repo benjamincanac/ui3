@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest'
-import Divider, { type DividerProps } from '../../src/runtime/components/Divider.vue'
+import Separator, { type SeparatorProps } from '../../src/runtime/components/Separator.vue'
 import ComponentRender from '../component-render'
 
-describe('Divider', () => {
+describe('Separator', () => {
   it.each([
     ['basic case', {}],
     ['with as', { props: { as: 'span' } }],
@@ -24,8 +24,8 @@ describe('Divider', () => {
     ['with color black', { props: { color: 'black' as const } }],
     ['with decorative', { props: { decorative: true } }],
     ['with ui', { props: { ui: { label: 'text-lg' } } }]
-  ])('renders %s correctly', async (nameOrHtml: string, options: { props?: DividerProps, slots?: any }) => {
-    const html = await ComponentRender(nameOrHtml, options, Divider)
+  ])('renders %s correctly', async (nameOrHtml: string, options: { props?: SeparatorProps, slots?: any }) => {
+    const html = await ComponentRender(nameOrHtml, options, Separator)
     expect(html).toMatchSnapshot()
   })
 })
