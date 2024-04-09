@@ -1,6 +1,7 @@
 export default defineAppConfig({
   toaster: {
-    position: 'bottom-right' as const
+    position: 'bottom-right' as const,
+    expand: true
   },
   ui: {
     primary: 'sky',

@@ -10,7 +10,7 @@ const ToastWrapper = defineComponent({
     UToast: Toast
   },
   inheritAttrs: false,
-  template: '<UApp><UTooltip v-bind="$attrs"><slot /></UTooltip></UApp>'
+  template: '<UApp><UToast v-bind="$attrs" /></UApp>'
 })
 
 describe('Toast', () => {

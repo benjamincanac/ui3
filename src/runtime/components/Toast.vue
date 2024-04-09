@@ -17,6 +17,7 @@ export interface ToastProps extends Omit<ToastRootProps, 'asChild' | 'forceMount
   title?: string
   description?: string | VNode | (() => VNode)
   color?: ToastVariants['color']
+  actions?: ButtonProps[]
   close?: ButtonProps | null
   class?: any
   ui?: Partial<typeof toast.slots>
@@ -26,9 +27,9 @@ export interface ToastEmits extends ToastRootEmits {}
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import { ToastRoot, ToastTitle, ToastDescription, ToastAction, ToastClose, useForwardPropsEmits } from 'radix-vue'
-import { reactivePick } from '@vueuse/core'
+import { reactivePick, useElementBounding } from '@vueuse/core'
 import { useAppConfig } from '#imports'
 
 const props = defineProps<ToastProps>()
@@ -37,11 +38,19 @@ const emits = defineEmits<ToastEmits>()
 const appConfig = useAppConfig()
 const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'defaultOpen', 'duration', 'open', 'type'), emits)
 
+
 const ui = computed(() => tv({ extend: toast, slots: props.ui })())
+
+const el = ref()
+const { height } = useElementBounding(el)
+
+defineExpose({
+  height
+})
 </script>
 
 <template>
-  <ToastRoot v-bind="rootProps" :class="ui.root({ class: props.class })">
+  <ToastRoot ref="el" v-bind="rootProps" :class="ui.root({ class: props.class })" :style="{ '--height': height }">
     <ToastTitle v-if="title" :class="ui.title()">
       {{ title }}
     </ToastTitle>
@@ -58,7 +67,7 @@ const ui = computed(() => tv({ extend: toast, slots: props.ui })())
         :icon="appConfig.ui.icons.close"
         size="sm"
         color="gray"
-        variant="ghost"
+        variant="link"
         aria-label="Close"
         v-bind="close"
         :class="ui.close()"

@@ -3,7 +3,7 @@ import type { ConfigProviderProps, TooltipProviderProps } from 'radix-vue'
 import type { ToasterProps } from '#ui/types'
 
 export interface ProviderProps extends ConfigProviderProps {
-  tooltipProvider?: TooltipProviderProps
+  tooltip?: TooltipProviderProps
   toaster?: ToasterProps | null
 }
 </script>
@@ -20,13 +20,13 @@ const props = withDefaults(defineProps<ProviderProps>(), {
 })
 
 const configProviderProps = useForwardProps(reactivePick(props, 'dir', 'scrollBody', 'useId'))
-const tooltipProviderProps = toRef(() => props.tooltipProvider)
+const tooltipProps = toRef(() => props.tooltip)
 const toasterProps = toRef(() => props.toaster)
 </script>
 
 <template>
   <ConfigProvider v-bind="configProviderProps">
-    <TooltipProvider v-bind="tooltipProviderProps">
+    <TooltipProvider v-bind="tooltipProps">
       <slot />
 
       <UToaster v-if="toaster !== null" v-bind="toasterProps" />

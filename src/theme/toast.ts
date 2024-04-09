@@ -5,8 +5,8 @@ export default (config: { colors: string[] }) => ({
     description: 'mt-1 text-sm text-gray-500 dark:text-gray-400',
     icon: 'shrink-0 size-5',
     avatar: 'shrink-0',
-    progress: 'absolute bottom-0 end-0 start-0 h-1',
-    close: 'absolute top-4 right-4'
+    progress: 'absolute bottom-0 inset-x-0 h-1',
+    close: 'absolute top-2.5 right-2.5'
   },
   variants: {
     color: Object.fromEntries(config.colors.map((color: string) => [
