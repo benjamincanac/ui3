@@ -25,7 +25,7 @@ export interface ToastProps extends Omit<ToastRootProps, 'asChild' | 'forceMount
   ui?: Partial<typeof toast.slots>
 }
 
-export interface ToastEmits extends ToastRootEmits {}
+export interface ToastEmits extends ToastRootEmits { }
 </script>
 
 <script setup lang="ts">
@@ -55,7 +55,9 @@ onMounted(() => {
     return
   }
 
-  height.value = el.value.$el.getBoundingClientRect().height
+  setTimeout(() => {
+    height.value = el.value.$el.getBoundingClientRect().height
+  }, 0)
 })
 
 defineExpose({
@@ -94,17 +96,7 @@ defineExpose({
       </template>
 
       <ToastClose as-child>
-        <UButton
-          v-if="close !== null"
-          :icon="appConfig.ui.icons.close"
-          size="sm"
-          color="gray"
-          variant="link"
-          aria-label="Close"
-          v-bind="close"
-          :class="ui.close()"
-          @click.stop
-        />
+        <UButton v-if="close !== null" :icon="appConfig.ui.icons.close" size="sm" color="gray" variant="link" aria-label="Close" v-bind="close" :class="ui.close()" @click.stop />
       </ToastClose>
     </div>
 

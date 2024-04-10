@@ -67,8 +67,8 @@ const expanded = computed(() => props.expand || hovered.value)
 
 const refs = ref<{ height: number }[]>([])
 
-const offsets = computed(() => refs.value.map((_, index) => getOffset(index)))
-const height = computed(() => refs.value.reduce((acc, { height }) => acc + height + 16, 0))
+const height = computed(() => refs.value.reduce((acc, { height }) => acc + height + 16, 0) - 16)
+const frontHeight = computed(() => refs.value[refs.value.length - 1]?.height || 0)
 
 function getOffset (index: number) {
   return refs.value.slice(index + 1).reduce((acc, { height }) => acc + height + 16, 0)
@@ -87,7 +87,7 @@ function getOffset (index: number) {
       :style="{
         '--index': (index - toasts.length) + toasts.length,
         '--before': toasts.length - 1 - index,
-        '--offset': offsets[index],
+        '--offset': getOffset(index),
         '--scale': expanded ? '1' : 'calc(1 - var(--before) * var(--scale-factor))',
         '--translate': expanded ? 'calc(var(--offset) * var(--translate-factor))' : 'calc(var(--before) * var(--gap))',
         '--transform': 'translateY(var(--translate)) scale(var(--scale))'
@@ -106,7 +106,7 @@ function getOffset (index: number) {
         '--scale-factor': '0.05',
         '--translate-factor': position?.startsWith('top') ? '1px' : '-1px',
         '--gap': position?.startsWith('top') ? '16px' : '-16px',
-        '--front-height': `${refs[toasts.length - 1]?.height}px`,
+        '--front-height': `${frontHeight}px`,
         '--height': `${height}px`
       }"
       @mouseenter="hovered = true"

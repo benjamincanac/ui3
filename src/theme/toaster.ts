@@ -1,7 +1,7 @@
 export default {
   slots: {
-    viewport: 'fixed flex flex-col gap-4 w-full sm:w-96 z-[100] data-[expanded=true]:h-[--height]',
-    base: 'absolute inset-x-0 z-[--index] transform-[--transform] data-[expanded=false]:data-[front=false]:h-[--front-height] data-[swipe=move]:transition-none transition-[transform,height] will-change-[transform,height] duration-200 ease-out'
+    viewport: 'fixed flex flex-col w-[calc(100%-2rem)] sm:w-96 z-[100] data-[expanded=true]:h-[--height]',
+    base: 'absolute inset-x-0 z-[--index] transform-[--transform] data-[expanded=false]:data-[front=false]:h-[--front-height] data-[expanded=false]:data-[front=false]:*:invisible data-[swipe=move]:transition-none transition-[transform,height] will-change-[transform,height] duration-200 ease-out'
   },
   variants: {
     position: {
