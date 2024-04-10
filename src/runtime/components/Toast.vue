@@ -5,7 +5,7 @@ import type { ToastRootProps, ToastRootEmits } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/toast'
-import type { ButtonProps } from '#ui/types'
+import type { AvatarProps, ButtonProps, IconProps } from '#ui/types'
 
 const appConfig = _appConfig as AppConfig & { ui: { toast: Partial<typeof theme> } }
 
@@ -16,6 +16,8 @@ type ToastVariants = VariantProps<typeof toast>
 export interface ToastProps extends Omit<ToastRootProps, 'asChild' | 'forceMount'> {
   title?: string
   description?: string | VNode | (() => VNode)
+  icon?: IconProps['name']
+  avatar?: AvatarProps
   color?: ToastVariants['color']
   actions?: ButtonProps[]
   close?: ButtonProps | null
@@ -31,6 +33,7 @@ import { ref, computed, onMounted } from 'vue'
 import { ToastRoot, ToastTitle, ToastDescription, ToastAction, ToastClose, useForwardPropsEmits } from 'radix-vue'
 import { reactivePick } from '@vueuse/core'
 import { useAppConfig } from '#imports'
+import { UIcon, UAvatar } from '#components'
 
 const props = defineProps<ToastProps>()
 const emits = defineEmits<ToastEmits>()
@@ -58,15 +61,24 @@ defineExpose({
 
 <template>
   <ToastRoot ref="el" v-bind="rootProps" :class="ui.root({ class: props.class })" :style="{ '--height': height }">
-    <ToastTitle v-if="title" :class="ui.title()">
-      {{ title }}
-    </ToastTitle>
-    <template v-if="description">
-      <ToastDescription v-if="isVNode(description)" :as="description" />
-      <ToastDescription v-else :class="ui.description()">
-        {{ description }}
-      </ToastDescription>
-    </template>
+    <UAvatar v-if="avatar" size="2xl" v-bind="avatar" :class="ui.avatar()" />
+    <UIcon v-else-if="icon" :name="icon" :class="ui.icon()" />
+
+    <div :class="ui.wrapper()">
+      <ToastTitle v-if="title" :class="ui.title()">
+        {{ title }}
+      </ToastTitle>
+      <template v-if="description">
+        <ToastDescription v-if="isVNode(description)" :as="description" />
+        <ToastDescription v-else :class="ui.description()">
+          {{ description }}
+        </ToastDescription>
+      </template>
+    </div>
+
+
+    <div :class="ui.progress()" />
+    <div :class="ui.mask()" />
 
     <ToastClose as-child>
       <UButton
@@ -78,6 +90,7 @@ defineExpose({
         aria-label="Close"
         v-bind="close"
         :class="ui.close()"
+        @click.stop
       />
     </ToastClose>
   </ToastRoot>

@@ -68,6 +68,7 @@ const expanded = computed(() => props.expand || hovered.value)
 const refs = ref<{ height: number }[]>([])
 
 const offsets = computed(() => refs.value.map((_, index) => getOffset(index)))
+const height = computed(() => refs.value.reduce((acc, { height }) => acc + height + 16, 0))
 
 function getOffset (index: number) {
   return refs.value.slice(index + 1).reduce((acc, { height }) => acc + height + 16, 0)
@@ -81,7 +82,6 @@ function getOffset (index: number) {
       :key="toast.id"
       ref="refs"
       v-bind="omit(toast, ['id'])"
-      :class="ui.base()"
       :data-expanded="expanded"
       :data-front="!expanded && index === toasts.length - 1"
       :style="{
@@ -92,16 +92,22 @@ function getOffset (index: number) {
         '--translate': expanded ? 'calc(var(--offset) * var(--translate-factor))' : 'calc(var(--before) * var(--gap))',
         '--transform': 'translateY(var(--translate)) scale(var(--scale))'
       }"
+      :class="[ui.base(), {
+        'cursor-pointer': !!toast.click
+      }]"
       @update:open="onUpdateOpen($event, toast.id)"
+      @click="toast.click && toast.click(toast)"
     />
 
     <ToastViewport
+      :data-expanded="expanded"
       :class="ui.viewport({ class: props.class })"
       :style="{
         '--scale-factor': '0.05',
         '--translate-factor': position?.startsWith('top') ? '1px' : '-1px',
         '--gap': position?.startsWith('top') ? '16px' : '-16px',
-        '--front-height': `${refs[toasts.length - 1]?.height}px`
+        '--front-height': `${refs[toasts.length - 1]?.height}px`,
+        '--height': `${height}px`
       }"
       @mouseenter="hovered = true"
       @mouseleave="hovered = false"

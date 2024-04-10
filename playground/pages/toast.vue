@@ -11,11 +11,38 @@ const last = computed(() => toasts.value[toasts.value.length - 1])
 
 function addToast () {
   const n = count.value++
+  const templates = [{
+    title: 'Toast',
+    description: `This is the toast ${n}`
+  }, {
+    title: `Toast ${n}`
+  }, {
+    description: `This is the toast ${n}`
+  }, {
+    title: 'Toast',
+    description: `This is the toast ${n}`,
+    icon: 'i-heroicons-rocket-launch'
+  }, {
+    title: `Toast ${n}`,
+    icon: 'i-heroicons-rocket-launch'
+  }, {
+    description: `This is the toast ${n}`,
+    icon: 'i-heroicons-rocket-launch'
+  }, {
+    title: 'Toast',
+    description: `This is the toast ${n}`,
+    avatar: {
+      src: 'https://avatars.githubusercontent.com/u/739984?v=4'
+    }
+  }]
+
+  const template = templates[Math.floor(Math.random() * templates.length)]
 
   add({
-    title: 'Toast',
-    description: n & 1 ? `This is the toast ${n}` : undefined,
-    duration: 100000
+    ...template,
+    click () {
+      console.log('Toast clicked')
+    }
   })
 }
 
@@ -44,6 +71,7 @@ function removeToast () {
     <div>
       <URadioGroup v-model="appConfig.toaster.position" :options="positions" />
       <UCheckbox v-model="appConfig.toaster.expand" label="Expand" class="mt-1" />
+      <UInput v-model="appConfig.toaster.duration" label="Duration" type="number" class="mt-1" />
     </div>
 
     <div class="flex items-center gap-2">

@@ -3,6 +3,7 @@ import { useState } from '#imports'
 
 export interface Toast extends Omit<ToastProps, 'defaultOpen'> {
   id: string
+  click?: (toast: Toast) => void
 }
 
 export function useToast () {
