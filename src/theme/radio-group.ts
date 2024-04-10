@@ -14,12 +14,10 @@ export default (config: { colors: string[] }) => ({
     description: 'text-gray-500 dark:text-gray-400'
   },
   variants: {
-    color: Object.fromEntries(config.colors.map((color: string) => [
-      color, {
-        base: `focus-visible:outline-${color}-500 dark:focus-visible:outline-${color}-400`,
-        indicator: `bg-${color}-500 dark:bg-${color}-400`
-      }
-    ])),
+    color: Object.fromEntries(config.colors.map((color: string) => [color, {
+      base: `focus-visible:outline-${color}-500 dark:focus-visible:outline-${color}-400`,
+      indicator: `bg-${color}-500 dark:bg-${color}-400`
+    }])),
 
     size: {
       '2xs': {
@@ -68,7 +66,8 @@ export default (config: { colors: string[] }) => ({
 
     disabled: {
       true: {
-        container: 'cursor-not-allowed opacity-75'
+        base: 'cursor-not-allowed opacity-75',
+        label: 'cursor-not-allowed opacity-75'
       }
     },
 
