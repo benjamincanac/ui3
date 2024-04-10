@@ -19,7 +19,7 @@ export interface ToastProps extends Omit<ToastRootProps, 'asChild' | 'forceMount
   icon?: IconProps['name']
   avatar?: AvatarProps
   color?: ToastVariants['color']
-  actions?: ButtonProps[]
+  actions?: (ButtonProps & { click?: () => void })[]
   close?: ButtonProps | null
   class?: any
   ui?: Partial<typeof toast.slots>
@@ -41,7 +41,11 @@ const emits = defineEmits<ToastEmits>()
 const appConfig = useAppConfig()
 const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'defaultOpen', 'duration', 'open', 'type'), emits)
 
-const ui = computed(() => tv({ extend: toast, slots: props.ui })())
+const multiline = computed(() => !!props.title && !!props.description)
+
+const ui = computed(() => tv({ extend: toast, slots: props.ui })({
+  color: props.color
+}))
 
 const el = ref()
 const height = ref(0)
@@ -60,7 +64,7 @@ defineExpose({
 </script>
 
 <template>
-  <ToastRoot ref="el" v-bind="rootProps" :class="ui.root({ class: props.class })" :style="{ '--height': height }">
+  <ToastRoot ref="el" v-bind="rootProps" :class="ui.root({ class: props.class, multiline })" :style="{ '--height': height }">
     <UAvatar v-if="avatar" size="2xl" v-bind="avatar" :class="ui.avatar()" />
     <UIcon v-else-if="icon" :name="icon" :class="ui.icon()" />
 
@@ -74,24 +78,37 @@ defineExpose({
           {{ description }}
         </ToastDescription>
       </template>
+
+      <div v-if="multiline && actions?.length" :class="ui.actions({ multiline: true })">
+        <ToastAction v-for="(action, index) in actions" :key="index" :alt-text="action.label || 'Action'" as-child>
+          <UButton size="xs" color="white" v-bind="action" @click.stop="action.click" />
+        </ToastAction>
+      </div>
     </div>
 
+    <div v-if="(!multiline && actions?.length) || close !== null" :class="ui.actions({ multiline: false })">
+      <template v-if="!multiline">
+        <ToastAction v-for="(action, index) in actions" :key="index" :alt-text="action.label || 'Action'" as-child>
+          <UButton size="xs" color="white" v-bind="action" @click.stop="action.click" />
+        </ToastAction>
+      </template>
+
+      <ToastClose as-child>
+        <UButton
+          v-if="close !== null"
+          :icon="appConfig.ui.icons.close"
+          size="sm"
+          color="gray"
+          variant="link"
+          aria-label="Close"
+          v-bind="close"
+          :class="ui.close()"
+          @click.stop
+        />
+      </ToastClose>
+    </div>
 
     <div :class="ui.progress()" />
     <div :class="ui.mask()" />
-
-    <ToastClose as-child>
-      <UButton
-        v-if="close !== null"
-        :icon="appConfig.ui.icons.close"
-        size="sm"
-        color="gray"
-        variant="link"
-        aria-label="Close"
-        v-bind="close"
-        :class="ui.close()"
-        @click.stop
-      />
-    </ToastClose>
   </ToastRoot>
 </template>
