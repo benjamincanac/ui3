@@ -9,70 +9,77 @@ const appConfig = useAppConfig()
 const count = ref(1)
 const last = computed(() => toasts.value[toasts.value.length - 1])
 
-const templates = (n: number) => [{
-    title: 'Toast',
-    description: `This is the toast ${n}`
-  }, {
-    title: `Toast ${n}`
-  }, {
-    description: `This is the toast ${n}`
-  }, {
-    title: 'Toast',
-    description: `This is the toast ${n}`,
-    icon: 'i-heroicons-rocket-launch'
-  }, {
-    title: `Toast ${n}`,
-    icon: 'i-heroicons-rocket-launch'
-  }, {
-    description: `This is the toast ${n}`,
-    icon: 'i-heroicons-rocket-launch'
-  }, {
-    title: 'Toast',
-    description: `This is the toast ${n}`,
-    avatar: {
-      src: 'https://avatars.githubusercontent.com/u/739984?v=4'
+const templates = (id: number) => [{
+  title: 'Toast',
+  description: `This is the toast ${id}`
+}, {
+  title: `Toast ${id}`
+}, {
+  description: `This is the toast ${id}`
+}, {
+  title: 'Toast',
+  description: `This is the toast ${id}`,
+  icon: 'i-heroicons-rocket-launch'
+}, {
+  title: `Toast ${id}`,
+  icon: 'i-heroicons-rocket-launch'
+}, {
+  description: `This is the toast ${id}`,
+  icon: 'i-heroicons-rocket-launch'
+}, {
+  title: 'Toast',
+  description: `This is the toast ${id}`,
+  avatar: {
+    src: 'https://avatars.githubusercontent.com/u/739984?v=4'
+  }
+}, {
+  title: 'Toast',
+  description: `This is the toast ${id}`,
+  avatar: {
+    src: 'https://avatars.githubusercontent.com/u/739984?v=4'
+  },
+  actions: [{
+    label: 'Action',
+    click () {
+      console.log(`Toast ${id} action clicked`)
+    }
+  }]
+}, {
+  title: `Toast ${id}`,
+  icon: 'i-heroicons-rocket-launch',
+  actions: [{
+    label: 'Action 1',
+    color: 'gray' as const,
+    click () {
+      console.log(`Toast ${id} action 1 clicked`)
     }
   }, {
-    title: 'Toast',
-    description: `This is the toast ${n}`,
-    avatar: {
-      src: 'https://avatars.githubusercontent.com/u/739984?v=4'
-    },
-    actions: [{
-      label: 'Action',
-      click () {
-        console.log('Action clicked')
-      }
-    }]
-  }, {
-    title: `Toast ${n}`,
-    icon: 'i-heroicons-rocket-launch',
-    actions: [{
-      label: 'Action',
-      color: 'gray' as const,
-      click () {
-        console.log('Action clicked')
-      }
-    }]
-  }, {
-    description: `This is the toast ${n}`,
-    icon: 'i-heroicons-rocket-launch',
-    actions: [{
-      label: 'Action',
-      color: 'primary' as const,
-      variant: 'outline' as const,
-      click () {
-        console.log('Action clicked')
-      }
-    }]
+    label: 'Action 2',
+    color: 'black' as const,
+    click () {
+      console.log(`Toast ${id} action 2 clicked`)
+    }
   }]
+}, {
+  description: `This is the toast ${id}`,
+  icon: 'i-heroicons-rocket-launch',
+  actions: [{
+    label: 'Action',
+    color: 'primary' as const,
+    variant: 'outline' as const,
+    click () {
+      console.log(`Toast ${id} action clicked`)
+    }
+  }]
+}]
 
 function addToast () {
-  const n = count.value++
+  const id = count.value++
 
-  const template = templates(n)[Math.floor(Math.random() * templates(n).length)]
+  const template = templates(id)[Math.floor(Math.random() * templates(id).length)]
 
   add({
+    id,
     ...template,
     click (toast) {
       console.log(`Toast ${toast.id} clicked`)

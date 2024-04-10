@@ -54,7 +54,7 @@ const ui = computed(() => tv({ extend: toaster, slots: props.ui })({
   swipeDirection: swipeDirection.value
 }))
 
-function onUpdateOpen (value: boolean, id: string) {
+function onUpdateOpen (value: boolean, id: string | number) {
   if (value) {
     return
   }

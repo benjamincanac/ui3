@@ -2,7 +2,7 @@ import type { ToastProps } from '#ui/types'
 import { useState } from '#imports'
 
 export interface Toast extends Omit<ToastProps, 'defaultOpen'> {
-  id: string
+  id: string | number
   click?: (toast: Toast) => void
 }
 
@@ -26,7 +26,7 @@ export function useToast () {
     return body
   }
 
-  function update (id: string, toast: Partial<Toast>) {
+  function update (id: string | number, toast: Partial<Toast>) {
     const index = toasts.value.findIndex((t: Toast) => t.id === id)
     if (index !== -1) {
       toasts.value[index] = {
@@ -36,7 +36,7 @@ export function useToast () {
     }
   }
 
-  function remove (id: string) {
+  function remove (id: string | number) {
     const index = toasts.value.findIndex((t: Toast) => t.id === id)
     if (index !== -1) {
       toasts.value[index] = {

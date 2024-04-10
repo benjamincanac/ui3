@@ -80,16 +80,16 @@ defineExpose({
       </template>
 
       <div v-if="multiline && actions?.length" :class="ui.actions({ multiline: true })">
-        <ToastAction v-for="(action, index) in actions" :key="index" :alt-text="action.label || 'Action'" as-child>
-          <UButton size="xs" color="white" v-bind="action" @click.stop="action.click" />
+        <ToastAction v-for="(action, index) in actions" :key="index" :alt-text="action.label || 'Action'" as-child @click.stop>
+          <UButton size="xs" color="white" v-bind="action" />
         </ToastAction>
       </div>
     </div>
 
     <div v-if="(!multiline && actions?.length) || close !== null" :class="ui.actions({ multiline: false })">
       <template v-if="!multiline">
-        <ToastAction v-for="(action, index) in actions" :key="index" :alt-text="action.label || 'Action'" as-child>
-          <UButton size="xs" color="white" v-bind="action" @click.stop="action.click" />
+        <ToastAction v-for="(action, index) in actions" :key="index" :alt-text="action.label || 'Action'" as-child @click.stop>
+          <UButton size="xs" color="white" v-bind="action" />
         </ToastAction>
       </template>
 
