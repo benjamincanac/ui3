@@ -46,68 +46,55 @@ export default (config: { colors: string[] }) => ({
       }
     }
   },
-  compoundVariants: [
-    {
-      orientation: 'horizontal',
-      size: '2xs',
-      class: { border: 'border-t' }
-    },
-    {
-      orientation: 'horizontal',
-      size: 'xs',
-      class: { border: 'border-t-[2px]' }
-    },
-    {
-      orientation: 'horizontal',
-      size: 'sm',
-      class: { border: 'border-t-[3px]' }
-    },
-    {
-      orientation: 'horizontal',
-      size: 'md',
-      class: { border: 'border-t-[4px]' }
-    },
-    {
-      orientation: 'horizontal',
-      size: 'lg',
-      class: { border: 'border-t-[5px]' }
-    },
-    {
-      orientation: 'horizontal',
-      size: 'xl',
-      class: { border: 'border-t-[6px]' }
-    },
-    {
-      orientation: 'vertical',
-      size: '2xs',
-      class: { border: 'border-s' }
-    },
-    {
-      orientation: 'vertical',
-      size: 'xs',
-      class: { border: 'border-s-[2px]' }
-    },
-    {
-      orientation: 'vertical',
-      size: 'sm',
-      class: { border: 'border-s-[3px]' }
-    },
-    {
-      orientation: 'vertical',
-      size: 'md',
-      class: { border: 'border-s-[4px]' }
-    },
-    {
-      orientation: 'vertical',
-      size: 'lg',
-      class: { border: 'border-s-[5px]' }
-    },
-    {
-      orientation: 'vertical',
-      size: 'xl',
-      class: { border: 'border-s-[6px]' }
-    }
-  ],
+  compoundVariants: [{
+    orientation: 'horizontal',
+    size: '2xs',
+    class: { border: 'border-t' }
+  }, {
+    orientation: 'horizontal',
+    size: 'xs',
+    class: { border: 'border-t-[2px]' }
+  }, {
+    orientation: 'horizontal',
+    size: 'sm',
+    class: { border: 'border-t-[3px]' }
+  }, {
+    orientation: 'horizontal',
+    size: 'md',
+    class: { border: 'border-t-[4px]' }
+  }, {
+    orientation: 'horizontal',
+    size: 'lg',
+    class: { border: 'border-t-[5px]' }
+  }, {
+    orientation: 'horizontal',
+    size: 'xl',
+    class: { border: 'border-t-[6px]' }
+  }, {
+    orientation: 'vertical',
+    size: '2xs',
+    class: { border: 'border-s' }
+  }, {
+    orientation: 'vertical',
+    size: 'xs',
+    class: { border: 'border-s-[2px]' }
+  }, {
+    orientation: 'vertical',
+    size: 'sm',
+    class: { border: 'border-s-[3px]' }
+  }, {
+    orientation: 'vertical',
+    size: 'md',
+    class: { border: 'border-s-[4px]' }
+  }, {
+    orientation: 'vertical',
+    size: 'lg',
+    class: { border: 'border-s-[5px]' }
+  }, {
+    orientation: 'vertical',
+    size: 'xl',
+    class: { border: 'border-s-[6px]' }
+  }],
   defaultVariants: {
     color: 'gray',
     size: '2xs',
