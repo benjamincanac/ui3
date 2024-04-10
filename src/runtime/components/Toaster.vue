@@ -22,7 +22,7 @@ export interface ToasterProps extends Omit<ToastProviderProps, 'swipeDirection'>
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { ToastProvider, ToastViewport, useForwardProps } from 'radix-vue'
-import { reactivePick, useElementSize } from '@vueuse/core'
+import { reactivePick } from '@vueuse/core'
 import { useToast } from '#imports'
 import { UToast } from '#components'
 import { omit } from '#ui/utils'
@@ -67,8 +67,9 @@ const expanded = computed(() => props.expand || hovered.value)
 
 const refs = ref<{ height: number }[]>([])
 
+const offsets = computed(() => refs.value.map((_, index) => getOffset(index)))
+
 function getOffset (index: number) {
-  console.log('getOffset')
   return refs.value.slice(index + 1).reduce((acc, { height }) => acc + height + 16, 0)
 }
 </script>
@@ -86,17 +87,24 @@ function getOffset (index: number) {
       :style="{
         '--index': (index - toasts.length) + toasts.length,
         '--before': toasts.length - 1 - index,
-        '--offset': getOffset(index),
-        '--front-height': `${refs[toasts.length - 1]?.height}px`,
-        '--gap': position?.startsWith('top') ? '16px' : '-16px',
-        '--translate-factor': position?.startsWith('top') ? '1px' : '-1px',
-        '--scale': expanded ? '1' : 'calc(1 - var(--before) * 0.05)',
+        '--offset': offsets[index],
+        '--scale': expanded ? '1' : 'calc(1 - var(--before) * var(--scale-factor))',
         '--translate': expanded ? 'calc(var(--offset) * var(--translate-factor))' : 'calc(var(--before) * var(--gap))',
         '--transform': 'translateY(var(--translate)) scale(var(--scale))'
       }"
       @update:open="onUpdateOpen($event, toast.id)"
     />
 
-    <ToastViewport :class="ui.viewport({ class: props.class })" @mouseenter="hovered = true" @mouseleave="hovered = false" />
+    <ToastViewport
+      :class="ui.viewport({ class: props.class })"
+      :style="{
+        '--scale-factor': '0.05',
+        '--translate-factor': position?.startsWith('top') ? '1px' : '-1px',
+        '--gap': position?.startsWith('top') ? '16px' : '-16px',
+        '--front-height': `${refs[toasts.length - 1]?.height}px`
+      }"
+      @mouseenter="hovered = true"
+      @mouseleave="hovered = false"
+    />
   </ToastProvider>
 </template>

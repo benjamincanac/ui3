@@ -27,9 +27,9 @@ export interface ToastEmits extends ToastRootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { ToastRoot, ToastTitle, ToastDescription, ToastAction, ToastClose, useForwardPropsEmits } from 'radix-vue'
-import { reactivePick, useElementBounding } from '@vueuse/core'
+import { reactivePick } from '@vueuse/core'
 import { useAppConfig } from '#imports'
 
 const props = defineProps<ToastProps>()
@@ -38,11 +38,18 @@ const emits = defineEmits<ToastEmits>()
 const appConfig = useAppConfig()
 const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'defaultOpen', 'duration', 'open', 'type'), emits)
 
-
 const ui = computed(() => tv({ extend: toast, slots: props.ui })())
 
 const el = ref()
-const { height } = useElementBounding(el)
+const height = ref(0)
+
+onMounted(() => {
+  if (!el.value) {
+    return
+  }
+
+  height.value = el.value.$el.getBoundingClientRect().height
+})
 
 defineExpose({
   height
