@@ -6,7 +6,7 @@ const checked = ref(false)
 </script>
 
 <template>
-  <div class="grid grid-cols-6 gap-4 items-center">
+  <div class="grid grid-cols-6 gap-4">
     <USwitch v-for="size in sizes" :key="size" v-model:checked="checked" :size="(size as any)" label="Switch me" />
     <USwitch
       v-for="size in sizes"
