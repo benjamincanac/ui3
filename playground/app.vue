@@ -28,6 +28,7 @@ const components = [
   'radio-group',
   'skeleton',
   'slideover',
+  'slider',
   'switch',
   'tabs',
   'textarea',

@@ -23,8 +23,8 @@ const schema = z.object({
   }),
   radioGroup: z.string().refine(value => value === 'option-2', {
     message: 'Select Option 2'
-  })
-  // range: z.number().max(20, { message: 'Must be less than 20' })
+  }),
+  slider: z.number().max(20, { message: 'Must be less than 20' })
 })
 
 type Schema = z.output<typeof schema>
@@ -69,6 +69,10 @@ function onSubmit (event: FormSubmitEvent<Schema>) {
 
     <UFormField name="switch">
       <USwitch v-model:checked="state.switch" />
+    </UFormField>
+
+    <UFormField name="slider">
+      <USlider v-model="state.slider" />
     </UFormField>
 
     <div class="flex gap-2">

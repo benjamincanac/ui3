@@ -44,7 +44,7 @@ const props = defineProps<CheckboxProps>()
 const emits = defineEmits<CheckboxEmits>()
 defineSlots<CheckboxSlots>()
 
-const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'defaultChecked', 'disabled', 'required', 'name'), emits)
+const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'defaultChecked', 'required'), emits)
 
 const appConfig = useAppConfig()
 const { inputId: _inputId, emitFormChange, size, color, name, disabled } = useFormField<CheckboxProps>(props)
@@ -91,7 +91,9 @@ const ui = computed(() => tv({ extend: checkbox, slots: props.ui })({
       <CheckboxRoot
         :id="inputId"
         v-model:checked="checked"
-        v-bind="{ ...rootProps, name, disabled }"
+        v-bind="rootProps"
+        :name="name"
+        :disabled="disabled"
         :class="ui.base()"
         @update:checked="onChecked"
       >
