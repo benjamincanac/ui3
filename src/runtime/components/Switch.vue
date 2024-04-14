@@ -12,7 +12,7 @@ const switchTv = tv({ extend: tv(theme), ...(appConfig.ui?.switch || {}) })
 
 type SwitchVariants = VariantProps<typeof switchTv>
 
-export interface SwitchProps extends Omit<SwitchRootProps, 'asChild'> {
+export interface SwitchProps extends Omit<SwitchRootProps, 'asChild' | 'checked'> {
   id?: string
   name?: string
   color?: SwitchVariants['color']
@@ -38,7 +38,9 @@ const props = defineProps<SwitchProps>()
 const emits = defineEmits<SwitchEmits>()
 
 const appConfig = useAppConfig()
-const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'defaultChecked', 'checked', 'required', 'value'), emits)
+const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'required', 'value', 'defaultChecked'), emits)
+
+const modelValue = defineModel<boolean | undefined>({ default: undefined })
 
 const { inputId, emitFormChange, size, color, name, disabled } = useFormField<SwitchProps>(props)
 
@@ -59,6 +61,7 @@ async function onChecked() {
 <template>
   <SwitchRoot
     :id="inputId"
+    v-model:checked="modelValue"
     :name="name"
     :disabled="disabled || loading"
     v-bind="rootProps"
