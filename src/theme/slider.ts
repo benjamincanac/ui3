@@ -1,9 +1,9 @@
 export default (config: { colors: string[] }) => ({
   slots: {
     root: 'relative flex items-center select-none touch-none',
-    track: 'relative bg-gray-200 rounded-full rounded-full min-w-60',
+    track: 'relative bg-gray-200 dark:bg-gray-700 rounded-full rounded-full min-w-60',
     range: 'absolute h-full rounded-full',
-    thumb: 'rounded-full bg-white dark:bg-gray-800 ring-2 outline-none'
+    thumb: 'rounded-full bg-white dark:bg-gray-900 ring-2 outline-none'
   },
 
   variants: {
