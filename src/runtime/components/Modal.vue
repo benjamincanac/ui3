@@ -58,8 +58,8 @@ const contentProps = toRef(() => props.content)
 const contentEvents = computed(() => {
   if (props.preventClose) {
     return {
-      'pointerDownOutside': (e: Event) => e.preventDefault(),
-      'interactOutside': (e: Event) => e.preventDefault()
+      pointerDownOutside: (e: Event) => e.preventDefault(),
+      interactOutside: (e: Event) => e.preventDefault()
     }
   }
 
@@ -85,7 +85,7 @@ const ui = computed(() => tv({ extend: modal, slots: props.ui })({
 
       <DialogContent :class="ui.content({ class: props.class })" v-bind="contentProps" v-on="contentEvents">
         <slot name="content">
-          <div :class="ui.header()">
+          <div v-if="$slots.header || (title || $slots.title) || (description || $slots.description) || (close !== null || $slots.close)" :class="ui.header()">
             <slot name="header">
               <DialogTitle v-if="title || $slots.title" :class="ui.title()">
                 <slot name="title">

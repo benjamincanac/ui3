@@ -40,7 +40,6 @@ const emits = defineEmits<SwitchEmits>()
 const appConfig = useAppConfig()
 const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'defaultChecked', 'checked', 'required', 'value'), emits)
 
-
 const { inputId, emitFormChange, size, color, name, disabled } = useFormField<SwitchProps>(props)
 
 const ui = computed(() => tv({ extend: switchTv, slots: props.ui })({
@@ -52,7 +51,7 @@ const ui = computed(() => tv({ extend: switchTv, slots: props.ui })({
 // FIXME: I think there's a race condition between this and the v-model event.
 // This must be triggered after the value updates, otherwise the form validates
 // the previous value.
-async function onChecked () {
+async function onChecked() {
   emitFormChange()
 }
 </script>

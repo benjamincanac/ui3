@@ -1,0 +1,67 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Slider > renders basic case correctly 1`] = `
+"<span data-slider-impl="" dir="ltr" data-orientation="horizontal" style="--radix-slider-thumb-transform: translateX(-50%);" class="relative flex items-center select-none touch-none h-3" aria-disabled="false"><span data-orientation="horizontal" class="relative bg-gray-200 rounded-full min-w-60 h-1"><span data-orientation="horizontal" style="left: 0%;" class="absolute h-full rounded-full bg-primary-500 dark:bg-primary-400"></span></span>
+<div class="rounded-full bg-white dark:bg-gray-800 ring-2 outline-none ring-primary-500 size-3" role="slider" data-radix-vue-collection-item="" tabindex="0" data-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-orientation="horizontal" style="transform: var(--radix-slider-thumb-transform); position: absolute; left: calc(0% + 0px);"></div></span>
+<!---->"
+`;
+
+exports[`Slider > renders with class correctly 1`] = `
+"<span data-slider-impl="" dir="ltr" data-orientation="horizontal" style="--radix-slider-thumb-transform: translateX(-50%);" class="relative flex items-center select-none touch-none h-3" aria-disabled="false"><span data-orientation="horizontal" class="relative bg-gray-200 rounded-full min-w-60 h-1"><span data-orientation="horizontal" style="left: 0%;" class="absolute h-full rounded-full bg-primary-500 dark:bg-primary-400"></span></span>
+<div class="rounded-full bg-white dark:bg-gray-800 ring-2 outline-none ring-primary-500 size-3" role="slider" data-radix-vue-collection-item="" tabindex="0" data-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-orientation="horizontal" style="transform: var(--radix-slider-thumb-transform); position: absolute; left: calc(0% + 0px);"></div></span>
+<!---->"
+`;
+
+exports[`Slider > renders with custom color correctly 1`] = `
+"<span data-slider-impl="" dir="ltr" data-orientation="horizontal" style="--radix-slider-thumb-transform: translateX(-50%);" class="relative flex items-center select-none touch-none h-3" aria-disabled="false"><span data-orientation="horizontal" class="relative bg-gray-200 rounded-full min-w-60 h-1"><span data-orientation="horizontal" style="left: 0%;" class="absolute h-full rounded-full bg-red-500 dark:bg-red-400"></span></span>
+<div class="rounded-full bg-white dark:bg-gray-800 ring-2 outline-none ring-red-500 size-3" role="slider" data-radix-vue-collection-item="" tabindex="0" data-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-orientation="horizontal" style="transform: var(--radix-slider-thumb-transform); position: absolute; left: calc(0% + 0px);"></div></span>
+<!---->"
+`;
+
+exports[`Slider > renders with disabled correctly 1`] = `
+"<span data-slider-impl="" dir="ltr" data-orientation="horizontal" style="--radix-slider-thumb-transform: translateX(-50%);" class="relative flex items-center select-none touch-none h-3 opacity-75 cursor-not-allowed" aria-disabled="true" data-disabled=""><span data-disabled="" data-orientation="horizontal" class="relative bg-gray-200 rounded-full min-w-60 h-1"><span data-disabled="" data-orientation="horizontal" style="left: 0%;" class="absolute h-full rounded-full bg-primary-500 dark:bg-primary-400"></span></span>
+<div class="rounded-full bg-white dark:bg-gray-800 ring-2 outline-none ring-primary-500 size-3" role="slider" data-radix-vue-collection-item="" data-disabled="" data-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-orientation="horizontal" style="transform: var(--radix-slider-thumb-transform); position: absolute; left: calc(0% + 0px);"></div></span>
+<!---->"
+`;
+
+exports[`Slider > renders with size 2xs correctly 1`] = `
+"<span data-slider-impl="" dir="ltr" data-orientation="horizontal" style="--radix-slider-thumb-transform: translateX(-50%);" class="relative flex items-center select-none touch-none h-1.5" aria-disabled="false"><span data-orientation="horizontal" class="relative bg-gray-200 rounded-full min-w-60 h-px"><span data-orientation="horizontal" style="left: 0%;" class="absolute h-full rounded-full bg-primary-500 dark:bg-primary-400"></span></span>
+<div class="rounded-full bg-white dark:bg-gray-800 ring-2 outline-none ring-primary-500 size-1.5" role="slider" data-radix-vue-collection-item="" tabindex="0" data-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-orientation="horizontal" style="transform: var(--radix-slider-thumb-transform); position: absolute; left: calc(0% + 0px);"></div></span>
+<!---->"
+`;
+
+exports[`Slider > renders with size lg correctly 1`] = `
+"<span data-slider-impl="" dir="ltr" data-orientation="horizontal" style="--radix-slider-thumb-transform: translateX(-50%);" class="relative flex items-center select-none touch-none h-5" aria-disabled="false"><span data-orientation="horizontal" class="relative bg-gray-200 rounded-full min-w-60 h-3"><span data-orientation="horizontal" style="left: 0%;" class="absolute h-full rounded-full bg-primary-500 dark:bg-primary-400"></span></span>
+<div class="rounded-full bg-white dark:bg-gray-800 ring-2 outline-none ring-primary-500 size-5" role="slider" data-radix-vue-collection-item="" tabindex="0" data-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-orientation="horizontal" style="transform: var(--radix-slider-thumb-transform); position: absolute; left: calc(0% + 0px);"></div></span>
+<!---->"
+`;
+
+exports[`Slider > renders with size md correctly 1`] = `
+"<span data-slider-impl="" dir="ltr" data-orientation="horizontal" style="--radix-slider-thumb-transform: translateX(-50%);" class="relative flex items-center select-none touch-none h-4" aria-disabled="false"><span data-orientation="horizontal" class="relative bg-gray-200 rounded-full min-w-60 h-2"><span data-orientation="horizontal" style="left: 0%;" class="absolute h-full rounded-full bg-primary-500 dark:bg-primary-400"></span></span>
+<div class="rounded-full bg-white dark:bg-gray-800 ring-2 outline-none ring-primary-500 size-4" role="slider" data-radix-vue-collection-item="" tabindex="0" data-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-orientation="horizontal" style="transform: var(--radix-slider-thumb-transform); position: absolute; left: calc(0% + 0px);"></div></span>
+<!---->"
+`;
+
+exports[`Slider > renders with size sm correctly 1`] = `
+"<span data-slider-impl="" dir="ltr" data-orientation="horizontal" style="--radix-slider-thumb-transform: translateX(-50%);" class="relative flex items-center select-none touch-none h-3" aria-disabled="false"><span data-orientation="horizontal" class="relative bg-gray-200 rounded-full min-w-60 h-1"><span data-orientation="horizontal" style="left: 0%;" class="absolute h-full rounded-full bg-primary-500 dark:bg-primary-400"></span></span>
+<div class="rounded-full bg-white dark:bg-gray-800 ring-2 outline-none ring-primary-500 size-3" role="slider" data-radix-vue-collection-item="" tabindex="0" data-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-orientation="horizontal" style="transform: var(--radix-slider-thumb-transform); position: absolute; left: calc(0% + 0px);"></div></span>
+<!---->"
+`;
+
+exports[`Slider > renders with size xl correctly 1`] = `
+"<span data-slider-impl="" dir="ltr" data-orientation="horizontal" style="--radix-slider-thumb-transform: translateX(-50%);" class="relative flex items-center select-none touch-none h-6" aria-disabled="false"><span data-orientation="horizontal" class="relative bg-gray-200 rounded-full min-w-60 h-4"><span data-orientation="horizontal" style="left: 0%;" class="absolute h-full rounded-full bg-primary-500 dark:bg-primary-400"></span></span>
+<div class="rounded-full bg-white dark:bg-gray-800 ring-2 outline-none ring-primary-500 size-6" role="slider" data-radix-vue-collection-item="" tabindex="0" data-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-orientation="horizontal" style="transform: var(--radix-slider-thumb-transform); position: absolute; left: calc(0% + 0px);"></div></span>
+<!---->"
+`;
+
+exports[`Slider > renders with size xs correctly 1`] = `
+"<span data-slider-impl="" dir="ltr" data-orientation="horizontal" style="--radix-slider-thumb-transform: translateX(-50%);" class="relative flex items-center select-none touch-none h-2" aria-disabled="false"><span data-orientation="horizontal" class="relative bg-gray-200 rounded-full min-w-60 h-0.5"><span data-orientation="horizontal" style="left: 0%;" class="absolute h-full rounded-full bg-primary-500 dark:bg-primary-400"></span></span>
+<div class="rounded-full bg-white dark:bg-gray-800 ring-2 outline-none ring-primary-500 size-2" role="slider" data-radix-vue-collection-item="" tabindex="0" data-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-orientation="horizontal" style="transform: var(--radix-slider-thumb-transform); position: absolute; left: calc(0% + 0px);"></div></span>
+<!---->"
+`;
+
+exports[`Slider > renders with ui correctly 1`] = `
+"<span data-slider-impl="" dir="ltr" data-orientation="horizontal" style="--radix-slider-thumb-transform: translateX(-50%);" class="relative flex items-center select-none touch-none h-3" aria-disabled="false"><span data-orientation="horizontal" class="relative bg-gray-200 rounded-full min-w-60 h-1"><span data-orientation="horizontal" style="left: 0%;" class="absolute h-full rounded-full bg-primary-500 dark:bg-primary-400"></span></span>
+<div class="rounded-full bg-white dark:bg-gray-800 ring-2 outline-none ring-primary-500 size-3" role="slider" data-radix-vue-collection-item="" tabindex="0" data-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-orientation="horizontal" style="transform: var(--radix-slider-thumb-transform); position: absolute; left: calc(0% + 0px);"></div></span>
+<!---->"
+`;

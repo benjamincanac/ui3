@@ -7,8 +7,11 @@ useHead({
   }
 })
 
+const appConfig = useAppConfig()
+
 const components = [
   'accordion',
+  'alert',
   'avatar',
   'badge',
   'button',
@@ -16,6 +19,7 @@ const components = [
   'checkbox',
   'chip',
   'collapsible',
+  'drawer',
   'dropdown-menu',
   'form',
   'form-field',
@@ -26,23 +30,25 @@ const components = [
   'navigation-menu',
   'popover',
   'radio-group',
+  'separator',
   'skeleton',
   'slideover',
   'slider',
   'switch',
   'tabs',
   'textarea',
+  'toast',
   'tooltip'
 ]
 
-function upperName (name: string) {
+function upperName(name: string) {
   return splitByCase(name).map(p => upperFirst(p)).join('')
 }
 </script>
 
 <template>
-  <UApp>
-    <div class="min-h-screen w-screen flex flex-col items-center justify-center overflow-y-auto">
+  <UApp :toaster="appConfig.toaster">
+    <div class="min-h-screen w-screen flex flex-col items-center justify-center overflow-y-auto" vaul-drawer-wrapper>
       <UNavigationMenu :links="components.map(component => ({ label: upperName(component), to: `/${component}` }))" class="border-b border-gray-200 dark:border-gray-800 overflow-x-auto px-2" />
 
       <div class="flex-1 flex flex-col justify-center py-12">

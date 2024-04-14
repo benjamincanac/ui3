@@ -4,7 +4,7 @@ import type { Nuxt } from '@nuxt/schema'
 import type { ModuleOptions } from './module'
 import * as theme from './theme'
 
-export function addTemplates (options: ModuleOptions, nuxt: Nuxt) {
+export function addTemplates(options: ModuleOptions, nuxt: Nuxt) {
   const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
 
   const template = addTemplate({
@@ -17,13 +17,39 @@ export function addTemplates (options: ModuleOptions, nuxt: Nuxt) {
     color-scheme: light dark;
   }
 
-  @keyframes slide-up {
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  }
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
+  }
+
+  @keyframes collapsible-up {
     from { height: var(--radix-collapsible-content-height); }
     to { height: 0; }
   }
-  @keyframes slide-down {
+  @keyframes collapsible-down {
     from { height: 0; }
     to { height: var(--radix-collapsible-content-height); }
+  }
+
+  @keyframes toast-collapsed-closed {
+    from { transform: var(--transform); }
+    to { transform: translateY(calc((var(--before) - var(--height)) * var(--gap))) scale(var(--scale)); }
+  }
+  @keyframes toast-closed {
+    from { transform: var(--transform); }
+    to { transform: translateY(calc((var(--offset) - var(--height)) * var(--translate-factor))); }
+  }
+  @keyframes toast-slide-left {
+    from { transform: translateX(0) translateY(var(--translate)); }
+    to { transform: translateX(-100%) translateY(var(--translate)); }
+  }
+  @keyframes toast-slide-right {
+    from { transform: translateX(0) translateY(var(--translate)); }
+    to { transform: translateX(100%) translateY(var(--translate)); }
   }
 
   @keyframes fade-in {
@@ -163,7 +189,11 @@ export function addTemplates (options: ModuleOptions, nuxt: Nuxt) {
         let json = JSON.stringify(result, null, 2)
 
         for (const variant of variants) {
-          json = json.replaceAll(new RegExp(`("${variant}": "[0-9a-z-]+")`, 'g'), '$1 as const')
+          json = json.replace(new RegExp(`("${variant}": "[^"]+")`, 'g'), '$1 as const')
+          json = json.replace(new RegExp(`("${variant}": \\[\\s*)((?:"[^"]+",?\\s*)+)(\\])`, 'g'), (_, before, match, after) => {
+            const replaced = match.replace(/("[^"]+")/g, '$1 as const')
+            return `${before}${replaced}${after}`
+          })
         }
 
         return `export default ${json}`
