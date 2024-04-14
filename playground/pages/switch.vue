@@ -6,36 +6,35 @@ const checked = ref(false)
 </script>
 
 <template>
-  <div class="flex flex-col gap-2">
-    <div>
-      <USwitch v-model:checked="checked" />
-    </div>
-    <div>
-      <USwitch v-model:checked="checked" disabled />
-    </div>
-    <div class="flex items-center gap-2 ml-[-64px]">
-      <USwitch v-for="size in sizes" :key="size" v-model:checked="checked" :size="(size as any)" />
-    </div>
-    <div class="flex items-center gap-2 ml-[-64px]">
-      <USwitch
-        v-for="size in sizes"
-        :key="size"
-        v-model:checked="checked"
-        :size="(size as any)"
-        unchecked-icon="i-heroicons-x-mark-20-solid"
-        checked-icon="i-heroicons-check-20-solid"
-      />
-    </div>
-    <div class="flex items-center gap-2 ml-[-64px]">
-      <USwitch
-        v-for="size in sizes"
-        :key="size"
-        v-model:checked="checked"
-        :size="(size as any)"
-        unchecked-icon="i-heroicons-x-mark-20-solid"
-        checked-icon="i-heroicons-check-20-solid"
-        loading
-      />
-    </div>
+  <div class="grid grid-cols-6 gap-4 items-center">
+    <USwitch v-for="size in sizes" :key="size" v-model:checked="checked" :size="(size as any)" label="Switch me" />
+    <USwitch
+      v-for="size in sizes"
+      :key="size"
+      v-model:checked="checked"
+      :size="(size as any)"
+      label="Switch me"
+      description="This is a description"
+    />
+    <USwitch
+      v-for="size in sizes"
+      :key="size"
+      v-model:checked="checked"
+      :size="(size as any)"
+      label="Switch me"
+      unchecked-icon="i-heroicons-x-mark-20-solid"
+      checked-icon="i-heroicons-check-20-solid"
+    />
+    <USwitch
+      v-for="size in sizes"
+      :key="size"
+      v-model:checked="checked"
+      :size="(size as any)"
+      label="Switch me"
+      unchecked-icon="i-heroicons-x-mark-20-solid"
+      checked-icon="i-heroicons-check-20-solid"
+      loading
+    />
+    <USwitch v-model:checked="checked" label="Switch me" disabled />
   </div>
 </template>
