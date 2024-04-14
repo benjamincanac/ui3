@@ -8,7 +8,7 @@ describe('Switch', () => {
     ['with class', { props: { class: '' } }],
     ['with ui', { props: { ui: {} } }],
     ['with as', { props: { as: 'section' } }],
-    ['with defaultChecked', { props: { defaultChecked: true } }],
+    ['with defaultValue', { props: { defaultValue: true } }],
     ['with disabled', { props: { disabled: true } }],
     ['with id', { props: { id: 'test' } }],
     ['with name', { props: { name: 'test' } }],

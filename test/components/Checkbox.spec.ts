@@ -14,7 +14,7 @@ describe('Checkbox', () => {
     ['with custom name', { props: { name: 'custom-name' } }],
     ['with disabled', { props: { disabled: true } }],
     ['with indeterminate', { props: { indeterminate: true } }],
-    ['with default-checked', { props: { defaultChecked: true } }],
+    ['with defaultValue', { props: { defaultValue: true } }],
     ['with help', { props: { label: 'Label', help: 'Help' } }],
     ['with required', { props: { label: 'Label', required: true } }],
     ['with custom color', { props: { label: 'Label', color: 'red' as const } }],

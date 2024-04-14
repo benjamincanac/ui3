@@ -1,6 +1,6 @@
 <script lang="ts">
 import { tv, type VariantProps } from 'tailwind-variants'
-import type { CheckboxRootProps, CheckboxRootEmits } from 'radix-vue'
+import type { CheckboxRootProps } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/checkbox'
@@ -12,7 +12,7 @@ const checkbox = tv({ extend: tv(theme), ...(appConfig.ui?.checkbox || {}) })
 
 type CheckboxVariants = VariantProps<typeof checkbox>
 
-export interface CheckboxProps extends Omit<CheckboxRootProps, 'asChild'> {
+export interface CheckboxProps extends Omit<CheckboxRootProps, 'asChild' | 'checked' | 'defaultChecked'> {
   id?: string
   name?: string
   description?: string
@@ -22,11 +22,10 @@ export interface CheckboxProps extends Omit<CheckboxRootProps, 'asChild'> {
   icon?: IconProps['name']
   indeterminateIcon?: IconProps['name']
   indeterminate?: boolean
+  defaultValue?: boolean
   class?: any
   ui?: Partial<typeof checkbox.slots>
 }
-
-export interface CheckboxEmits extends CheckboxRootEmits {}
 
 export interface CheckboxSlots {
   label(props: { label?: string }): any
@@ -41,10 +40,9 @@ import { reactivePick } from '@vueuse/core'
 import { useId, useAppConfig, useFormField } from '#imports'
 
 const props = defineProps<CheckboxProps>()
-const emits = defineEmits<CheckboxEmits>()
 defineSlots<CheckboxSlots>()
 
-const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'defaultChecked', 'disabled', 'required', 'name'), emits)
+const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'disabled', 'required', 'name'))
 
 const appConfig = useAppConfig()
 const { inputId: _inputId, emitFormChange, size, color, name, disabled } = useFormField<CheckboxProps>(props)
@@ -77,7 +75,7 @@ const ui = computed(() => tv({ extend: checkbox, slots: props.ui })({
   color: color.value,
   required: props.required,
   disabled: disabled.value,
-  checked: modelValue.value ?? props.defaultChecked,
+  checked: modelValue.value ?? props.defaultValue,
   indeterminate: indeterminate.value
 }))
 </script>
@@ -89,6 +87,7 @@ const ui = computed(() => tv({ extend: checkbox, slots: props.ui })({
         :id="inputId"
         v-model:checked="checked"
         v-bind="{ ...rootProps, name, disabled }"
+        :default-checked="defaultValue"
         :class="ui.base()"
         @update:checked="onChecked"
       >

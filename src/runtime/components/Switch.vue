@@ -1,6 +1,6 @@
 <script lang="ts">
 import { tv, type VariantProps } from 'tailwind-variants'
-import type { SwitchRootProps, SwitchRootEmits } from 'radix-vue'
+import type { SwitchRootProps } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/switch'
@@ -12,7 +12,7 @@ const switchTv = tv({ extend: tv(theme), ...(appConfig.ui?.switch || {}) })
 
 type SwitchVariants = VariantProps<typeof switchTv>
 
-export interface SwitchProps extends Omit<SwitchRootProps, 'asChild' | 'checked'> {
+export interface SwitchProps extends Omit<SwitchRootProps, 'asChild' | 'checked' | 'defaultChecked'> {
   id?: string
   name?: string
   color?: SwitchVariants['color']
@@ -21,11 +21,10 @@ export interface SwitchProps extends Omit<SwitchRootProps, 'asChild' | 'checked'
   loadingIcon?: IconProps['name']
   checkedIcon?: IconProps['name']
   uncheckedIcon?: IconProps['name']
+  defaultValue?: boolean
   class?: any
   ui?: Partial<typeof switchTv.slots>
 }
-
-export interface SwitchEmits extends SwitchRootEmits {}
 </script>
 
 <script setup lang="ts">
@@ -35,10 +34,9 @@ import { reactivePick } from '@vueuse/core'
 import { useAppConfig, useFormField } from '#imports'
 
 const props = defineProps<SwitchProps>()
-const emits = defineEmits<SwitchEmits>()
 
 const appConfig = useAppConfig()
-const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'required', 'value', 'defaultChecked'), emits)
+const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'required', 'value'))
 
 const modelValue = defineModel<boolean | undefined>({ default: undefined })
 
@@ -62,6 +60,7 @@ async function onChecked() {
   <SwitchRoot
     :id="inputId"
     v-model:checked="modelValue"
+    :default-checked="defaultValue"
     :name="name"
     :disabled="disabled || loading"
     v-bind="rootProps"

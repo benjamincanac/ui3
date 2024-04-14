@@ -8,7 +8,7 @@ const checked = ref(false)
 <template>
   <div class="flex flex-col gap-2">
     <USwitch v-model="checked" />
-    <USwitch default-checked />
+    <USwitch :default-value="true" />
     <USwitch v-model="checked" disabled />
     <div class="flex items-center gap-2 ml-[-64px]">
       <USwitch v-for="size in sizes" :key="size" v-model="checked" :size="(size as any)" />
