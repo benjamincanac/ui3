@@ -18,27 +18,27 @@ export default (config: { colors: string[] }) => ({
         track: 'h-px',
         thumb: 'size-1.5'
       },
-      xs: {
+      'xs': {
         root: 'h-2',
         track: 'h-0.5',
         thumb: 'size-2'
       },
-      sm: {
+      'sm': {
         root: 'h-3',
         track: 'h-1',
         thumb: 'size-3'
       },
-      md: {
+      'md': {
         root: 'h-4',
         track: 'h-2',
         thumb: 'size-4'
       },
-      lg: {
+      'lg': {
         root: 'h-5',
         track: 'h-3',
         thumb: 'size-5'
       },
-      xl: {
+      'xl': {
         root: 'h-6',
         track: 'h-4',
         thumb: 'size-6'
