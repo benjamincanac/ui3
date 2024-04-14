@@ -16,6 +16,7 @@ export default (config: { colors: string[] }) => ({
       solid: '',
       outline: '',
       soft: '',
+      subtle: '',
       ghost: '',
       link: ''
     },
@@ -25,27 +26,27 @@ export default (config: { colors: string[] }) => ({
         leadingIcon: 'size-4',
         trailingIcon: 'size-4'
       },
-      xs: {
+      'xs': {
         base: 'px-2.5 py-1.5 text-xs gap-x-1.5',
         leadingIcon: 'size-4',
         trailingIcon: 'size-4'
       },
-      sm: {
+      'sm': {
         base: 'px-2.5 py-1.5 text-sm gap-x-1.5',
         leadingIcon: 'size-5',
         trailingIcon: 'size-5'
       },
-      md: {
+      'md': {
         base: 'px-3 py-2 text-sm gap-x-2',
         leadingIcon: 'size-5',
         trailingIcon: 'size-5'
       },
-      lg: {
+      'lg': {
         base: 'px-3.5 py-2.5 text-sm gap-x-2.5',
         leadingIcon: 'size-5',
         trailingIcon: 'size-5'
       },
-      xl: {
+      'xl': {
         base: 'px-3.5 py-2.5 text-base gap-x-2.5',
         leadingIcon: 'size-6',
         trailingIcon: 'size-6'
@@ -87,6 +88,10 @@ export default (config: { colors: string[] }) => ({
     color,
     variant: 'soft',
     class: `text-${color}-500 dark:text-${color}-400 bg-${color}-50 hover:bg-${color}-100 disabled:bg-${color}-50 dark:bg-${color}-950 dark:hover:bg-${color}-900 dark:disabled:bg-${color}-950 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-${color}-500 dark:focus-visible:ring-${color}-400`
+  })), ...config.colors.map((color: string) => ({
+    color,
+    variant: 'subtle',
+    class: `text-${color}-500 dark:text-${color}-400 ring ring-inset ring-${color}-500/25 dark:ring-${color}-400/25 bg-${color}-500/10 hover:bg-${color}-100 disabled:bg-${color}-50 dark:bg-${color}-400/10 dark:hover:bg-${color}-950 dark:disabled:bg-${color}-400/10 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-${color}-500 dark:focus-visible:ring-${color}-400`
   })), ...config.colors.map((color: string) => ({
     color,
     variant: 'ghost',
