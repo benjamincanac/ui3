@@ -53,7 +53,8 @@ const inputId = _inputId.value ?? useId()
 const ui = computed(() => tv({ extend: switchTv, slots: props.ui })({
   color: color.value,
   size: size.value,
-  loading: props.loading
+  loading: props.loading,
+  disabled: disabled.value
 }))
 
 // FIXME: I think there's a race condition between this and the v-model event.
