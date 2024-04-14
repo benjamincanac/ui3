@@ -51,10 +51,7 @@ const { inputId: _inputId, emitFormChange, size, color, name, disabled } = useFo
 const inputId = _inputId.value ?? useId()
 
 const modelValue = defineModel<boolean | undefined>({
-  default: undefined,
-  set(value) {
-    return value
-  }
+  default: undefined
 })
 
 const indeterminate = computed(() => (modelValue.value === undefined && props.indeterminate))

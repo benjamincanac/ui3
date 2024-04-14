@@ -8,7 +8,7 @@ const sizes = Object.keys(theme.variants.size)
   <div class="flex flex-col items-center gap-4">
     <div class="flex flex-col gap-4 ml-[-272px]">
       <UCheckbox label="Normal" />
-      <UCheckbox label="Checked" :model-value="true" />
+      <UCheckbox label="Checked" :default-checked="true" />
       <UCheckbox label="Indeterminate" indeterminate />
       <UCheckbox label="Default checked" default-checked />
       <UCheckbox label="Required" required />
