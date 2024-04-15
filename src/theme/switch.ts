@@ -73,6 +73,11 @@ export default (config: { colors: string[] }) => ({
         icon: 'animate-spin'
       }
     },
+    required: {
+      true: {
+        label: 'after:content-[\'*\'] after:ms-0.5 after:text-red-500 dark:after:text-red-400'
+      }
+    },
     disabled: {
       true: {
         base: 'cursor-not-allowed opacity-75',

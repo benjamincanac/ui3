@@ -53,6 +53,7 @@ const inputId = _inputId.value ?? useId()
 const ui = computed(() => tv({ extend: switchTv, slots: props.ui })({
   color: color.value,
   size: size.value,
+  required: props.required,
   loading: props.loading,
   disabled: disabled.value || props.loading
 }))
