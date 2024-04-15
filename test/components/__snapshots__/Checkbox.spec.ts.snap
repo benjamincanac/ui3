@@ -18,7 +18,7 @@ exports[`Checkbox > renders with custom color correctly 1`] = `
     </button>
     <!---->
   </div>
-  <div class="ms-2 text-sm"><label for="42" class="font-medium text-gray-700 dark:text-gray-200">Label</label>
+  <div class="ms-2 text-sm"><label for="42" class="block font-medium text-gray-700 dark:text-gray-200">Label</label>
     <!--v-if-->
   </div>
 </div>"
@@ -57,7 +57,7 @@ exports[`Checkbox > renders with custom value correctly 1`] = `
 </div>"
 `;
 
-exports[`Checkbox > renders with default-value correctly 1`] = `
+exports[`Checkbox > renders with defaultValue correctly 1`] = `
 "<div class="relative flex items-start">
   <div class="flex items-center h-5"><button class="shrink-0 text-white dark:text-gray-900 rounded focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 dark:focus-visible:outline-primary-400 size-4 ring-2 ring-inset ring-primary-500 dark:ring-primary-400 bg-primary-500 dark:bg-primary-400" id="42" role="checkbox" type="button" aria-checked="true" aria-required="false" data-state="checked"><span data-state="checked" style="pointer-events: none;" class="flex"><svg data-v-9533427c="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="icon size-full" width="1em" height="1em" viewBox="0 0 20 20"><path fill="currentColor" fill-rule="evenodd" d="M16.705 4.153a.75.75 0 0 1 .142 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893l7.48-9.817a.75.75 0 0 1 1.05-.143" clip-rule="evenodd"></path></svg></span></button>
     <!---->
@@ -84,7 +84,7 @@ exports[`Checkbox > renders with help correctly 1`] = `
     </button>
     <!---->
   </div>
-  <div class="ms-2 text-sm"><label for="42" class="font-medium text-gray-700 dark:text-gray-200">Label</label>
+  <div class="ms-2 text-sm"><label for="42" class="block font-medium text-gray-700 dark:text-gray-200">Label</label>
     <!--v-if-->
   </div>
 </div>"
@@ -106,7 +106,7 @@ exports[`Checkbox > renders with label correctly 1`] = `
     </button>
     <!---->
   </div>
-  <div class="ms-2 text-sm"><label for="42" class="font-medium text-gray-700 dark:text-gray-200">Label</label>
+  <div class="ms-2 text-sm"><label for="42" class="block font-medium text-gray-700 dark:text-gray-200">Label</label>
     <!--v-if-->
   </div>
 </div>"
@@ -119,7 +119,7 @@ exports[`Checkbox > renders with required correctly 1`] = `
     </button>
     <!---->
   </div>
-  <div class="ms-2 text-sm"><label for="42" class="font-medium text-gray-700 dark:text-gray-200 after:content-['*'] after:ms-0.5 after:text-red-500 dark:after:text-red-400">Label</label>
+  <div class="ms-2 text-sm"><label for="42" class="block font-medium text-gray-700 dark:text-gray-200 after:content-['*'] after:ms-0.5 after:text-red-500 dark:after:text-red-400">Label</label>
     <!--v-if-->
   </div>
 </div>"
@@ -209,7 +209,7 @@ exports[`Checkbox > renders with slot label correctly 1`] = `
     </button>
     <!---->
   </div>
-  <div class="ms-2 text-sm"><label for="42" class="font-medium text-gray-700 dark:text-gray-200">Label slot</label>
+  <div class="ms-2 text-sm"><label for="42" class="block font-medium text-gray-700 dark:text-gray-200">Label slot</label>
     <!--v-if-->
   </div>
 </div>"
