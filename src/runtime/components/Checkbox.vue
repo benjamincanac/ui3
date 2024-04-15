@@ -13,10 +13,8 @@ const checkbox = tv({ extend: tv(theme), ...(appConfig.ui?.checkbox || {}) })
 type CheckboxVariants = VariantProps<typeof checkbox>
 
 export interface CheckboxProps extends Omit<CheckboxRootProps, 'asChild' | 'checked' | 'defaultChecked'> {
-  id?: string
-  name?: string
-  description?: string
   label?: string
+  description?: string
   color?: CheckboxVariants['color']
   size?: CheckboxVariants['size']
   icon?: IconProps['name']
@@ -35,14 +33,14 @@ export interface CheckboxSlots {
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { CheckboxRoot, CheckboxIndicator, Label, useForwardPropsEmits } from 'radix-vue'
+import { CheckboxRoot, CheckboxIndicator, Label, useForwardProps } from 'radix-vue'
 import { reactivePick } from '@vueuse/core'
 import { useId, useAppConfig, useFormField } from '#imports'
 
 const props = defineProps<CheckboxProps>()
 defineSlots<CheckboxSlots>()
 
-const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'disabled', 'required', 'name'))
+const rootProps = useForwardProps(reactivePick(props, 'as', 'required', 'value'))
 
 const appConfig = useAppConfig()
 const { inputId: _inputId, emitFormChange, size, color, name, disabled } = useFormField<CheckboxProps>(props)
@@ -61,13 +59,6 @@ const checked = computed({
   }
 })
 
-// FIXME: I think there's a race condition between this and the v-model event.
-// This must be triggered after the value updates, otherwise the form validates
-// the previous value.
-function onChecked() {
-  emitFormChange()
-}
-
 const ui = computed(() => tv({ extend: checkbox, slots: props.ui })({
   size: size.value,
   color: color.value,
@@ -76,6 +67,13 @@ const ui = computed(() => tv({ extend: checkbox, slots: props.ui })({
   checked: modelValue.value ?? props.defaultValue,
   indeterminate: indeterminate.value
 }))
+
+// FIXME: I think there's a race condition between this and the v-model event.
+// This must be triggered after the value updates, otherwise the form validates
+// the previous value.
+function onChecked() {
+  emitFormChange()
+}
 </script>
 
 <template>
@@ -84,8 +82,10 @@ const ui = computed(() => tv({ extend: checkbox, slots: props.ui })({
       <CheckboxRoot
         :id="inputId"
         v-model:checked="checked"
-        v-bind="{ ...rootProps, name, disabled }"
         :default-checked="defaultValue"
+        v-bind="rootProps"
+        :name="name"
+        :disabled="disabled"
         :class="ui.base()"
         @update:checked="onChecked"
       >

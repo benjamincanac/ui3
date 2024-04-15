@@ -13,8 +13,6 @@ const switchTv = tv({ extend: tv(theme), ...(appConfig.ui?.switch || {}) })
 type SwitchVariants = VariantProps<typeof switchTv>
 
 export interface SwitchProps extends Omit<SwitchRootProps, 'asChild' | 'checked' | 'defaultChecked'> {
-  id?: string
-  name?: string
   color?: SwitchVariants['color']
   size?: SwitchVariants['size']
   loading?: boolean
@@ -52,8 +50,8 @@ const { inputId: _inputId, emitFormChange, size, color, name, disabled } = useFo
 const inputId = _inputId.value ?? useId()
 
 const ui = computed(() => tv({ extend: switchTv, slots: props.ui })({
-  color: color.value,
   size: size.value,
+  color: color.value,
   required: props.required,
   loading: props.loading,
   disabled: disabled.value || props.loading
@@ -74,9 +72,9 @@ async function onChecked() {
         :id="inputId"
         v-model:checked="modelValue"
         :default-checked="defaultValue"
+        v-bind="rootProps"
         :name="name"
         :disabled="disabled || loading"
-        v-bind="rootProps"
         :class="ui.base()"
         @update:checked="onChecked"
       >
