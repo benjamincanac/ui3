@@ -4,7 +4,6 @@ import type { SliderRootProps, SliderRootEmits } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/slider'
-import { useFormField } from '#imports'
 
 const appConfig = _appConfig as AppConfig & { ui: { slider: Partial<typeof theme> } }
 
@@ -27,6 +26,7 @@ export interface SliderEmits extends Omit<SliderRootEmits, 'update:modelValue'> 
 import { computed } from 'vue'
 import { SliderRoot, SliderRange, SliderTrack, SliderThumb, useForwardPropsEmits } from 'radix-vue'
 import { reactivePick } from '@vueuse/core'
+import { useFormField } from '#imports'
 
 const props = withDefaults(defineProps<SliderProps>(), {
   min: 0,
