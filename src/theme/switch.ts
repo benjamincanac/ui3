@@ -31,30 +31,30 @@ export default (config: { colors: string[] }) => ({
       },
       'sm': {
         base: 'h-5 w-9',
-        container: 'h-6',
+        container: 'h-5',
         thumb: 'size-4 data-[state=checked]:translate-x-4',
-        wrapper: 'text-sm mt-0.5',
+        wrapper: 'text-sm',
         icon: 'size-3'
       },
       'md': {
         base: 'h-6 w-11',
-        container: 'h-6',
+        container: 'h-5',
         thumb: 'size-5 data-[state=checked]:translate-x-5',
-        wrapper: 'text-sm mt-0.5',
+        wrapper: 'text-sm',
         icon: 'size-4'
       },
       'lg': {
         base: 'h-7 w-[52px]',
-        container: 'h-8',
+        container: 'h-6',
         thumb: 'size-6 data-[state=checked]:translate-x-6',
-        wrapper: 'text-base mt-1',
+        wrapper: 'text-base',
         icon: 'size-5'
       },
       'xl': {
         base: 'h-8 w-[60px]',
-        container: 'h-8',
+        container: 'h-6',
         thumb: 'size-7 data-[state=checked]:translate-x-7',
-        wrapper: 'text-base mt-1',
+        wrapper: 'text-base',
         icon: 'size-6'
       }
     },
