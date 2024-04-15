@@ -12,20 +12,15 @@ const slider = tv({ extend: tv(theme), ...(appConfig.ui?.slider || {}) })
 
 type SliderVariants = VariantProps<typeof slider>
 
-export interface SliderProps extends Omit<SliderRootProps, 'asChild' | 'defaultValue'> {
+export interface SliderProps extends Omit<SliderRootProps, 'asChild' | 'defaultValue' | 'dir'> {
   size?: SliderVariants['size']
   color?: SliderVariants['color']
-  min?: number
-  max?: number
-  step?: number
-  class?: any
   defaultValue?: number | number[]
+  class?: any
   ui?: Partial<typeof slider.slots>
 }
 
-export interface SliderEmits extends SliderRootEmits { }
-
-export interface SliderSlots { }
+export interface SliderEmits extends Omit<SliderRootEmits, 'update:modelValue'> {}
 </script>
 
 <script setup lang="ts">
@@ -36,10 +31,16 @@ import { reactivePick } from '@vueuse/core'
 const props = withDefaults(defineProps<SliderProps>(), {
   min: 0,
   max: 100,
-  step: 1
+  step: 1,
+  orientation: 'horizontal'
 })
+const emits = defineEmits<SliderEmits>()
 
 const modelValue = defineModel<number | number[]>()
+
+const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'orientation', 'min', 'max', 'step', 'minStepsBetweenThumbs', 'inverted'), emits)
+
+const { inputId, emitFormChange, size, color, name, disabled } = useFormField<SliderProps>(props)
 
 const defaultSliderValue = computed(() => {
   if (typeof props.defaultValue === 'number') {
@@ -61,12 +62,6 @@ const sliderValue = computed({
 })
 
 const thumbsCount = computed(() => sliderValue.value?.length ?? 1)
-const emits = defineEmits<SliderEmits>()
-defineSlots<SliderSlots>()
-
-const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'orientation', 'min', 'max', 'step', 'minStepsBetweenThumbs', 'inverted'), emits)
-
-const { inputId, emitFormChange, size, color, name, disabled } = useFormField<SliderProps>(props)
 
 const ui = computed(() => tv({ extend: slider, slots: props.ui })({
   disabled: disabled.value,
@@ -89,6 +84,7 @@ const ui = computed(() => tv({ extend: slider, slots: props.ui })({
     <SliderTrack :class="ui.track()">
       <SliderRange :class="ui.range()" />
     </SliderTrack>
+
     <SliderThumb v-for="count in thumbsCount" :key="count" :class="ui.thumb()" />
   </SliderRoot>
 </template>
