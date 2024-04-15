@@ -5,13 +5,11 @@ export default (config: { colors: string[] }) => ({
     range: 'absolute h-full rounded-full',
     thumb: 'rounded-full bg-white dark:bg-gray-900 ring-2 outline-none'
   },
-
   variants: {
     color: Object.fromEntries(config.colors.map((color: string) => [color, {
       range: `bg-${color}-500 dark:bg-${color}-400`,
       thumb: `ring-${color}-500`
     }])),
-
     size: {
       '2xs': {
         root: 'h-1.5',
@@ -44,14 +42,20 @@ export default (config: { colors: string[] }) => ({
         thumb: 'size-6'
       }
     },
+    orientation: {
+      horizontal: {
 
+      },
+      vertical: {
+
+      }
+    },
     disabled: {
       true: {
         root: 'opacity-75 cursor-not-allowed'
       }
     }
   },
-
   defaultVariants: {
     size: 'sm',
     color: 'primary'

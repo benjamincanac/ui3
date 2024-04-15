@@ -66,7 +66,8 @@ const thumbsCount = computed(() => sliderValue.value?.length ?? 1)
 const ui = computed(() => tv({ extend: slider, slots: props.ui })({
   disabled: disabled.value,
   size: size.value,
-  color: color.value
+  color: color.value,
+  orientation: props.orientation
 }))
 </script>
 
