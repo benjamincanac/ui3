@@ -6,7 +6,7 @@ export default (config: { colors: string[] }) => ({
     thumb: 'group pointer-events-none block rounded-full bg-white dark:bg-gray-900 shadow-lg ring-0 transition-transform duration-200 data-[state=unchecked]:translate-x-0 flex items-center justify-center',
     icon: 'absolute shrink-0 group-data-[state=unchecked]:text-gray-400 dark:group-data-[state=unchecked]:text-gray-500 transition-[color,opacity] duration-200 opacity-0',
     wrapper: 'ms-2',
-    label: 'font-medium text-gray-700 dark:text-gray-200',
+    label: 'block font-medium text-gray-700 dark:text-gray-200',
     description: 'text-gray-500 dark:text-gray-400'
   },
   variants: {
