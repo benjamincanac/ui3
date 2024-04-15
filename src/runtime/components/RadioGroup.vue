@@ -20,7 +20,6 @@ export type RadioGroupOption<T> = {
 export interface RadioGroupProps<T> extends Omit<RadioGroupRootProps, 'asChild' | 'dir'> {
   legend?: string
   options?: string[] | RadioGroupOption<T>[]
-  disabled?: boolean
   class?: any
   size?: RadioGroupVariants['size']
   color?: RadioGroupVariants['color']
