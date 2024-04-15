@@ -21,31 +21,41 @@ export interface SwitchProps extends Omit<SwitchRootProps, 'asChild' | 'checked'
   loadingIcon?: IconProps['name']
   checkedIcon?: IconProps['name']
   uncheckedIcon?: IconProps['name']
+  label?: string
+  description?: string
   defaultValue?: boolean
   class?: any
   ui?: Partial<typeof switchTv.slots>
+}
+
+export interface SwitchSlots {
+  label(props: { label?: string }): any
+  description(props: { description?: string }): any
 }
 </script>
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { SwitchRoot, SwitchThumb, useForwardPropsEmits } from 'radix-vue'
+import { SwitchRoot, SwitchThumb, useForwardProps, Label } from 'radix-vue'
 import { reactivePick } from '@vueuse/core'
-import { useAppConfig, useFormField } from '#imports'
+import { useId, useAppConfig, useFormField } from '#imports'
 
 const props = defineProps<SwitchProps>()
 
 const appConfig = useAppConfig()
-const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'required', 'value'))
+const rootProps = useForwardProps(reactivePick(props, 'as', 'required', 'value'))
 
 const modelValue = defineModel<boolean | undefined>({ default: undefined })
 
-const { inputId, emitFormChange, size, color, name, disabled } = useFormField<SwitchProps>(props)
+const { inputId: _inputId, emitFormChange, size, color, name, disabled } = useFormField<SwitchProps>(props)
+const inputId = _inputId.value ?? useId()
 
 const ui = computed(() => tv({ extend: switchTv, slots: props.ui })({
   color: color.value,
   size: size.value,
-  loading: props.loading
+  required: props.required,
+  loading: props.loading,
+  disabled: disabled.value || props.loading
 }))
 
 // FIXME: I think there's a race condition between this and the v-model event.
@@ -57,22 +67,38 @@ async function onChecked() {
 </script>
 
 <template>
-  <SwitchRoot
-    :id="inputId"
-    v-model:checked="modelValue"
-    :default-checked="defaultValue"
-    :name="name"
-    :disabled="disabled || loading"
-    v-bind="rootProps"
-    :class="ui.root({ class: props.class })"
-    @update:checked="onChecked"
-  >
-    <SwitchThumb :class="ui.thumb()">
-      <UIcon v-if="loading" :name="loadingIcon || appConfig.ui.icons.loading" :class="ui.icon({ checked: true, unchecked: true })" />
-      <template v-else>
-        <UIcon v-if="checkedIcon" :name="checkedIcon" :class="ui.icon({ checked: true })" />
-        <UIcon v-if="uncheckedIcon" :name="uncheckedIcon" :class="ui.icon({ unchecked: true })" />
-      </template>
-    </SwitchThumb>
-  </SwitchRoot>
+  <div :class="ui.root({ class: props.class })">
+    <div :class="ui.container()">
+      <SwitchRoot
+        :id="inputId"
+        v-model:checked="modelValue"
+        :default-checked="defaultValue"
+        :name="name"
+        :disabled="disabled || loading"
+        v-bind="rootProps"
+        :class="ui.base()"
+        @update:checked="onChecked"
+      >
+        <SwitchThumb :class="ui.thumb()">
+          <UIcon v-if="loading" :name="loadingIcon || appConfig.ui.icons.loading" :class="ui.icon({ checked: true, unchecked: true })" />
+          <template v-else>
+            <UIcon v-if="checkedIcon" :name="checkedIcon" :class="ui.icon({ checked: true })" />
+            <UIcon v-if="uncheckedIcon" :name="uncheckedIcon" :class="ui.icon({ unchecked: true })" />
+          </template>
+        </SwitchThumb>
+      </SwitchRoot>
+    </div>
+    <div v-if="(label || $slots.label) || (description || $slots.description)" :class="ui.wrapper()">
+      <Label v-if="label || $slots.label" :for="inputId" :class="ui.label()">
+        <slot name="label" :label="label">
+          {{ label }}
+        </slot>
+      </Label>
+      <p v-if="description || $slots.description" :class="ui.description()">
+        <slot name="description" :description="description">
+          {{ description }}
+        </slot>
+      </p>
+    </div>
+  </div>
 </template>
