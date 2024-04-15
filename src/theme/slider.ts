@@ -2,7 +2,7 @@ export default (config: { colors: string[] }) => ({
   slots: {
     root: 'relative flex items-center select-none touch-none',
     track: 'relative bg-gray-200 dark:bg-gray-700 overflow-hidden rounded-full grow',
-    range: 'absolute',
+    range: 'absolute rounded-full',
     thumb: 'rounded-full bg-white dark:bg-gray-900 ring-2 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2'
   },
   variants: {

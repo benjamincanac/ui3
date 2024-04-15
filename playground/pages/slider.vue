@@ -29,7 +29,7 @@ const value = ref(50)
     </div>
 
     <div class="h-48">
-      <USlider orientation="vertical" />
+      <USlider v-model="value" orientation="vertical" />
     </div>
   </div>
 </template>
