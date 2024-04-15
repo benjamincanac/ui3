@@ -41,6 +41,7 @@ import { reactivePick } from '@vueuse/core'
 import { useId, useAppConfig, useFormField } from '#imports'
 
 const props = defineProps<SwitchProps>()
+defineSlots<SwitchSlots>()
 
 const appConfig = useAppConfig()
 const rootProps = useForwardProps(reactivePick(props, 'as', 'required', 'value'))

@@ -48,9 +48,7 @@ const appConfig = useAppConfig()
 const { inputId: _inputId, emitFormChange, size, color, name, disabled } = useFormField<CheckboxProps>(props)
 const inputId = _inputId.value ?? useId()
 
-const modelValue = defineModel<boolean | undefined>({
-  default: undefined
-})
+const modelValue = defineModel<boolean | undefined>({ default: undefined })
 
 const indeterminate = computed(() => (modelValue.value === undefined && props.indeterminate))
 
