@@ -1,12 +1,5 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Separator > renders basic case correctly 1`] = `
-"<div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row">
-  <div class="border-gray-200 dark:border-gray-800 w-full border-solid border-t"></div>
-  <!--v-if-->
-</div>"
-`;
-
 exports[`Separator > renders with as correctly 1`] = `"<span data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row"><div class="border-gray-200 dark:border-gray-800 w-full border-solid border-t"></div><!--v-if--></span>"`;
 
 exports[`Separator > renders with avatar correctly 1`] = `
@@ -45,6 +38,20 @@ exports[`Separator > renders with color green correctly 1`] = `
 </div>"
 `;
 
+exports[`Separator > renders with color primary correctly 1`] = `
+"<div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row">
+  <div class="border-primary-500 dark:border-primary-400 w-full border-solid border-t"></div>
+  <!--v-if-->
+</div>"
+`;
+
+exports[`Separator > renders with color red correctly 1`] = `
+"<div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row">
+  <div class="border-red-500 dark:border-red-400 w-full border-solid border-t"></div>
+  <!--v-if-->
+</div>"
+`;
+
 exports[`Separator > renders with color white correctly 1`] = `
 "<div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row">
   <div class="border-white dark:border-gray-900 w-full border-solid border-t"></div>
@@ -74,13 +81,6 @@ exports[`Separator > renders with label correctly 1`] = `
   <div class="border-gray-200 dark:border-gray-800 w-full border-solid border-t"></div>
   <div class="font-medium text-gray-700 dark:text-gray-200 flex mx-3 whitespace-nowrap"><span class="text-sm">+1</span></div>
   <div class="border-gray-200 dark:border-gray-800 w-full border-solid border-t"></div>
-</div>"
-`;
-
-exports[`Separator > renders with orientation horizontal correctly 1`] = `
-"<div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row">
-  <div class="border-gray-200 dark:border-gray-800 w-full border-solid border-t"></div>
-  <!--v-if-->
 </div>"
 `;
 
@@ -136,6 +136,13 @@ exports[`Separator > renders with type dashed correctly 1`] = `
 exports[`Separator > renders with type dotted correctly 1`] = `
 "<div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row">
   <div class="border-gray-200 dark:border-gray-800 w-full border-dotted border-t"></div>
+  <!--v-if-->
+</div>"
+`;
+
+exports[`Separator > renders with type solid correctly 1`] = `
+"<div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row">
+  <div class="border-gray-200 dark:border-gray-800 w-full border-solid border-t"></div>
   <!--v-if-->
 </div>"
 `;

@@ -26,7 +26,7 @@ describe('NavigationMenu', () => {
   it.each([
     // Props
     ['with links', { props: { links } }],
-    ['with vertical orientation', { props: { links, orientation: 'vertical' as const } }],
+    ['with orientation vertical', { props: { links, orientation: 'vertical' as const } }],
     ['with class', { props: { links, class: 'w-48' } }],
     ['with ui', { props: { links, ui: { links, linkLeadingIcon: 'size-4' } } }]
   ])('renders %s correctly', async (nameOrHtml: string, options: { props?: NavigationMenuProps<typeof links[number]>, slots?: any }) => {

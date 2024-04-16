@@ -68,7 +68,7 @@ exports[`Slider > renders with name correctly 1`] = `
 <!---->"
 `;
 
-exports[`Slider > renders with orientation correctly 1`] = `
+exports[`Slider > renders with orientation vertical correctly 1`] = `
 "<span data-slider-impl="" data-orientation="vertical" style="--radix-slider-thumb-transform: translateY(50%);" class="relative flex items-center select-none touch-none flex-col h-full" dir="ltr" aria-disabled="false"><span data-orientation="vertical" class="relative bg-gray-200 dark:bg-gray-700 overflow-hidden rounded-full grow w-[8px]"><span data-orientation="vertical" style="bottom: 0%; top: 100%;" class="absolute rounded-full bg-primary-500 dark:bg-primary-400 w-full"></span></span>
 <div class="rounded-full bg-white dark:bg-gray-900 ring-2 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 ring-primary-500 dark:ring-primary-400 focus-visible:outline-primary-500/50 dark:focus-visible:outline-primary-400/50 size-4" role="slider" data-radix-vue-collection-item="" tabindex="0" data-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-orientation="vertical" style="transform: var(--radix-slider-thumb-transform); position: absolute; bottom: calc(0% + 0px);" aria-valuenow="0"></div></span>
 <!---->"

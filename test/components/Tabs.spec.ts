@@ -20,9 +20,9 @@ describe('Tabs', () => {
   it.each([
     // Props
     ['with items', { props: { items } }],
-    ['with orientation', { props: { items, orientation: 'vertical' as const } }],
     ['with modelValue', { props: { items, modelValue: '1' } }],
     ['with defaultValue', { props: { items, defaultValue: '1' } }],
+    ['with orientation vertical', { props: { items, orientation: 'vertical' as const } }],
     ['with class', { props: { items, class: 'w-96' } }],
     ['with ui', { props: { items, ui: { content: 'w-full ring ring-gray-200 dark:ring-gray-800' } } }],
     // Slots

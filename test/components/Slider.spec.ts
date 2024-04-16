@@ -14,7 +14,7 @@ describe('Slider', () => {
     ['with name', { props: { name: 'custom-name' } }],
     ['with disabled', { props: { disabled: true } }],
     ['with inverted', { props: { inverted: true } }],
-    ['with orientation', { props: { orientation: 'vertical' as const } }],
+    ['with orientation vertical', { props: { orientation: 'vertical' as const } }],
     ['with min max step', { props: { min: 4, max: 12, step: 2 } }],
     ['with min steps between thumbs', { props: { defaultValue: [0, 30], minStepsBetweenThumbs: 30 } }],
     ...sizes.map((size: string) => [`with size ${size}`, { props: { size } }]),
