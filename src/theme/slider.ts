@@ -12,19 +12,19 @@ export default (config: { colors: string[] }) => ({
     }])),
     size: {
       xs: {
-        thumb: 'size-2'
+        thumb: 'size-3'
       },
       sm: {
-        thumb: 'size-3'
+        thumb: 'size-3.5'
       },
       md: {
         thumb: 'size-4'
       },
       lg: {
-        thumb: 'size-5'
+        thumb: 'size-[18px]'
       },
       xl: {
-        thumb: 'size-6'
+        thumb: 'size-5'
       }
     },
     orientation: {
@@ -47,71 +47,61 @@ export default (config: { colors: string[] }) => ({
     orientation: 'horizontal',
     size: 'xs',
     class: {
-      root: 'h-2',
-      track: 'h-0.5'
+      track: 'h-[6px]'
     }
   }, {
     orientation: 'horizontal',
     size: 'sm',
     class: {
-      root: 'h-3',
-      track: 'h-1'
+      track: 'h-[7px]'
     }
   }, {
     orientation: 'horizontal',
     size: 'md',
     class: {
-      root: 'h-4',
-      track: 'h-2'
+      track: 'h-[8px]'
     }
   }, {
     orientation: 'horizontal',
     size: 'lg',
     class: {
-      root: 'h-5',
-      track: 'h-3'
+      track: 'h-[9px]'
     }
   }, {
     orientation: 'horizontal',
     size: 'xl',
     class: {
-      root: 'h-6',
-      track: 'h-4'
+      track: 'h-[10px]'
     }
   }, {
     orientation: 'vertical',
     size: 'xs',
     class: {
-      root: 'w-2',
-      track: 'w-0.5'
+      track: 'w-[6px]'
     }
   }, {
     orientation: 'vertical',
     size: 'sm',
     class: {
-      root: 'w-3',
-      track: 'w-1'
+      track: 'w-[7px]'
     }
   }, {
     orientation: 'vertical',
     size: 'md',
     class: {
-      root: 'w-4',
-      track: 'w-2'
+      track: 'w-[8px]'
     }
   }, {
     orientation: 'vertical',
     size: 'lg',
     class: {
-      root: 'w-5',
-      track: 'w-3'
+      track: 'w-[9px]'
     }
   }, {
     orientation: 'vertical',
     size: 'xl',
     class: {
-      root: 'w-6',
-      track: 'w-4'
+      track: 'w-[10px]'
     }
   }],
   defaultVariants: {
