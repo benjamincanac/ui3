@@ -21,7 +21,7 @@ export default (config: { colors: string[] }) => ({
         thumb: 'size-4'
       },
       lg: {
-        thumb: 'size-[18px]'
+        thumb: 'size-4.5'
       },
       xl: {
         thumb: 'size-5'

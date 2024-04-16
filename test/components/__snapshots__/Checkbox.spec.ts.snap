@@ -182,7 +182,7 @@ exports[`Checkbox > renders with required correctly 1`] = `
 
 exports[`Checkbox > renders with size lg correctly 1`] = `
 "<div class="relative flex items-start">
-  <div class="flex items-center h-5"><button class="shrink-0 text-white dark:text-gray-900 rounded ring ring-inset ring-gray-300 dark:ring-gray-700 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 dark:focus-visible:outline-primary-400 size-[18px]" id="13" role="checkbox" type="button" aria-checked="false" aria-required="false" data-state="unchecked">
+  <div class="flex items-center h-5"><button class="shrink-0 text-white dark:text-gray-900 rounded ring ring-inset ring-gray-300 dark:ring-gray-700 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 dark:focus-visible:outline-primary-400 size-4.5" id="13" role="checkbox" type="button" aria-checked="false" aria-required="false" data-state="unchecked">
       <!---->
     </button>
     <!---->

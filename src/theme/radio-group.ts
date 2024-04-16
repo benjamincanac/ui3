@@ -40,7 +40,7 @@ export default (config: { colors: string[] }) => ({
       },
       lg: {
         fieldset: 'gap-1',
-        base: 'size-[18px]',
+        base: 'size-4.5',
         option: 'text-sm',
         container: 'h-5',
         indicator: 'after:size-1.5'

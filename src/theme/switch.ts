@@ -4,7 +4,7 @@ export default (config: { colors: string[] }) => ({
     base: 'peer inline-flex shrink-0 items-center rounded-full border-2 border-transparent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900 data-[state=unchecked]:bg-gray-200 dark:data-[state=unchecked]:bg-gray-700',
     container: 'flex items-center',
     thumb: 'group pointer-events-none block rounded-full bg-white dark:bg-gray-900 shadow-lg ring-0 transition-transform duration-200 data-[state=unchecked]:translate-x-0 flex items-center justify-center',
-    icon: 'absolute shrink-0 group-data-[state=unchecked]:text-gray-400 dark:group-data-[state=unchecked]:text-gray-500 transition-[color,opacity] duration-200 opacity-0',
+    icon: 'absolute shrink-0 group-data-[state=unchecked]:text-gray-400 dark:group-data-[state=unchecked]:text-gray-500 transition-[color,opacity] duration-200 opacity-0 size-10/12',
     wrapper: 'ms-2',
     label: 'block font-medium text-gray-700 dark:text-gray-200',
     description: 'text-gray-500 dark:text-gray-400'
@@ -16,39 +16,34 @@ export default (config: { colors: string[] }) => ({
     }])),
     size: {
       xs: {
-        base: 'h-3 w-5',
-        container: 'h-4',
-        thumb: 'size-2 data-[state=checked]:translate-x-2',
-        wrapper: 'text-xs',
-        icon: 'size-1'
-      },
-      sm: {
-        base: 'h-4 w-7',
+        base: 'w-7',
         container: 'h-4',
         thumb: 'size-3 data-[state=checked]:translate-x-3',
-        wrapper: 'text-xs',
-        icon: 'size-2'
+        wrapper: 'text-xs'
+      },
+      sm: {
+        base: 'w-8',
+        container: 'h-4',
+        thumb: 'size-3.5 data-[state=checked]:translate-x-3.5',
+        wrapper: 'text-xs'
       },
       md: {
-        base: 'h-5 w-9',
+        base: 'w-9',
         container: 'h-5',
         thumb: 'size-4 data-[state=checked]:translate-x-4',
-        wrapper: 'text-sm',
-        icon: 'size-3'
+        wrapper: 'text-sm'
       },
       lg: {
-        base: 'h-6 w-11',
+        base: 'w-10',
         container: 'h-5',
-        thumb: 'size-5 data-[state=checked]:translate-x-5',
-        wrapper: 'text-sm',
-        icon: 'size-4'
+        thumb: 'size-4.5 data-[state=checked]:translate-x-4.5',
+        wrapper: 'text-sm'
       },
       xl: {
-        base: 'h-7 w-[52px]',
+        base: 'w-11',
         container: 'h-6',
-        thumb: 'size-6 data-[state=checked]:translate-x-6',
-        wrapper: 'text-base',
-        icon: 'size-5'
+        thumb: 'size-5 data-[state=checked]:translate-x-5',
+        wrapper: 'text-base'
       }
     },
     checked: {

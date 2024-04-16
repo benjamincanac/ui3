@@ -28,7 +28,7 @@ export default (config: { colors: string[] }) => ({
         wrapper: 'text-sm'
       },
       lg: {
-        base: 'size-[18px]',
+        base: 'size-4.5',
         container: 'h-5',
         wrapper: 'text-sm'
       },
