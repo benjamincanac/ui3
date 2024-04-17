@@ -102,11 +102,11 @@ const items = computed(() => [
 
 <template>
   <div class="flex-1 flex items-start gap-4">
-    <UDropdownMenu :items="items" arrow>
+    <UDropdownMenu :items="items" arrow class="min-w-48">
       <UButton label="Click me" color="white" />
     </UDropdownMenu>
 
-    <UDropdownMenu :items="items" arrow mode="hover">
+    <UDropdownMenu :items="items" arrow mode="hover" class="min-w-48">
       <UButton label="Hover me" color="white" />
     </UDropdownMenu>
   </div>
