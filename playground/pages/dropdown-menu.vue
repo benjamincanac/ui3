@@ -17,11 +17,17 @@ const items = [
   }, {
     label: 'Billing',
     icon: 'i-heroicons-credit-card',
-    kbds: ['meta', 'B']
+    kbds: ['meta', 'b'],
+    select() {
+      console.log('Billing clicked')
+    }
   }, {
     label: 'Settings',
     icon: 'i-heroicons-cog',
-    kbds: ['meta', ',']
+    kbds: ['?'],
+    select() {
+      console.log('Settings clicked')
+    }
   }], [{
     label: 'Team',
     icon: 'i-heroicons-users'
@@ -34,9 +40,9 @@ const items = [
     }, {
       label: 'Invite by link',
       icon: 'i-heroicons-link',
-      kbds: ['meta', 'I'],
+      kbds: ['meta', 'i'],
       select(e: Event) {
-        e.preventDefault()
+        e?.preventDefault()
         console.log('Invite by link clicked')
       }
     }], [{
@@ -70,7 +76,10 @@ const items = [
   }, {
     label: 'New team',
     icon: 'i-heroicons-plus',
-    kbds: ['meta', 'N']
+    kbds: ['meta', 'n'],
+    select() {
+      console.log('New team clicked')
+    }
   }], [{
     label: 'GitHub',
     icon: 'i-simple-icons-github',
@@ -93,9 +102,14 @@ const items = [
   }], [{
     label: 'Logout',
     icon: 'i-heroicons-arrow-right-start-on-rectangle',
-    kbds: ['⇧', 'meta', 'Q']
+    kbds: ['shift', 'meta', 'q'],
+    select() {
+      console.log('Logout clicked')
+    }
   }]
 ]
+
+defineShortcuts(extractShortcuts(items))
 </script>
 
 <template>

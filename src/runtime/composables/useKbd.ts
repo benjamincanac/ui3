@@ -38,7 +38,7 @@ const _useKbd = () => {
       return metaSymbol.value
     }
 
-    return kbdKeysMap[value] || value
+    return kbdKeysMap[value] || value.toUpperCase()
   }
 
   return {
