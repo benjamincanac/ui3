@@ -12,29 +12,29 @@ const kbd = tv({ extend: tv(theme), ...(appConfig.ui?.kbd || {}) })
 type KbdVariants = VariantProps<typeof kbd>
 
 export type KbdKey =
+  | 'meta'
   | 'command'
   | 'shift'
   | 'ctrl'
   | 'option'
+  | 'alt'
   | 'enter'
   | 'delete'
+  | 'backspace'
   | 'escape'
   | 'tab'
   | 'capslock'
-  | 'up'
-  | 'right'
-  | 'down'
-  | 'left'
+  | 'arrowup'
+  | 'arrowright'
+  | 'arrowdown'
+  | 'arrowleft'
   | 'pageup'
   | 'pagedown'
   | 'home'
   | 'end'
-  | 'help'
-  | 'space'
-  | string
 
 export interface KbdProps extends Omit<PrimitiveProps, 'asChild'> {
-  value: KbdKey
+  value: KbdKey | string
   color?: KbdVariants['color']
   size?: KbdVariants['size']
   class?: any

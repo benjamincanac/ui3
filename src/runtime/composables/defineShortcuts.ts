@@ -166,11 +166,11 @@ export function defineShortcuts(config: MaybeRef<ShortcutsConfig>, options: Shor
       } else {
         const keySplit = key.toLowerCase().split('_').map(k => k)
         shortcut = {
-          key: keySplit.filter(k => !['meta', 'ctrl', 'shift', 'alt'].includes(k)).join('_'),
-          metaKey: keySplit.includes('meta'),
+          key: keySplit.filter(k => !['meta', 'command', 'ctrl', 'shift', 'alt', 'option'].includes(k)).join('_'),
+          metaKey: keySplit.includes('meta') || keySplit.includes('command'),
           ctrlKey: keySplit.includes('ctrl'),
           shiftKey: keySplit.includes('shift'),
-          altKey: keySplit.includes('alt')
+          altKey: keySplit.includes('alt') || keySplit.includes('option')
         }
       }
       shortcut.chained = chained

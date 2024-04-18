@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const items = [
+import type { DropdownMenuItem } from '#ui/types'
+
+const items: DropdownMenuItem[][] = [
   [{
     label: 'My account',
     avatar: {

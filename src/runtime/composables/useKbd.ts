@@ -3,25 +3,26 @@ import { ref, computed, onMounted } from 'vue'
 import type { KbdKey } from '#ui/types'
 
 export const kbdKeysMap: Record<KbdKey, string> = {
+  meta: '',
   command: '⌘',
   shift: '⇧',
   ctrl: '⌃',
   option: '⌥',
+  alt: '⎇',
   enter: '↵',
-  delete: '⌫',
+  delete: '⌦',
+  backspace: '⌫',
   escape: '⎋',
   tab: '⇥',
   capslock: '⇪',
-  up: '↑',
-  right: '→',
-  down: '↓',
-  left: '←',
+  arrowup: '↑',
+  arrowright: '→',
+  arrowdown: '↓',
+  arrowleft: '←',
   pageup: '⇞',
   pagedown: '⇟',
   home: '↖',
-  end: '↘',
-  help: '?',
-  space: '␣'
+  end: '↘'
 }
 
 const _useKbd = () => {
@@ -33,12 +34,12 @@ const _useKbd = () => {
     metaSymbol.value = macOS.value ? kbdKeysMap.command : kbdKeysMap.ctrl
   })
 
-  function getKbdKey(value: KbdKey) {
+  function getKbdKey(value: KbdKey | string) {
     if (value === 'meta') {
       return metaSymbol.value
     }
 
-    return kbdKeysMap[value] || value.toUpperCase()
+    return kbdKeysMap[value as KbdKey] || value.toUpperCase()
   }
 
   return {
