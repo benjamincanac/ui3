@@ -1,7 +1,5 @@
 <script setup lang="ts">
-const { metaSymbol } = useShortcuts()
-
-const items = computed(() => [
+const items = [
   [{
     label: 'My account',
     avatar: {
@@ -19,11 +17,11 @@ const items = computed(() => [
   }, {
     label: 'Billing',
     icon: 'i-heroicons-credit-card',
-    shortcuts: [metaSymbol.value, 'B']
+    kbds: ['meta', 'B']
   }, {
     label: 'Settings',
     icon: 'i-heroicons-cog',
-    shortcuts: [metaSymbol.value, ',']
+    kbds: ['meta', ',']
   }], [{
     label: 'Team',
     icon: 'i-heroicons-users'
@@ -36,7 +34,7 @@ const items = computed(() => [
     }, {
       label: 'Invite by link',
       icon: 'i-heroicons-link',
-      shortcuts: [metaSymbol.value, 'I'],
+      kbds: ['meta', 'I'],
       select(e: Event) {
         e.preventDefault()
         console.log('Invite by link clicked')
@@ -72,7 +70,7 @@ const items = computed(() => [
   }, {
     label: 'New team',
     icon: 'i-heroicons-plus',
-    shortcuts: [metaSymbol.value, 'N']
+    kbds: ['meta', 'N']
   }], [{
     label: 'GitHub',
     icon: 'i-simple-icons-github',
@@ -86,7 +84,7 @@ const items = computed(() => [
     icon: 'i-heroicons-lifebuoy',
     to: '/dropdown-menu'
   }, {
-    label: 'Shortcuts',
+    label: 'Keyboard Shortcuts',
     icon: 'i-heroicons-key'
   }, {
     label: 'API',
@@ -95,9 +93,9 @@ const items = computed(() => [
   }], [{
     label: 'Logout',
     icon: 'i-heroicons-arrow-right-start-on-rectangle',
-    shortcuts: ['⇧', '⌘', 'Q']
+    kbds: ['⇧', 'meta', 'Q']
   }]
-])
+]
 </script>
 
 <template>

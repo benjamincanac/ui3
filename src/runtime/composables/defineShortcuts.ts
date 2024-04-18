@@ -1,7 +1,7 @@
 import { ref, computed, toValue } from 'vue'
 import type { MaybeRef } from 'vue'
-import { useEventListener, useDebounceFn } from '@vueuse/core'
-import { useShortcuts } from './useShortcuts'
+import { useEventListener, useActiveElement, useDebounceFn } from '@vueuse/core'
+import { useKbd } from '#imports'
 
 type Handler = () => void
 
@@ -36,7 +36,21 @@ const chainedShortcutRegex = /^[^-]+.*-.*[^-]+$/
 const combinedShortcutRegex = /^[^_]+.*_.*[^_]+$/
 
 export const defineShortcuts = (config: MaybeRef<ShortcutsConfig>, options: ShortcutsOptions = {}) => {
-  const { macOS, usingInput } = useShortcuts()
+  const { macOS } = useKbd()
+
+  const activeElement = useActiveElement()
+  const usingInput = computed(() => {
+    const tagName = activeElement.value?.tagName
+    const contentEditable = activeElement.value?.contentEditable
+
+    const usingInput = !!(tagName === 'INPUT' || tagName === 'TEXTAREA' || contentEditable === 'true' || contentEditable === 'plaintext-only')
+
+    if (usingInput) {
+      return ((activeElement.value as any)?.name as string) || true
+    }
+
+    return false
+  })
 
   const chainedInputs = ref<string[]>([])
   const clearChainedInput = () => {

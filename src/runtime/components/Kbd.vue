@@ -11,8 +11,30 @@ const kbd = tv({ extend: tv(theme), ...(appConfig.ui?.kbd || {}) })
 
 type KbdVariants = VariantProps<typeof kbd>
 
+export type KbdKey =
+  | 'command'
+  | 'shift'
+  | 'ctrl'
+  | 'option'
+  | 'enter'
+  | 'delete'
+  | 'escape'
+  | 'tab'
+  | 'capslock'
+  | 'up'
+  | 'right'
+  | 'down'
+  | 'left'
+  | 'pageup'
+  | 'pagedown'
+  | 'home'
+  | 'end'
+  | 'help'
+  | 'space'
+  | string
+
 export interface KbdProps extends Omit<PrimitiveProps, 'asChild'> {
-  value?: string
+  value: KbdKey
   color?: KbdVariants['color']
   size?: KbdVariants['size']
   class?: any
@@ -25,15 +47,18 @@ export interface KbdSlots {
 
 <script setup lang="ts">
 import { Primitive } from 'radix-vue'
+import { useKbd } from '#imports'
 
 const props = withDefaults(defineProps<KbdProps>(), { as: 'kbd' })
 defineSlots<KbdSlots>()
+
+const { getKbdKey } = useKbd()
 </script>
 
 <template>
   <Primitive :as="as" :class="kbd({ color, size, class: props.class })">
     <slot>
-      {{ value }}
+      {{ getKbdKey(value) }}
     </slot>
   </Primitive>
 </template>
