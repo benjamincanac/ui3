@@ -31,6 +31,7 @@ const components = [
   'navigation-menu',
   'pagination',
   'popover',
+  'progress',
   'radio-group',
   'separator',
   'shortcuts',
