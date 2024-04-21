@@ -79,8 +79,6 @@ const indicatorDirection = computed(() => {
   return style(dir, props.inverted)
 })
 
-console.log('indicatorDirection', indicatorDirection.value)
-
 const ui = computed(() => tv({ extend: progress, slots: props.ui })({
   animation: props.animation,
   size: props.size,
