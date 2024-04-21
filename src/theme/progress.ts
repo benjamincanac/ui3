@@ -91,8 +91,9 @@ export default (config: { colors: string[] }) => ({
     }
   }],
   defaultVariants: {
-    size: 'md',
+    animation: 'carousel',
     color: 'primary',
-    animation: 'carousel'
+    orientation: 'horizontal',
+    size: 'md'
   }
 })
