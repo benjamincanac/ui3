@@ -16,6 +16,7 @@ export interface ProgressProps extends Omit<ProgressRootProps, 'asChild' | 'max'
   size?: ProgressVariants['size']
   color?: ProgressVariants['color']
   orientation?: ProgressVariants['orientation']
+  inverted?: boolean
   max?: number | Array<any>
   class?: any
   ui?: Partial<typeof progress.slots>
@@ -30,6 +31,7 @@ import { ProgressIndicator, ProgressRoot, useForwardPropsEmits } from 'radix-vue
 import { reactivePick } from '@vueuse/core'
 
 const props = withDefaults(defineProps<ProgressProps>(), {
+  inverted: false,
   max: 100,
   modelValue: null,
   orientation: 'horizontal'
@@ -65,6 +67,20 @@ const percent = computed(() => {
   }
 })
 
+const indicatorDirection = computed(() => {
+  function style(dir: 'X' | 'Y', inv: boolean) {
+    if (!rootProps.value.modelValue) return undefined
+
+    const direction = inv ? '' : '-'
+    return `transform: translate${dir}(${direction}${100 - rootProps.value.modelValue}%)`
+  }
+
+  const dir = props.orientation === 'vertical' ? 'Y' : 'X'
+  return style(dir, props.inverted)
+})
+
+console.log('indicatorDirection', indicatorDirection.value)
+
 const ui = computed(() => tv({ extend: progress, slots: props.ui })({
   animation: props.animation,
   size: props.size,
@@ -82,7 +98,7 @@ const ui = computed(() => tv({ extend: progress, slots: props.ui })({
   >
     <ProgressIndicator
       :class="ui.indicator({ class: props.class })"
-      :style="rootProps.modelValue !== null ? `transform: translateX(-${100 - rootProps.modelValue}%)` : ''"
+      :style="indicatorDirection"
     />
   </ProgressRoot>
 </template>

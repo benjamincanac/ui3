@@ -1,32 +1,20 @@
 <template>
   <div class="flex flex-col gap-4 items-center">
     <div class="flex flex-col gap-4 w-96">
-      <UProgress :model-value="null" />
-      <UProgress :model-value="null" size="2xl" color="pink" />
-
-      <!-- Reference -->
-      <ProgressRoot
-        v-model="progressValue"
-        :max="100"
-        class="relative overflow-hidden bg-black rounded-full w-full h-4 sm:h-5"
-        style="transform: translateZ(0)"
-      >
-        <ProgressIndicator
-          class="bg-white rounded-full w-full h-full transition-transform duration-[660ms] ease-[cubic-bezier(0.65, 0, 0.35, 1)]"
-          :style="`transform: translateX(-${100 - progressValue}%)`"
-        />
-      </ProgressRoot>
+      <UProgress :model-value="progressValue" />
+      <UProgress :model-value="progressValue" inverted />
+      <UProgress :model-value="progressValue" size="2xl" color="pink" />
     </div>
 
     <div class="h-48 flex items-center gap-8">
-      <UProgress :model-value="progressValue" orientation="vertical" />
+      <UProgress :model-value="progressValue" orientation="vertical" size="xs" />
+      <UProgress :model-value="progressValue" orientation="vertical" size="xs" inverted />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { ProgressIndicator, ProgressRoot } from 'radix-vue'
 
 const progressValue = ref(10)
 
