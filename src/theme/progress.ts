@@ -22,11 +22,13 @@ export default (config: { colors: string[] }) => ({
       indicator: `bg-${color}-500 dark:bg-${color}-400`
     }])),
     size: {
-      xs: {},
-      sm: {},
-      md: {},
-      lg: {},
-      xl: {}
+      '2xs': '',
+      'xs': '',
+      'sm': '',
+      'md': '',
+      'lg': '',
+      'xl': '',
+      '2xl': ''
     },
     orientation: {
       horizontal: {
@@ -39,64 +41,64 @@ export default (config: { colors: string[] }) => ({
   },
   compoundVariants: [{
     orientation: 'horizontal',
+    size: '2xs',
+    class: { root: 'h-px' }
+  }, {
+    orientation: 'horizontal',
     size: 'xs',
-    class: {
-      root: 'h-[6px]'
-    }
+    class: { root: 'h-0.5' }
+  }, {
   }, {
     orientation: 'horizontal',
     size: 'sm',
-    class: {
-      root: 'h-[7px]'
-    }
+    class: { root: 'h-1' }
   }, {
     orientation: 'horizontal',
     size: 'md',
-    class: {
-      root: 'h-[8px]'
-    }
+    class: { root: 'h-2' }
   }, {
     orientation: 'horizontal',
     size: 'lg',
-    class: {
-      root: 'h-[9px]'
-    }
+    class: { root: 'h-3' }
   }, {
     orientation: 'horizontal',
     size: 'xl',
-    class: {
-      root: 'h-[10px]'
-    }
+    class: { root: 'h-4' }
+  }, {
+  }, {
+    orientation: 'horizontal',
+    size: '2xl',
+    class: { root: 'h-5' }
+  }, {
+    orientation: 'vertical',
+    size: '2xs',
+    class: { root: 'w-px' }
+  }, {
   }, {
     orientation: 'vertical',
     size: 'xs',
-    class: {
-      root: 'w-[6px]'
-    }
+    class: { root: 'w-0.5' }
   }, {
     orientation: 'vertical',
     size: 'sm',
-    class: {
-      root: 'w-[7px]'
-    }
+    class: { root: 'w-1' }
   }, {
     orientation: 'vertical',
     size: 'md',
-    class: {
-      root: 'w-[8px]'
-    }
+    class: { root: 'w-2' }
   }, {
     orientation: 'vertical',
     size: 'lg',
-    class: {
-      root: 'w-[9px]'
-    }
+    class: { root: 'w-3' }
   }, {
     orientation: 'vertical',
     size: 'xl',
-    class: {
-      root: 'w-[10px]'
-    }
+    class: { root: 'w-4' }
+  }, {
+  }, {
+    orientation: 'vertical',
+    size: '2xl',
+    class: { root: 'w-5' }
   }],
   defaultVariants: {
     animation: 'carousel',

@@ -2,6 +2,7 @@
   <div class="flex flex-col gap-4 items-center">
     <div class="flex flex-col gap-4 w-96">
       <UProgress :model-value="null" />
+      <UProgress :model-value="null" size="2xl" color="pink" />
 
       <!-- Reference -->
       <ProgressRoot
@@ -15,6 +16,10 @@
           :style="`transform: translateX(-${100 - progressValue}%)`"
         />
       </ProgressRoot>
+    </div>
+
+    <div class="h-48 flex items-center gap-8">
+      <UProgress :model-value="progressValue" orientation="vertical" />
     </div>
   </div>
 </template>
