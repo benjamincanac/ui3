@@ -82,7 +82,7 @@ const ui = computed(() => tv({ extend: progress, slots: props.ui })({
   >
     <ProgressIndicator
       :class="ui.indicator({ class: props.class })"
-      :style="`transform: translateX(-${100 - rootProps.modelValue ?? 0}%)`"
+      :style="rootProps.modelValue !== null ? `transform: translateX(-${100 - rootProps.modelValue}%)` : ''"
     />
   </ProgressRoot>
 </template>
