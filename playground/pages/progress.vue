@@ -1,11 +1,12 @@
 <template>
   <div class="flex flex-col gap-4 items-center">
     <div class="flex flex-col gap-4 w-48">
-      <UProgress :model-value="10" />
+      <UProgress :model-value="progressValue" />
 
       <!-- Reference -->
       <ProgressRoot
         v-model="progressValue"
+        :max="100"
         class="relative overflow-hidden bg-black rounded-full w-full sm:w-[300px] h-4 sm:h-5"
         style="transform: translateZ(0)"
       >

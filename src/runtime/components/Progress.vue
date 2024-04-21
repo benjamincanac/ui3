@@ -34,21 +34,21 @@ const props = withDefaults(defineProps<ProgressProps>(), {
 })
 const emits = defineEmits<ProgressEmits>()
 
-const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'modelValue'), emits)
+const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'getValueLabel', 'max', 'modelValue'), emits)
 
-const isIndeterminate = computed(() => props.modelValue === undefined || props.modelValue === null)
-const isSteps = computed(() => Array.isArray(props.max))
+const isIndeterminate = computed(() => rootProps.value.modelValue === undefined || rootProps.value.modelValue === null)
+const isSteps = computed(() => Array.isArray(rootProps.value.max))
 
 const realMax = computed(() => {
   if (isIndeterminate.value) {
-    return null
+    return undefined
   }
 
-  if (Array.isArray(props.max)) {
-    return props.max.length - 1
+  if (Array.isArray(rootProps.value.max)) {
+    return rootProps.value.max.length - 1
   }
 
-  return Number(props.max)
+  return Number(rootProps.value.max)
 })
 
 const percent = computed(() => {
@@ -57,9 +57,9 @@ const percent = computed(() => {
   }
 
   switch (true) {
-    case props.modelValue < 0: return 0
-    case props.modelValue > (realMax.value as number): return 100
-    default: return (props.modelValue / (realMax.value as number)) * 100
+    case rootProps.value.modelValue < 0: return 0
+    case rootProps.value.modelValue > (realMax.value as number): return 100
+    default: return (rootProps.value.modelValue / (realMax.value as number)) * 100
   }
 })
 
@@ -69,12 +69,13 @@ const ui = computed(() => tv({ extend: progress, slots: props.ui })())
 <template>
   <ProgressRoot
     v-bind="rootProps"
+    :max="realMax"
     :class="ui.root({ class: props.class })"
     style="transform: translateZ(0)"
   >
     <ProgressIndicator
       :class="ui.indicator({ class: props.class })"
-      :style="`transform: translateX(-${100 - props.modelValue ?? 0}%)`"
+      :style="`transform: translateX(-${100 - rootProps.modelValue ?? 0}%)`"
     />
   </ProgressRoot>
 </template>
