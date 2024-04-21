@@ -12,6 +12,7 @@ const progress = tv({ extend: tv(theme), ...(appConfig.ui?.progress || {}) })
 type ProgressVariants = VariantProps<typeof progress>
 
 export interface ProgressProps extends Omit<ProgressRootProps, 'asChild' | 'max'> {
+  animation?: ProgressVariants['animation']
   size?: ProgressVariants['size']
   color?: ProgressVariants['color']
   orientation?: ProgressVariants['orientation']
@@ -30,13 +31,14 @@ import { reactivePick } from '@vueuse/core'
 
 const props = withDefaults(defineProps<ProgressProps>(), {
   max: 100,
+  modelValue: null,
   orientation: 'horizontal'
 })
 const emits = defineEmits<ProgressEmits>()
 
 const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'getValueLabel', 'max', 'modelValue'), emits)
 
-const isIndeterminate = computed(() => rootProps.value.modelValue === undefined || rootProps.value.modelValue === null)
+const isIndeterminate = computed(() => rootProps.value.modelValue === null)
 const isSteps = computed(() => Array.isArray(rootProps.value.max))
 
 const realMax = computed(() => {
@@ -63,7 +65,12 @@ const percent = computed(() => {
   }
 })
 
-const ui = computed(() => tv({ extend: progress, slots: props.ui })())
+const ui = computed(() => tv({ extend: progress, slots: props.ui })({
+  animation: props.animation,
+  size: props.size,
+  color: props.color,
+  orientation: props.orientation
+}))
 </script>
 
 <template>

@@ -5,10 +5,18 @@ export default (config: { colors: string[] }) => ({
   },
   variants: {
     animation: {
-      'carousel': 'bar-animation-carousel',
-      'carousel-inverse': 'bar-animation-carousel-inverse',
-      'swing': 'bar-animation-swing',
-      'elastic': 'bar-animation-elastic'
+      'carousel': {
+        indicator: 'bar-animation-carousel'
+      },
+      'carousel-inverse': {
+        indicator: 'bar-animation-carousel-inverse'
+      },
+      'swing': {
+        indicator: 'bar-animation-swing'
+      },
+      'elastic': {
+        indicator: 'bar-animation-elastic'
+      }
     },
     color: Object.fromEntries(config.colors.map((color: string) => [color, {
       indicator: `bg-${color}-500 dark:bg-${color}-400`

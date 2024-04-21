@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col gap-4 items-center">
     <div class="flex flex-col gap-4 w-96">
-      <UProgress :model-value="progressValue" />
+      <UProgress :model-value="null" />
 
       <!-- Reference -->
       <ProgressRoot
