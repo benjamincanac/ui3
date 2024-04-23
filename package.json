@@ -42,7 +42,7 @@
     "release": "release-it"
   },
   "dependencies": {
-    "@antfu/nuxt-icon-poc": "^0.0.3",
+    "@antfu/nuxt-icon-poc": "^0.0.7",
     "@nuxt/kit": "^3.11.2",
     "@nuxt/schema": "^3.11.2",
     "@nuxtjs/color-mode": "^3.4.0",
