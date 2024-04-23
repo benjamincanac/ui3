@@ -1,8 +1,7 @@
 import { createSharedComposable } from '@vueuse/core'
 import { ref, computed, onMounted } from 'vue'
-import type { KbdKey } from '#ui/types'
 
-export const kbdKeysMap: Record<KbdKey, string> = {
+export const kbdKeysMap = {
   meta: '',
   command: '⌘',
   shift: '⇧',
@@ -24,6 +23,8 @@ export const kbdKeysMap: Record<KbdKey, string> = {
   home: '↖',
   end: '↘'
 }
+
+export type KbdKey = keyof typeof kbdKeysMap
 
 const _useKbd = () => {
   const macOS = computed(() => import.meta.client && navigator && navigator.userAgent && navigator.userAgent.match(/Macintosh;/))

@@ -4,34 +4,13 @@ import type { PrimitiveProps } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/kbd'
+import type { KbdKey } from '#ui/composables/useKbd'
 
 const appConfig = _appConfig as AppConfig & { ui: { kbd: Partial<typeof theme> } }
 
 const kbd = tv({ extend: tv(theme), ...(appConfig.ui?.kbd || {}) })
 
 type KbdVariants = VariantProps<typeof kbd>
-
-export type KbdKey =
-  | 'meta'
-  | 'command'
-  | 'shift'
-  | 'ctrl'
-  | 'option'
-  | 'alt'
-  | 'enter'
-  | 'delete'
-  | 'backspace'
-  | 'escape'
-  | 'tab'
-  | 'capslock'
-  | 'arrowup'
-  | 'arrowright'
-  | 'arrowdown'
-  | 'arrowleft'
-  | 'pageup'
-  | 'pagedown'
-  | 'home'
-  | 'end'
 
 export interface KbdProps extends Omit<PrimitiveProps, 'asChild'> {
   value: KbdKey | string

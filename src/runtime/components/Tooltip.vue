@@ -12,7 +12,7 @@ const tooltip = tv({ extend: tv(theme), ...(appConfig.ui?.tooltip || {}) })
 
 export interface TooltipProps extends TooltipRootProps {
   text?: string
-  kbds?: string[] | KbdProps[]
+  kbds?: KbdProps['value'][] | KbdProps[]
   content?: Omit<TooltipContentProps, 'asChild'>
   arrow?: boolean | Omit<TooltipArrowProps, 'asChild'>
   portal?: boolean
