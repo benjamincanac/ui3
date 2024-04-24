@@ -56,8 +56,8 @@ const ui = computed(() => tv({ extend: breadcrumb, slots: props.ui })())
     <ol :class="ui.list()">
       <template v-for="(item, index) in items" :key="index">
         <li :class="ui.item()">
-          <slot :name="item.slot || 'item'" :item="item" :index="index">
-            <ULink as="span" v-bind="omit(item, ['label', 'icon', 'avatar'])" :aria-current="index === items!.length - 1 ? 'page' : undefined" :class="ui.link({ active: index === items!.length - 1, disabled: !!item.disabled, to: !!item.to })" raw>
+          <ULink as="span" v-bind="omit(item, ['label', 'icon', 'avatar', 'slot'])" :aria-current="index === items!.length - 1 ? 'page' : undefined" :class="ui.link({ active: index === items!.length - 1, disabled: !!item.disabled, to: !!item.to })" raw>
+            <slot :name="item.slot || 'item'" :item="item" :index="index">
               <slot name="leading" :item="item" :active="index === items!.length - 1" :index="index">
                 <UAvatar v-if="item.avatar" size="2xs" v-bind="item.avatar" :class="ui.linkLeadingAvatar({ active: index === items!.length - 1 })" />
                 <UIcon v-else-if="item.icon" :name="item.icon" :class="ui.linkLeadingIcon({ active: index === items!.length - 1 })" />
@@ -70,8 +70,8 @@ const ui = computed(() => tv({ extend: breadcrumb, slots: props.ui })())
               </span>
 
               <slot name="trailing" :item="item" :active="index === items!.length - 1" :index="index" />
-            </ULink>
-          </slot>
+            </slot>
+          </ULink>
         </li>
 
         <li v-if="index < items!.length - 1" role="presentation" :class="ui.separator()">
