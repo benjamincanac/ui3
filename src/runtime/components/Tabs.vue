@@ -31,14 +31,17 @@ export interface TabsEmits extends TabsRootEmits {}
 
 type SlotProps<T> = (props: { item: T, index: number }) => any
 
-export type TabsSlots<T> = {
+type DynamicSlots<T extends { slot?: string }, Slot = T['slot']> =
+  Slot extends string ? Record<Slot, SlotProps<T>> : Record<string, never>
+
+export type TabsSlots<T extends { slot?: string }> = {
   default: SlotProps<T>
   leading: SlotProps<T>
   label: SlotProps<T>
   trailing: SlotProps<T>
   content: SlotProps<T>
   [key: string]: SlotProps<T>
-}
+} & DynamicSlots<T>
 </script>
 
 <script setup lang="ts" generic="T extends TabsItem">
