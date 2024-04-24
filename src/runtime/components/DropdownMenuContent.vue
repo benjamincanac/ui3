@@ -16,7 +16,7 @@ interface DropdownMenuContentProps<T> extends Omit<RadixDropdownMenuContentProps
 
 interface DropdownMenuContentEmits extends RadixDropdownMenuContentEmits {}
 
-interface DropdownMenuContentSlots<T> extends DropdownMenuSlots<T> {}
+type DropdownMenuContentSlots<T extends { slot?: string }> = DropdownMenuSlots<T>
 </script>
 
 <script setup lang="ts" generic="T extends DropdownMenuItem">
@@ -34,7 +34,7 @@ const slots = defineSlots<DropdownMenuContentSlots<T>>()
 
 const appConfig = useAppConfig()
 const contentProps = useForwardPropsEmits(reactiveOmit(props, 'sub', 'items', 'portal', 'class', 'ui'), emits)
-const proxySlots = omit(slots, ['default'])
+const proxySlots = omit(slots, ['default']) as Record<string, DropdownMenuContentSlots<T>[string]>
 
 const [DefineItemTemplate, ReuseItemTemplate] = createReusableTemplate()
 

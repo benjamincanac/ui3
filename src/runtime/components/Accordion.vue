@@ -5,6 +5,7 @@ import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/accordion'
 import type { IconProps } from '#ui/types'
+import type { DynamicSlots } from '#ui/types/utils'
 
 const appConfig = _appConfig as AppConfig & { ui: { accordion: Partial<typeof theme> } }
 
@@ -32,17 +33,13 @@ export interface AccordionEmits extends AccordionRootEmits {}
 
 type SlotProps<T> = (props: { item: T, index: number }) => any
 
-type DynamicSlots<T extends { slot?: string }, Slot = T['slot']> =
-  Slot extends string ? Record<Slot, SlotProps<T>> : Record<string, never>
-
 export type AccordionSlots<T extends { slot?: string }> = {
   default: SlotProps<T>
   leading: SlotProps<T>
   label: SlotProps<T>
   trailing: SlotProps<T>
   content: SlotProps<T>
-  [key: string]: SlotProps<T>
-} & DynamicSlots<T>
+} & DynamicSlots<T, SlotProps<T>>
 </script>
 
 <script setup lang="ts" generic="T extends AccordionItem">

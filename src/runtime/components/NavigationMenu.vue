@@ -5,6 +5,7 @@ import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/navigation-menu'
 import type { AvatarProps, BadgeProps, IconProps, LinkProps, SeparatorProps } from '#ui/types'
+import type { DynamicSlots } from '#ui/types/utils'
 
 const appConfig = _appConfig as AppConfig & { ui: { navigationMenu: Partial<typeof theme> } }
 
@@ -31,13 +32,12 @@ export interface NavigationMenuEmits extends NavigationMenuRootEmits {}
 
 type SlotProps<T> = (props: { item: T, index: number, active?: boolean }) => any
 
-export interface NavigationMenuSlots<T> {
+export type NavigationMenuSlots<T extends { slot?: string }> = {
   leading: SlotProps<T>
   label: SlotProps<T>
   trailing: SlotProps<T>
   item: SlotProps<T>
-  [key: string]: SlotProps<T>
-}
+} & DynamicSlots<T, SlotProps<T>>
 </script>
 
 <script setup lang="ts" generic="T extends NavigationMenuItem">
