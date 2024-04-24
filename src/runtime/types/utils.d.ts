@@ -3,4 +3,4 @@ export type DeepPartial<T> = Partial<{
 }>
 
 export type DynamicSlots<T extends { slot?: string }, SlotProps, Slot = T['slot']> =
-  Record<string, SlotProps> & (Slot extends string ? Record<string, SlotProps> : Record<string, never>)
+  Record<string, SlotProps> & (Slot extends string ? Record<Slot, SlotProps> : Record<string, never>)
