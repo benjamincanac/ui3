@@ -27,7 +27,7 @@ const items = [
     icon: 'i-heroicons-light-bulb',
     to: 'https://ui.nuxt.com',
     target: '_blank',
-    slot: 'custom'
+    slot: 'custom' as const
   }, {
     label: 'Help',
     icon: 'i-heroicons-question-mark-circle',

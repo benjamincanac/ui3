@@ -12,7 +12,7 @@ const items = [
   [{
     label: 'Profile',
     icon: 'i-heroicons-user',
-    slot: 'custom',
+    slot: 'custom' as const,
     select(e: Event) {
       e.preventDefault()
       console.log('Profile clicked')

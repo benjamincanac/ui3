@@ -13,7 +13,7 @@ const items = [{
   label: 'Tab3',
   icon: 'i-heroicons-bell',
   content: 'Finally, this is the content for Tab3',
-  slot: 'custom'
+  slot: 'custom' as const
 }]
 </script>
 
