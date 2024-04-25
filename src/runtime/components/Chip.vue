@@ -4,7 +4,6 @@ import type { PrimitiveProps } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/chip'
-import type { AvatarProps } from './Avatar.vue'
 
 const appConfig = _appConfig as AppConfig & { ui: { chip: Partial<typeof theme> } }
 
@@ -29,15 +28,15 @@ export interface ChipSlots {
 </script>
 
 <script setup lang="ts">
-import { computed, provide, inject, type ComputedRef } from 'vue'
+import { computed, provide } from 'vue'
 import { Primitive } from 'radix-vue'
+import { useAvatarGroup } from '#imports'
 
 const show = defineModel<boolean>('show', { default: true })
 const props = withDefaults(defineProps<ChipProps>(), { as: 'div' })
 defineSlots<ChipSlots>()
 
-const injectedSize = inject<ComputedRef<AvatarProps['size']> | undefined>('avatar-size', undefined)
-const size = computed(() => props.size ?? injectedSize?.value)
+const { size } = useAvatarGroup(props)
 
 const ui = computed(() => tv({ extend: chip, slots: props.ui })({
   color: props.color,
