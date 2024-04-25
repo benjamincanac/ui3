@@ -25,7 +25,7 @@ export interface AvatarProps extends Omit<AvatarFallbackProps, 'as' | 'asChild'>
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, inject, type ComputedRef } from 'vue'
 import { AvatarRoot, AvatarImage, AvatarFallback, useForwardProps } from 'radix-vue'
 import { reactivePick } from '@vueuse/core'
 import { UIcon } from '#components'
@@ -36,7 +36,9 @@ const fallbackProps = useForwardProps(reactivePick(props, 'delayMs'))
 
 const fallback = computed(() => props.text || (props.alt || '').split(' ').map(word => word.charAt(0)).join('').substring(0, 2))
 
-const ui = computed(() => tv({ extend: avatar, slots: props.ui })({ size: props.size }))
+const injectedSize = inject<ComputedRef<AvatarProps['size']> | undefined>('avatar-size', undefined)
+const size = computed(() => props.size ?? injectedSize?.value)
+const ui = computed(() => tv({ extend: avatar, slots: props.ui })({ size: size.value }))
 </script>
 
 <template>
