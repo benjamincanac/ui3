@@ -1,8 +1,8 @@
 import { inject, provide, computed, type ComputedRef } from 'vue'
-import type { AvatarProps } from '#ui/types'
+import type { AvatarGroupProps } from '#ui/types'
 
-export function useAvatarGroup(props: { size: AvatarProps['size'] }) {
-  const injectedSize = inject<ComputedRef<AvatarProps['size']> | undefined>('avatar-size', undefined)
+export function useAvatarGroup(props: { size: AvatarGroupProps['size'] }) {
+  const injectedSize = inject<ComputedRef<AvatarGroupProps['size']> | undefined>('avatar-size', undefined)
   const size = computed(() => props.size ?? injectedSize?.value)
   provide('avatar-size', size)
 
