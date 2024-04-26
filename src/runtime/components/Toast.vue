@@ -5,7 +5,7 @@ import type { ToastRootProps, ToastRootEmits } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/toast'
-import type { AvatarProps, ButtonProps, IconProps, ToasterContext } from '#ui/types'
+import type { AvatarProps, ButtonProps, ToasterContext } from '#ui/types'
 
 const appConfig = _appConfig as AppConfig & { ui: { toast: Partial<typeof theme> } }
 
@@ -16,7 +16,7 @@ type ToastVariants = VariantProps<typeof toast>
 export interface ToastProps extends Omit<ToastRootProps, 'asChild' | 'forceMount'> {
   title?: string
   description?: string | VNode | (() => VNode)
-  icon?: IconProps['name']
+  icon?: string
   avatar?: AvatarProps
   color?: ToastVariants['color']
   actions?: ButtonProps[]
@@ -31,6 +31,7 @@ export interface ToastSlots {
   leading(): any
   title(): any
   description(): any
+  actions(): any
   close(): any
 }
 </script>
@@ -103,17 +104,21 @@ defineExpose({
       </template>
 
       <div v-if="multiline && actions?.length" :class="ui.actions({ multiline: true })">
-        <ToastAction v-for="(action, index) in actions" :key="index" :alt-text="action.label || 'Action'" as-child @click.stop>
-          <UButton size="xs" :color="color" v-bind="action" />
-        </ToastAction>
+        <slot name="actions">
+          <ToastAction v-for="(action, index) in actions" :key="index" :alt-text="action.label || 'Action'" as-child @click.stop>
+            <UButton size="xs" :color="color" v-bind="action" />
+          </ToastAction>
+        </slot>
       </div>
     </div>
 
     <div v-if="(!multiline && actions?.length) || close !== null" :class="ui.actions({ multiline: false })">
       <template v-if="!multiline">
-        <ToastAction v-for="(action, index) in actions" :key="index" :alt-text="action.label || 'Action'" as-child @click.stop>
-          <UButton size="xs" :color="color" v-bind="action" />
-        </ToastAction>
+        <slot name="actions">
+          <ToastAction v-for="(action, index) in actions" :key="index" :alt-text="action.label || 'Action'" as-child @click.stop>
+            <UButton size="xs" :color="color" v-bind="action" />
+          </ToastAction>
+        </slot>
       </template>
 
       <ToastClose as-child>

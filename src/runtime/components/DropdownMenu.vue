@@ -4,7 +4,8 @@ import type { DropdownMenuRootProps, DropdownMenuRootEmits, DropdownMenuContentP
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/dropdown-menu'
-import type { AvatarProps, IconProps, KbdProps, LinkProps } from '#ui/types'
+import type { AvatarProps, KbdProps, LinkProps } from '#ui/types'
+import type { DynamicSlots } from '#ui/types/utils'
 
 const appConfig = _appConfig as AppConfig & { ui: { dropdownMenu: Partial<typeof theme> } }
 
@@ -12,16 +13,15 @@ const dropdownMenu = tv({ extend: tv(theme), ...(appConfig.ui?.dropdownMenu || {
 
 export interface DropdownMenuItem extends Omit<LinkProps, 'type'> {
   label?: string
-  icon?: IconProps['name']
+  icon?: string
   avatar?: AvatarProps
-  disabled?: boolean
   content?: Omit<DropdownMenuContentProps, 'asChild' | 'forceMount'>
-  shortcuts?: string[] | KbdProps[]
+  kbds?: KbdProps['value'][] | KbdProps[]
   /**
    * The item type.
    * @defaultValue "link"
    */
-  type?: 'label' | 'link'
+  type?: 'label' | 'separator' | 'link'
   slot?: string
   open?: boolean
   defaultOpen?: boolean
@@ -43,14 +43,13 @@ export interface DropdownMenuEmits extends DropdownMenuRootEmits {}
 
 type SlotProps<T> = (props: { item: T, active?: boolean, index: number }) => any
 
-export interface DropdownMenuSlots<T> {
+export type DropdownMenuSlots<T extends { slot?: string }> = {
   default(): any
   leading: SlotProps<T>
   label: SlotProps<T>
   trailing: SlotProps<T>
   item: SlotProps<T>
-  [key: string]: SlotProps<T>
-}
+} & DynamicSlots<T, SlotProps<T>>
 </script>
 
 <script setup lang="ts" generic="T extends DropdownMenuItem">
@@ -71,7 +70,7 @@ const slots = defineSlots<DropdownMenuSlots<T>>()
 const rootProps = useForwardPropsEmits(reactivePick(props, 'defaultOpen', 'open', 'modal'), emits)
 const contentProps = toRef(() => defu(props.content, { side: 'bottom', sideOffset: 8 }) as DropdownMenuContentProps)
 const arrowProps = toRef(() => props.arrow as DropdownMenuArrowProps)
-const proxySlots = omit(slots, ['default'])
+const proxySlots = omit(slots, ['default']) as Record<string, DropdownMenuSlots<T>[string]>
 
 const ui = computed(() => tv({ extend: dropdownMenu, slots: props.ui })())
 </script>

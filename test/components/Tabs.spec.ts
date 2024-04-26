@@ -1,11 +1,13 @@
 import { describe, it, expect } from 'vitest'
-import Tabs, { type TabsProps } from '../../src/runtime/components/Tabs.vue'
+import Tabs, { type TabsProps, type TabsSlots } from '../../src/runtime/components/Tabs.vue'
 import ComponentRender from '../component-render'
 
 describe('Tabs', () => {
   const items = [{
     label: 'Tab1',
-    icon: 'i-heroicons-home',
+    avatar: {
+      src: 'https://avatars.githubusercontent.com/u/739984?v=4'
+    },
     content: 'This is the content shown for Tab1'
   }, {
     label: 'Tab2',
@@ -14,7 +16,8 @@ describe('Tabs', () => {
   }, {
     label: 'Tab3',
     icon: 'i-heroicons-bell',
-    content: 'Finally, this is the content for Tab3'
+    content: 'Finally, this is the content for Tab3',
+    slot: 'custom'
   }]
 
   const props = { items }
@@ -34,7 +37,7 @@ describe('Tabs', () => {
     ['with trailing slot', { props, slots: { trailing: () => 'Trailing slot' } }],
     ['with content slot', { props, slots: { content: () => 'Content slot' } }],
     ['with custom slot', { props, slots: { custom: () => 'Custom slot' } }]
-  ])('renders %s correctly', async (nameOrHtml: string, options: { props?: TabsProps<typeof items[number]>, slots?: any }) => {
+  ])('renders %s correctly', async (nameOrHtml: string, options: { props?: TabsProps<typeof items[number]>, slots?: Partial<TabsSlots<typeof items[number]>> }) => {
     const html = await ComponentRender(nameOrHtml, options, Tabs)
     expect(html).toMatchSnapshot()
   })

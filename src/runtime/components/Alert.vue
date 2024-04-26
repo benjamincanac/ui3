@@ -5,7 +5,7 @@ import type { PrimitiveProps } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/alert'
-import type { AvatarProps, ButtonProps, IconProps } from '#ui/types'
+import type { AvatarProps, ButtonProps } from '#ui/types'
 
 const appConfig = _appConfig as AppConfig & { ui: { alert: Partial<typeof theme> } }
 
@@ -16,7 +16,7 @@ type AlertVariants = VariantProps<typeof alert>
 export interface AlertProps extends Omit<PrimitiveProps, 'asChild'> {
   title?: string
   description?: string | VNode | (() => VNode)
-  icon?: IconProps['name']
+  icon?: string
   avatar?: AvatarProps
   color?: AlertVariants['color']
   variant?: AlertVariants['variant']
@@ -34,6 +34,7 @@ export interface AlertSlots {
   leading(): any
   title(): any
   description(): any
+  actions(): any
   close(): any
 }
 </script>
@@ -81,26 +82,32 @@ const ui = computed(() => tv({ extend: alert, slots: props.ui })({
       </template>
 
       <div v-if="multiline && actions?.length" :class="ui.actions({ multiline: true })">
-        <UButton v-for="(action, index) in actions" :key="index" size="xs" v-bind="action" />
+        <slot name="actions">
+          <UButton v-for="(action, index) in actions" :key="index" size="xs" v-bind="action" />
+        </slot>
       </div>
     </div>
 
     <div v-if="(!multiline && actions?.length) || close" :class="ui.actions({ multiline: false })">
       <template v-if="!multiline">
-        <UButton v-for="(action, index) in actions" :key="index" size="xs" v-bind="action" />
+        <slot name="actions">
+          <UButton v-for="(action, index) in actions" :key="index" size="xs" v-bind="action" />
+        </slot>
       </template>
 
-      <UButton
-        v-if="close"
-        :icon="appConfig.ui.icons.close"
-        size="md"
-        color="gray"
-        variant="link"
-        aria-label="Close"
-        v-bind="typeof close === 'object' ? close : {}"
-        :class="ui.close()"
-        @click="emits('close')"
-      />
+      <slot name="close" :class="ui.close()">
+        <UButton
+          v-if="close"
+          :icon="appConfig.ui.icons.close"
+          size="md"
+          color="gray"
+          variant="link"
+          aria-label="Close"
+          v-bind="typeof close === 'object' ? close : {}"
+          :class="ui.close()"
+          @click="emits('close')"
+        />
+      </slot>
     </div>
   </Primitive>
 </template>

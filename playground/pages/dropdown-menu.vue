@@ -1,7 +1,7 @@
 <script setup lang="ts">
-const { metaSymbol } = useShortcuts()
+const appConfig = useAppConfig()
 
-const items = computed(() => [
+const items = [
   [{
     label: 'My account',
     avatar: {
@@ -12,6 +12,7 @@ const items = computed(() => [
   [{
     label: 'Profile',
     icon: 'i-heroicons-user',
+    slot: 'custom' as const,
     select(e: Event) {
       e.preventDefault()
       console.log('Profile clicked')
@@ -19,11 +20,17 @@ const items = computed(() => [
   }, {
     label: 'Billing',
     icon: 'i-heroicons-credit-card',
-    shortcuts: [metaSymbol.value, 'B']
+    kbds: ['meta', 'b'],
+    select() {
+      console.log('Billing clicked')
+    }
   }, {
     label: 'Settings',
     icon: 'i-heroicons-cog',
-    shortcuts: [metaSymbol.value, ',']
+    kbds: ['?'],
+    select() {
+      console.log('Settings clicked')
+    }
   }], [{
     label: 'Team',
     icon: 'i-heroicons-users'
@@ -36,9 +43,9 @@ const items = computed(() => [
     }, {
       label: 'Invite by link',
       icon: 'i-heroicons-link',
-      shortcuts: [metaSymbol.value, 'I'],
+      kbds: ['meta', 'i'],
       select(e: Event) {
-        e.preventDefault()
+        e?.preventDefault()
         console.log('Invite by link clicked')
       }
     }], [{
@@ -72,7 +79,10 @@ const items = computed(() => [
   }, {
     label: 'New team',
     icon: 'i-heroicons-plus',
-    shortcuts: [metaSymbol.value, 'N']
+    kbds: ['meta', 'n'],
+    select() {
+      console.log('New team clicked')
+    }
   }], [{
     label: 'GitHub',
     icon: 'i-simple-icons-github',
@@ -86,7 +96,9 @@ const items = computed(() => [
     icon: 'i-heroicons-lifebuoy',
     to: '/dropdown-menu'
   }, {
-    label: 'Shortcuts',
+    type: 'separator' as const
+  }, {
+    label: 'Keyboard Shortcuts',
     icon: 'i-heroicons-key'
   }, {
     label: 'API',
@@ -95,15 +107,28 @@ const items = computed(() => [
   }], [{
     label: 'Logout',
     icon: 'i-heroicons-arrow-right-start-on-rectangle',
-    shortcuts: ['⇧', '⌘', 'Q']
+    kbds: ['shift', 'meta', 'q'],
+    select() {
+      console.log('Logout clicked')
+    }
   }]
-])
+]
+
+defineShortcuts(extractShortcuts(items))
 </script>
 
 <template>
   <div class="flex-1">
     <UDropdownMenu :items="items" arrow :content="{ side: 'bottom' }" class="min-w-48">
       <UButton label="Open" color="white" />
+
+      <template #custom="{ item }">
+        <UIcon :name="item.icon" class="shrink-0 size-5" />
+
+        <span class="truncate">{{ item.label }}</span>
+
+        <UIcon :name="appConfig.ui.icons.check" class="shrink-0 size-5 text-primary-500 dark:text-primary-400 ms-auto" />
+      </template>
     </UDropdownMenu>
   </div>
 </template>
