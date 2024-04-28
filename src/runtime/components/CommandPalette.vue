@@ -2,6 +2,7 @@
 import { tv } from 'tailwind-variants'
 import type { ComboboxRootProps, ComboboxRootEmits } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
+import type { UseFuseOptions } from '@vueuse/integrations/useFuse'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/command-palette'
 import { UInput, UAvatar, UIcon, UKbd } from '#components'
@@ -28,10 +29,11 @@ export interface CommandPaletteGroup<T> {
   items: T[]
 }
 
-export interface CommandPaletteProps<T> extends Omit<ComboboxRootProps<T>, 'asChild' | 'dir' | 'open' | 'defaultOpen' | 'name'>, Omit<UseComponentIconsProps, 'leading' | 'trailing'> {
+export interface CommandPaletteProps<T> extends Omit<ComboboxRootProps<T>, 'asChild' | 'dir' | 'open' | 'defaultOpen' | 'name' | 'filterFunction'>, Omit<UseComponentIconsProps, 'leading' | 'trailing'> {
   selectedIcon?: string
   placeholder?: string
   groups?: CommandPaletteGroup<T>[]
+  fuse?: UseFuseOptions<T>
   class?: any
   ui?: Partial<typeof commandPalette.slots>
 }
@@ -52,6 +54,7 @@ export type CommandPaletteSlots<T extends { slot?: string }> = {
 import { computed } from 'vue'
 import { ComboboxRoot, ComboboxInput, ComboboxPortal, ComboboxContent, ComboboxEmpty, ComboboxViewport, ComboboxGroup, ComboboxLabel, ComboboxItem, ComboboxItemIndicator, useForwardPropsEmits } from 'radix-vue'
 import { reactivePick } from '@vueuse/core'
+import { defu } from 'defu'
 import { useAppConfig } from '#imports'
 
 const props = withDefaults(defineProps<CommandPaletteProps<T>>(), {
@@ -61,9 +64,17 @@ const emits = defineEmits<CommandPaletteEmits>()
 defineSlots<CommandPaletteSlots<T>>()
 
 const appConfig = useAppConfig()
-const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'defaultValue', 'disabled', 'displayValue', 'filterFunction', 'modelValue', 'multiple', 'searchTerm'), emits)
+const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'defaultValue', 'disabled', 'displayValue', 'modelValue', 'multiple', 'searchTerm'), emits)
 
 const ui = computed(() => tv({ extend: commandPalette, slots: props.ui })())
+
+const fuse = computed<UseFuseOptions<T>>(() => defu({}, props.fuse, {
+  fuseOptions: {
+    keys: ['label']
+  },
+  resultLimit: 12,
+  matchAllWhenSearchEmpty: true
+}))
 </script>
 
 <template>
@@ -71,6 +82,7 @@ const ui = computed(() => tv({ extend: commandPalette, slots: props.ui })())
     <ComboboxInput as-child>
       <UInput
         variant="none"
+        autofocus
         :icon="icon || appConfig.ui.icons.search"
         :loading="loading"
         :loading-icon="loadingIcon"
@@ -80,7 +92,7 @@ const ui = computed(() => tv({ extend: commandPalette, slots: props.ui })())
     </ComboboxInput>
 
     <ComboboxPortal :disabled="true">
-      <ComboboxContent :class="ui.content()">
+      <ComboboxContent :class="ui.content()" :dismissable="false">
         <ComboboxEmpty :class="ui.empty()" />
 
         <ComboboxViewport :class="ui.viewport()">
@@ -95,7 +107,7 @@ const ui = computed(() => tv({ extend: commandPalette, slots: props.ui })())
               :value="item"
               :disabled="item.disabled"
               :class="ui.item()"
-              @select="item.select"
+              @select.prevent
             >
               <slot :name="item.slot || 'item'" :item="item" :index="index">
                 <slot name="leading" :item="item" :index="index">
@@ -116,7 +128,7 @@ const ui = computed(() => tv({ extend: commandPalette, slots: props.ui })())
                     </span>
 
                     <ComboboxItemIndicator as-child>
-                      <UIcon v-if="item.children?.length" :name="selectedIcon || appConfig.ui.icons.check" :class="ui.itemTrailingIcon()" />
+                      <UIcon :name="selectedIcon || appConfig.ui.icons.check" :class="ui.itemTrailingIcon()" />
                     </ComboboxItemIndicator>
                   </slot>
                 </span>
