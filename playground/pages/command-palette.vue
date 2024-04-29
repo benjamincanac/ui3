@@ -13,19 +13,18 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
 const searchTerm = ref('')
 const searchTermDebounced = refDebounced(searchTerm, 200)
 
-const { data: users } = await useFetch<User[]>('https://jsonplaceholder.typicode.com/users', {
+const { data: users, pending } = await useFetch<User[]>('https://jsonplaceholder.typicode.com/users', {
   params: { q: searchTermDebounced },
   transform: (data) => {
     return data.map(user => ({ label: user.name }))
   },
-  lazy: true,
-  server: false
+  lazy: true
 })
 </script>
 
 <template>
   <DefineTemplate>
-    <UCommandPalette v-model:search-term="searchTerm" :groups="[{ label: 'Users', items: users }]" class="max-h-80" />
+    <UCommandPalette v-model:search-term="searchTerm" :loading="pending" :groups="[{ label: 'Users', items: users }]" class="max-h-80" />
   </DefineTemplate>
 
   <div class="flex-1 flex flex-col gap-8 w-lg">
@@ -50,7 +49,7 @@ const { data: users } = await useFetch<User[]>('https://jsonplaceholder.typicode
         </template>
       </UDrawer>
 
-      <UPopover :content="{ side: 'right', align: 'end' }">
+      <UPopover :content="{ align: 'start' }">
         <UButton label="Open popover" color="gray" />
 
         <template #content>

@@ -3,7 +3,7 @@ export default {
     root: 'flex flex-col min-h-0 divide-y divide-gray-200 dark:divide-gray-800',
     input: 'h-12 flex items-center shrink-0',
     content: 'relative flex-1 overflow-hidden',
-    viewport: 'divide-y divide-gray-200 dark:divide-gray-800 scroll-py-2',
+    viewport: 'divide-y divide-gray-200 dark:divide-gray-800 scroll-py-1',
     group: 'p-1 isolate',
     empty: 'py-6 text-center text-sm',
     label: 'p-1.5 text-xs font-semibold text-gray-900 dark:text-white',
