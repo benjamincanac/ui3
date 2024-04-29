@@ -70,7 +70,7 @@ export interface FormInjectedOptions {
 }
 
 export interface FormFieldInjectedOptions<T> {
-  inputId: Ref<string | undefined>
+  id: Ref<string | undefined>
   name: ComputedRef<string | undefined>
   size: ComputedRef<GetObjectField<T, 'size'>>
   error: ComputedRef<string | boolean | undefined>
