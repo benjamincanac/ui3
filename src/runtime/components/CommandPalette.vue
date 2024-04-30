@@ -153,7 +153,7 @@ const groups = computed(() => {
         :placeholder="placeholder"
         :class="ui.input()"
       >
-        <template #trailing>
+        <template v-if="close || $slots.close" #trailing>
           <slot name="close" :class="ui.close()">
             <UButton
               v-if="close"
