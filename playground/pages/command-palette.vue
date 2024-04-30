@@ -20,8 +20,7 @@ const { data: users, pending } = await useFetch('https://jsonplaceholder.typicod
   transform: (data: User[]) => {
     return data?.map(user => ({ icon: 'i-heroicons-user', id: user.id, label: user.name, suffix: user.email })) || []
   },
-  lazy: true,
-  server: false
+  lazy: true
 })
 
 const groups = computed(() => [{
