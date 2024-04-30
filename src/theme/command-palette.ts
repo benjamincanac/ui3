@@ -1,8 +1,8 @@
 export default {
   slots: {
     root: 'flex flex-col min-h-0 divide-y divide-gray-200 dark:divide-gray-800',
-    input: 'h-12 flex items-center shrink-0',
-    content: 'relative flex-1 overflow-hidden',
+    input: '[&>input]:h-12',
+    content: 'relative overflow-hidden',
     viewport: 'divide-y divide-gray-200 dark:divide-gray-800 scroll-py-1',
     group: 'p-1 isolate',
     empty: 'py-6 text-center text-sm',
@@ -12,10 +12,13 @@ export default {
     itemLeadingIcon: 'shrink-0 size-5 text-gray-400 dark:text-gray-500 group-data-highlighted:text-gray-700 dark:group-data-highlighted:text-gray-200',
     itemLeadingAvatar: 'shrink-0',
     itemTrailing: 'ms-auto inline-flex gap-1.5 items-center',
-    itemTrailingIcon: 'shrink-0 size-5',
+    itemTrailingSelectedIcon: 'shrink-0 size-5',
+    itemTrailingHighlightedIcon: 'shrink-0 size-5 text-gray-400 dark:text-gray-500 hidden group-data-highlighted:inline-flex',
+    itemTrailingHighlightedText: 'text-gray-400 dark:text-gray-500 hidden group-data-highlighted:inline-flex',
     itemTrailingKbds: 'hidden lg:inline-flex items-center shrink-0 gap-0.5',
-    itemLabel: 'truncate',
+    itemLabel: 'truncate space-x-1',
+    itemLabelBase: '[&>mark]:text-[initial] [&>mark]:bg-[initial]',
     itemLabelPrefix: 'text-gray-400 dark:text-gray-500',
-    itemLabelSuffix: 'text-gray-400 dark:text-gray-500'
+    itemLabelSuffix: 'text-gray-400 dark:text-gray-500 [&>mark]:bg-primary-500 dark:[&>mark]:bg-primary-400 [&>mark]:text-white dark:[&>mark]:text-gray-900'
   }
 }

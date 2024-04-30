@@ -25,8 +25,8 @@ export interface DropdownMenuItem extends Omit<LinkProps, 'type'> {
   slot?: string
   open?: boolean
   defaultOpen?: boolean
-  select? (e: Event): void
   children?: DropdownMenuItem[] | DropdownMenuItem[][]
+  select? (e: Event): void
 }
 
 export interface DropdownMenuProps<T> extends Omit<DropdownMenuRootProps, 'dir'> {

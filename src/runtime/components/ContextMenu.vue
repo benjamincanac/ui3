@@ -25,8 +25,8 @@ export interface ContextMenuItem extends Omit<LinkProps, 'type'> {
   slot?: string
   open?: boolean
   defaultOpen?: boolean
-  select? (e: Event): void
   children?: ContextMenuItem[] | ContextMenuItem[][]
+  select? (e: Event): void
 }
 
 export interface ContextMenuProps<T> extends Omit<ContextMenuRootProps, 'dir'> {

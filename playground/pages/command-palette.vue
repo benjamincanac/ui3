@@ -18,59 +18,63 @@ const selected = ref([])
 const { data: users, pending } = await useFetch('https://jsonplaceholder.typicode.com/users', {
   // params: { q: searchTermDebounced },
   transform: (data: User[]) => {
-    return data?.map(user => ({ icon: 'i-heroicons-user', label: user.name, suffix: user.email })) || []
+    return data?.map(user => ({ icon: 'i-heroicons-user', id: user.id, label: user.name, suffix: user.email })) || []
   },
-  lazy: true
+  lazy: true,
+  server: false
 })
 
 const groups = computed(() => [{
-  key: 'users',
+  id: 'users',
   label: searchTerm.value ? `Users matching “${searchTerm.value}”...` : 'Users',
   items: users.value!
 }, {
-  key: 'actions',
+  id: 'actions',
   items: [{
-    id: 'new-file',
     label: 'Add new file',
+    suffix: 'Create a new file in the current directory or workspace.',
     icon: 'i-heroicons-document-plus',
     select: (e: Event) => {
-      e.preventDefault()
+      e?.preventDefault()
       toast.add({ title: 'New file added!' })
     },
     kbds: ['meta', 'N']
   }, {
-    id: 'new-folder',
     label: 'Add new folder',
+    suffix: 'Create a new folder in the current directory or workspace.',
     icon: 'i-heroicons-folder-plus',
     select: (e: Event) => {
-      e.preventDefault()
+      e?.preventDefault()
       toast.add({ title: 'New folder added!' })
     },
     kbds: ['meta', 'F']
   }, {
-    id: 'hashtag',
     label: 'Add hashtag',
+    suffix: 'Add a hashtag to the current item.',
     icon: 'i-heroicons-hashtag',
-    select: (e) => {
-      e.preventDefault()
+    select: (e: Event) => {
+      e?.preventDefault()
       toast.add({ title: 'Hashtag added!' })
     },
     kbds: ['meta', 'H']
   }, {
-    id: 'label',
     label: 'Add label',
+    suffix: 'Add a label to the current item.',
     icon: 'i-heroicons-tag',
-    select: (e) => {
-      e.preventDefault()
+    select: (e: Event) => {
+      e?.preventDefault()
       toast.add({ title: 'Label added!' })
     },
     kbds: ['meta', 'L']
   }]
 }])
 
+// function onSelect(item: typeof groups.value[number]['items'][number]) {
 function onSelect(item: any) {
-  console.log(item)
+  console.log('Selected', item)
 }
+
+defineShortcuts(extractShortcuts(groups.value))
 </script>
 
 <template>
@@ -78,10 +82,14 @@ function onSelect(item: any) {
     <UCommandPalette
       v-model="selected"
       v-model:search-term="searchTerm"
-      multiple
       :loading="pending"
       :groups="groups"
-      :fuse="{ fuseOptions: { threshold: 0.2 } }"
+      :fuse="{
+        fuseOptions: {
+          threshold: 0.1,
+          includeMatches: true
+        }
+      }"
       class="max-h-80"
       @update:model-value="onSelect"
     />
@@ -109,7 +117,7 @@ function onSelect(item: any) {
         <UButton label="Open popover" color="gray" />
 
         <template #content>
-          <ReuseTemplate :ui="{ input: 'h-10' }" placeholder="Search..." class="w-48" />
+          <ReuseTemplate :ui="{ input: '[&>input]:h-10' }" placeholder="Search..." class="w-48" />
         </template>
       </UPopover>
     </div>
