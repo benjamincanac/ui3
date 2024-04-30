@@ -85,6 +85,7 @@ const labels = [{
     color: 'blue'
   }
 }]
+const label = ref()
 
 // function onSelect(item: typeof groups.value[number]['items'][number]) {
 function onSelect(item: any) {
@@ -134,7 +135,7 @@ defineShortcuts(extractShortcuts(groups.value))
         <UButton label="Select label (popover)" color="gray" />
 
         <template #content>
-          <UCommandPalette placeholder="Search labels..." :groups="[{ id: 'labels', items: labels }]" :ui="{ input: '[&>input]:h-9' }" />
+          <UCommandPalette v-model="label" placeholder="Search labels..." :groups="[{ id: 'labels', items: labels }]" :ui="{ input: '[&>input]:h-9' }" />
         </template>
       </UPopover>
     </div>

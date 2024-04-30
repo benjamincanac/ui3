@@ -155,7 +155,7 @@ const groups = computed(() => {
             <ComboboxItem
               v-for="(item, index) in group!.items"
               :key="`group-${groupIndex}-${index}`"
-              :value="omit(item, ['matches' as any, 'select'])"
+              :value="omit(item, ['matches' as any, 'select', 'group'])"
               :disabled="item.disabled"
               :class="ui.item()"
               @select="item.select"
