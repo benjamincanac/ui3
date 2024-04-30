@@ -43,7 +43,8 @@ describe('CommandPalette', () => {
     ['with label slot', { props, slots: { label: () => 'Label slot' } }],
     ['with trailing slot', { props, slots: { trailing: () => 'Trailing slot' } }],
     ['with item slot', { props, slots: { item: () => 'Item slot' } }],
-    ['with custom slot', { props, slots: { custom: () => 'Custom slot' } }]
+    ['with custom slot', { props, slots: { custom: () => 'Custom slot' } }],
+    ['with close slot', { props: { close: true }, slots: { close: () => 'Close slot' } }]
   ])('renders %s correctly', async (nameOrHtml: string, options: { props?: CommandPaletteProps<typeof groups[number], typeof groups[number]['items'][number]>, slots?: Partial<any> }) => {
     const html = await ComponentRender(nameOrHtml, options, CommandPalette)
     expect(html).toMatchSnapshot()
