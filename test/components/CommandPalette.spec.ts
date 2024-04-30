@@ -34,6 +34,11 @@ describe('CommandPalette', () => {
   it.each([
     // Props
     ['with groups', { props }],
+    ['with icon', { props: { ...props, icon: 'i-heroicons-command-line' } }],
+    ['with placeholder', { props: { ...props, placeholder: 'Search...' } }],
+    ['with disabled', { props: { ...props, disabled: true } }],
+    ['with loading', { props: { ...props, loading: true } }],
+    ['with loadingIcon', { props: { loading: true, loadingIcon: 'i-heroicons-sparkles' } }],
     ['with as', { props: { ...props, as: 'section' } }],
     ['with class', { props: { ...props, class: 'divide-gray-300 dark:divide-gray-700' } }],
     ['with ui', { props: { ...props, ui: { input: '[&>input]:h-10' } } }],

@@ -1,6 +1,6 @@
 <script lang="ts">
 import { tv } from 'tailwind-variants'
-import type { DropdownMenuRootProps, DropdownMenuRootEmits, DropdownMenuContentProps, DropdownMenuArrowProps } from 'radix-vue'
+import type { DropdownMenuRootProps, DropdownMenuRootEmits, DropdownMenuContentProps, DropdownMenuArrowProps, DropdownMenuTriggerProps } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/dropdown-menu'
@@ -19,7 +19,7 @@ export interface DropdownMenuItem extends Omit<LinkProps, 'type'> {
   kbds?: KbdProps['value'][] | KbdProps[]
   /**
    * The item type.
-   * @defaultValue 'link'
+   * @defaultValue `'link'`
    */
   type?: 'label' | 'separator' | 'link'
   slot?: string
@@ -29,9 +29,8 @@ export interface DropdownMenuItem extends Omit<LinkProps, 'type'> {
   select? (e: Event): void
 }
 
-export interface DropdownMenuProps<T> extends Omit<DropdownMenuRootProps, 'dir'> {
+export interface DropdownMenuProps<T> extends Omit<DropdownMenuRootProps, 'dir'>, Pick<DropdownMenuTriggerProps, 'disabled'> {
   items?: T[] | T[][]
-  disabled?: boolean
   content?: Omit<DropdownMenuContentProps, 'asChild' | 'forceMount'>
   arrow?: boolean | Omit<DropdownMenuArrowProps, 'asChild'>
   portal?: boolean

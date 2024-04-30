@@ -1,6 +1,6 @@
 <script lang="ts">
 import { tv } from 'tailwind-variants'
-import type { ContextMenuRootProps, ContextMenuRootEmits, ContextMenuContentProps, ContextMenuArrowProps } from 'radix-vue'
+import type { ContextMenuRootProps, ContextMenuRootEmits, ContextMenuContentProps, ContextMenuArrowProps, ContextMenuTriggerProps } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/context-menu'
@@ -19,7 +19,7 @@ export interface ContextMenuItem extends Omit<LinkProps, 'type'> {
   kbds?: KbdProps['value'][] | KbdProps[]
   /**
    * The item type.
-   * @defaultValue 'link'
+   * @defaultValue `'link'`
    */
   type?: 'label' | 'separator' | 'link'
   slot?: string
@@ -29,9 +29,8 @@ export interface ContextMenuItem extends Omit<LinkProps, 'type'> {
   select? (e: Event): void
 }
 
-export interface ContextMenuProps<T> extends Omit<ContextMenuRootProps, 'dir'> {
+export interface ContextMenuProps<T> extends Omit<ContextMenuRootProps, 'dir'>, Pick<ContextMenuTriggerProps, 'disabled'> {
   items?: T[] | T[][]
-  disabled?: boolean
   content?: Omit<ContextMenuContentProps, 'asChild' | 'forceMount'>
   arrow?: boolean | Omit<ContextMenuArrowProps, 'asChild'>
   portal?: boolean

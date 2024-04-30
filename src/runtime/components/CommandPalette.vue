@@ -45,9 +45,12 @@ export interface CommandPaletteProps<G, T> extends Pick<ComboboxRootProps, 'as' 
    * @defaultValue `appConfig.ui.icons.check`
    */
   selectedIcon?: string
-  /** The placeholder text when the input is empty. */
+  /**
+   * The placeholder text when the input is empty.
+   * @defaultValue `'Type a command or search...'`
+   */
   placeholder?: string
-  /** Display a close button  */
+  /** Display a close button in the input, clicking it will emit the `close` event. */
   close?: ButtonProps | boolean
   groups?: G[]
   fuse?: UseFuseOptions<T>
