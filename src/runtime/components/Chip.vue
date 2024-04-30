@@ -17,6 +17,10 @@ export interface ChipProps extends Omit<PrimitiveProps, 'asChild'> {
   color?: ChipVariants['color']
   size?: ChipVariants['size']
   position?: ChipVariants['position']
+  /**
+   * When `true`, render the chip relatively to the parent.
+   */
+  standalone?: boolean
   class?: any
   ui?: Partial<typeof theme.slots>
 }
@@ -43,7 +47,8 @@ const ui = computed(() => tv({ extend: chip, slots: props.ui })({
   color: props.color,
   size: size.value,
   position: props.position,
-  inset: props.inset
+  inset: props.inset,
+  standalone: props.standalone
 }))
 
 provide('avatar-size', size)

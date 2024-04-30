@@ -90,14 +90,14 @@ const fuse = computed(() => defu({}, props.fuse, {
 
 const items = computed(() => props.groups?.flatMap(group => group.items?.map(item => ({ ...item, group: group.id })) || []) || [])
 
-const { results } = useFuse(searchTerm, items, fuse)
+const { results: fuseResults } = useFuse(searchTerm, items, fuse)
 
 const groups = computed(() => {
-  if (!results.value?.length) {
+  if (!fuseResults.value?.length) {
     return []
   }
 
-  const groups: Record<string, T[]> = results.value.reduce((acc, result) => {
+  const groups: Record<string, T[]> = fuseResults.value.reduce((acc, result) => {
     const { item, matches } = result
     if (!item.group) {
       return acc
@@ -165,7 +165,14 @@ const groups = computed(() => {
                   <slot name="leading" :item="item" :index="index">
                     <UAvatar v-if="item.avatar" size="2xs" v-bind="item.avatar" :class="ui.itemLeadingAvatar()" />
                     <UIcon v-else-if="item.icon" :name="item.icon" :class="ui.itemLeadingIcon()" />
-                    <UChip v-else-if="item.chip" size="2xs" v-bind="item.chip" :class="ui.itemLeadingChip()" />
+                    <UChip
+                      v-else-if="item.chip"
+                      size="md"
+                      inset
+                      standalone
+                      v-bind="item.chip"
+                      :class="ui.itemLeadingChip()"
+                    />
                   </slot>
                 </slot>
 

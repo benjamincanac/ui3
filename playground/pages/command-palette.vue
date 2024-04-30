@@ -19,7 +19,7 @@ const selected = ref([])
 const { data: users, pending } = await useFetch('https://jsonplaceholder.typicode.com/users', {
   // params: { q: searchTermDebounced },
   transform: (data: User[]) => {
-    return data?.map(user => ({ icon: 'i-heroicons-user', id: user.id, label: user.name, suffix: user.email })) || []
+    return data?.map(user => ({ id: user.id, label: user.name, suffix: user.email, avatar: { src: `https://i.pravatar.cc/120?img=${user.id}` } })) || []
   },
   lazy: true
 })
@@ -69,6 +69,23 @@ const groups = computed(() => [{
   }]
 }])
 
+const labels = [{
+  label: 'Bug',
+  chip: {
+    color: 'red'
+  }
+}, {
+  label: 'Feature',
+  chip: {
+    color: 'green'
+  }
+}, {
+  label: 'Enhancement',
+  chip: {
+    color: 'blue'
+  }
+}]
+
 // function onSelect(item: typeof groups.value[number]['items'][number]) {
 function onSelect(item: any) {
   console.log('Selected', item)
@@ -95,8 +112,8 @@ defineShortcuts(extractShortcuts(groups.value))
     />
   </DefineTemplate>
 
-  <div class="flex-1 flex flex-col gap-8 w-lg">
-    <div class="flex items-center justify-between gap-2">
+  <div class="flex-1 flex flex-col gap-12 w-lg">
+    <div class="flex items-center justify-between gap-2 mt-[58px]">
       <UModal>
         <UButton label="Open modal" color="gray" />
 
@@ -114,10 +131,10 @@ defineShortcuts(extractShortcuts(groups.value))
       </UDrawer>
 
       <UPopover :content="{ side: 'right', align: 'start' }">
-        <UButton label="Open popover" color="gray" />
+        <UButton label="Select label (popover)" color="gray" />
 
         <template #content>
-          <ReuseTemplate :ui="{ input: '[&>input]:h-10' }" placeholder="Search..." class="w-48" />
+          <UCommandPalette placeholder="Search labels..." :groups="[{ id: 'labels', items: labels }]" :ui="{ input: '[&>input]:h-9' }" />
         </template>
       </UPopover>
     </div>
