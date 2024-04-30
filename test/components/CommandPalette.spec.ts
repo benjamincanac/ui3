@@ -27,6 +27,34 @@ describe('CommandPalette', () => {
       kbds: ['meta', 'L'],
       slot: 'custom'
     }]
+  }, {
+    id: 'labels',
+    label: 'Labels',
+    items: [{
+      label: 'bug',
+      chip: {
+        color: 'red'
+      }
+    }, {
+      label: 'feature',
+      chip: {
+        color: 'green'
+      }
+    }, {
+      label: 'enhancement',
+      chip: {
+        color: 'blue'
+      }
+    }]
+  }, {
+    id: 'users',
+    label: 'Users',
+    items: [{
+      label: 'benjamincanac',
+      avatar: {
+        src: 'https://avatars.githubusercontent.com/u/739984?v=4'
+      }
+    }]
   }]
 
   const props = { groups }
@@ -34,11 +62,13 @@ describe('CommandPalette', () => {
   it.each([
     // Props
     ['with groups', { props }],
-    ['with icon', { props: { ...props, icon: 'i-heroicons-command-line' } }],
+    ['with modelValue', { props: { ...props, modelValue: groups[2].items[0] } }],
     ['with placeholder', { props: { ...props, placeholder: 'Search...' } }],
     ['with disabled', { props: { ...props, disabled: true } }],
+    ['with icon', { props: { ...props, icon: 'i-heroicons-command-line' } }],
     ['with loading', { props: { ...props, loading: true } }],
     ['with loadingIcon', { props: { loading: true, loadingIcon: 'i-heroicons-sparkles' } }],
+    ['with selectedIcon', { props: { ...props, selectedIcon: 'i-heroicons-check-badge', modelValue: groups[2].items[0] } }],
     ['with as', { props: { ...props, as: 'section' } }],
     ['with class', { props: { ...props, class: 'divide-gray-300 dark:divide-gray-700' } }],
     ['with ui', { props: { ...props, ui: { input: '[&>input]:h-10' } } }],
@@ -49,7 +79,7 @@ describe('CommandPalette', () => {
     ['with trailing slot', { props, slots: { trailing: () => 'Trailing slot' } }],
     ['with item slot', { props, slots: { item: () => 'Item slot' } }],
     ['with custom slot', { props, slots: { custom: () => 'Custom slot' } }],
-    ['with close slot', { props: { close: true }, slots: { close: () => 'Close slot' } }]
+    ['with close slot', { props: { ...props, close: true }, slots: { close: () => 'Close slot' } }]
   ])('renders %s correctly', async (nameOrHtml: string, options: { props?: CommandPaletteProps<typeof groups[number], typeof groups[number]['items'][number]>, slots?: Partial<any> }) => {
     const html = await ComponentRender(nameOrHtml, options, CommandPalette)
     expect(html).toMatchSnapshot()
