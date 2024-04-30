@@ -12,6 +12,7 @@ type User = {
 const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
 const toast = useToast()
 
+const open = ref(false)
 const searchTerm = ref('')
 // const searchTermDebounced = refDebounced(searchTerm, 200)
 const selected = ref([])
@@ -70,19 +71,19 @@ const groups = computed(() => [{
 }])
 
 const labels = [{
-  label: 'Bug',
+  label: 'bug',
   chip: {
-    color: 'red'
+    color: 'red' as const
   }
 }, {
-  label: 'Feature',
+  label: 'feature',
   chip: {
-    color: 'green'
+    color: 'green' as const
   }
 }, {
-  label: 'Enhancement',
+  label: 'enhancement',
   chip: {
-    color: 'blue'
+    color: 'blue' as const
   }
 }]
 const label = ref()
@@ -92,7 +93,10 @@ function onSelect(item: any) {
   console.log('Selected', item)
 }
 
-defineShortcuts(extractShortcuts(groups.value))
+defineShortcuts({
+  'meta+k': () => open.value = !open.value,
+  ...extractShortcuts(groups.value)
+})
 </script>
 
 <template>
@@ -108,18 +112,19 @@ defineShortcuts(extractShortcuts(groups.value))
           includeMatches: true
         }
       }"
-      class="max-h-80"
+      multiple
+      class="sm:max-h-80"
       @update:model-value="onSelect"
     />
   </DefineTemplate>
 
-  <div class="flex-1 flex flex-col gap-12 w-lg">
+  <div class="flex-1 flex flex-col gap-12 w-full max-w-lg">
     <div class="flex items-center justify-between gap-2 mt-[58px]">
-      <UModal>
+      <UModal v-model:open="open">
         <UButton label="Open modal" color="gray" />
 
         <template #content>
-          <ReuseTemplate />
+          <ReuseTemplate :close="true" @close="open = false" />
         </template>
       </UModal>
 

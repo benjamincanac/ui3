@@ -19,7 +19,7 @@ export interface DropdownMenuItem extends Omit<LinkProps, 'type'> {
   kbds?: KbdProps['value'][] | KbdProps[]
   /**
    * The item type.
-   * @defaultValue "link"
+   * @defaultValue 'link'
    */
   type?: 'label' | 'separator' | 'link'
   slot?: string

@@ -6,7 +6,7 @@ import type { UseFuseOptions } from '@vueuse/integrations/useFuse'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/command-palette'
 import type { UseComponentIconsProps } from '#ui/composables/useComponentIcons'
-import type { AvatarProps, KbdProps } from '#ui/types'
+import type { AvatarProps, ButtonProps, ChipProps, KbdProps } from '#ui/types'
 import type { DynamicSlots } from '#ui/types/utils'
 
 const appConfig = _appConfig as AppConfig & { ui: { commandPalette: Partial<typeof theme> } }
@@ -19,6 +19,7 @@ export interface CommandPaletteItem {
   suffix?: string
   icon?: string
   avatar?: AvatarProps
+  chip?: ChipProps
   kbds?: KbdProps['value'][] | KbdProps[]
   disabled?: boolean
   slot?: string
@@ -29,24 +30,40 @@ export interface CommandPaletteGroup<T> {
   id: string
   label?: string
   items?: T[]
+  /** The icon displayed when an item is highlighted. */
   highlightedIcon?: string
 }
 
-export interface CommandPaletteProps<G, T> extends Pick<ComboboxRootProps, 'as' | 'multiple' | 'disabled' | 'modelValue'>, Omit<UseComponentIconsProps, 'leading' | 'trailing'> {
+export interface CommandPaletteProps<G, T> extends Pick<ComboboxRootProps, 'as' | 'multiple' | 'disabled' | 'modelValue'>, Omit<UseComponentIconsProps, 'leading' | 'trailing' | 'icon'> {
+  /**
+   * The icon displayed in the input.
+   * @defaultValue `appConfig.ui.icons.search`
+   */
+  icon?: string
+  /**
+   * The icon displayed when an item is selected.
+   * @defaultValue `appConfig.ui.icons.check`
+   */
   selectedIcon?: string
+  /** The placeholder text when the input is empty. */
   placeholder?: string
+  /** Display a close button  */
+  close?: ButtonProps | boolean
   groups?: G[]
   fuse?: UseFuseOptions<T>
   class?: any
   ui?: Partial<typeof commandPalette.slots>
 }
 
-export type CommandPaletteEmits<T> = Omit<ComboboxRootEmits<T>, 'update:open'>
+export type CommandPaletteEmits<T> = {
+  close: []
+} & Omit<ComboboxRootEmits<T>, 'update:open'>
 
 type SlotProps<T> = (props: { item: T, index: number }) => any
 
 export type CommandPaletteSlots<T extends { slot?: string }> = {
   empty(props: { searchTerm: string }): any
+  close(): any
   leading: SlotProps<T>
   label: SlotProps<T>
   trailing: SlotProps<T>
@@ -135,7 +152,23 @@ const groups = computed(() => {
         :loading-icon="loadingIcon"
         :placeholder="placeholder"
         :class="ui.input()"
-      />
+      >
+        <template #trailing>
+          <slot name="close" :class="ui.close()">
+            <UButton
+              v-if="close"
+              :icon="appConfig.ui.icons.close"
+              size="md"
+              color="gray"
+              variant="ghost"
+              aria-label="Close"
+              v-bind="typeof close === 'object' ? close : {}"
+              :class="ui.close()"
+              @click="emits('close')"
+            />
+          </slot>
+        </template>
+      </UInput>
     </ComboboxInput>
 
     <ComboboxPortal :disabled="true">
@@ -155,13 +188,13 @@ const groups = computed(() => {
             <ComboboxItem
               v-for="(item, index) in group!.items"
               :key="`group-${groupIndex}-${index}`"
-              :value="omit(item, ['matches' as any, 'select', 'group'])"
+              :value="omit(item, ['matches' as any, 'group' as any, 'select'])"
               :disabled="item.disabled"
               :class="ui.item()"
               @select="item.select"
             >
               <slot :name="item.slot || 'item'" :item="item" :index="index">
-                <slot :name="`${group!.id}-leading`" :item="item" :index="index">
+                <slot :name="`${group.id}-leading`" :item="item" :index="index">
                   <slot name="leading" :item="item" :index="index">
                     <UAvatar v-if="item.avatar" size="2xs" v-bind="item.avatar" :class="ui.itemLeadingAvatar()" />
                     <UIcon v-else-if="item.icon" :name="item.icon" :class="ui.itemLeadingIcon()" />
@@ -177,7 +210,7 @@ const groups = computed(() => {
                 </slot>
 
                 <span v-if="item.label || $slots.label || $slots[`${group.id}-label`]" :class="ui.itemLabel()">
-                  <slot :name="`${group!.id}-label`" :item="item" :index="index">
+                  <slot :name="`${group.id}-label`" :item="item" :index="index">
                     <slot name="label" :item="item" :index="index">
                       <span v-if="item.prefix" :class="ui.itemLabelPrefix()">{{ item.prefix }}</span>
 
@@ -189,7 +222,7 @@ const groups = computed(() => {
                 </span>
 
                 <span :class="ui.itemTrailing()">
-                  <slot :name="`${group!.id}-trailing`" :item="item" :index="index">
+                  <slot :name="`${group.id}-trailing`" :item="item" :index="index">
                     <slot name="trailing" :item="item" :index="index">
                       <span v-if="item.kbds?.length" :class="ui.itemTrailingKbds()">
                         <UKbd v-for="(kbd, kbdIndex) in item.kbds" :key="kbdIndex" size="md" v-bind="typeof kbd === 'string' ? { value: kbd } : kbd" />
