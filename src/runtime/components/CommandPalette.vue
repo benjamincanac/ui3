@@ -33,7 +33,7 @@ export interface CommandPaletteGroup<T> {
   highlightedIcon?: string
 }
 
-export interface CommandPaletteProps<G, T> extends Pick<ComboboxRootProps, 'as' | 'multiple' | 'disabled' | 'modelValue'>, Omit<UseComponentIconsProps, 'leading' | 'trailing' | 'icon'> {
+export interface CommandPaletteProps<G, T> extends Pick<ComboboxRootProps, 'as' | 'multiple' | 'disabled' | 'modelValue'>, Omit<UseComponentIconsProps, 'leading' | 'trailing' | 'icon' | 'avatar'> {
   /**
    * The icon displayed in the input.
    * @defaultValue `appConfig.ui.icons.search`
@@ -60,7 +60,7 @@ export type CommandPaletteEmits<T> = {
 type SlotProps<T> = (props: { item: T, index: number }) => any
 
 export type CommandPaletteSlots<T extends { slot?: string }> = {
-  empty(props: { searchTerm: string }): any
+  empty(props: { searchTerm?: string }): any
   close(): any
   leading: SlotProps<T>
   label: SlotProps<T>
@@ -71,7 +71,7 @@ export type CommandPaletteSlots<T extends { slot?: string }> = {
 
 <script setup lang="ts" generic="G extends CommandPaletteGroup<T>, T extends CommandPaletteItem">
 import { computed } from 'vue'
-import { ComboboxRoot, ComboboxInput, ComboboxPortal, ComboboxContent, ComboboxEmpty, ComboboxViewport, ComboboxGroup, ComboboxLabel, ComboboxItem, ComboboxItemIndicator, useForwardPropsEmits } from 'radix-vue'
+import { ComboboxRoot, ComboboxInput, ComboboxPortal, ComboboxContent, ComboboxEmpty, ComboboxViewport, ComboboxGroup, ComboboxLabel, ComboboxItem, ComboboxItemIndicator, useForwardProps, useForwardPropsEmits } from 'radix-vue'
 import { defu } from 'defu'
 import { reactivePick } from '@vueuse/core'
 import { useFuse } from '@vueuse/integrations/useFuse'
@@ -91,6 +91,7 @@ const searchTerm = defineModel<string>('searchTerm', { default: '' })
 
 const appConfig = useAppConfig()
 const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'disabled', 'multiple', 'modelValue'), emits)
+const inputProps = useForwardProps(reactivePick(props, 'loading', 'loadingIcon', 'placeholder'))
 
 const ui = computed(() => tv({ extend: commandPalette, slots: props.ui })())
 
@@ -145,10 +146,9 @@ const groups = computed(() => {
       <UInput
         variant="none"
         autofocus
+        size="md"
+        v-bind="inputProps"
         :icon="icon || appConfig.ui.icons.search"
-        :loading="loading"
-        :loading-icon="loadingIcon"
-        :placeholder="placeholder"
         :class="ui.input()"
       >
         <template v-if="close || $slots.close" #trailing>
@@ -179,12 +179,12 @@ const groups = computed(() => {
 
         <ComboboxViewport :class="ui.viewport()">
           <ComboboxGroup v-for="(group, groupIndex) in groups" :key="`group-${groupIndex}`" :class="ui.group()">
-            <ComboboxLabel v-if="group!.label" :class="ui.label()">
-              {{ group!.label }}
+            <ComboboxLabel v-if="group.label" :class="ui.label()">
+              {{ group.label }}
             </ComboboxLabel>
 
             <ComboboxItem
-              v-for="(item, index) in group!.items"
+              v-for="(item, index) in group.items"
               :key="`group-${groupIndex}-${index}`"
               :value="omit(item, ['matches' as any, 'group' as any, 'select'])"
               :disabled="item.disabled"

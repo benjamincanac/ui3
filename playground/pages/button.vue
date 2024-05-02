@@ -56,13 +56,23 @@ const variants = Object.keys(theme.variants.variant)
       <UButton icon="i-heroicons-rocket-launch" label="Button" color="black" />
       <UButton icon="i-heroicons-rocket-launch" label="Button" color="black" variant="link" />
     </div>
-    <div class="flex items-center gap-2 ml-[-129px]">
+    <div class="flex items-center gap-2 ml-[-131px]">
       <UButton v-for="size in sizes" :key="size" label="Button" :size="(size as any)" />
     </div>
-    <div class="flex items-center gap-2 ml-[-171px]">
+    <div class="flex items-center gap-2 ml-[-177px]">
       <UButton v-for="size in sizes" :key="size" icon="i-heroicons-rocket-launch" label="Button" :size="(size as any)" />
     </div>
-    <div class="flex items-center gap-2 ml-[-159px]">
+    <div class="flex items-center gap-2 ml-[-177px]">
+      <UButton
+        v-for="size in sizes"
+        :key="size"
+        :avatar="{ src: 'https://avatars.githubusercontent.com/u/739984?v=4' }"
+        label="Button"
+        color="white"
+        :size="(size as any)"
+      />
+    </div>
+    <div class="flex items-center gap-2 ml-[-169px]">
       <UButton
         v-for="size in sizes"
         :key="size"
@@ -72,8 +82,11 @@ const variants = Object.keys(theme.variants.variant)
         :size="(size as any)"
       />
     </div>
-    <div class="flex items-center gap-2 ml-[-67px]">
+    <div class="flex items-center gap-2 ml-[-72px]">
       <UButton v-for="size in sizes" :key="size" icon="i-heroicons-rocket-launch" :size="(size as any)" />
+    </div>
+    <div class="flex items-center gap-2 ml-[-72px]">
+      <UButton v-for="size in sizes" :key="size" :avatar="{ src: 'https://avatars.githubusercontent.com/u/739984?v=4' }" color="white" :size="(size as any)" />
     </div>
     <div class="flex items-center gap-2">
       <UButton icon="i-heroicons-rocket-launch" trailing-icon="i-heroicons-chevron-down-20-solid" label="Block" block />

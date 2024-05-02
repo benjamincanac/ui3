@@ -1,13 +1,7 @@
 <script setup lang="ts">
 // import { createReusableTemplate, refDebounced } from '@vueuse/core'
 import { createReusableTemplate } from '@vueuse/core'
-
-type User = {
-  id: number
-  name: string
-  email: string
-  phone: string
-}
+import type { User } from '~/types'
 
 const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
 const toast = useToast()

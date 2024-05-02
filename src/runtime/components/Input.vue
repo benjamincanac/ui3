@@ -39,13 +39,14 @@ export interface InputEmits {
 export interface InputSlots {
   leading(): any
   default(): any
-  trailing(): any
+  trailing(props: { iconClass: string }): any
 }
 </script>
 
 <script lang="ts" setup>
 import { ref, computed, onMounted } from 'vue'
 import { useComponentIcons, useFormField } from '#imports'
+import { UIcon, UAvatar } from '#components'
 import { looseToNumber } from '#ui/utils'
 
 defineOptions({ inheritAttrs: false })
@@ -60,7 +61,7 @@ defineSlots<InputSlots>()
 const [modelValue, modelModifiers] = defineModel<string | number>()
 
 const { emitFormBlur, emitFormInput, size, color, id, name, disabled } = useFormField<InputProps>(props)
-const { isLeading, isTrailing, leadingIconName, trailingIconName } = useComponentIcons(props)
+const { isLeading, isTrailing, leadingIconName, trailingIconName, avatarSize } = useComponentIcons<InputProps>(props)
 // const { size: sizeButtonGroup, rounded } = useInjectButtonGroup({ ui, props })
 
 // const size = computed(() => sizeButtonGroup.value || sizeFormGroup.value)
@@ -147,14 +148,15 @@ onMounted(() => {
 
     <slot />
 
-    <span v-if="(isLeading && leadingIconName) || $slots.leading" :class="ui.leading()">
+    <span v-if="avatar || (isLeading && leadingIconName) || $slots.leading" :class="ui.leading()">
       <slot name="leading">
         <UIcon v-if="isLeading && leadingIconName" :name="leadingIconName" :class="ui.leadingIcon()" />
+        <UAvatar v-else-if="avatar" :size="avatarSize" v-bind="avatar" :class="ui.leadingAvatar()" />
       </slot>
     </span>
 
     <span v-if="(isTrailing && trailingIconName) || $slots.trailing" :class="ui.trailing()">
-      <slot name="trailing">
+      <slot name="trailing" :icon-class="ui.trailingIcon()">
         <UIcon v-if="isTrailing && trailingIconName" :name="trailingIconName" :class="ui.trailingIcon()" />
       </slot>
     </span>

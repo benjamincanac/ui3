@@ -2,7 +2,7 @@ export default {
   slots: {
     content: 'min-w-32 bg-white dark:bg-gray-900 shadow-lg rounded-md ring ring-gray-200 dark:ring-gray-800 divide-y divide-gray-200 dark:divide-gray-800 overflow-y-auto scroll-py-1 data-[state=open]:animate-[scale-in_100ms_ease-out] data-[state=closed]:animate-[scale-out_100ms_ease-in]',
     group: 'p-1 isolate',
-    label: 'w-full flex items-center gap-1.5 p-1.5 text-sm font-medium select-none',
+    label: 'w-full flex items-center gap-1.5 p-1.5 text-sm font-semibold text-gray-900 dark:text-white',
     separator: '-mx-1 my-1 h-px bg-gray-200 dark:bg-gray-800',
     link: 'group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75',
     linkLeadingIcon: 'shrink-0 size-5',
