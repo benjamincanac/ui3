@@ -28,9 +28,9 @@ export default (config: { colors: string[] }) => ({
         trailingIcon: 'size-4'
       },
       sm: {
-        base: 'px-2 py-1 text-sm gap-1',
-        leadingIcon: 'size-5',
-        trailingIcon: 'size-5'
+        base: 'px-2.5 py-1.5 text-xs gap-1.5',
+        leadingIcon: 'size-4',
+        trailingIcon: 'size-4'
       },
       md: {
         base: 'px-2.5 py-1.5 text-sm gap-1.5',
@@ -131,7 +131,7 @@ export default (config: { colors: string[] }) => ({
   }, {
     size: 'sm',
     square: true,
-    class: 'p-1'
+    class: 'p-1.5'
   }, {
     size: 'md',
     square: true,

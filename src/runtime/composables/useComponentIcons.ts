@@ -48,11 +48,11 @@ export function useComponentIcons<T>(props: UseComponentIconsProps & { size: Get
 
   const avatarSize = computed<AvatarProps['size']>(() => {
     return ({
-      xs: '3xs',
-      sm: '2xs',
-      md: '2xs',
-      lg: '2xs',
-      xl: 'xs'
+      xs: '3xs' as const,
+      sm: '3xs' as const,
+      md: '2xs' as const,
+      lg: '2xs' as const,
+      xl: 'xs' as const
     })[props.size || 'md']
   })
 

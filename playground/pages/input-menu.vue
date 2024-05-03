@@ -48,8 +48,11 @@ const status = ref()
 <template>
   <div class="flex flex-col gap-4 w-48">
     <UInputMenu v-model="selected1" :items="[[{ label: 'Fruits', type: 'label' }, ...fruits], [{ label: 'Vegetables', type: 'label' }, ...vegetables]]" />
+
     <UInputMenu v-model="selected2" :items="users2!" />
-    <UInputMenu v-model="selected3" v-model:search-term="searchTerm" :items="users3!" :loading="pending" />
+
+    <UInputMenu v-model="selected3" v-model:search-term="searchTerm" :items="users3!" :loading="pending" :filter="false" />
+
     <UInputMenu v-model="status" :items="statuses" placeholder="Search status..." icon="i-heroicons-magnifying-glass" trailing-icon="i-heroicons-chevron-up-down-20-solid" />
   </div>
 </template>

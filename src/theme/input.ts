@@ -19,11 +19,11 @@ export default (config: { colors: string[] }) => {
           trailingIcon: 'size-4'
         },
         sm: {
-          base: 'px-2 py-1 text-sm',
-          leading: 'pl-2',
-          trailing: 'pr-2',
-          leadingIcon: 'size-5',
-          trailingIcon: 'size-5'
+          base: 'px-2.5 py-1.5 text-xs',
+          leading: 'pl-2.5',
+          trailing: 'pr-2.5',
+          leadingIcon: 'size-4',
+          trailingIcon: 'size-4'
         },
         md: {
           base: 'px-2.5 py-1.5 text-sm',

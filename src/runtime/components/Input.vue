@@ -140,6 +140,7 @@ onMounted(() => {
       :placeholder="placeholder"
       :class="ui.base()"
       :disabled="disabled"
+      :required="required"
       v-bind="$attrs"
       @input="onInput"
       @blur="onBlur"

@@ -1,6 +1,7 @@
 <script lang="ts">
 import { tv } from 'tailwind-variants'
 import type { ComboboxRootProps, ComboboxRootEmits, ComboboxItemProps } from 'radix-vue'
+import type { FuseResult } from 'fuse.js'
 import type { AppConfig } from '@nuxt/schema'
 import type { UseFuseOptions } from '@vueuse/integrations/useFuse'
 import _appConfig from '#build/app.config'
@@ -106,14 +107,14 @@ const fuse = computed(() => defu({}, props.fuse, {
 
 const items = computed(() => props.groups?.flatMap(group => group.items?.map(item => ({ ...item, group: group.id })) || []) || [])
 
-const { results: fuseResults } = useFuse(searchTerm, items, fuse)
+const { results: fuseResults } = useFuse<T>(searchTerm, items, fuse)
 
 const groups = computed(() => {
   if (!fuseResults.value?.length) {
     return []
   }
 
-  const groups: Record<string, T[]> = fuseResults.value.reduce((acc, result) => {
+  const groups: Record<string, (T & { matches: FuseResult<T>['matches'] })[]> = fuseResults.value.reduce((acc, result) => {
     const { item, matches } = result
     if (!item.group) {
       return acc
@@ -126,16 +127,13 @@ const groups = computed(() => {
   }, {})
 
   return Object.entries(groups).map(([id, items]) => {
-    const group = props.groups?.find(group => group.id === id)
-    if (!group) {
-      return
-    }
+    const group = props.groups?.find(group => group.id === id) || {}
 
     return {
       ...group,
       items: items.slice(0, fuse.value.resultLimit)
     }
-  }).filter(Boolean)
+  })
 })
 </script>
 
@@ -212,9 +210,9 @@ const groups = computed(() => {
                     <slot name="label" :item="item" :index="index">
                       <span v-if="item.prefix" :class="ui.itemLabelPrefix()">{{ item.prefix }}</span>
 
-                      <span :class="ui.itemLabelBase()" v-html="highlight(item, searchTerm, 'label') || item.label" />
+                      <span :class="ui.itemLabelBase()" v-html="highlight<T>(item, searchTerm, 'label') || item.label" />
 
-                      <span :class="ui.itemLabelSuffix()" v-html="highlight(item, searchTerm, undefined, ['label']) || item.suffix" />
+                      <span :class="ui.itemLabelSuffix()" v-html="highlight<T>(item, searchTerm, undefined, ['label']) || item.suffix" />
                     </slot>
                   </slot>
                 </span>
