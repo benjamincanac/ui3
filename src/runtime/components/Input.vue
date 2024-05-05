@@ -73,7 +73,7 @@ const ui = computed(() => tv({ extend: input, slots: props.ui })({
   loading: props.loading,
   leading: isLeading.value,
   trailing: isTrailing.value,
-  buttonGroup: orientation
+  buttonGroup: orientation.value
 }))
 
 const inputRef = ref<HTMLInputElement | null>(null)

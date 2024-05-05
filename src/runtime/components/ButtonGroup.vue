@@ -36,10 +36,10 @@ const ui = computed(() => tv({ extend: buttonGroup, slots: props.ui })({
   orientation: props.orientation
 }))
 
-provide(buttonGroupInjectionKey, {
+provide(buttonGroupInjectionKey, computed(() => ({
   orientation: props.orientation,
   size: props.size
-})
+})))
 </script>
 
 <template>
