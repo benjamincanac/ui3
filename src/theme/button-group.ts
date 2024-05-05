@@ -15,6 +15,6 @@ export const buttonGroupVariantWithRoot = {
 
 export default {
   slots: {
-    base: 'inline-flex -space-x-px'
+    base: 'relative inline-flex -space-x-px'
   }
 }

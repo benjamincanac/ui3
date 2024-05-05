@@ -56,7 +56,7 @@ const ui = computed(() => tv({ extend: button, slots: props.ui })({
   square: props.square || (!slots.default && !props.label),
   leading: isLeading.value,
   trailing: isTrailing.value,
-  buttonGroup,
+  buttonGroup
 }))
 </script>
 
