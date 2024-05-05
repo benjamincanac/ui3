@@ -1,5 +1,4 @@
 <script lang="ts">
-import { provide, computed } from 'vue'
 import { tv, type VariantProps } from 'tailwind-variants'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
@@ -25,6 +24,9 @@ export interface ButtonGroupSlots {
 </script>
 
 <script setup lang="ts">
+import { provide, computed } from 'vue'
+import { buttonGroupInjectionKey } from '#imports'
+
 const props = withDefaults(defineProps<ButtonGroupProps>(), {
   orientation: 'horizontal'
 })
@@ -34,7 +36,7 @@ const ui = computed(() => tv({ extend: buttonGroup, slots: props.ui })({
   orientation: props.orientation
 }))
 
-provide('button-group', {
+provide(buttonGroupInjectionKey, {
   orientation: props.orientation,
   size: props.size
 })

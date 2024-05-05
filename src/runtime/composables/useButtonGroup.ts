@@ -1,12 +1,20 @@
+import { type InjectionKey } from 'vue'
 import { inject, computed } from 'vue'
-import type { ButtonProps } from '#ui/types'
+import type { GetObjectField } from '#ui/types/utils'
+import type { ButtonGroupProps } from '../components/ButtonGroup.vue'
 
-export function useButtonGroup(props: { size: ButtonProps['size'] }) {
-  const buttonGroup = inject<any>('button-group', undefined)
+export const buttonGroupInjectionKey: InjectionKey<ButtonGroupProps> = Symbol('nuxt-ui.button-group')
+
+type Props<T> = {
+  size?: GetObjectField<T, 'size'>
+}
+
+export function useButtonGroup<T>(props: Props<T>) {
+  const buttonGroup = inject(buttonGroupInjectionKey, undefined)
   const size = computed(() => props?.size ?? buttonGroup?.size)
 
   return {
-    orientation: buttonGroup.orientation,
+    orientation: buttonGroup?.orientation,
     size
   }
 }
