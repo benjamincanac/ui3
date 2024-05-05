@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ButtonGroup > renders with class correctly 1`] = `"<div class="inline-flex -space-x-px"></div>"`;
+
+exports[`ButtonGroup > renders with default slot correctly 1`] = `"<div class="inline-flex -space-x-px">Default slot</div>"`;
+
+exports[`ButtonGroup > renders with ui correctly 1`] = `"<div class="inline-flex -space-x-px"></div>"`;

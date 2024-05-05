@@ -1,3 +1,5 @@
+import { buttonGroupVariant } from './button-group'
+
 export default (config: { colors: string[] }) => ({
   slots: {
     base: 'rounded-md font-medium inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75',
@@ -6,6 +8,7 @@ export default (config: { colors: string[] }) => ({
     trailingIcon: 'shrink-0'
   },
   variants: {
+    ...buttonGroupVariant,
     color: {
       ...Object.fromEntries(config.colors.map((color: string) => [color, ''])),
       white: '',

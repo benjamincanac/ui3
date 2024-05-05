@@ -1,3 +1,5 @@
+import { buttonGroupVariantWithRoot } from './button-group'
+
 export default (config: { colors: string[] }) => {
   return {
     slots: {
@@ -9,6 +11,7 @@ export default (config: { colors: string[] }) => {
       trailingIcon: 'shrink-0 text-gray-400 dark:text-gray-500'
     },
     variants: {
+      ...buttonGroupVariantWithRoot,
       size: {
         xs: {
           base: 'text-xs px-2 py-1',

@@ -45,7 +45,7 @@ export interface InputSlots {
 
 <script lang="ts" setup>
 import { ref, computed, onMounted } from 'vue'
-import { useComponentIcons, useFormField } from '#imports'
+import { useComponentIcons, useFormField, useButtonGroup } from '#imports'
 import { looseToNumber } from '#ui/utils'
 
 defineOptions({ inheritAttrs: false })
@@ -59,20 +59,22 @@ defineSlots<InputSlots>()
 
 const [modelValue, modelModifiers] = defineModel<string | number>()
 
-const { emitFormBlur, emitFormInput, size, color, id, name, disabled } = useFormField<InputProps>(props)
+const { emitFormBlur, emitFormInput, size: formGroupSize, color, id, name, disabled } = useFormField<InputProps>(props)
 const { isLeading, isTrailing, leadingIconName, trailingIconName } = useComponentIcons(props)
+const { buttonGroup, size: buttonGroupSize } = useButtonGroup(props)
 // const { size: sizeButtonGroup, rounded } = useInjectButtonGroup({ ui, props })
 
-// const size = computed(() => sizeButtonGroup.value || sizeFormGroup.value)
+const inputSize = computed(() => buttonGroupSize.value || formGroupSize.value)
 
 const ui = computed(() => tv({ extend: input, slots: props.ui })({
   type: props.type as InputVariants['type'],
   color: color.value,
   variant: props.variant,
-  size: size?.value,
+  size: inputSize?.value,
   loading: props.loading,
   leading: isLeading.value,
-  trailing: isTrailing.value
+  trailing: isTrailing.value,
+  buttonGroup
 }))
 
 const inputRef = ref<HTMLInputElement | null>(null)
