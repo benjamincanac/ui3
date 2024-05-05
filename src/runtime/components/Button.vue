@@ -44,7 +44,7 @@ const slots = defineSlots<ButtonSlots>()
 const linkProps = useForwardProps(reactiveOmit(props, 'type', 'label', 'color', 'variant', 'size', 'icon', 'leading', 'leadingIcon', 'trailing', 'trailingIcon', 'loading', 'loadingIcon', 'square', 'block', 'disabled', 'truncate', 'class', 'ui'))
 
 const { isLeading, isTrailing, leadingIconName, trailingIconName } = useComponentIcons(props)
-const { buttonGroup, size: buttonSize } = useButtonGroup(props)
+const { orientation, size: buttonSize } = useButtonGroup(props)
 
 const ui = computed(() => tv({ extend: button, slots: props.ui })({
   color: props.color,
@@ -56,7 +56,7 @@ const ui = computed(() => tv({ extend: button, slots: props.ui })({
   square: props.square || (!slots.default && !props.label),
   leading: isLeading.value,
   trailing: isTrailing.value,
-  buttonGroup
+  buttonGroup: orientation
 }))
 </script>
 

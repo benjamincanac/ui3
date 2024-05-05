@@ -6,7 +6,7 @@ export function useButtonGroup(props: { size: ButtonProps['size'] }) {
   const size = computed(() => props?.size ?? buttonGroup?.size)
 
   return {
-    buttonGroup: !!buttonGroup,
+    orientation: buttonGroup.orientation,
     size
   }
 }

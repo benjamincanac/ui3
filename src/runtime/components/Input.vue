@@ -61,7 +61,7 @@ const [modelValue, modelModifiers] = defineModel<string | number>()
 
 const { emitFormBlur, emitFormInput, size: formGroupSize, color, id, name, disabled } = useFormField<InputProps>(props)
 const { isLeading, isTrailing, leadingIconName, trailingIconName } = useComponentIcons(props)
-const { buttonGroup, size: buttonGroupSize } = useButtonGroup(props)
+const { orientation, size: buttonGroupSize } = useButtonGroup(props)
 // const { size: sizeButtonGroup, rounded } = useInjectButtonGroup({ ui, props })
 
 const inputSize = computed(() => buttonGroupSize.value || formGroupSize.value)
@@ -74,7 +74,7 @@ const ui = computed(() => tv({ extend: input, slots: props.ui })({
   loading: props.loading,
   leading: isLeading.value,
   trailing: isTrailing.value,
-  buttonGroup
+  buttonGroup: orientation
 }))
 
 const inputRef = ref<HTMLInputElement | null>(null)

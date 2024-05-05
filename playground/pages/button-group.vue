@@ -23,6 +23,13 @@ const sizes = Object.keys(theme.variants.size)
         <UButton> Click me! </UButton>
       </UButtonGroup>
 
+      <UButtonGroup orientation="vertical">
+        <UButton color="white">
+          Click me!
+        </UButton>
+        <UInput />
+      </UButtonGroup>
+
       <UButtonGroup>
         <UButton color="white">
           Click me!
@@ -37,6 +44,7 @@ const sizes = Object.keys(theme.variants.size)
         </UButton>
       </UButtonGroup>
     </div>
+
     <div class="flex gap-4 items-center justify-center">
       <UButtonGroup v-for="size in sizes" :key="size" :size="(size as any)">
         <UInput />

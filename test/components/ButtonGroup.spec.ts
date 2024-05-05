@@ -21,6 +21,15 @@ describe('ButtonGroup', () => {
         })
       }
     }],
+    ['orientation vertical with default slot', {
+      props: { orientation: 'vertical' },
+      slots: {
+        default: () => ({
+          components: { UInput, UButton },
+          template: `<UInput> <UButton> Click me! </UButton>`
+        })
+      }
+    }],
     ...sizes.map((size: string) =>
       [`with size ${size}`, { props: { size },
         slots: {
