@@ -17,7 +17,7 @@ describe('ButtonGroup', () => {
       slots: {
         default: {
           components: { UInput, UButton },
-          template: `<UInput> <UButton> Click me! </UButton>`
+          template: `<UInput /> <UButton> Click me! </UButton>`
         }
       }
     }],
@@ -26,7 +26,7 @@ describe('ButtonGroup', () => {
       slots: {
         default: {
           components: { UInput, UButton },
-          template: `<UInput> <UButton> Click me! </UButton>`
+          template: `<UInput /> <UButton> Click me! </UButton>`
         }
       }
     }],
@@ -35,7 +35,7 @@ describe('ButtonGroup', () => {
         slots: {
           default: {
             components: { UInput, UButton },
-            template: `<UInput> <UButton> Click me! </UButton>`
+            template: `<UInput /> <UButton> Click me! </UButton>`
           }
         }
       }]
