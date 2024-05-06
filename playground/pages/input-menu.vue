@@ -47,11 +47,11 @@ const statuses = [{
 
       <UInputMenu :items="statuses" placeholder="Search status..." icon="i-heroicons-magnifying-glass" trailing-icon="i-heroicons-chevron-up-down-20-solid" />
 
-      <UInputMenu :items="users2!" icon="i-heroicons-user" placeholder="Search users..." />
+      <UInputMenu :items="users2 || []" icon="i-heroicons-user" placeholder="Search users..." />
 
       <UInputMenu
         v-model:search-term="searchTerm"
-        :items="users3!"
+        :items="users3 || []"
         :loading="pending"
         :filter="false"
         icon="i-heroicons-user"

@@ -61,14 +61,14 @@ export type CommandPaletteEmits<T> = {
 
 type SlotProps<T> = (props: { item: T, index: number }) => any
 
-export type CommandPaletteSlots<T extends { slot?: string }> = {
+export type CommandPaletteSlots<G extends { slot?: string }, T extends { slot?: string }> = {
   'empty'(props: { searchTerm?: string }): any
   'close'(): any
   'item': SlotProps<T>
   'item-leading': SlotProps<T>
   'item-label': SlotProps<T>
   'item-trailing': SlotProps<T>
-} & DynamicSlots<T, SlotProps<T>>
+} & DynamicSlots<G, SlotProps<T>> & DynamicSlots<T, SlotProps<T>>
 </script>
 
 <script setup lang="ts" generic="G extends CommandPaletteGroup<T>, T extends CommandPaletteItem">
@@ -87,7 +87,7 @@ const props = withDefaults(defineProps<CommandPaletteProps<G, T>>(), {
   placeholder: 'Type a command or search...'
 })
 const emits = defineEmits<CommandPaletteEmits<T>>()
-defineSlots<CommandPaletteSlots<T>>()
+defineSlots<CommandPaletteSlots<G, T>>()
 
 const searchTerm = defineModel<string>('searchTerm', { default: '' })
 

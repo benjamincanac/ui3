@@ -22,7 +22,7 @@ const { data: users, pending } = await useFetch('https://jsonplaceholder.typicod
 const groups = computed(() => [{
   id: 'users',
   label: searchTerm.value ? `Users matching “${searchTerm.value}”...` : 'Users',
-  items: users.value!
+  items: users.value || []
 }, {
   id: 'actions',
   items: [{
