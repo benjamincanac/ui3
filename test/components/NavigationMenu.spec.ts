@@ -48,10 +48,10 @@ describe('NavigationMenu', () => {
     ['with class', { props: { ...props, class: 'w-48' } }],
     ['with ui', { props: { links, ui: { linkLeadingIcon: 'size-4' } } }],
     // Slots
-    ['with leading slot', { props, slots: { leading: () => 'Leading slot' } }],
-    ['with label slot', { props, slots: { label: () => 'Label slot' } }],
-    ['with trailing slot', { props, slots: { trailing: () => 'Trailing slot' } }],
-    ['with item slot', { props, slots: { item: () => 'Item slot' } }],
+    ['with link slot', { props, slots: { link: () => 'Link slot' } }],
+    ['with link-leading slot', { props, slots: { 'link-leading': () => 'Link leading slot' } }],
+    ['with link-label slot', { props, slots: { 'link-label': () => 'Link label slot' } }],
+    ['with link-trailing slot', { props, slots: { 'link-trailing': () => 'Link trailing slot' } }],
     ['with custom slot', { props, slots: { custom: () => 'Custom slot' } }]
   ])('renders %s correctly', async (nameOrHtml: string, options: { props?: NavigationMenuProps<typeof links[number][number]>, slots?: Partial<NavigationMenuSlots<any>> }) => {
     const html = await ComponentRender(nameOrHtml, options, NavigationMenu)
