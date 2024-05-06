@@ -3,7 +3,7 @@ import Breadcrumb, { type BreadcrumbProps, type BreadcrumbSlots } from '../../sr
 import ComponentRender from '../component-render'
 
 describe('Breadcrumb', () => {
-  const links = [{
+  const items = [{
     label: 'Home',
     avatar: {
       src: 'https://avatars.githubusercontent.com/u/739984?v=4'
@@ -19,22 +19,22 @@ describe('Breadcrumb', () => {
     slot: 'custom'
   }]
 
-  const props = { links }
+  const props = { items }
 
   it.each([
     // Props
-    ['with links', { props }],
+    ['with items', { props }],
     ['with separatorIcon', { props: { ...props, separatorIcon: 'i-heroicons-minus' } }],
     ['with class', { props: { ...props, class: 'w-48' } }],
-    ['with ui', { props: { ui: { ...props, link: 'font-bold' } } }],
+    ['with ui', { props: { ui: { ...props, item: 'font-bold' } } }],
     // Slots
-    ['with link slot', { props, slots: { link: () => 'Link slot' } }],
-    ['with link-leading slot', { props, slots: { 'link-leading': () => 'Link leading slot' } }],
-    ['with link-label slot', { props, slots: { 'link-label': () => 'Link label slot' } }],
-    ['with link-trailing slot', { props, slots: { 'link-trailing': () => 'Link trailing slot' } }],
+    ['with item slot', { props, slots: { item: () => 'Item slot' } }],
+    ['with item-leading slot', { props, slots: { 'item-leading': () => 'Item leading slot' } }],
+    ['with item-label slot', { props, slots: { 'item-label': () => 'Item label slot' } }],
+    ['with item-trailing slot', { props, slots: { 'item-trailing': () => 'Item trailing slot' } }],
     ['with custom slot', { props, slots: { custom: () => 'Custom slot' } }],
     ['with separator slot', { props, slots: { separator: () => '/' } }]
-  ])('renders %s correctly', async (nameOrHtml: string, options: { props?: BreadcrumbProps<typeof links[number]>, slots?: Partial<BreadcrumbSlots<typeof links[number]>> }) => {
+  ])('renders %s correctly', async (nameOrHtml: string, options: { props?: BreadcrumbProps<typeof items[number]>, slots?: Partial<BreadcrumbSlots<typeof items[number]>> }) => {
     const html = await ComponentRender(nameOrHtml, options, Breadcrumb)
     expect(html).toMatchSnapshot()
   })
