@@ -3,7 +3,7 @@ import NavigationMenu, { type NavigationMenuProps, type NavigationMenuSlots } fr
 import ComponentRender from '../component-render'
 
 describe('NavigationMenu', () => {
-  const links = [
+  const items = [
     [{
       label: 'Profile',
       active: true,
@@ -39,21 +39,21 @@ describe('NavigationMenu', () => {
     }]
   ]
 
-  const props = { links }
+  const props = { items }
 
   it.each([
     // Props
-    ['with links', { props }],
+    ['with items', { props }],
     ['with orientation vertical', { props: { ...props, orientation: 'vertical' as const } }],
     ['with class', { props: { ...props, class: 'w-48' } }],
-    ['with ui', { props: { links, ui: { linkLeadingIcon: 'size-4' } } }],
+    ['with ui', { props: { items, ui: { itemLeadingIcon: 'size-4' } } }],
     // Slots
-    ['with link slot', { props, slots: { link: () => 'Link slot' } }],
-    ['with link-leading slot', { props, slots: { 'link-leading': () => 'Link leading slot' } }],
-    ['with link-label slot', { props, slots: { 'link-label': () => 'Link label slot' } }],
-    ['with link-trailing slot', { props, slots: { 'link-trailing': () => 'Link trailing slot' } }],
+    ['with item slot', { props, slots: { item: () => 'Item slot' } }],
+    ['with item-leading slot', { props, slots: { 'item-leading': () => 'Item leading slot' } }],
+    ['with item-label slot', { props, slots: { 'item-label': () => 'Item label slot' } }],
+    ['with item-trailing slot', { props, slots: { 'item-trailing': () => 'Item trailing slot' } }],
     ['with custom slot', { props, slots: { custom: () => 'Custom slot' } }]
-  ])('renders %s correctly', async (nameOrHtml: string, options: { props?: NavigationMenuProps<typeof links[number][number]>, slots?: Partial<NavigationMenuSlots<any>> }) => {
+  ])('renders %s correctly', async (nameOrHtml: string, options: { props?: NavigationMenuProps<typeof items[number][number]>, slots?: Partial<NavigationMenuSlots<any>> }) => {
     const html = await ComponentRender(nameOrHtml, options, NavigationMenu)
     expect(html).toMatchSnapshot()
   })
