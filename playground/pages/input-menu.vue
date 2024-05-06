@@ -59,22 +59,5 @@ const statuses = [{
         @update:open="searchTerm = ''"
       />
     </div>
-    <!-- <div class="flex gap-4">
-      <UInputMenu multiple :items="[[{ label: 'Fruits', type: 'label' }, ...fruits], [{ label: 'Vegetables', type: 'label' }, ...vegetables]]" placeholder="Search..." />
-
-      <UInputMenu multiple :items="statuses" placeholder="Search status..." icon="i-heroicons-magnifying-glass" trailing-icon="i-heroicons-chevron-up-down-20-solid" />
-
-      <UInputMenu multiple :items="users2!" icon="i-heroicons-user" placeholder="Search users..." />
-
-      <UInputMenu
-        v-model:search-term="searchTerm"
-        multiple
-        :items="users3!"
-        :loading="pending"
-        :filter="false"
-        icon="i-heroicons-user"
-        placeholder="Search users async..."
-      />
-    </div> -->
   </div>
 </template>

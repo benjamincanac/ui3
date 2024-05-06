@@ -26,7 +26,7 @@ export interface InputMenuItem extends Pick<ComboboxItemProps, 'disabled'> {
   type?: 'label' | 'separator' | 'item'
 }
 
-export interface InputMenuProps<T> extends Omit<ComboboxRootProps<T>, 'asChild' | 'dir' | 'filterFunction' | 'displayValue'>, Omit<UseComponentIconsProps, 'leading' | 'trailing' | 'trailingIcon'> {
+export interface InputMenuProps<T> extends Omit<ComboboxRootProps, 'asChild' | 'dir' | 'filterFunction' | 'displayValue' | 'multiple'>, Omit<UseComponentIconsProps, 'leading' | 'trailing' | 'trailingIcon'> {
   /**
    * The icon displayed in the input.
    * @defaultValue `appConfig.ui.icons.chevronDown`
@@ -37,12 +37,8 @@ export interface InputMenuProps<T> extends Omit<ComboboxRootProps<T>, 'asChild' 
    * @defaultValue `appConfig.ui.icons.check`
    */
   selectedIcon?: string
-  /**
-   * The icon displayed to clear the input.
-   * @defaultValue `appConfig.ui.icons.close`
-   */
-  clearIcon?: string
   placeholder?: InputProps['placeholder']
+  required?: InputProps['required']
   avatar?: InputProps['avatar']
   color?: InputProps['color']
   variant?: InputProps['variant']
@@ -77,7 +73,7 @@ export type InputMenuSlots<T> = {
 
 <script setup lang="ts" generic="T extends InputMenuItem | AcceptableValue">
 import { computed, toRef } from 'vue'
-import { ComboboxRoot, ComboboxAnchor, ComboboxInput, ComboboxTrigger, ComboboxPortal, ComboboxContent, ComboboxViewport, ComboboxEmpty, ComboboxGroup, ComboboxLabel, ComboboxSeparator, ComboboxItem, ComboboxItemIndicator, TagsInputRoot, TagsInputItem, TagsInputItemText, TagsInputItemDelete, TagsInputInput, useForwardPropsEmits } from 'radix-vue'
+import { ComboboxRoot, ComboboxAnchor, ComboboxInput, ComboboxTrigger, ComboboxPortal, ComboboxContent, ComboboxViewport, ComboboxEmpty, ComboboxGroup, ComboboxLabel, ComboboxSeparator, ComboboxItem, ComboboxItemIndicator, useForwardPropsEmits } from 'radix-vue'
 import { defu } from 'defu'
 import { reactivePick } from '@vueuse/core'
 import { useAppConfig } from '#imports'
@@ -94,12 +90,12 @@ const emits = defineEmits<InputMenuEmits<T>>()
 defineSlots<InputMenuSlots<T>>()
 
 const appConfig = useAppConfig()
-const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'modelValue', 'defaultValue', 'open', 'defaultOpen', 'multiple', 'disabled', 'name'), emits)
+const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'modelValue', 'defaultValue', 'open', 'defaultOpen', 'disabled', 'name'), emits)
 const contentProps = toRef(() => defu(props.content, { side: 'bottom', sideOffset: 8, position: 'popper' }) as ComboboxContentProps)
 
 const ui = computed(() => tv({ extend: inputMenu, slots: props.ui })())
 
-function displayValue(val: T) {
+function displayValue(val: AcceptableValue) {
   if (typeof val === 'object') {
     return val.label
   }
@@ -107,7 +103,7 @@ function displayValue(val: T) {
   return String(val)
 }
 
-function filterFunction(items: ArrayOrWrapped<T>, searchTerm: string): ArrayOrWrapped<T> {
+function filterFunction(items: ArrayOrWrapped<AcceptableValue>, searchTerm: string): ArrayOrWrapped<AcceptableValue> {
   if (props.filter === false) {
     return items
   }
@@ -127,48 +123,18 @@ function filterFunction(items: ArrayOrWrapped<T>, searchTerm: string): ArrayOrWr
   }) as ArrayOrWrapped<T>
 }
 
-const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0]) ? props.items : [props.items]) as T[][] : [])
+const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0]) ? props.items : [props.items]) as InputMenuItem[][] : [])
 </script>
 
 <template>
-  <ComboboxRoot
-    v-slot="{ modelValue }"
-    v-bind="rootProps"
-    :display-value="displayValue"
-    :filter-function="filterFunction"
-    :class="ui.root({ class: props.class })"
-  >
+  <ComboboxRoot v-slot="{ modelValue }" v-bind="rootProps" :display-value="displayValue" :filter-function="filterFunction" :class="ui.root({ class: props.class })">
     <ComboboxAnchor as-child>
-      <TagsInputRoot
-        v-if="multiple"
-        v-slot="{ modelValue: tags }"
-        delimiter=""
-        class="flex gap-2 items-center rounded-lg flex-wrap"
-      >
-        <TagsInputItem
-          v-for="item in tags"
-          :key="item"
-          :value="item"
-          class="flex items-center justify-center gap-2 text-white bg-grass8 aria-[current=true]:bg-grass9 rounded px-2 py-1"
-        >
-          <TagsInputItemText class="text-sm" />
-          <TagsInputItemDelete>
-            <UIcon :name="clearIcon || appConfig.ui.icons.close" />
-          </TagsInputItemDelete>
-        </TagsInputItem>
-
-        <ComboboxInput as-child>
-          <TagsInputInput
-            as-child
-            @keydown.enter.prevent
-          />
-        </ComboboxInput>
-      </TagsInputRoot>
-
-      <ComboboxInput v-else as-child>
+      <ComboboxInput as-child>
         <UInput
           v-bind="$attrs"
+          :name="name"
           :placeholder="placeholder"
+          :required="required"
           :icon="(modelValue as InputMenuItem)?.icon || icon"
           :avatar="(modelValue as InputMenuItem)?.avatar || avatar"
           :loading="loading"
@@ -214,8 +180,8 @@ const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0
                 :disabled="item.disabled"
                 :value="item"
               >
-                <slot name="item" :item="item" :index="index">
-                  <slot name="item-leading" :item="item" :index="index">
+                <slot name="item" :item="(item as T)" :index="index">
+                  <slot name="item-leading" :item="(item as T)" :index="index">
                     <UAvatar v-if="item.avatar" size="2xs" v-bind="item.avatar" :class="ui.itemLeadingAvatar()" />
                     <UIcon v-else-if="item.icon" :name="item.icon" :class="ui.itemLeadingIcon()" />
                     <UChip
@@ -229,13 +195,13 @@ const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0
                   </slot>
 
                   <span :class="ui.itemLabel()">
-                    <slot name="item-label" :item="item" :index="index">
-                      {{ displayValue(item) }}
+                    <slot name="item-label" :item="(item as T)" :index="index">
+                      {{ displayValue(item as T) }}
                     </slot>
                   </span>
 
                   <span :class="ui.itemTrailing()">
-                    <slot name="item-trailing" :item="item" :index="index" />
+                    <slot name="item-trailing" :item="(item as T)" :index="index" />
 
                     <ComboboxItemIndicator as-child>
                       <UIcon :name="selectedIcon || appConfig.ui.icons.check" :class="ui.itemTrailingSelectedIcon()" />

@@ -35,7 +35,7 @@ export interface CommandPaletteGroup<T> {
   highlightedIcon?: string
 }
 
-export interface CommandPaletteProps<G, T> extends Pick<ComboboxRootProps, 'as' | 'multiple' | 'disabled' | 'modelValue'>, Omit<UseComponentIconsProps, 'leading' | 'trailing' | 'icon' | 'avatar'> {
+export interface CommandPaletteProps<G, T> extends Pick<ComboboxRootProps, 'as' | 'multiple' | 'disabled' | 'modelValue' | 'defaultValue'>, Omit<UseComponentIconsProps, 'leading' | 'trailing' | 'icon' | 'avatar'> {
   /**
    * The icon displayed in the input.
    * @defaultValue `appConfig.ui.icons.search`
@@ -92,7 +92,7 @@ defineSlots<CommandPaletteSlots<T>>()
 const searchTerm = defineModel<string>('searchTerm', { default: '' })
 
 const appConfig = useAppConfig()
-const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'disabled', 'multiple', 'modelValue'), emits)
+const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'disabled', 'multiple', 'modelValue', 'defaultValue'), emits)
 const inputProps = useForwardProps(reactivePick(props, 'loading', 'loadingIcon', 'placeholder'))
 
 const ui = computed(() => tv({ extend: commandPalette, slots: props.ui })())
@@ -204,8 +204,8 @@ const groups = computed(() => {
                   />
                 </slot>
 
-                <span v-if="item.label || $slots[item.slot ? `${item.slot}-leading` : group.slot ? `${group.slot}-leading` : `item-leading`]" :class="ui.itemLabel()">
-                  <slot :name="item.slot ? `${item.slot}-leading` : group.slot ? `${group.slot}-leading` : `item-leading`" :item="item" :index="index">
+                <span v-if="item.label || $slots[item.slot ? `${item.slot}-label` : group.slot ? `${group.slot}-label` : `item-label`]" :class="ui.itemLabel()">
+                  <slot :name="item.slot ? `${item.slot}-label` : group.slot ? `${group.slot}-label` : `item-label`" :item="item" :index="index">
                     <span v-if="item.prefix" :class="ui.itemLabelPrefix()">{{ item.prefix }}</span>
 
                     <span :class="ui.itemLabelBase()" v-html="highlight<T>(item, searchTerm, 'label') || item.label" />
@@ -215,7 +215,7 @@ const groups = computed(() => {
                 </span>
 
                 <span :class="ui.itemTrailing()">
-                  <slot :name="item.slot ? `${item.slot}-leading` : group.slot ? `${group.slot}-leading` : `item-leading`" :item="item" :index="index">
+                  <slot :name="item.slot ? `${item.slot}-trailing` : group.slot ? `${group.slot}-trailing` : `item-trailing`" :item="item" :index="index">
                     <span v-if="item.kbds?.length" :class="ui.itemTrailingKbds()">
                       <UKbd v-for="(kbd, kbdIndex) in item.kbds" :key="kbdIndex" size="md" v-bind="typeof kbd === 'string' ? { value: kbd } : kbd" />
                     </span>

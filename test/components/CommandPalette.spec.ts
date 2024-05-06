@@ -63,6 +63,7 @@ describe('CommandPalette', () => {
     // Props
     ['with groups', { props }],
     ['with modelValue', { props: { ...props, modelValue: groups[2].items[0] } }],
+    ['with defaultValue', { props: { ...props, defaultValue: groups[2].items[0] } }],
     ['with placeholder', { props: { ...props, placeholder: 'Search...' } }],
     ['with disabled', { props: { ...props, disabled: true } }],
     ['with icon', { props: { ...props, icon: 'i-heroicons-command-line' } }],
