@@ -11,7 +11,7 @@ const appConfig = _appConfig as AppConfig & { ui: { breadcrumb: Partial<typeof t
 
 const breadcrumb = tv({ extend: tv(theme), ...(appConfig.ui?.breadcrumb || {}) })
 
-export interface BreadcrumbItem extends LinkProps {
+export interface BreadcrumbLink extends LinkProps {
   label?: string
   icon?: string
   avatar?: AvatarProps
@@ -19,24 +19,24 @@ export interface BreadcrumbItem extends LinkProps {
 }
 
 export interface BreadcrumbProps<T> extends Omit<PrimitiveProps, 'asChild'> {
-  items?: T[]
+  links?: T[]
   separatorIcon?: string
   class?: any
   ui?: Partial<typeof breadcrumb.slots>
 }
 
-type SlotProps<T> = (props: { item: T, index: number, active?: boolean }) => any
+type SlotProps<T> = (props: { link: T, index: number, active?: boolean }) => any
 
 export type BreadcrumbSlots<T extends { slot?: string }> = {
-  leading: SlotProps<T>
-  label: SlotProps<T>
-  trailing: SlotProps<T>
-  item: SlotProps<T>
-  separator(): any
+  'link': SlotProps<T>
+  'link-leading': SlotProps<T>
+  'link-label': SlotProps<T>
+  'link-trailing': SlotProps<T>
+  'separator'(): any
 } & DynamicSlots<T, SlotProps<T>>
 </script>
 
-<script setup lang="ts" generic="T extends BreadcrumbItem">
+<script setup lang="ts" generic="T extends BreadcrumbLink">
 import { computed } from 'vue'
 import { Primitive } from 'radix-vue'
 import { useAppConfig } from '#imports'
@@ -54,27 +54,27 @@ const ui = computed(() => tv({ extend: breadcrumb, slots: props.ui })())
 <template>
   <Primitive :as="as" aria-label="breadcrumb" :class="ui.root({ class: props.class })">
     <ol :class="ui.list()">
-      <template v-for="(item, index) in items" :key="index">
+      <template v-for="(link, index) in links" :key="index">
         <li :class="ui.item()">
-          <ULink as="span" v-bind="omit(item, ['label', 'icon', 'avatar', 'slot'])" :aria-current="index === items!.length - 1 ? 'page' : undefined" :class="ui.link({ active: index === items!.length - 1, disabled: !!item.disabled, to: !!item.to })" raw>
-            <slot :name="item.slot || 'item'" :item="item" :index="index">
-              <slot name="leading" :item="item" :active="index === items!.length - 1" :index="index">
-                <UAvatar v-if="item.avatar" size="2xs" v-bind="item.avatar" :class="ui.linkLeadingAvatar({ active: index === items!.length - 1 })" />
-                <UIcon v-else-if="item.icon" :name="item.icon" :class="ui.linkLeadingIcon({ active: index === items!.length - 1 })" />
+          <ULink as="span" v-bind="omit(link, ['label', 'icon', 'avatar', 'slot'])" :aria-current="index === links!.length - 1 ? 'page' : undefined" :class="ui.link({ active: index === links!.length - 1, disabled: !!link.disabled, to: !!link.to })" raw>
+            <slot :name="link.slot || 'item'" :link="link" :index="index">
+              <slot :name="link.slot ? `${link.slot}-leading`: 'link-leading'" :link="link" :active="index === links!.length - 1" :index="index">
+                <UAvatar v-if="link.avatar" size="2xs" v-bind="link.avatar" :class="ui.linkLeadingAvatar({ active: index === links!.length - 1 })" />
+                <UIcon v-else-if="link.icon" :name="link.icon" :class="ui.linkLeadingIcon({ active: index === links!.length - 1 })" />
               </slot>
 
-              <span v-if="item.label || $slots.label" :class="ui.linkLabel()">
-                <slot name="label" :item="item" :active="index === items!.length - 1" :index="index">
-                  {{ item.label }}
+              <span v-if="link.label || $slots[link.slot ? `${link.slot}-label`: 'link-label']" :class="ui.linkLabel()">
+                <slot :name="link.slot ? `${link.slot}-label`: 'link-label'" :link="link" :active="index === links!.length - 1" :index="index">
+                  {{ link.label }}
                 </slot>
               </span>
 
-              <slot name="trailing" :item="item" :active="index === items!.length - 1" :index="index" />
+              <slot :name="link.slot ? `${link.slot}-trailing`: 'link-trailing'" :link="link" :active="index === links!.length - 1" :index="index" />
             </slot>
           </ULink>
         </li>
 
-        <li v-if="index < items!.length - 1" role="presentation" :class="ui.separator()">
+        <li v-if="index < links!.length - 1" role="presentation" :class="ui.separator()">
           <slot name="separator">
             <UIcon :name="separatorIcon || appConfig.ui.icons.chevronRight" :class="ui.separatorIcon()" />
           </slot>

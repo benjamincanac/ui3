@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const items = [
+const links = [
   [{
     label: 'Profile',
     active: true,
@@ -38,14 +38,14 @@ const items = [
 
 <template>
   <div class="flex flex-col gap-12 w-full max-w-4xl">
-    <UNavigationMenu :items="items" class="border-b border-gray-200 dark:border-gray-800">
-      <template #custom="{ item }">
-        <UIcon :name="item.icon" class="size-5" />
+    <UNavigationMenu :links="links" class="border-b border-gray-200 dark:border-gray-800">
+      <template #custom="{ link }">
+        <UIcon :name="link.icon" class="size-5" />
 
-        <span class="truncate text-primary-500 dark:text-primary-400">{{ item.label }}</span>
+        <span class="truncate text-primary-500 dark:text-primary-400">{{ link.label }}</span>
       </template>
     </UNavigationMenu>
 
-    <UNavigationMenu :items="items" orientation="vertical" class="w-48" />
+    <UNavigationMenu :links="links" orientation="vertical" class="w-48" />
   </div>
 </template>

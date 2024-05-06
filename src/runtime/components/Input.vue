@@ -56,7 +56,7 @@ const props = withDefaults(defineProps<InputProps>(), {
   autofocusDelay: 100
 })
 const emits = defineEmits<InputEmits>()
-defineSlots<InputSlots>()
+const slots = defineSlots<InputSlots>()
 
 const [modelValue, modelModifiers] = defineModel<string | number>()
 
@@ -72,8 +72,8 @@ const ui = computed(() => tv({ extend: input, slots: props.ui })({
   variant: props.variant,
   size: size?.value,
   loading: props.loading,
-  leading: isLeading.value,
-  trailing: isTrailing.value
+  leading: isLeading.value || !!slots.leading,
+  trailing: isTrailing.value || !!slots.trailing
 }))
 
 const inputRef = ref<HTMLInputElement | null>(null)
@@ -149,16 +149,16 @@ onMounted(() => {
 
     <slot />
 
-    <span v-if="avatar || (isLeading && leadingIconName) || $slots.leading" :class="ui.leading()">
+    <span v-if="isLeading || $slots.leading" :class="ui.leading()">
       <slot name="leading">
-        <UIcon v-if="isLeading && leadingIconName" :name="leadingIconName" :class="ui.leadingIcon()" />
-        <UAvatar v-else-if="avatar" :size="avatarSize" v-bind="avatar" :class="ui.leadingAvatar()" />
+        <UAvatar v-if="avatar" :size="avatarSize" v-bind="avatar" :class="ui.leadingAvatar()" />
+        <UIcon v-else-if="leadingIconName" :name="leadingIconName" :class="ui.leadingIcon()" />
       </slot>
     </span>
 
-    <span v-if="(isTrailing && trailingIconName) || $slots.trailing" :class="ui.trailing()">
+    <span v-if="isTrailing || $slots.trailing" :class="ui.trailing()">
       <slot name="trailing" :icon-class="ui.trailingIcon()">
-        <UIcon v-if="isTrailing && trailingIconName" :name="trailingIconName" :class="ui.trailingIcon()" />
+        <UIcon v-if="trailingIconName" :name="trailingIconName" :class="ui.trailingIcon()" />
       </slot>
     </span>
   </div>

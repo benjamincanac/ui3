@@ -3,7 +3,7 @@ import NavigationMenu, { type NavigationMenuProps, type NavigationMenuSlots } fr
 import ComponentRender from '../component-render'
 
 describe('NavigationMenu', () => {
-  const items = [
+  const links = [
     [{
       label: 'Profile',
       active: true,
@@ -39,21 +39,21 @@ describe('NavigationMenu', () => {
     }]
   ]
 
-  const props = { items }
+  const props = { links }
 
   it.each([
     // Props
-    ['with items', { props }],
+    ['with links', { props }],
     ['with orientation vertical', { props: { ...props, orientation: 'vertical' as const } }],
     ['with class', { props: { ...props, class: 'w-48' } }],
-    ['with ui', { props: { items, ui: { linkLeadingIcon: 'size-4' } } }],
+    ['with ui', { props: { links, ui: { linkLeadingIcon: 'size-4' } } }],
     // Slots
     ['with leading slot', { props, slots: { leading: () => 'Leading slot' } }],
     ['with label slot', { props, slots: { label: () => 'Label slot' } }],
     ['with trailing slot', { props, slots: { trailing: () => 'Trailing slot' } }],
     ['with item slot', { props, slots: { item: () => 'Item slot' } }],
     ['with custom slot', { props, slots: { custom: () => 'Custom slot' } }]
-  ])('renders %s correctly', async (nameOrHtml: string, options: { props?: NavigationMenuProps<typeof items[number][number]>, slots?: Partial<NavigationMenuSlots<any>> }) => {
+  ])('renders %s correctly', async (nameOrHtml: string, options: { props?: NavigationMenuProps<typeof links[number][number]>, slots?: Partial<NavigationMenuSlots<any>> }) => {
     const html = await ComponentRender(nameOrHtml, options, NavigationMenu)
     expect(html).toMatchSnapshot()
   })

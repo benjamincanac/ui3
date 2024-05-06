@@ -38,21 +38,43 @@ const statuses = [{
   label: 'Canceled',
   icon: 'i-heroicons-x-circle'
 }]
-
-const selected1 = ref(fruits[0])
-const selected2 = ref(users2.value![0])
-const selected3 = ref(users3.value![0])
-const status = ref()
 </script>
 
 <template>
-  <div class="flex flex-col gap-4 w-48">
-    <UInputMenu v-model="selected1" :items="[[{ label: 'Fruits', type: 'label' }, ...fruits], [{ label: 'Vegetables', type: 'label' }, ...vegetables]]" />
+  <div class="flex flex-col gap-4">
+    <div class="flex gap-4">
+      <UInputMenu :items="[[{ label: 'Fruits', type: 'label' }, ...fruits], [{ label: 'Vegetables', type: 'label' }, ...vegetables]]" placeholder="Search..." />
 
-    <UInputMenu v-model="selected2" :items="users2!" />
+      <UInputMenu :items="statuses" placeholder="Search status..." icon="i-heroicons-magnifying-glass" trailing-icon="i-heroicons-chevron-up-down-20-solid" />
 
-    <UInputMenu v-model="selected3" v-model:search-term="searchTerm" :items="users3!" :loading="pending" :filter="false" />
+      <UInputMenu :items="users2!" icon="i-heroicons-user" placeholder="Search users..." />
 
-    <UInputMenu v-model="status" :items="statuses" placeholder="Search status..." icon="i-heroicons-magnifying-glass" trailing-icon="i-heroicons-chevron-up-down-20-solid" />
+      <UInputMenu
+        v-model:search-term="searchTerm"
+        :items="users3!"
+        :loading="pending"
+        :filter="false"
+        icon="i-heroicons-user"
+        placeholder="Search users async..."
+        @update:open="searchTerm = ''"
+      />
+    </div>
+    <!-- <div class="flex gap-4">
+      <UInputMenu multiple :items="[[{ label: 'Fruits', type: 'label' }, ...fruits], [{ label: 'Vegetables', type: 'label' }, ...vegetables]]" placeholder="Search..." />
+
+      <UInputMenu multiple :items="statuses" placeholder="Search status..." icon="i-heroicons-magnifying-glass" trailing-icon="i-heroicons-chevron-up-down-20-solid" />
+
+      <UInputMenu multiple :items="users2!" icon="i-heroicons-user" placeholder="Search users..." />
+
+      <UInputMenu
+        v-model:search-term="searchTerm"
+        multiple
+        :items="users3!"
+        :loading="pending"
+        :filter="false"
+        icon="i-heroicons-user"
+        placeholder="Search users async..."
+      />
+    </div> -->
   </div>
 </template>

@@ -29,6 +29,7 @@ export interface CommandPaletteItem extends Pick<ComboboxItemProps, 'disabled'> 
 export interface CommandPaletteGroup<T> {
   id: string
   label?: string
+  slot?: string
   items?: T[]
   /** The icon displayed when an item is highlighted. */
   highlightedIcon?: string
@@ -61,12 +62,12 @@ export type CommandPaletteEmits<T> = {
 type SlotProps<T> = (props: { item: T, index: number }) => any
 
 export type CommandPaletteSlots<T extends { slot?: string }> = {
-  empty(props: { searchTerm?: string }): any
-  close(): any
-  leading: SlotProps<T>
-  label: SlotProps<T>
-  trailing: SlotProps<T>
-  item: SlotProps<T>
+  'empty'(props: { searchTerm?: string }): any
+  'close'(): any
+  'item': SlotProps<T>
+  'item-leading': SlotProps<T>
+  'item-label': SlotProps<T>
+  'item-trailing': SlotProps<T>
 } & DynamicSlots<T, SlotProps<T>>
 </script>
 
@@ -127,7 +128,7 @@ const groups = computed(() => {
   }, {})
 
   return Object.entries(groups).map(([id, items]) => {
-    const group = props.groups?.find(group => group.id === id) || {}
+    const group = props.groups?.find(group => group.id === id)
 
     return {
       ...group,
@@ -189,42 +190,36 @@ const groups = computed(() => {
               :class="ui.item()"
               @select="item.select"
             >
-              <slot :name="item.slot || 'item'" :item="item" :index="index">
-                <slot :name="`${group.id}-leading`" :item="item" :index="index">
-                  <slot name="leading" :item="item" :index="index">
-                    <UAvatar v-if="item.avatar" size="2xs" v-bind="item.avatar" :class="ui.itemLeadingAvatar()" />
-                    <UIcon v-else-if="item.icon" :name="item.icon" :class="ui.itemLeadingIcon()" />
-                    <UChip
-                      v-else-if="item.chip"
-                      size="md"
-                      inset
-                      standalone
-                      v-bind="item.chip"
-                      :class="ui.itemLeadingChip()"
-                    />
-                  </slot>
+              <slot :name="item.slot || group.slot || 'item'" :item="item" :index="index">
+                <slot :name="item.slot ? `${item.slot}-leading` : group.slot ? `${group.slot}-leading` : `item-leading`" :item="item" :index="index">
+                  <UAvatar v-if="item.avatar" size="2xs" v-bind="item.avatar" :class="ui.itemLeadingAvatar()" />
+                  <UIcon v-else-if="item.icon" :name="item.icon" :class="ui.itemLeadingIcon()" />
+                  <UChip
+                    v-else-if="item.chip"
+                    size="md"
+                    inset
+                    standalone
+                    v-bind="item.chip"
+                    :class="ui.itemLeadingChip()"
+                  />
                 </slot>
 
-                <span v-if="item.label || $slots.label || $slots[`${group.id}-label`]" :class="ui.itemLabel()">
-                  <slot :name="`${group.id}-label`" :item="item" :index="index">
-                    <slot name="label" :item="item" :index="index">
-                      <span v-if="item.prefix" :class="ui.itemLabelPrefix()">{{ item.prefix }}</span>
+                <span v-if="item.label || $slots[item.slot ? `${item.slot}-leading` : group.slot ? `${group.slot}-leading` : `item-leading`]" :class="ui.itemLabel()">
+                  <slot :name="item.slot ? `${item.slot}-leading` : group.slot ? `${group.slot}-leading` : `item-leading`" :item="item" :index="index">
+                    <span v-if="item.prefix" :class="ui.itemLabelPrefix()">{{ item.prefix }}</span>
 
-                      <span :class="ui.itemLabelBase()" v-html="highlight<T>(item, searchTerm, 'label') || item.label" />
+                    <span :class="ui.itemLabelBase()" v-html="highlight<T>(item, searchTerm, 'label') || item.label" />
 
-                      <span :class="ui.itemLabelSuffix()" v-html="highlight<T>(item, searchTerm, undefined, ['label']) || item.suffix" />
-                    </slot>
+                    <span :class="ui.itemLabelSuffix()" v-html="highlight<T>(item, searchTerm, undefined, ['label']) || item.suffix" />
                   </slot>
                 </span>
 
                 <span :class="ui.itemTrailing()">
-                  <slot :name="`${group.id}-trailing`" :item="item" :index="index">
-                    <slot name="trailing" :item="item" :index="index">
-                      <span v-if="item.kbds?.length" :class="ui.itemTrailingKbds()">
-                        <UKbd v-for="(kbd, kbdIndex) in item.kbds" :key="kbdIndex" size="md" v-bind="typeof kbd === 'string' ? { value: kbd } : kbd" />
-                      </span>
-                      <UIcon v-else-if="group.highlightedIcon" :name="group.highlightedIcon" :class="ui.itemTrailingHighlightedIcon()" />
-                    </slot>
+                  <slot :name="item.slot ? `${item.slot}-leading` : group.slot ? `${group.slot}-leading` : `item-leading`" :item="item" :index="index">
+                    <span v-if="item.kbds?.length" :class="ui.itemTrailingKbds()">
+                      <UKbd v-for="(kbd, kbdIndex) in item.kbds" :key="kbdIndex" size="md" v-bind="typeof kbd === 'string' ? { value: kbd } : kbd" />
+                    </span>
+                    <UIcon v-else-if="group.highlightedIcon" :name="group.highlightedIcon" :class="ui.itemTrailingHighlightedIcon()" />
                   </slot>
 
                   <ComboboxItemIndicator as-child>

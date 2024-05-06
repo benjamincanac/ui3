@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const items = [{
+const links = [{
   label: 'Home',
   to: '/'
 }, {
@@ -21,10 +21,10 @@ const items = [{
 </script>
 
 <template>
-  <UBreadcrumb :items="items">
-    <template #dropdown="{ item }">
-      <UDropdownMenu :items="item.children">
-        <UButton :icon="item.icon" color="gray" variant="link" class="p-0" />
+  <UBreadcrumb :links="links">
+    <template #dropdown="{ link }">
+      <UDropdownMenu :items="link.children">
+        <UButton :icon="link.icon" color="gray" variant="link" class="p-0" />
       </UDropdownMenu>
     </template>
   </UBreadcrumb>

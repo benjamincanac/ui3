@@ -10,7 +10,7 @@ describe('InputMenu', () => {
     ['with ui', { props: { ui: {} } }],
     // Slots
     ['with default slot', { slots: { default: () => 'Default slot' } }]
-  ])('renders %s correctly', async (nameOrHtml: string, options: { props?: InputMenuProps, slots?: Partial<InputMenuSlots> }) => {
+  ])('renders %s correctly', async (nameOrHtml: string, options: { props?: InputMenuProps<any>, slots?: Partial<InputMenuSlots<any>> }) => {
     const html = await ComponentRender(nameOrHtml, options, InputMenu)
     expect(html).toMatchSnapshot()
   })
