@@ -39,13 +39,14 @@ export interface InputEmits {
 export interface InputSlots {
   leading(): any
   default(): any
-  trailing(): any
+  trailing(props: { iconClass: string }): any
 }
 </script>
 
 <script lang="ts" setup>
 import { ref, computed, onMounted } from 'vue'
 import { useComponentIcons, useFormField, useButtonGroup } from '#imports'
+import { UIcon, UAvatar } from '#components'
 import { looseToNumber } from '#ui/utils'
 
 defineOptions({ inheritAttrs: false })
@@ -55,13 +56,13 @@ const props = withDefaults(defineProps<InputProps>(), {
   autofocusDelay: 100
 })
 const emits = defineEmits<InputEmits>()
-defineSlots<InputSlots>()
+const slots = defineSlots<InputSlots>()
 
 const [modelValue, modelModifiers] = defineModel<string | number>()
 
 const { emitFormBlur, emitFormInput, size: formGroupSize, color, id, name, disabled } = useFormField<InputProps>(props)
-const { isLeading, isTrailing, leadingIconName, trailingIconName } = useComponentIcons(props)
 const { orientation, size: buttonGroupSize } = useButtonGroup<InputProps>(props)
+const { isLeading, isTrailing, leadingIconName, trailingIconName, avatarSize } = useComponentIcons<InputProps>(props)
 
 const inputSize = computed(() => buttonGroupSize.value || formGroupSize.value)
 
@@ -71,8 +72,8 @@ const ui = computed(() => tv({ extend: input, slots: props.ui })({
   variant: props.variant,
   size: inputSize?.value,
   loading: props.loading,
-  leading: isLeading.value,
-  trailing: isTrailing.value,
+  leading: isLeading.value || !!slots.leading,
+  trailing: isTrailing.value || !!slots.trailing,
   buttonGroup: orientation.value
 }))
 
@@ -140,6 +141,7 @@ onMounted(() => {
       :placeholder="placeholder"
       :class="ui.base()"
       :disabled="disabled"
+      :required="required"
       v-bind="$attrs"
       @input="onInput"
       @blur="onBlur"
@@ -148,15 +150,16 @@ onMounted(() => {
 
     <slot />
 
-    <span v-if="(isLeading && leadingIconName) || $slots.leading" :class="ui.leading()">
+    <span v-if="isLeading || $slots.leading" :class="ui.leading()">
       <slot name="leading">
-        <UIcon v-if="isLeading && leadingIconName" :name="leadingIconName" :class="ui.leadingIcon()" />
+        <UAvatar v-if="avatar" :size="avatarSize" v-bind="avatar" :class="ui.leadingAvatar()" />
+        <UIcon v-else-if="leadingIconName" :name="leadingIconName" :class="ui.leadingIcon()" />
       </slot>
     </span>
 
-    <span v-if="(isTrailing && trailingIconName) || $slots.trailing" :class="ui.trailing()">
-      <slot name="trailing">
-        <UIcon v-if="isTrailing && trailingIconName" :name="trailingIconName" :class="ui.trailingIcon()" />
+    <span v-if="isTrailing || $slots.trailing" :class="ui.trailing()">
+      <slot name="trailing" :icon-class="ui.trailingIcon()">
+        <UIcon v-if="trailingIconName" :name="trailingIconName" :class="ui.trailingIcon()" />
       </slot>
     </span>
   </div>
