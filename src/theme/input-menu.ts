@@ -2,6 +2,7 @@ export default {
   slots: {
     root: 'relative',
     input: '',
+    trigger: 'inline-flex items-center',
     arrow: 'fill-gray-200 dark:fill-gray-800',
     content: 'max-h-60 w-[--radix-popper-anchor-width] bg-white dark:bg-gray-900 shadow-lg rounded-md ring ring-gray-200 dark:ring-gray-800 overflow-hidden data-[state=open]:animate-[scale-in_100ms_ease-out] data-[state=closed]:animate-[scale-out_100ms_ease-in]',
     viewport: 'divide-y divide-gray-200 dark:divide-gray-800 scroll-py-1',

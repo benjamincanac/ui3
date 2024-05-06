@@ -73,7 +73,7 @@ export type InputMenuSlots<T> = {
 
 <script setup lang="ts" generic="T extends InputMenuItem | AcceptableValue">
 import { computed, toRef } from 'vue'
-import { ComboboxRoot, ComboboxAnchor, ComboboxInput, ComboboxTrigger, ComboboxPortal, ComboboxContent, ComboboxViewport, ComboboxEmpty, ComboboxGroup, ComboboxLabel, ComboboxSeparator, ComboboxItem, ComboboxItemIndicator, useForwardPropsEmits } from 'radix-vue'
+import { ComboboxRoot, ComboboxAnchor, ComboboxInput, ComboboxTrigger, ComboboxPortal, ComboboxContent, ComboboxViewport, ComboboxEmpty, ComboboxGroup, ComboboxLabel, ComboboxSeparator, ComboboxItem, ComboboxItemIndicator, useForwardProps, useForwardPropsEmits } from 'radix-vue'
 import { defu } from 'defu'
 import { reactivePick } from '@vueuse/core'
 import { useAppConfig } from '#imports'
@@ -92,6 +92,7 @@ defineSlots<InputMenuSlots<T>>()
 const appConfig = useAppConfig()
 const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'modelValue', 'defaultValue', 'open', 'defaultOpen', 'disabled', 'name'), emits)
 const contentProps = toRef(() => defu(props.content, { side: 'bottom', sideOffset: 8, position: 'popper' }) as ComboboxContentProps)
+const inputProps = useForwardProps(reactivePick(props, 'name', 'loading', 'loadingIcon', 'placeholder', 'required', 'color', 'variant', 'size'))
 
 const ui = computed(() => tv({ extend: inputMenu, slots: props.ui })())
 
@@ -130,26 +131,13 @@ const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0
   <ComboboxRoot v-slot="{ modelValue }" v-bind="rootProps" :display-value="displayValue" :filter-function="filterFunction" :class="ui.root({ class: props.class })">
     <ComboboxAnchor as-child>
       <ComboboxInput as-child>
-        <UInput
-          v-bind="$attrs"
-          :name="name"
-          :placeholder="placeholder"
-          :required="required"
-          :icon="(modelValue as InputMenuItem)?.icon || icon"
-          :avatar="(modelValue as InputMenuItem)?.avatar || avatar"
-          :loading="loading"
-          :loading-icon="loadingIcon"
-          :color="color"
-          :variant="variant"
-          :size="size"
-          :class="ui.input()"
-        >
+        <UInput v-bind="{ ...inputProps, ...$attrs }" :icon="(modelValue as InputMenuItem)?.icon || icon" :avatar="(modelValue as InputMenuItem)?.avatar || avatar" :class="ui.input()">
           <template v-if="$slots.leading" #leading>
             <slot name="leading" />
           </template>
 
           <template #trailing="{ iconClass }">
-            <ComboboxTrigger class="flex">
+            <ComboboxTrigger :class="ui.trigger()">
               <UIcon :name="trailingIcon || appConfig.ui.icons.chevronDown" :class="iconClass" />
             </ComboboxTrigger>
           </template>
