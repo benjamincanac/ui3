@@ -166,14 +166,14 @@ onMounted(() => {
 <template>
   <ComboboxRoot
     :id="id"
-    as-child
     :name="name"
     :disabled="disabled"
     v-bind="rootProps"
     :display-value="displayValue"
     :filter-function="filterFunction"
+    :class="ui.root({ class: props.class })"
   >
-    <ComboboxAnchor :class="ui.root({ class: props.class })">
+    <ComboboxAnchor as-child>
       <ComboboxInput
         ref="inputRef"
         v-bind="$attrs"
