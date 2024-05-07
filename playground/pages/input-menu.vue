@@ -14,7 +14,7 @@ const statuses = [{
   label: 'Backlog',
   icon: 'i-heroicons-question-mark-circle'
 }, {
-  label: 'To Do',
+  label: 'Todo',
   icon: 'i-heroicons-plus-circle'
 }, {
   label: 'In Progress',
@@ -76,17 +76,6 @@ const { data: users, pending } = await useFetch('https://jsonplaceholder.typicod
         :key="size"
         :items="items"
         icon="i-heroicons-magnifying-glass"
-        placeholder="Search..."
-        :size="(size as any)"
-        class="w-60"
-      />
-    </div>
-    <div class="flex items-center gap-4">
-      <UInputMenu
-        v-for="size in sizes"
-        :key="size"
-        :items="items"
-        :avatar="{ src: 'https://avatars.githubusercontent.com/u/739984?v=4' }"
         placeholder="Search..."
         :size="(size as any)"
         class="w-60"

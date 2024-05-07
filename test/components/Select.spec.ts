@@ -13,7 +13,7 @@ describe('Select', () => {
     value: 'backlog',
     icon: 'i-heroicons-question-mark-circle'
   }, {
-    label: 'To Do',
+    label: 'Todo',
     value: 'todo',
     icon: 'i-heroicons-plus-circle'
   }, {

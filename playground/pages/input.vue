@@ -45,16 +45,6 @@ const sizes = Object.keys(theme.variants.size)
       <UInput
         v-for="size in sizes"
         :key="size"
-        :avatar="{ src: 'https://avatars.githubusercontent.com/u/739984?v=4' }"
-        placeholder="Search..."
-        :size="(size as any)"
-        class="w-60"
-      />
-    </div>
-    <div class="flex items-center gap-4">
-      <UInput
-        v-for="size in sizes"
-        :key="size"
         icon="i-heroicons-magnifying-glass"
         trailing
         placeholder="Search..."

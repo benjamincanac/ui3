@@ -12,7 +12,7 @@ describe('InputMenu', () => {
     label: 'Backlog',
     icon: 'i-heroicons-question-mark-circle'
   }, {
-    label: 'To Do',
+    label: 'Todo',
     icon: 'i-heroicons-plus-circle'
   }, {
     label: 'In Progress',

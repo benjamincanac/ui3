@@ -104,7 +104,7 @@ const contentProps = toRef(() => defu(props.content, { side: 'bottom', sideOffse
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { emitFormBlur, emitFormInput, size: formGroupSize, color, id, name, disabled } = useFormField<InputProps>(props)
 const { orientation, size: buttonGroupSize } = useButtonGroup<InputProps>(props)
-const { isLeading, isTrailing, leadingIconName, trailingIconName, avatarSize } = useComponentIcons<InputProps>(defu(props, { trailingIcon: appConfig.ui.icons.chevronDown }))
+const { isLeading, isTrailing, leadingIconName, trailingIconName } = useComponentIcons<InputProps>(defu(props, { trailingIcon: appConfig.ui.icons.chevronDown }))
 
 const inputSize = computed(() => buttonGroupSize.value || formGroupSize.value)
 
@@ -185,8 +185,7 @@ onMounted(() => {
 
       <span v-if="isLeading || !!slots.leading" :class="ui.leading()">
         <slot name="leading">
-          <UAvatar v-if="avatar" :size="avatarSize" v-bind="avatar" :class="ui.leadingAvatar()" />
-          <UIcon v-else-if="leadingIconName" :name="leadingIconName" :class="ui.leadingIcon()" />
+          <UIcon v-if="leadingIconName" :name="leadingIconName" :class="ui.leadingIcon()" />
         </slot>
       </span>
 

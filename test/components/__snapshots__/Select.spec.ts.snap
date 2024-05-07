@@ -16,7 +16,7 @@ exports[`Select > renders with class correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-193" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-193" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-193" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-194" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -53,7 +53,7 @@ exports[`Select > renders with class correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -76,7 +76,7 @@ exports[`Select > renders with color gray correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-172" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-172" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-172" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-173" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -113,7 +113,7 @@ exports[`Select > renders with color gray correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -136,7 +136,7 @@ exports[`Select > renders with color green correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-151" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-151" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-151" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-152" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -173,7 +173,7 @@ exports[`Select > renders with color green correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -196,7 +196,7 @@ exports[`Select > renders with color primary correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-144" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-144" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-144" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-145" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -233,7 +233,7 @@ exports[`Select > renders with color primary correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -256,7 +256,7 @@ exports[`Select > renders with color red correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-158" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-158" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-158" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-159" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -293,7 +293,7 @@ exports[`Select > renders with color red correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -316,7 +316,7 @@ exports[`Select > renders with color white correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-165" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-165" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-165" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-166" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -353,7 +353,7 @@ exports[`Select > renders with color white correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -376,7 +376,7 @@ exports[`Select > renders with defaultValue correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-18" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-18" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-18" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-19" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -413,7 +413,7 @@ exports[`Select > renders with defaultValue correctly 1`] = `
 <select default-value="[object Object]" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -436,7 +436,7 @@ exports[`Select > renders with disabled correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-46" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-46" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-46" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-47" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -473,7 +473,7 @@ exports[`Select > renders with disabled correctly 1`] = `
 <select disabled="" default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -494,7 +494,7 @@ exports[`Select > renders with icon correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-60" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-60" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-60" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-61" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -531,7 +531,7 @@ exports[`Select > renders with icon correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -554,7 +554,7 @@ exports[`Select > renders with id correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-25" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-25" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-25" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-26" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -591,7 +591,7 @@ exports[`Select > renders with id correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" id="id" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -710,7 +710,7 @@ exports[`Select > renders with item-leading slot correctly 1`] = `
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-221" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">Item leading slot<span id="radix-vue-select-item-text-221" class="truncate">Backlog</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
-        <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-222" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">Item leading slot<span id="radix-vue-select-item-text-222" class="truncate">To Do</span>
+        <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-222" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">Item leading slot<span id="radix-vue-select-item-text-222" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-223" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">Item leading slot<span id="radix-vue-select-item-text-223" class="truncate">In Progress</span>
@@ -744,7 +744,7 @@ exports[`Select > renders with item-leading slot correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -767,7 +767,7 @@ exports[`Select > renders with item-trailing slot correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center">Item trailing slot<!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-236" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-236" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-236" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center">Item trailing slot<!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-237" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -804,7 +804,7 @@ exports[`Select > renders with item-trailing slot correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -827,7 +827,7 @@ exports[`Select > renders with items correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-4" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-4" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-4" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-5" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -864,7 +864,7 @@ exports[`Select > renders with items correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -885,7 +885,7 @@ exports[`Select > renders with leading and icon correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-67" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-67" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-67" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-68" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -922,7 +922,7 @@ exports[`Select > renders with leading and icon correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -943,7 +943,7 @@ exports[`Select > renders with leading slot correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-201" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-201" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-201" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-202" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -980,7 +980,7 @@ exports[`Select > renders with leading slot correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -1001,7 +1001,7 @@ exports[`Select > renders with leadingIcon correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-74" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-74" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-74" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-75" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -1038,7 +1038,7 @@ exports[`Select > renders with leadingIcon correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -1061,7 +1061,7 @@ exports[`Select > renders with loading correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-95" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-95" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-95" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-96" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -1098,7 +1098,7 @@ exports[`Select > renders with loading correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -1121,7 +1121,7 @@ exports[`Select > renders with loadingIcon correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-102" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-102" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-102" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-103" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -1158,7 +1158,7 @@ exports[`Select > renders with loadingIcon correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -1181,7 +1181,7 @@ exports[`Select > renders with modelValue correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-11" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-11" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-11" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-12" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -1218,7 +1218,7 @@ exports[`Select > renders with modelValue correctly 1`] = `
 <select default-value="[object Object]" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -1241,7 +1241,7 @@ exports[`Select > renders with name correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-32" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-32" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-32" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-33" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -1278,7 +1278,7 @@ exports[`Select > renders with name correctly 1`] = `
 <select name="name" default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -1301,7 +1301,7 @@ exports[`Select > renders with placeholder correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-39" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-39" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-39" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-40" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -1338,7 +1338,7 @@ exports[`Select > renders with placeholder correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -1361,7 +1361,7 @@ exports[`Select > renders with required correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-53" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-53" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-53" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-54" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -1398,7 +1398,7 @@ exports[`Select > renders with required correctly 1`] = `
 <select required="" default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -1421,7 +1421,7 @@ exports[`Select > renders with size lg correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-130" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-130" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-130" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-131" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -1458,7 +1458,7 @@ exports[`Select > renders with size lg correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -1481,7 +1481,7 @@ exports[`Select > renders with size md correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-123" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-123" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-123" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-124" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -1518,7 +1518,7 @@ exports[`Select > renders with size md correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -1541,7 +1541,7 @@ exports[`Select > renders with size sm correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-116" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-116" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-116" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-117" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -1578,7 +1578,7 @@ exports[`Select > renders with size sm correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -1601,7 +1601,7 @@ exports[`Select > renders with size xl correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-137" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-137" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-137" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-138" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -1638,7 +1638,7 @@ exports[`Select > renders with size xl correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -1661,7 +1661,7 @@ exports[`Select > renders with size xs correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-109" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-109" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-109" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-110" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -1698,7 +1698,7 @@ exports[`Select > renders with size xs correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -1721,7 +1721,7 @@ exports[`Select > renders with trailing and icon correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-81" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-81" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-81" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-82" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -1758,7 +1758,7 @@ exports[`Select > renders with trailing and icon correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -1781,7 +1781,7 @@ exports[`Select > renders with trailing slot correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-208" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-208" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-208" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-209" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -1818,7 +1818,7 @@ exports[`Select > renders with trailing slot correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -1841,7 +1841,7 @@ exports[`Select > renders with trailingIcon correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-88" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-88" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-88" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-89" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -1878,7 +1878,7 @@ exports[`Select > renders with trailingIcon correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -1910,7 +1910,7 @@ exports[`Select > renders with variant none correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-186" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-186" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-186" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-187" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -1947,7 +1947,7 @@ exports[`Select > renders with variant none correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>
@@ -1970,7 +1970,7 @@ exports[`Select > renders with variant outline correctly 1`] = `
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-179" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
-          <!----><span id="radix-vue-select-item-text-179" class="truncate">To Do</span>
+          <!----><span id="radix-vue-select-item-text-179" class="truncate">Todo</span>
           <!----><span class="ms-auto inline-flex gap-1.5 items-center"><!----></span>
         </div>
         <div role="option" data-radix-vue-collection-item="" aria-labelledby="radix-vue-select-item-text-180" aria-selected="false" data-state="unchecked" tabindex="-1" class="group relative w-full flex items-center gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50">
@@ -2007,7 +2007,7 @@ exports[`Select > renders with variant outline correctly 1`] = `
 <select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1">
   <!---->
   <option value="backlog">Backlog</option>
-  <option value="todo">To Do</option>
+  <option value="todo">Todo</option>
   <option value="in_progress">In Progress</option>
   <option value="done">Done</option>
   <option value="canceled">Canceled</option>

@@ -15,7 +15,7 @@ const statuses = [{
   value: 'backlog',
   icon: 'i-heroicons-question-mark-circle'
 }, {
-  label: 'To Do',
+  label: 'Todo',
   value: 'todo',
   icon: 'i-heroicons-plus-circle'
 }, {
@@ -69,17 +69,6 @@ const { data: users, pending } = await useFetch('https://jsonplaceholder.typicod
         :key="size"
         :items="items"
         icon="i-heroicons-magnifying-glass"
-        placeholder="Search..."
-        :size="(size as any)"
-        class="w-60"
-      />
-    </div>
-    <div class="flex items-center gap-4">
-      <USelect
-        v-for="size in sizes"
-        :key="size"
-        :items="items"
-        :avatar="{ src: 'https://avatars.githubusercontent.com/u/739984?v=4' }"
         placeholder="Search..."
         :size="(size as any)"
         class="w-60"

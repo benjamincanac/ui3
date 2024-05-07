@@ -43,7 +43,7 @@ export interface InputSlots {
 <script lang="ts" setup>
 import { ref, computed, onMounted } from 'vue'
 import { useComponentIcons, useFormField, useButtonGroup } from '#imports'
-import { UIcon, UAvatar } from '#components'
+import { UIcon } from '#components'
 import { looseToNumber } from '#ui/utils'
 
 defineOptions({ inheritAttrs: false })
@@ -59,7 +59,7 @@ const [modelValue, modelModifiers] = defineModel<string | number>()
 
 const { emitFormBlur, emitFormInput, size: formGroupSize, color, id, name, disabled } = useFormField<InputProps>(props)
 const { orientation, size: buttonGroupSize } = useButtonGroup<InputProps>(props)
-const { isLeading, isTrailing, leadingIconName, trailingIconName, avatarSize } = useComponentIcons<InputProps>(props)
+const { isLeading, isTrailing, leadingIconName, trailingIconName } = useComponentIcons<InputProps>(props)
 
 const inputSize = computed(() => buttonGroupSize.value || formGroupSize.value)
 
@@ -149,8 +149,7 @@ onMounted(() => {
 
     <span v-if="isLeading || !!slots.leading" :class="ui.leading()">
       <slot name="leading">
-        <UAvatar v-if="avatar" :size="avatarSize" v-bind="avatar" :class="ui.leadingAvatar()" />
-        <UIcon v-else-if="leadingIconName" :name="leadingIconName" :class="ui.leadingIcon()" />
+        <UIcon v-if="leadingIconName" :name="leadingIconName" :class="ui.leadingIcon()" />
       </slot>
     </span>
 
