@@ -36,6 +36,7 @@ const components = [
   'pagination',
   'popover',
   'radio-group',
+  'select',
   'separator',
   'shortcuts',
   'skeleton',

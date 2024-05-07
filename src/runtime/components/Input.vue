@@ -16,10 +16,7 @@ export interface InputProps extends UseComponentIconsProps {
   id?: string
   name?: string
   type?: InputHTMLAttributes['type']
-  /**
-   * The placeholder text when the input is empty.
-   * @defaultValue `'Type a command or search...'`
-   */
+  /** The placeholder text when the input is empty. */
   placeholder?: string
   color?: InputVariants['color']
   variant?: InputVariants['variant']
@@ -53,7 +50,7 @@ defineOptions({ inheritAttrs: false })
 
 const props = withDefaults(defineProps<InputProps>(), {
   type: 'text',
-  autofocusDelay: 100
+  autofocusDelay: 0
 })
 const emits = defineEmits<InputEmits>()
 const slots = defineSlots<InputSlots>()

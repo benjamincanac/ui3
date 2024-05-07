@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Select > renders with as correctly 1`] = `"<select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1"></select>"`;
+
+exports[`Select > renders with class correctly 1`] = `"<select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1"></select>"`;
+
+exports[`Select > renders with default slot correctly 1`] = `"<select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1"></select>"`;
+
+exports[`Select > renders with ui correctly 1`] = `"<select default-value="" style="position: absolute; border: 0px; width: 1px; display: inline-block; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; word-wrap: normal;" aria-hidden="" tabindex="-1"></select>"`;

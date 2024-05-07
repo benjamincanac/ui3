@@ -6,7 +6,7 @@ import type { GetObjectField } from '#ui/types/utils'
 export interface UseComponentIconsProps {
   /** Display an avatar. */
   avatar?: AvatarProps
-  /** Display an icon. */
+  /** Display an icon based on the `leading` and `trailing` props. */
   icon?: string
   /** When `true`, the icon will be displayed on the left side. */
   leading?: boolean

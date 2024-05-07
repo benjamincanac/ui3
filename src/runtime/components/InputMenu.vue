@@ -28,7 +28,7 @@ export interface InputMenuItem extends Pick<ComboboxItemProps, 'disabled'> {
 
 export interface InputMenuProps<T> extends Omit<ComboboxRootProps, 'asChild' | 'dir' | 'filterFunction' | 'displayValue' | 'multiple'>, Omit<UseComponentIconsProps, 'leading' | 'trailing' | 'trailingIcon'> {
   /**
-   * The icon displayed in the input.
+   * The icon displayed to open the menu.
    * @defaultValue `appConfig.ui.icons.chevronDown`
    */
   trailingIcon?: string
@@ -128,7 +128,7 @@ const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0
 </script>
 
 <template>
-  <ComboboxRoot v-slot="{ modelValue }" v-bind="rootProps" :display-value="displayValue" :filter-function="filterFunction" :class="ui.root({ class: props.class })">
+  <ComboboxRoot v-slot="{ modelValue }" as-child v-bind="rootProps" :display-value="displayValue" :filter-function="filterFunction">
     <ComboboxAnchor as-child>
       <ComboboxInput as-child>
         <UInput v-bind="{ ...inputProps, ...$attrs }" :icon="(modelValue as InputMenuItem)?.icon || icon" :avatar="(modelValue as InputMenuItem)?.avatar || avatar" :class="ui.input()">

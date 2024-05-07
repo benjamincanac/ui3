@@ -10,6 +10,7 @@ const sizes = Object.keys(theme.variants.size)
       <UInput placeholder="Search..." autofocus />
       <UInput placeholder="Search..." color="gray" />
       <UInput placeholder="Search..." color="primary" />
+      <UInput placeholder="Search..." variant="none" />
       <UInput placeholder="Search..." disabled />
       <UInput file="i-heroicons-calculator" type="number" :model-value="10" />
       <UInput icon="i-heroicons-folder" type="file" />
