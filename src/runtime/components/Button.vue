@@ -67,7 +67,7 @@ const ui = computed(() => tv({ extend: button, slots: props.ui })({
       <UAvatar v-else-if="avatar" :size="avatarSize" v-bind="avatar" :class="ui.leadingAvatar()" />
     </slot>
 
-    <span v-if="label || $slots.default" :class="ui.label()">
+    <span v-if="label || !!slots.default" :class="ui.label()">
       <slot>
         {{ label }}
       </slot>

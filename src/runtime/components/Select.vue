@@ -6,12 +6,13 @@ import _appConfig from '#build/app.config'
 import theme from '#build/ui/select'
 import type { UseComponentIconsProps } from '#ui/composables/useComponentIcons'
 import type { AvatarProps, ChipProps, InputProps } from '#ui/types'
+import type { AcceptableValue } from '#ui/types/utils'
 
 const appConfig = _appConfig as AppConfig & { ui: { select: Partial<typeof theme> } }
 
 const select = tv({ extend: tv(theme), ...(appConfig.ui?.select || {}) })
 
-export interface SelectItem extends Partial<Pick<SelectItemProps, 'disabled' | 'value'>> {
+export interface SelectItem extends Pick<SelectItemProps, 'disabled' | 'value'> {
   label?: string
   icon?: string
   avatar?: AvatarProps
@@ -25,7 +26,7 @@ export interface SelectItem extends Partial<Pick<SelectItemProps, 'disabled' | '
 
 type SelectVariants = VariantProps<typeof select>
 
-export interface SelectProps<T> extends Omit<SelectRootProps, 'asChild' | 'dir'>, Omit<UseComponentIconsProps, 'leading' | 'trailing' | 'trailingIcon'> {
+export interface SelectProps<T> extends Omit<SelectRootProps, 'asChild' | 'dir'>, UseComponentIconsProps {
   id?: string
   /** The placeholder text when the select is empty. */
   placeholder?: string
@@ -56,7 +57,6 @@ type SlotProps<T> = (props: { item: T, index: number }) => any
 
 export interface SelectSlots<T> {
   'leading'(): any
-  'default'(): any
   'trailing'(): any
   'item': SlotProps<T>
   'item-leading': SlotProps<T>
@@ -65,9 +65,9 @@ export interface SelectSlots<T> {
 }
 </script>
 
-<script setup lang="ts" generic="T extends SelectItem | string">
+<script setup lang="ts" generic="T extends SelectItem | AcceptableValue">
 import { computed, toRef } from 'vue'
-import { SelectRoot, SelectTrigger, SelectValue, SelectPortal, SelectContent, SelectViewport, SelectLabel, SelectGroup, SelectItem, SelectItemIndicator, SelectItemText, SelectSeparator, SelectScrollUpButton, SelectScrollDownButton, useForwardPropsEmits } from 'radix-vue'
+import { SelectRoot, SelectTrigger, SelectValue, SelectPortal, SelectContent, SelectViewport, SelectLabel, SelectGroup, SelectItem, SelectItemIndicator, SelectItemText, SelectSeparator, useForwardPropsEmits } from 'radix-vue'
 import { defu } from 'defu'
 import { reactivePick } from '@vueuse/core'
 import { useAppConfig, useComponentIcons, useFormField, useButtonGroup } from '#imports'
@@ -82,9 +82,10 @@ const slots = defineSlots<SelectSlots<T>>()
 const appConfig = useAppConfig()
 const rootProps = useForwardPropsEmits(reactivePick(props, 'modelValue', 'defaultValue', 'open', 'defaultOpen', 'disabled', 'autocomplete', 'required'), emits)
 const contentProps = toRef(() => defu(props.content, { side: 'bottom', sideOffset: 8, position: 'popper' }) as SelectContentProps)
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { emitFormBlur, emitFormInput, size: formGroupSize, color, id, name, disabled } = useFormField<InputProps>(props)
 const { orientation, size: buttonGroupSize } = useButtonGroup<InputProps>(props)
-const { isLeading, isTrailing, leadingIconName, trailingIconName, avatarSize } = useComponentIcons<(InputProps & { trailingIcon: string })>(defu(props, { trailingIcon: appConfig.ui.icons.chevronDown }))
+const { isLeading, isTrailing, leadingIconName, trailingIconName, avatarSize } = useComponentIcons<InputProps>(defu(props, { trailingIcon: appConfig.ui.icons.chevronDown }))
 
 const selectSize = computed(() => buttonGroupSize.value || formGroupSize.value)
 
@@ -104,28 +105,24 @@ const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0
 <template>
   <SelectRoot v-bind="rootProps" :id="id" :name="name" :disabled="disabled">
     <SelectTrigger :class="ui.base({ class: props.class })">
-      <span v-if="isLeading || $slots.leading" :class="ui.leading()">
+      <span v-if="isLeading || !!slots.leading" :class="ui.leading()">
         <slot name="leading">
           <UAvatar v-if="avatar" :size="avatarSize" v-bind="avatar" :class="ui.leadingAvatar()" />
           <UIcon v-else-if="leadingIconName" :name="leadingIconName" :class="ui.leadingIcon()" />
         </slot>
       </span>
 
-      <SelectValue :placeholder="placeholder" class="truncate" />
+      <SelectValue :placeholder="placeholder" :class="ui.placeholder()" />
 
-      <span :class="ui.trailing()">
-        <slot name="trailing" :icon-class="ui.trailingIcon()">
-          <UIcon :name="trailingIconName" :class="ui.trailingIcon()" />
+      <span v-if="isTrailing || !!slots.trailing" :class="ui.trailing()">
+        <slot name="trailing">
+          <UIcon v-if="trailingIconName" :name="trailingIconName" :class="ui.trailingIcon()" />
         </slot>
       </span>
     </SelectTrigger>
 
     <SelectPortal :disabled="!portal">
       <SelectContent :class="ui.content()" v-bind="contentProps">
-        <!-- <SelectScrollUpButton class="flex items-center justify-center h-[25px] bg-white text-violet11 cursor-default">
-          <Icon icon="radix-icons:chevron-up" />
-        </SelectScrollUpButton> -->
-
         <SelectViewport :class="ui.viewport()">
           <SelectGroup v-for="(group, groupIndex) in groups" :key="`group-${groupIndex}`" :class="ui.group()">
             <template v-for="(item, index) in group" :key="`group-${groupIndex}-${index}`">
@@ -171,10 +168,6 @@ const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0
             </template>
           </SelectGroup>
         </SelectViewport>
-
-        <!-- <SelectScrollDownButton class="flex items-center justify-center h-[25px] bg-white text-violet11 cursor-default">
-          <Icon icon="radix-icons:chevron-down" />
-        </SelectScrollDownButton> -->
       </SelectContent>
     </SelectPortal>
   </SelectRoot>

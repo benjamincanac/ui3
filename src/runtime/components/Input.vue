@@ -36,7 +36,7 @@ export interface InputEmits {
 export interface InputSlots {
   leading(): any
   default(): any
-  trailing(props: { iconClass: string }): any
+  trailing(): any
 }
 </script>
 
@@ -147,15 +147,15 @@ onMounted(() => {
 
     <slot />
 
-    <span v-if="isLeading || $slots.leading" :class="ui.leading()">
+    <span v-if="isLeading || !!slots.leading" :class="ui.leading()">
       <slot name="leading">
         <UAvatar v-if="avatar" :size="avatarSize" v-bind="avatar" :class="ui.leadingAvatar()" />
         <UIcon v-else-if="leadingIconName" :name="leadingIconName" :class="ui.leadingIcon()" />
       </slot>
     </span>
 
-    <span v-if="isTrailing || $slots.trailing" :class="ui.trailing()">
-      <slot name="trailing" :icon-class="ui.trailingIcon()">
+    <span v-if="isTrailing || !!slots.trailing" :class="ui.trailing()">
+      <slot name="trailing">
         <UIcon v-if="trailingIconName" :name="trailingIconName" :class="ui.trailingIcon()" />
       </slot>
     </span>

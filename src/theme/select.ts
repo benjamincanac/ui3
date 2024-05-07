@@ -4,7 +4,6 @@ import input from './input'
 export default (config: { colors: string[] }) => {
   return defu({
     slots: {
-      base: 'relative rounded-md inline-flex items-center data-placeholder:text-gray-400 dark:data-placeholder:text-gray-500 focus:outline-none disabled:cursor-not-allowed disabled:opacity-75',
       arrow: 'fill-gray-200 dark:fill-gray-800',
       content: 'max-h-60 w-[--radix-popper-anchor-width] bg-white dark:bg-gray-900 shadow-lg rounded-md ring ring-gray-200 dark:ring-gray-800 overflow-hidden data-[state=open]:animate-[scale-in_100ms_ease-out] data-[state=closed]:animate-[scale-out_100ms_ease-in]',
       viewport: 'divide-y divide-gray-200 dark:divide-gray-800 scroll-py-1',
@@ -19,6 +18,11 @@ export default (config: { colors: string[] }) => {
       itemTrailing: 'ms-auto inline-flex gap-1.5 items-center',
       itemTrailingSelectedIcon: 'shrink-0 size-5',
       itemLabel: 'truncate'
+    }
+  }, {
+    slots: {
+      base: 'relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75',
+      placeholder: 'truncate group-data-placeholder:text-current/50'
     }
   }, input(config))
 }

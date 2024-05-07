@@ -53,11 +53,14 @@ describe('InputMenu', () => {
     ['with class', { props: { ...props, class: 'absolute' } }],
     ['with ui', { props: { ...props, ui: { group: 'p-2' } } }],
     // Slots
+    ['with leading slot', { slots: { leading: () => 'Leading slot' } }],
+    ['with default slot', { slots: { default: () => 'Default slot' } }],
+    ['with trailing slot', { slots: { trailing: () => 'Trailing slot' } }],
     ['with item slot', { props, slots: { item: () => 'Item slot' } }],
     ['with item-leading slot', { props, slots: { 'item-leading': () => 'Item leading slot' } }],
     ['with item-label slot', { props, slots: { 'item-label': () => 'Item label slot' } }],
     ['with item-trailing slot', { props, slots: { 'item-trailing': () => 'Item trailing slot' } }]
-  ])('renders %s correctly', async (nameOrHtml: string, options: { props?: InputMenuProps<any>, slots?: Partial<InputMenuSlots<any>> }) => {
+  ])('renders %s correctly', async (nameOrHtml: string, options: { props?: InputMenuProps<typeof items[number]>, slots?: Partial<InputMenuSlots<typeof items[number]>> }) => {
     const html = await ComponentRender(nameOrHtml, options, InputMenu)
     expect(html).toMatchSnapshot()
   })

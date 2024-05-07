@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import theme from '#build/ui/input'
+import theme from '#build/ui/select'
 
 const sizes = Object.keys(theme.variants.size)
 
@@ -41,19 +41,27 @@ const { data: users, pending } = await useFetch('https://jsonplaceholder.typicod
 
 <template>
   <div class="flex flex-col items-center gap-4">
-    <div class="flex flex-col gap-4 ml-[46px]">
+    <div class="flex flex-col gap-4 w-60">
       <USelect :items="items" placeholder="Search..." autofocus />
       <USelect :items="items" placeholder="Search..." color="gray" />
       <USelect :items="items" placeholder="Search..." color="primary" />
       <USelect :items="items" placeholder="Search..." variant="none" />
-      <USelect :items="items" placeholder="Search..." disabled />
+      <USelect :items="items" placeholder="Disabled" disabled />
+      <USelect :items="items" placeholder="Required" required />
       <USelect :items="items" loading placeholder="Search..." />
       <USelect :items="items" loading leading-icon="i-heroicons-magnifying-glass" placeholder="Search..." />
       <USelect :items="statuses" placeholder="Search status..." icon="i-heroicons-magnifying-glass" trailing-icon="i-heroicons-chevron-up-down-20-solid" />
       <USelect :items="users || []" :loading="pending" icon="i-heroicons-user" placeholder="Search users..." />
     </div>
-    <div class="flex items-center gap-4 ml-[-44px]">
-      <USelect v-for="size in sizes" :key="size" :items="items" placeholder="Search..." :size="(size as any)" />
+    <div class="flex items-center gap-4">
+      <USelect
+        v-for="size in sizes"
+        :key="size"
+        :items="items"
+        placeholder="Search..."
+        :size="(size as any)"
+        class="w-60"
+      />
     </div>
     <div class="flex items-center gap-4">
       <USelect
@@ -63,6 +71,7 @@ const { data: users, pending } = await useFetch('https://jsonplaceholder.typicod
         icon="i-heroicons-magnifying-glass"
         placeholder="Search..."
         :size="(size as any)"
+        class="w-60"
       />
     </div>
     <div class="flex items-center gap-4">
@@ -73,6 +82,7 @@ const { data: users, pending } = await useFetch('https://jsonplaceholder.typicod
         :avatar="{ src: 'https://avatars.githubusercontent.com/u/739984?v=4' }"
         placeholder="Search..."
         :size="(size as any)"
+        class="w-60"
       />
     </div>
     <div class="flex items-center gap-4">
@@ -84,6 +94,7 @@ const { data: users, pending } = await useFetch('https://jsonplaceholder.typicod
         trailing
         placeholder="Search..."
         :size="(size as any)"
+        class="w-60"
       />
     </div>
   </div>
