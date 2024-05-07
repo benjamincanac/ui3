@@ -68,7 +68,7 @@
     "@release-it/conventional-changelog": "^8.0.1",
     "@vue/test-utils": "^2.4.6",
     "eslint": "^9.2.0",
-    "happy-dom": "^14.10.1",
+    "happy-dom": "^14.7.1",
     "joi": "^17.13.1",
     "nuxt": "^3.11.2",
     "release-it": "^17.2.1",
@@ -81,7 +81,6 @@
   },
   "resolutions": {
     "@nuxt/ui": "workspace:*",
-    "vite": "5.2.4",
-    "happy-dom": "14.7.1"
+    "vite": "5.2.4"
   }
 }
