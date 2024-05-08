@@ -26,9 +26,7 @@ export interface RadioGroupProps<T> extends Omit<RadioGroupRootProps, 'asChild' 
   ui?: Partial<typeof radioGroup.slots>
 }
 
-export type RadioGroupEmits = {
-  change: [value: any]
-} & RadioGroupRootEmits
+export type RadioGroupEmits = RadioGroupRootEmits
 
 export interface RadioGroupSlots<T> {
   legend(): any
@@ -47,14 +45,7 @@ const props = withDefaults(defineProps<RadioGroupProps<T>>(), { orientation: 've
 const emits = defineEmits<RadioGroupEmits>()
 const slots = defineSlots<RadioGroupSlots<T>>()
 
-const modelValue = defineModel<T>({
-  set(value) {
-    emits('change', value)
-    return value
-  }
-})
-
-const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'defaultValue', 'orientation', 'loop', 'required'), emits)
+const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'modelValue', 'defaultValue', 'orientation', 'loop', 'required'), emits)
 
 const { emitFormChange, color, name, size, id: _id, disabled } = useFormField<RadioGroupProps<T>>(props)
 const id = _id.value ?? useId()
@@ -86,24 +77,16 @@ const normalizedOptions = computed(() => {
   if (!props.options) return []
   return props.options.map(normalizeOption)
 })
-
-// FIXME: I think there's a race condition between this and the v-model event.
-// This must be triggered after the value updates, otherwise the form validates
-// the previous value.
-function onUpdate() {
-  emitFormChange()
-}
 </script>
 
 <template>
   <RadioGroupRoot
     :id="id"
-    v-model="modelValue"
     v-bind="rootProps"
     :name="name"
     :disabled="disabled"
     :class="ui.root({ class: props.class })"
-    @update:model-value="onUpdate"
+    @update:model-value="emitFormChange()"
   >
     <fieldset :class="ui.fieldset()">
       <legend v-if="legend || !!slots.legend" :class="ui.legend()">

@@ -4,13 +4,13 @@ import type { FormSubmitEvent, Form } from '#ui/types/form'
 
 const schema = z.object({
   input: z.string().min(10),
-  // inputMenu: z.any().refine(option => option?.value === 'option-2', {
-  //   message: 'Select Option 2'
-  // }),
+  inputMenu: z.any().refine(option => option?.value === 'option-2', {
+    message: 'Select Option 2'
+  }),
   textarea: z.string().min(10),
-  // select: z.string().refine(value => value === 'option-2', {
-  //   message: 'Select Option 2'
-  // }),
+  select: z.string().refine(value => value === 'option-2', {
+    message: 'Select Option 2'
+  }),
   // selectMenu: z.any().refine(option => option?.value === 'option-2', {
   //   message: 'Select Option 2'
   // }),
@@ -56,6 +56,14 @@ function onSubmit(event: FormSubmitEvent<Schema>) {
 
     <UFormField label="Text area" name="textarea">
       <UTextarea v-model="state.textarea" />
+    </UFormField>
+
+    <UFormField name="select">
+      <USelect v-model="state.select" :items="options" />
+    </UFormField>
+
+    <UFormField name="inputMenu">
+      <UInputMenu v-model="state.inputMenu" :items="options" />
     </UFormField>
 
     <UFormField name="checkbox">

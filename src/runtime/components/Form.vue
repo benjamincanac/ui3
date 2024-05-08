@@ -158,6 +158,7 @@ async function _validate(opts: { name?: string | string[], silent?: boolean, nes
 }
 
 async function onSubmit(payload: Event) {
+  console.log('Submit!', payload)
   const event = payload as SubmitEvent
 
   try {
