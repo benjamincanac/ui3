@@ -21,19 +21,8 @@ export default (config: { colors: string[] }) => {
     }
   }, {
     slots: {
-      base: 'relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75',
+      base: 'relative group rounded-md inline-flex w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75',
       value: 'truncate group-data-placeholder:text-current/50'
-    }
-  },
-  {
-    variants: {
-      size: {
-        xs: { value: 'h-4' },
-        sm: { value: 'h-4' },
-        md: { value: 'h-5' },
-        lg: { value: 'h-5' },
-        xl: { value: 'h-6' }
-      }
     }
   }, input(config))
 }
