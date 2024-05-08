@@ -23,7 +23,7 @@ export default (config: { colors: string[] }) => {
     slots: {
       base: 'relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75',
       value: 'truncate group-data-placeholder:text-current/50'
-    },
+    }
   },
   {
     variants: {
@@ -34,6 +34,6 @@ export default (config: { colors: string[] }) => {
         lg: { value: 'h-5' },
         xl: { value: 'h-6' }
       }
-    },
+    }
   }, input(config))
 }

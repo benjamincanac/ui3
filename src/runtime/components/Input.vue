@@ -31,7 +31,7 @@ export interface InputProps extends UseComponentIconsProps {
 
 export interface InputEmits {
   (e: 'blur', event: FocusEvent): void
-  (e: 'change', event: InputEvent): void
+  (e: 'change', event: Event): void
 }
 
 export interface InputSlots {
