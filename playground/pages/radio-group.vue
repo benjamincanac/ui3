@@ -24,25 +24,25 @@ const optionsWithDescription = [
 <template>
   <div class="flex flex-col items-center gap-4">
     <div class="flex flex-col gap-4">
-      <URadioGroup :options="options" default-value="1" />
-      <URadioGroup :options="literalOptions" />
-      <URadioGroup :options="options" label="Disabled" disabled />
-      <URadioGroup :options="options" color="red" default-value="1" />
-      <URadioGroup :options="options" orientation="horizontal" />
+      <URadioGroup :items="options" default-value="1" />
+      <URadioGroup :items="literalOptions" />
+      <URadioGroup :items="options" label="Disabled" disabled />
+      <URadioGroup :items="options" color="red" default-value="1" />
+      <URadioGroup :items="options" orientation="horizontal" />
     </div>
 
     <div class="flex items-center gap-4 ml-[34px]">
-      <URadioGroup v-for="size in sizes" :key="size" :size="(size as any)" :options="options" />
+      <URadioGroup v-for="size in sizes" :key="size" :size="(size as any)" :items="options" />
     </div>
 
     <div class="flex items-center gap-4 ml-[74px]">
-      <URadioGroup v-for="size in sizes" :key="size" :size="(size as any)" :options="optionsWithDescription" />
+      <URadioGroup v-for="size in sizes" :key="size" :size="(size as any)" :items="optionsWithDescription" />
     </div>
 
     <div class="flex gap-4">
-      <URadioGroup :options="options" legend="Legend" />
-      <URadioGroup :options="options" legend="Legend" required />
-      <URadioGroup :options="options">
+      <URadioGroup :items="options" legend="Legend" />
+      <URadioGroup :items="options" legend="Legend" required />
+      <URadioGroup :items="options">
         <template #legend>
           <span class="italic font-bold">
             With slots
@@ -55,6 +55,6 @@ const optionsWithDescription = [
         </template>
       </URadioGroup>
     </div>
-    <URadioGroup :options="options" legend="Legend" orientation="horizontal" required />
+    <URadioGroup :items="options" legend="Legend" orientation="horizontal" required />
   </div>
 </template>

@@ -19,7 +19,7 @@ export type RadioGroupOption<T> = {
 
 export interface RadioGroupProps<T> extends Omit<RadioGroupRootProps, 'asChild' | 'dir'> {
   legend?: string
-  options?: string[] | RadioGroupOption<T>[]
+  items?: string[] | RadioGroupOption<T>[]
   class?: any
   size?: RadioGroupVariants['size']
   color?: RadioGroupVariants['color']
@@ -83,8 +83,8 @@ function normalizeOption(option: any) {
 }
 
 const normalizedOptions = computed(() => {
-  if (!props.options) return []
-  return props.options.map(normalizeOption)
+  if (!props.items) return []
+  return props.items.map(normalizeOption)
 })
 
 // FIXME: I think there's a race condition between this and the v-model event.
