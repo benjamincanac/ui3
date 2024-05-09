@@ -19,7 +19,7 @@ export interface SliderProps extends Omit<SliderRootProps, 'asChild' | 'modelVal
   ui?: Partial<typeof slider.slots>
 }
 
-export interface SliderEmits extends Omit<SliderRootEmits, 'update:modelValue'> {}
+export interface SliderEmits extends Omit<SliderRootEmits, 'update:modelValue'> { }
 </script>
 
 <script setup lang="ts">
@@ -40,7 +40,7 @@ const modelValue = defineModel<number | number[]>()
 
 const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'orientation', 'min', 'max', 'step', 'minStepsBetweenThumbs', 'inverted'), emits)
 
-const { id, emitFormChange, size, color, name, disabled } = useFormField<SliderProps>(props)
+const { id, emitFormChange, emitFormInput, size, color, name, disabled } = useFormField<SliderProps>(props)
 
 const defaultSliderValue = computed(() => {
   if (typeof props.defaultValue === 'number') {
@@ -80,7 +80,8 @@ const ui = computed(() => tv({ extend: slider, slots: props.ui })({
     :disabled="disabled"
     :class="ui.root({ class: props.class })"
     :default-value="defaultSliderValue"
-    @update:model-value="emitFormChange()"
+    @update:model-value="emitFormInput()"
+    @value-commit="emitFormChange()"
   >
     <SliderTrack :class="ui.track()">
       <SliderRange :class="ui.range()" />
