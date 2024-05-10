@@ -11,15 +11,15 @@ const radioGroup = tv({ extend: tv(theme), ...(appConfig.ui?.radioGroup || {}) }
 
 type RadioGroupVariants = VariantProps<typeof radioGroup>
 
-export type RadioGroupItem<T> = {
+export type RadioGroupItem = {
   label: string
-  value: T
+  value: string
   description?: string
 }
 
 export interface RadioGroupProps<T> extends Omit<RadioGroupRootProps, 'asChild' | 'dir'> {
   legend?: string
-  items?: string[] | RadioGroupItem<T>[]
+  items?: T[]
   class?: any
   size?: RadioGroupVariants['size']
   color?: RadioGroupVariants['color']
@@ -30,7 +30,7 @@ export type RadioGroupEmits = {
   change: [value: any]
 } & RadioGroupRootEmits
 
-type SlotProps<T> = (props: { item: RadioGroupItem<T> }) => any
+type SlotProps<T> = (props: { item: T }) => any
 
 export interface RadioGroupSlots<T> {
   legend(): any
@@ -39,7 +39,7 @@ export interface RadioGroupSlots<T> {
 }
 </script>
 
-<script setup lang="ts" generic="T extends string | undefined">
+<script setup lang="ts" generic="T extends RadioGroupItem | string">
 import { computed } from 'vue'
 import { RadioGroupRoot, RadioGroupItem, RadioGroupIndicator, Label, useForwardPropsEmits } from 'radix-vue'
 import { reactivePick } from '@vueuse/core'
@@ -49,7 +49,7 @@ const props = withDefaults(defineProps<RadioGroupProps<T>>(), { orientation: 've
 const emits = defineEmits<RadioGroupEmits>()
 const slots = defineSlots<RadioGroupSlots<T>>()
 
-const modelValue = defineModel<T>({
+const modelValue = defineModel<string>({
   set(value) {
     emits('change', value)
     return value
@@ -69,18 +69,18 @@ const ui = computed(() => tv({ extend: radioGroup, slots: props.ui })({
   orientation: props.orientation
 }))
 
-function normalizeItem(option: any) {
-  if (['string', 'number', 'boolean'].includes(typeof option)) {
+function normalizeItem(item: any) {
+  if (['string', 'number', 'boolean'].includes(typeof item)) {
     return {
-      id: `${id}:${option}`,
-      value: option,
-      label: option
+      id: `${id}:${item}`,
+      value: item,
+      label: item
     }
   }
 
   return {
-    ...option,
-    id: `${id}:${option.value}`
+    ...item,
+    id: `${id}:${item.value}`
   }
 }
 
