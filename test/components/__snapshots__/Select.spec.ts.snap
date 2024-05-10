@@ -1,8 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Select > renders with class correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-190" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9 rounded-full">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-190" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9 rounded-full">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -61,8 +61,8 @@ exports[`Select > renders with class correctly 1`] = `
 `;
 
 exports[`Select > renders with color gray correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-169" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-169" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -121,8 +121,8 @@ exports[`Select > renders with color gray correctly 1`] = `
 `;
 
 exports[`Select > renders with color green correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-148" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-transparent text-gray-900 dark:text-white ring ring-inset ring-green-500 dark:ring-green-400 focus:ring-2 focus:ring-green-500 dark:focus:ring-green-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-148" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-transparent text-gray-900 dark:text-white ring ring-inset ring-green-500 dark:ring-green-400 focus:ring-2 focus:ring-green-500 dark:focus:ring-green-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -181,8 +181,8 @@ exports[`Select > renders with color green correctly 1`] = `
 `;
 
 exports[`Select > renders with color primary correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-141" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-transparent text-gray-900 dark:text-white ring ring-inset ring-primary-500 dark:ring-primary-400 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-141" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-transparent text-gray-900 dark:text-white ring ring-inset ring-primary-500 dark:ring-primary-400 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -241,8 +241,8 @@ exports[`Select > renders with color primary correctly 1`] = `
 `;
 
 exports[`Select > renders with color red correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-155" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-transparent text-gray-900 dark:text-white ring ring-inset ring-red-500 dark:ring-red-400 focus:ring-2 focus:ring-red-500 dark:focus:ring-red-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-155" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-transparent text-gray-900 dark:text-white ring ring-inset ring-red-500 dark:ring-red-400 focus:ring-2 focus:ring-red-500 dark:focus:ring-red-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -301,8 +301,8 @@ exports[`Select > renders with color red correctly 1`] = `
 `;
 
 exports[`Select > renders with color white correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-162" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-162" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -361,8 +361,8 @@ exports[`Select > renders with color white correctly 1`] = `
 `;
 
 exports[`Select > renders with defaultValue correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-15" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-15" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -421,8 +421,8 @@ exports[`Select > renders with defaultValue correctly 1`] = `
 `;
 
 exports[`Select > renders with disabled correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-43" aria-expanded="true" aria-required="false" aria-autocomplete="none" disabled="" dir="ltr" data-state="open" data-disabled="" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-43" aria-expanded="true" aria-required="false" aria-autocomplete="none" disabled="" dir="ltr" data-state="open" data-disabled="" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -481,7 +481,7 @@ exports[`Select > renders with disabled correctly 1`] = `
 `;
 
 exports[`Select > renders with icon correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-57" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pl-9 pr-9"><span class="absolute inset-y-0 start-0 flex items-center pl-2.5"><span class="iconify i-heroicons:magnifying-glass shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span></button>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-57" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pl-9 pr-9"><span class="absolute inset-y-0 start-0 flex items-center pl-2.5"><span class="iconify i-heroicons:magnifying-glass shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span></button>
 <!--teleport start-->
 
 
@@ -539,8 +539,8 @@ exports[`Select > renders with icon correctly 1`] = `
 `;
 
 exports[`Select > renders with id correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-22" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-22" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -599,8 +599,8 @@ exports[`Select > renders with id correctly 1`] = `
 `;
 
 exports[`Select > renders with item slot correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-212" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-212" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -637,8 +637,8 @@ exports[`Select > renders with item slot correctly 1`] = `
 `;
 
 exports[`Select > renders with item-label slot correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-226" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-226" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -697,8 +697,8 @@ exports[`Select > renders with item-label slot correctly 1`] = `
 `;
 
 exports[`Select > renders with item-leading slot correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-219" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-219" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -752,8 +752,8 @@ exports[`Select > renders with item-leading slot correctly 1`] = `
 `;
 
 exports[`Select > renders with item-trailing slot correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-233" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-233" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -812,8 +812,8 @@ exports[`Select > renders with item-trailing slot correctly 1`] = `
 `;
 
 exports[`Select > renders with items correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-1" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-1" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -872,7 +872,7 @@ exports[`Select > renders with items correctly 1`] = `
 `;
 
 exports[`Select > renders with leading and icon correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-64" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pl-9 pr-9"><span class="absolute inset-y-0 start-0 flex items-center pl-2.5"><span class="iconify i-heroicons:magnifying-glass shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span></button>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-64" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pl-9 pr-9"><span class="absolute inset-y-0 start-0 flex items-center pl-2.5"><span class="iconify i-heroicons:magnifying-glass shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span></button>
 <!--teleport start-->
 
 
@@ -930,7 +930,7 @@ exports[`Select > renders with leading and icon correctly 1`] = `
 `;
 
 exports[`Select > renders with leading slot correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-198" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pl-9 pr-9"><span class="absolute inset-y-0 start-0 flex items-center pl-2.5">Leading slot</span><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span></button>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-198" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pl-9 pr-9"><span class="absolute inset-y-0 start-0 flex items-center pl-2.5">Leading slot</span><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span></button>
 <!--teleport start-->
 
 
@@ -988,7 +988,7 @@ exports[`Select > renders with leading slot correctly 1`] = `
 `;
 
 exports[`Select > renders with leadingIcon correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-71" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pl-9 pr-9"><span class="absolute inset-y-0 start-0 flex items-center pl-2.5"><span class="iconify i-heroicons:magnifying-glass shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span></button>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-71" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pl-9 pr-9"><span class="absolute inset-y-0 start-0 flex items-center pl-2.5"><span class="iconify i-heroicons:magnifying-glass shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span></button>
 <!--teleport start-->
 
 
@@ -1046,8 +1046,8 @@ exports[`Select > renders with leadingIcon correctly 1`] = `
 `;
 
 exports[`Select > renders with loading correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-92" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:arrow-path-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5 animate-spin" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-92" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:arrow-path-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5 animate-spin" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1106,8 +1106,8 @@ exports[`Select > renders with loading correctly 1`] = `
 `;
 
 exports[`Select > renders with loadingIcon correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-99" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:sparkles shrink-0 text-gray-400 dark:text-gray-500 size-5 animate-spin" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-99" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:sparkles shrink-0 text-gray-400 dark:text-gray-500 size-5 animate-spin" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1166,8 +1166,8 @@ exports[`Select > renders with loadingIcon correctly 1`] = `
 `;
 
 exports[`Select > renders with modelValue correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-8" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-8" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1226,8 +1226,8 @@ exports[`Select > renders with modelValue correctly 1`] = `
 `;
 
 exports[`Select > renders with name correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-29" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-29" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1286,8 +1286,8 @@ exports[`Select > renders with name correctly 1`] = `
 `;
 
 exports[`Select > renders with placeholder correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-36" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5">Enter your username</span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-36" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50">Enter your username</span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1346,8 +1346,8 @@ exports[`Select > renders with placeholder correctly 1`] = `
 `;
 
 exports[`Select > renders with required correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-50" aria-expanded="true" aria-required="true" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-50" aria-expanded="true" aria-required="true" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1406,8 +1406,8 @@ exports[`Select > renders with required correctly 1`] = `
 `;
 
 exports[`Select > renders with size lg correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-127" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-3 py-2 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-10">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-3"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-127" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-3 py-2 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-10">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-3"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1466,8 +1466,8 @@ exports[`Select > renders with size lg correctly 1`] = `
 `;
 
 exports[`Select > renders with size md correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-120" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-120" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1526,8 +1526,8 @@ exports[`Select > renders with size md correctly 1`] = `
 `;
 
 exports[`Select > renders with size sm correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-113" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-xs shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-8">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-4"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-4" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-113" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-xs shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-8">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-4" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1586,8 +1586,8 @@ exports[`Select > renders with size sm correctly 1`] = `
 `;
 
 exports[`Select > renders with size xl correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-134" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-3 py-2 text-base shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-11">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-6"></span><span class="absolute inset-y-0 end-0 flex items-center pr-3"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-6" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-134" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-3 py-2 text-base shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-11">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-3"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-6" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1646,8 +1646,8 @@ exports[`Select > renders with size xl correctly 1`] = `
 `;
 
 exports[`Select > renders with size xs correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-106" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2 py-1 text-xs shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-7">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-4"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-4" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-106" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2 py-1 text-xs shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-7">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-4" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1706,8 +1706,8 @@ exports[`Select > renders with size xs correctly 1`] = `
 `;
 
 exports[`Select > renders with trailing and icon correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-78" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-78" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1766,8 +1766,8 @@ exports[`Select > renders with trailing and icon correctly 1`] = `
 `;
 
 exports[`Select > renders with trailing slot correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-205" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5">Trailing slot</span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-205" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5">Trailing slot</span>
 </button>
 <!--teleport start-->
 
@@ -1826,8 +1826,8 @@ exports[`Select > renders with trailing slot correctly 1`] = `
 `;
 
 exports[`Select > renders with trailingIcon correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-85" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:magnifying-glass shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-85" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:magnifying-glass shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1886,8 +1886,8 @@ exports[`Select > renders with trailingIcon correctly 1`] = `
 `;
 
 exports[`Select > renders with ui correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-197" aria-expanded="false" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="closed" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-197" aria-expanded="false" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="closed" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 <!--teleport end-->
@@ -1895,8 +1895,8 @@ exports[`Select > renders with ui correctly 1`] = `
 `;
 
 exports[`Select > renders with variant none correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-183" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm bg-transparent focus:ring-0 focus:shadow-none pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-183" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm bg-transparent focus:ring-0 focus:shadow-none pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1955,8 +1955,8 @@ exports[`Select > renders with variant none correctly 1`] = `
 `;
 
 exports[`Select > renders with variant outline correctly 1`] = `
-"<button role="combobox" type="button" aria-controls="radix-vue-select-content-176" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex min-w-44 items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
-  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50 h-5"></span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button role="combobox" type="button" aria-controls="radix-vue-select-content-176" aria-expanded="true" aria-required="false" aria-autocomplete="none" dir="ltr" data-state="open" data-placeholder="" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9">
+  <!--v-if--><span style="pointer-events: none;" class="truncate group-data-placeholder:text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
