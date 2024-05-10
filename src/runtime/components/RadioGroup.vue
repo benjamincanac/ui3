@@ -11,7 +11,7 @@ const radioGroup = tv({ extend: tv(theme), ...(appConfig.ui?.radioGroup || {}) }
 
 type RadioGroupVariants = VariantProps<typeof radioGroup>
 
-export type RadioGroupOption<T> = {
+export type RadioGroupItem<T> = {
   label: string
   value: T
   description?: string
@@ -19,7 +19,7 @@ export type RadioGroupOption<T> = {
 
 export interface RadioGroupProps<T> extends Omit<RadioGroupRootProps, 'asChild' | 'dir'> {
   legend?: string
-  items?: string[] | RadioGroupOption<T>[]
+  items?: string[] | RadioGroupItem<T>[]
   class?: any
   size?: RadioGroupVariants['size']
   color?: RadioGroupVariants['color']
@@ -30,10 +30,12 @@ export type RadioGroupEmits = {
   change: [value: any]
 } & RadioGroupRootEmits
 
+type SlotProps<T> = (props: { item: RadioGroupItem<T> }) => any
+
 export interface RadioGroupSlots<T> {
   legend(): any
-  label(props: { option: RadioGroupOption<T> }): any
-  description(props: { option: RadioGroupOption<T> }): any
+  label: SlotProps<T>
+  description: SlotProps<T>
 }
 </script>
 
@@ -67,7 +69,7 @@ const ui = computed(() => tv({ extend: radioGroup, slots: props.ui })({
   orientation: props.orientation
 }))
 
-function normalizeOption(option: any) {
+function normalizeItem(option: any) {
   if (['string', 'number', 'boolean'].includes(typeof option)) {
     return {
       id: `${id}:${option}`,
@@ -82,9 +84,9 @@ function normalizeOption(option: any) {
   }
 }
 
-const normalizedOptions = computed(() => {
+const normalizedItems = computed(() => {
   if (!props.items) return []
-  return props.items.map(normalizeOption)
+  return props.items.map(normalizeItem)
 })
 
 // FIXME: I think there's a race condition between this and the v-model event.
@@ -111,11 +113,11 @@ function onUpdate() {
           {{ legend }}
         </slot>
       </legend>
-      <div v-for="option in normalizedOptions" :key="option.value" :class="ui.option()">
+      <div v-for="item in normalizedItems" :key="item.value" :class="ui.item()">
         <div :class="ui.container()">
           <RadioGroupItem
-            :id="option.id"
-            :value="option.value"
+            :id="item.id"
+            :value="item.value"
             :disabled="disabled"
             :class="ui.base()"
           >
@@ -124,12 +126,12 @@ function onUpdate() {
         </div>
 
         <div :class="ui.wrapper()">
-          <Label :class="ui.label()" :for="option.id">
-            <slot name="label" v-bind="{ option }">{{ option.label }}</slot>
+          <Label :class="ui.label()" :for="item.id">
+            <slot name="label" :item="item">{{ item.label }}</slot>
           </Label>
-          <p v-if="option.description || !!slots.description" :class="ui.description()">
-            <slot name="description" v-bind="{ option }">
-              {{ option.description }}
+          <p v-if="item.description || !!slots.description" :class="ui.description()">
+            <slot name="description" :item="item">
+              {{ item.description }}
             </slot>
           </p>
         </div>
