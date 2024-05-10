@@ -31,7 +31,7 @@ type Schema = z.output<typeof schema>
 const state = reactive<Partial<Schema>>({})
 const form = ref<Form<Schema>>()
 
-const options = [
+const items = [
   { label: 'Option 1', value: 'option-1' },
   { label: 'Option 2', value: 'option-2' },
   { label: 'Option 3', value: 'option-3' }
@@ -59,11 +59,11 @@ function onSubmit(event: FormSubmitEvent<Schema>) {
     </UFormField>
 
     <UFormField name="select">
-      <USelect v-model="state.select" :items="options" />
+      <USelect v-model="state.select" :items="items" />
     </UFormField>
 
     <UFormField name="inputMenu">
-      <UInputMenu v-model="state.inputMenu" :items="options" />
+      <UInputMenu v-model="state.inputMenu" :items="items" />
     </UFormField>
 
     <UFormField name="checkbox">
@@ -71,7 +71,7 @@ function onSubmit(event: FormSubmitEvent<Schema>) {
     </UFormField>
 
     <UFormField name="radioGroup">
-      <URadioGroup v-model="state.radioGroup" legend="Radio group" :items="options" />
+      <URadioGroup v-model="state.radioGroup" legend="Radio group" :items="items" />
     </UFormField>
 
     <UFormField name="switch">
