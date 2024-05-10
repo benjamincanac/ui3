@@ -23,12 +23,12 @@ const optionsWithDescription = [
 
 <template>
   <div class="flex flex-col items-center gap-4">
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-4 ml-[100px]">
       <URadioGroup :items="options" default-value="1" />
       <URadioGroup :items="literalOptions" />
       <URadioGroup :items="options" label="Disabled" disabled />
       <URadioGroup :items="options" color="red" default-value="1" />
-      <URadioGroup :items="options" orientation="horizontal" />
+      <URadioGroup :items="options" orientation="horizontal" class="ml-[-91px]" />
     </div>
 
     <div class="flex items-center gap-4 ml-[34px]">
