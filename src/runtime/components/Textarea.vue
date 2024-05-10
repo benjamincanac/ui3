@@ -30,6 +30,7 @@ export interface TextareaProps {
 
 export interface TextareaEmits {
   (e: 'blur', event: FocusEvent): void
+  (e: 'change', event: Event): void
 }
 
 export interface TextareaSlots {
@@ -47,7 +48,7 @@ defineOptions({ inheritAttrs: false })
 const props = withDefaults(defineProps<TextareaProps>(), {
   rows: 3,
   maxrows: 0,
-  autofocusDelay: 100
+  autofocusDelay: 0
 })
 defineSlots<TextareaSlots>()
 const emits = defineEmits<TextareaEmits>()
@@ -103,6 +104,8 @@ function onChange(event: Event) {
   if (modelModifiers.trim) {
     (event.target as HTMLInputElement).value = value.trim()
   }
+
+  emits('change', event)
 }
 
 function onBlur(event: FocusEvent) {

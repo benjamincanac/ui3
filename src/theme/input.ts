@@ -1,8 +1,10 @@
+import { buttonGroupVariantWithRoot } from './button-group'
+
 export default (config: { colors: string[] }) => {
   return {
     slots: {
-      root: 'relative',
-      base: 'relative block w-full disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none border-0 rounded-md placeholder-gray-400 dark:placeholder-gray-500',
+      root: 'relative inline-flex items-center',
+      base: 'w-full rounded-md border-0 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none disabled:cursor-not-allowed disabled:opacity-75',
       leading: 'absolute inset-y-0 start-0 flex items-center',
       leadingIcon: 'shrink-0 text-gray-400 dark:text-gray-500',
       leadingAvatar: 'shrink-0',
@@ -10,6 +12,7 @@ export default (config: { colors: string[] }) => {
       trailingIcon: 'shrink-0 text-gray-400 dark:text-gray-500'
     },
     variants: {
+      ...buttonGroupVariantWithRoot,
       size: {
         xs: {
           base: 'px-2 py-1 text-xs',

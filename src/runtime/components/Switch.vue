@@ -38,7 +38,7 @@ import { reactivePick } from '@vueuse/core'
 import { useId, useAppConfig, useFormField } from '#imports'
 
 const props = defineProps<SwitchProps>()
-defineSlots<SwitchSlots>()
+const slots = defineSlots<SwitchSlots>()
 
 const modelValue = defineModel<boolean | undefined>({ default: undefined })
 
@@ -55,13 +55,6 @@ const ui = computed(() => tv({ extend: switchTv, slots: props.ui })({
   loading: props.loading,
   disabled: disabled.value || props.loading
 }))
-
-// FIXME: I think there's a race condition between this and the v-model event.
-// This must be triggered after the value updates, otherwise the form validates
-// the previous value.
-async function onChecked() {
-  emitFormChange()
-}
 </script>
 
 <template>
@@ -75,7 +68,7 @@ async function onChecked() {
         :name="name"
         :disabled="disabled || loading"
         :class="ui.base()"
-        @update:checked="onChecked"
+        @update:checked="emitFormChange()"
       >
         <SwitchThumb :class="ui.thumb()">
           <UIcon v-if="loading" :name="loadingIcon || appConfig.ui.icons.loading" :class="ui.icon({ checked: true, unchecked: true })" />
@@ -86,13 +79,13 @@ async function onChecked() {
         </SwitchThumb>
       </SwitchRoot>
     </div>
-    <div v-if="(label || $slots.label) || (description || $slots.description)" :class="ui.wrapper()">
-      <Label v-if="label || $slots.label" :for="id" :class="ui.label()">
+    <div v-if="(label || !!slots.label) || (description || !!slots.description)" :class="ui.wrapper()">
+      <Label v-if="label || !!slots.label" :for="id" :class="ui.label()">
         <slot name="label" :label="label">
           {{ label }}
         </slot>
       </Label>
-      <p v-if="description || $slots.description" :class="ui.description()">
+      <p v-if="description || !!slots.description" :class="ui.description()">
         <slot name="description" :description="description">
           {{ description }}
         </slot>

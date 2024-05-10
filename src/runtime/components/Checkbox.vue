@@ -46,7 +46,7 @@ import { reactivePick } from '@vueuse/core'
 import { useId, useAppConfig, useFormField } from '#imports'
 
 const props = defineProps<CheckboxProps>()
-defineSlots<CheckboxSlots>()
+const slots = defineSlots<CheckboxSlots>()
 
 const modelValue = defineModel<boolean | undefined>({ default: undefined })
 
@@ -75,13 +75,6 @@ const ui = computed(() => tv({ extend: checkbox, slots: props.ui })({
   checked: modelValue.value ?? props.defaultValue,
   indeterminate: indeterminate.value
 }))
-
-// FIXME: I think there's a race condition between this and the v-model event.
-// This must be triggered after the value updates, otherwise the form validates
-// the previous value.
-function onChecked() {
-  emitFormChange()
-}
 </script>
 
 <template>
@@ -95,7 +88,7 @@ function onChecked() {
         :name="name"
         :disabled="disabled"
         :class="ui.base()"
-        @update:checked="onChecked"
+        @update:checked="emitFormChange()"
       >
         <CheckboxIndicator as-child>
           <UIcon v-if="indeterminate" :name="indeterminateIcon || appConfig.ui.icons.minus" :class="ui.icon()" />
@@ -104,13 +97,13 @@ function onChecked() {
       </CheckboxRoot>
     </div>
 
-    <div v-if="(label || $slots.label) || (description || $slots.description)" :class="ui.wrapper()">
-      <Label v-if="label || $slots.label" :for="id" :class="ui.label()">
+    <div v-if="(label || !!slots.label) || (description || !!slots.description)" :class="ui.wrapper()">
+      <Label v-if="label || !!slots.label" :for="id" :class="ui.label()">
         <slot name="label" :label="label">
           {{ label }}
         </slot>
       </Label>
-      <p v-if="description || $slots.description" :class="ui.description()">
+      <p v-if="description || !!slots.description" :class="ui.description()">
         <slot name="description" :description="description">
           {{ description }}
         </slot>
