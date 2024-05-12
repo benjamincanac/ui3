@@ -1,7 +1,10 @@
 export default (config: { colors: string[] }) => ({
   slots: {
+    wrapper: '',
     root: 'relative overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700',
-    indicator: 'rounded-full size-full transition-transform duration-[660ms] ease-[cubic-bezier(0.65, 0, 0.35, 1)]'
+    indicator: 'rounded-full size-full transition-transform duration-[660ms] ease-[cubic-bezier(0.65, 0, 0.35, 1)]',
+    statusContainer: 'flex transition-all duration-[660ms] ease-[cubic-bezier(0.65, 0, 0.35, 1)]',
+    status: 'text-end w-fit text-gray-400 dark:text-gray-500'
   },
   variants: {
     animation: {
@@ -24,9 +27,11 @@ export default (config: { colors: string[] }) => ({
     },
     orientation: {
       horizontal: {
+        wrapper: 'w-full',
         root: 'w-full'
       },
       vertical: {
+        wrapper: 'h-full flex flex-row-reverse gap-x-1',
         root: 'h-full'
       }
     }
@@ -34,63 +39,115 @@ export default (config: { colors: string[] }) => ({
   compoundVariants: [{
     orientation: 'horizontal',
     size: '2xs',
-    class: { root: 'h-px' }
+    class: {
+      root: 'h-px',
+      statusContainer: 'flex-row min-w-fit',
+      status: 'text-xs'
+    }
   }, {
     orientation: 'horizontal',
     size: 'xs',
-    class: { root: 'h-0.5' }
-  }, {
+    class: {
+      root: 'h-0.5',
+      statusContainer: 'flex-row min-w-fit',
+      status: 'text-xs'
+    }
   }, {
     orientation: 'horizontal',
     size: 'sm',
-    class: { root: 'h-1' }
+    class: {
+      root: 'h-1',
+      statusContainer: 'flex-row min-w-fit',
+      status: 'text-sm'
+    }
   }, {
     orientation: 'horizontal',
     size: 'md',
-    class: { root: 'h-2' }
+    class: {
+      root: 'h-2',
+      statusContainer: 'flex-row min-w-fit',
+      status: 'text-sm'
+    }
   }, {
     orientation: 'horizontal',
     size: 'lg',
-    class: { root: 'h-3' }
+    class: {
+      root: 'h-3',
+      statusContainer: 'flex-row min-w-fit',
+      status: 'text-sm'
+    }
   }, {
     orientation: 'horizontal',
     size: 'xl',
-    class: { root: 'h-4' }
-  }, {
+    class: {
+      root: 'h-4',
+      statusContainer: 'flex-row min-w-fit',
+      status: 'text-base'
+    }
   }, {
     orientation: 'horizontal',
     size: '2xl',
-    class: { root: 'h-5' }
+    class: {
+      root: 'h-5',
+      statusContainer: 'flex-row min-w-fit',
+      status: 'text-base'
+    }
   }, {
     orientation: 'vertical',
     size: '2xs',
-    class: { root: 'w-px' }
-  }, {
+    class: {
+      root: 'w-px',
+      statusContainer: 'flex-col min-h-fit',
+      status: 'text-xs'
+    }
   }, {
     orientation: 'vertical',
     size: 'xs',
-    class: { root: 'w-0.5' }
+    class: {
+      root: 'w-0.5',
+      statusContainer: 'flex-col min-h-fit',
+      status: 'text-xs'
+    }
   }, {
     orientation: 'vertical',
     size: 'sm',
-    class: { root: 'w-1' }
+    class: {
+      root: 'w-1',
+      statusContainer: 'flex-col min-h-fit',
+      status: 'text-sm'
+    }
   }, {
     orientation: 'vertical',
     size: 'md',
-    class: { root: 'w-2' }
+    class: {
+      root: 'w-2',
+      statusContainer: 'flex-col min-h-fit',
+      status: 'text-sm'
+    }
   }, {
     orientation: 'vertical',
     size: 'lg',
-    class: { root: 'w-3' }
+    class: {
+      root: 'w-3',
+      statusContainer: 'flex-col min-h-fit',
+      status: 'text-sm'
+    }
   }, {
     orientation: 'vertical',
     size: 'xl',
-    class: { root: 'w-4' }
-  }, {
+    class: {
+      root: 'w-4',
+      statusContainer: 'flex-col min-h-fit',
+      status: 'text-base'
+    }
   }, {
     orientation: 'vertical',
     size: '2xl',
-    class: { root: 'w-5' }
+    class: {
+      root: 'w-5',
+      statusContainer: 'flex-col min-h-fit',
+      status: 'text-base'
+    }
   }, {
     orientation: 'horizontal',
     animation: 'carousel',

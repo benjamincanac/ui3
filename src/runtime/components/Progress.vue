@@ -13,6 +13,7 @@ type ProgressVariants = VariantProps<typeof progress>
 
 export interface ProgressProps extends Omit<ProgressRootProps, 'asChild' | 'max'> {
   animation?: ProgressVariants['animation']
+  status?: boolean
   size?: ProgressVariants['size']
   color?: ProgressVariants['color']
   orientation?: ProgressVariants['orientation']
@@ -61,9 +62,9 @@ const percent = computed(() => {
   }
 
   switch (true) {
-    case rootProps.value.modelValue < 0: return 0
-    case rootProps.value.modelValue > (realMax.value as number): return 100
-    default: return (rootProps.value.modelValue / (realMax.value as number)) * 100
+    case rootProps.value.modelValue! < 0: return 0
+    case rootProps.value.modelValue! > (realMax.value as number): return 100
+    default: return (rootProps.value.modelValue! / (realMax.value as number)) * 100
   }
 })
 
@@ -72,7 +73,7 @@ const indicatorDirection = computed(() => {
     if (!rootProps.value.modelValue) return undefined
 
     const direction = inv ? '' : '-'
-    return `transform: translate${dir}(${direction}${100 - rootProps.value.modelValue}%)`
+    return `transform: translate${dir}(${direction}${100 - rootProps.value.modelValue}%);`
   }
 
   const dir = props.orientation === 'vertical' ? 'Y' : 'X'
@@ -88,15 +89,28 @@ const ui = computed(() => tv({ extend: progress, slots: props.ui })({
 </script>
 
 <template>
-  <ProgressRoot
-    v-bind="rootProps"
-    :max="realMax"
-    :class="ui.root({ class: props.class })"
-    style="transform: translateZ(0)"
-  >
-    <ProgressIndicator
-      :class="ui.indicator({ class: props.class })"
-      :style="indicatorDirection"
-    />
-  </ProgressRoot>
+  <div :class="ui.wrapper({ class: props.class })">
+    <slot v-if="status || $slots.status" name="status" v-bind="{ percent }">
+      <div
+        v-if="!isSteps"
+        :class="ui.statusContainer({ class: props.class })"
+        :style="indicatorDirection + `justify-content: ${props.inverted ? 'flex-start' : 'flex-end'};`"
+      >
+        <div :class="ui.status({ class: props.class })">
+          {{ percent && Math.round(percent) }}%
+        </div>
+      </div>
+    </slot>
+    <ProgressRoot
+      v-bind="rootProps"
+      :max="realMax"
+      :class="ui.root({ class: props.class })"
+      style="transform: translateZ(0)"
+    >
+      <ProgressIndicator
+        :class="ui.indicator({ class: props.class })"
+        :style="indicatorDirection"
+      />
+    </ProgressRoot>
+  </div>
 </template>
