@@ -5,18 +5,10 @@ export default (config: { colors: string[] }) => ({
   },
   variants: {
     animation: {
-      'carousel': {
-        indicator: 'bar-animation-carousel'
-      },
-      'carousel-inverse': {
-        indicator: 'bar-animation-carousel-inverse'
-      },
-      'swing': {
-        indicator: 'bar-animation-swing'
-      },
-      'elastic': {
-        indicator: 'bar-animation-elastic'
-      }
+      'carousel': {},
+      'carousel-inverse': {},
+      'swing': {},
+      'elastic': {}
     },
     color: Object.fromEntries(config.colors.map((color: string) => [color, {
       indicator: `bg-${color}-500 dark:bg-${color}-400`
@@ -35,7 +27,7 @@ export default (config: { colors: string[] }) => ({
         root: 'w-full'
       },
       vertical: {
-        root: 'flex-col h-full'
+        root: 'h-full'
       }
     }
   },
@@ -99,6 +91,38 @@ export default (config: { colors: string[] }) => ({
     orientation: 'vertical',
     size: '2xl',
     class: { root: 'w-5' }
+  }, {
+    orientation: 'horizontal',
+    animation: 'carousel',
+    class: { indicator: 'data-[state=indeterminate]:animate-[carousel_2s_ease-in-out_infinite]' }
+  }, {
+    orientation: 'vertical',
+    animation: 'carousel',
+    class: { indicator: 'data-[state=indeterminate]:animate-[carousel-vertical_2s_ease-in-out_infinite]' }
+  }, {
+    orientation: 'horizontal',
+    animation: 'carousel-inverse',
+    class: { indicator: 'data-[state=indeterminate]:animate-[carousel-inverse_2s_ease-in-out_infinite]' }
+  }, {
+    orientation: 'vertical',
+    animation: 'carousel-inverse',
+    class: { indicator: 'data-[state=indeterminate]:animate-[carousel-inverse-vertical_2s_ease-in-out_infinite]' }
+  }, {
+    orientation: 'horizontal',
+    animation: 'swing',
+    class: { indicator: 'data-[state=indeterminate]:animate-[swing_2s_ease-in-out_infinite]' }
+  }, {
+    orientation: 'vertical',
+    animation: 'swing',
+    class: { indicator: 'data-[state=indeterminate]:animate-[swing-vertical_2s_ease-in-out_infinite]' }
+  }, {
+    orientation: 'horizontal',
+    animation: 'elastic',
+    class: { indicator: 'data-[state=indeterminate]:animate-[elastic_2s_ease-in-out_infinite]' }
+  }, {
+    orientation: 'vertical',
+    animation: 'elastic',
+    class: { indicator: 'data-[state=indeterminate]:animate-[elastic-vertical_2s_ease-in-out_infinite]' }
   }],
   defaultVariants: {
     animation: 'carousel',

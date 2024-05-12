@@ -1,12 +1,20 @@
 <template>
   <div class="flex flex-col gap-4 items-center">
     <div class="flex flex-col gap-4 w-96">
+      <UProgress />
+      <UProgress animation="carousel-inverse" />
+      <UProgress animation="swing" />
+      <UProgress animation="elastic" />
       <UProgress :model-value="progressValue" />
       <UProgress :model-value="progressValue" inverted />
       <UProgress :model-value="progressValue" size="2xl" color="pink" />
     </div>
 
     <div class="h-48 flex items-center gap-8">
+      <UProgress orientation="vertical" />
+      <UProgress animation="carousel-inverse" orientation="vertical" />
+      <UProgress animation="swing" orientation="vertical" />
+      <UProgress animation="elastic" orientation="vertical" />
       <UProgress :model-value="progressValue" orientation="vertical" size="xs" />
       <UProgress :model-value="progressValue" orientation="vertical" size="xs" inverted />
     </div>
