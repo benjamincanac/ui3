@@ -8,6 +8,7 @@
       <UProgress :model-value="progressValue" />
       <UProgress :model-value="progressValue" inverted />
       <UProgress :model-value="progressValue" size="2xl" color="pink" status />
+      <UProgress :model-value="3" :max="['Waiting to start', 'Cloning...', 'Migrating...', 'Deployed!']" size="xs" color="green" />
     </div>
 
     <div class="h-48 flex items-center gap-8">
@@ -17,7 +18,7 @@
       <UProgress animation="elastic" orientation="vertical" />
       <UProgress :model-value="progressValue" orientation="vertical" size="xs" />
       <UProgress :model-value="progressValue" orientation="vertical" size="xs" inverted />
-      <UProgress :model-value="progressValue" orientation="vertical" size="2xl" inverted status />
+      <UProgress :model-value="progressValue" orientation="vertical" size="xl" inverted status />
     </div>
   </div>
 </template>

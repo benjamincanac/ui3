@@ -33,27 +33,26 @@ import { reactivePick } from '@vueuse/core'
 
 const props = withDefaults(defineProps<ProgressProps>(), {
   inverted: false,
-  max: 100,
   modelValue: null,
   orientation: 'horizontal'
 })
 const emits = defineEmits<ProgressEmits>()
 
-const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'getValueLabel', 'max', 'modelValue'), emits)
+const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'getValueLabel', 'modelValue'), emits)
 
 const isIndeterminate = computed(() => rootProps.value.modelValue === null)
-const isSteps = computed(() => Array.isArray(rootProps.value.max))
+const isSteps = computed(() => Array.isArray(props.max))
 
 const realMax = computed(() => {
-  if (isIndeterminate.value) {
+  if (isIndeterminate.value || !props.max) {
     return undefined
   }
 
-  if (Array.isArray(rootProps.value.max)) {
-    return rootProps.value.max.length - 1
+  if (Array.isArray(props.max)) {
+    return props.max.length - 1
   }
 
-  return Number(rootProps.value.max)
+  return Number(props.max)
 })
 
 const percent = computed(() => {
@@ -63,8 +62,8 @@ const percent = computed(() => {
 
   switch (true) {
     case rootProps.value.modelValue! < 0: return 0
-    case rootProps.value.modelValue! > (realMax.value as number): return 100
-    default: return (rootProps.value.modelValue! / (realMax.value as number)) * 100
+    case rootProps.value.modelValue! > (realMax.value ?? 100): return 100
+    default: return (rootProps.value.modelValue! / (realMax.value ?? 100)) * 100
   }
 })
 
@@ -73,12 +72,34 @@ const indicatorDirection = computed(() => {
     if (!rootProps.value.modelValue) return undefined
 
     const direction = inv ? '' : '-'
-    return `transform: translate${dir}(${direction}${100 - rootProps.value.modelValue}%);`
+    return `transform: translate${dir}(${direction}${100 - Math.round(percent.value!)}%);`
   }
 
   const dir = props.orientation === 'vertical' ? 'Y' : 'X'
   return style(dir, props.inverted)
 })
+
+function isActive(index: number) {
+  return index === Number(props.modelValue)
+}
+
+function isFirst(index: number) {
+  return index === 0
+}
+
+function stepVariant(index: number | string) {
+  index = Number(index)
+
+  if (isActive(index) && !isFirst(index)) {
+    return 'active'
+  }
+
+  if (isFirst(index) && isActive(index)) {
+    return 'first'
+  }
+
+  return 'other'
+}
 
 const ui = computed(() => tv({ extend: progress, slots: props.ui })({
   animation: props.animation,
@@ -93,10 +114,10 @@ const ui = computed(() => tv({ extend: progress, slots: props.ui })({
     <slot v-if="status || $slots.status" name="status" v-bind="{ percent }">
       <div
         v-if="!isSteps"
-        :class="ui.statusContainer({ class: props.class })"
+        :class="ui.statusContainer()"
         :style="indicatorDirection + `justify-content: ${props.inverted ? 'flex-start' : 'flex-end'};`"
       >
-        <div :class="ui.status({ class: props.class })">
+        <div :class="ui.status()">
           {{ percent && Math.round(percent) }}%
         </div>
       </div>
@@ -104,13 +125,20 @@ const ui = computed(() => tv({ extend: progress, slots: props.ui })({
     <ProgressRoot
       v-bind="rootProps"
       :max="realMax"
-      :class="ui.root({ class: props.class })"
+      :class="ui.root()"
       style="transform: translateZ(0)"
     >
       <ProgressIndicator
-        :class="ui.indicator({ class: props.class })"
+        :class="ui.indicator()"
         :style="indicatorDirection"
       />
     </ProgressRoot>
+    <div v-if="isSteps" :class="ui.stepsContainer()">
+      <div v-for="(step, index) in max" :key="index" :class="ui.step({ step: stepVariant(index) })">
+        <slot :name="`step-${index}`" v-bind="{ step }">
+          {{ step }}
+        </slot>
+      </div>
+    </div>
   </div>
 </template>

@@ -4,7 +4,9 @@ export default (config: { colors: string[] }) => ({
     root: 'relative overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700',
     indicator: 'rounded-full size-full transition-transform duration-[660ms] ease-[cubic-bezier(0.65, 0, 0.35, 1)]',
     statusContainer: 'flex transition-all duration-[660ms] ease-[cubic-bezier(0.65, 0, 0.35, 1)]',
-    status: 'text-end w-fit text-gray-400 dark:text-gray-500'
+    status: 'text-end w-fit text-gray-400 dark:text-gray-500',
+    stepsContainer: 'grid grid-cols-1',
+    step: 'transition-all truncate text-end row-start-1 col-start-1'
   },
   variants: {
     animation: {
@@ -14,7 +16,8 @@ export default (config: { colors: string[] }) => ({
       'elastic': {}
     },
     color: Object.fromEntries(config.colors.map((color: string) => [color, {
-      indicator: `bg-${color}-500 dark:bg-${color}-400`
+      indicator: `bg-${color}-500 dark:bg-${color}-400`,
+      stepsContainer: `text-${color}-500 dark:text-${color}-400`
     }])),
     size: {
       '2xs': '',
@@ -24,6 +27,17 @@ export default (config: { colors: string[] }) => ({
       'lg': '',
       'xl': '',
       '2xl': ''
+    },
+    step: {
+      active: {
+        step: 'opacity-100'
+      },
+      first: {
+        step: 'opacity-100 text-gray-500 dark:text-gray-400'
+      },
+      other: {
+        step: 'opacity-0'
+      }
     },
     orientation: {
       horizontal: {
@@ -50,7 +64,8 @@ export default (config: { colors: string[] }) => ({
     class: {
       root: 'h-0.5',
       statusContainer: 'flex-row min-w-fit',
-      status: 'text-xs'
+      status: 'text-xs',
+      stepsContainer: 'text-xs'
     }
   }, {
     orientation: 'horizontal',
@@ -58,7 +73,8 @@ export default (config: { colors: string[] }) => ({
     class: {
       root: 'h-1',
       statusContainer: 'flex-row min-w-fit',
-      status: 'text-sm'
+      status: 'text-sm',
+      stepsContainer: 'text-sm'
     }
   }, {
     orientation: 'horizontal',
@@ -66,7 +82,8 @@ export default (config: { colors: string[] }) => ({
     class: {
       root: 'h-2',
       statusContainer: 'flex-row min-w-fit',
-      status: 'text-sm'
+      status: 'text-sm',
+      stepsContainer: 'text-sm'
     }
   }, {
     orientation: 'horizontal',
@@ -74,7 +91,8 @@ export default (config: { colors: string[] }) => ({
     class: {
       root: 'h-3',
       statusContainer: 'flex-row min-w-fit',
-      status: 'text-sm'
+      status: 'text-sm',
+      stepsContainer: 'text-sm'
     }
   }, {
     orientation: 'horizontal',
@@ -82,7 +100,8 @@ export default (config: { colors: string[] }) => ({
     class: {
       root: 'h-4',
       statusContainer: 'flex-row min-w-fit',
-      status: 'text-base'
+      status: 'text-base',
+      stepsContainer: 'text-base'
     }
   }, {
     orientation: 'horizontal',
@@ -90,7 +109,8 @@ export default (config: { colors: string[] }) => ({
     class: {
       root: 'h-5',
       statusContainer: 'flex-row min-w-fit',
-      status: 'text-base'
+      status: 'text-base',
+      stepsContainer: 'text-base'
     }
   }, {
     orientation: 'vertical',
@@ -98,7 +118,8 @@ export default (config: { colors: string[] }) => ({
     class: {
       root: 'w-px',
       statusContainer: 'flex-col min-h-fit',
-      status: 'text-xs'
+      status: 'text-xs',
+      stepsContainer: 'text-xs'
     }
   }, {
     orientation: 'vertical',
@@ -106,7 +127,8 @@ export default (config: { colors: string[] }) => ({
     class: {
       root: 'w-0.5',
       statusContainer: 'flex-col min-h-fit',
-      status: 'text-xs'
+      status: 'text-xs',
+      stepsContainer: 'text-xs'
     }
   }, {
     orientation: 'vertical',
@@ -114,7 +136,8 @@ export default (config: { colors: string[] }) => ({
     class: {
       root: 'w-1',
       statusContainer: 'flex-col min-h-fit',
-      status: 'text-sm'
+      status: 'text-sm',
+      stepsContainer: 'text-sm'
     }
   }, {
     orientation: 'vertical',
@@ -122,7 +145,8 @@ export default (config: { colors: string[] }) => ({
     class: {
       root: 'w-2',
       statusContainer: 'flex-col min-h-fit',
-      status: 'text-sm'
+      status: 'text-sm',
+      stepsContainer: 'text-sm'
     }
   }, {
     orientation: 'vertical',
@@ -130,7 +154,8 @@ export default (config: { colors: string[] }) => ({
     class: {
       root: 'w-3',
       statusContainer: 'flex-col min-h-fit',
-      status: 'text-sm'
+      status: 'text-sm',
+      stepsContainer: 'text-sm'
     }
   }, {
     orientation: 'vertical',
@@ -138,7 +163,8 @@ export default (config: { colors: string[] }) => ({
     class: {
       root: 'w-4',
       statusContainer: 'flex-col min-h-fit',
-      status: 'text-base'
+      status: 'text-base',
+      stepsContainer: 'text-base'
     }
   }, {
     orientation: 'vertical',
@@ -146,7 +172,8 @@ export default (config: { colors: string[] }) => ({
     class: {
       root: 'w-5',
       statusContainer: 'flex-col min-h-fit',
-      status: 'text-base'
+      status: 'text-base',
+      stepsContainer: 'text-base'
     }
   }, {
     orientation: 'horizontal',
@@ -185,6 +212,7 @@ export default (config: { colors: string[] }) => ({
     animation: 'carousel',
     color: 'primary',
     orientation: 'horizontal',
-    size: 'md'
+    size: 'md',
+    step: 'other'
   }
 })
