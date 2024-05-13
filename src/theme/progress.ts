@@ -211,7 +211,6 @@ export default (config: { colors: string[] }) => ({
   defaultVariants: {
     animation: 'carousel',
     color: 'primary',
-    orientation: 'horizontal',
     size: 'md',
     step: 'other'
   }
