@@ -218,12 +218,7 @@ onMounted(() => {
 
               <ComboboxSeparator v-else-if="item?.type === 'separator'" :class="ui.separator()" />
 
-              <ComboboxItem
-                v-else
-                :class="ui.item()"
-                :disabled="item.disabled"
-                :value="item"
-              >
+              <ComboboxItem v-else :class="ui.item()" :disabled="item.disabled" :value="item">
                 <slot name="item" :item="(item as T)" :index="index">
                   <slot name="item-leading" :item="(item as T)" :index="index">
                     <UAvatar v-if="item.avatar" size="2xs" v-bind="item.avatar" :class="ui.itemLeadingAvatar()" />

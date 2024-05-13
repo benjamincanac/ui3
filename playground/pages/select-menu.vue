@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { refDebounced } from '@vueuse/core'
 import theme from '#build/ui/select-menu'
+import type { User } from '~/types'
 
 const sizes = Object.keys(theme.variants.size)
-
-import type { User } from '~/types'
 
 const fruits = ['Apple', 'Banana', 'Blueberry', 'Grapes', 'Pineapple']
 const vegetables = ['Aubergine', 'Broccoli', 'Carrot', 'Courgette', 'Leek']
@@ -32,7 +32,11 @@ const statuses = [{
   icon: 'i-heroicons-x-circle'
 }]
 
+const searchTerm = ref('')
+const searchTermDebounced = refDebounced(searchTerm, 200)
+
 const { data: users, pending } = await useFetch('https://jsonplaceholder.typicode.com/users', {
+  params: { q: searchTermDebounced },
   transform: (data: User[]) => {
     return data?.map(user => ({ label: user.name, value: user.id, avatar: { src: `https://i.pravatar.cc/120?img=${user.id}` } })) || []
   },
@@ -56,7 +60,14 @@ const { data: users, pending } = await useFetch('https://jsonplaceholder.typicod
           <UIcon v-if="modelValue" :name="modelValue.icon" class="size-5" />
         </template>
       </USelectMenu>
-      <USelectMenu :items="users || []" :loading="pending" icon="i-heroicons-user" placeholder="Search users...">
+      <USelectMenu
+        v-model:search-term="searchTerm"
+        :items="users || []"
+        :loading="pending"
+        :filter="false"
+        icon="i-heroicons-user"
+        placeholder="Search users..."
+      >
         <template #leading="{ modelValue }">
           <UAvatar v-if="modelValue?.avatar" size="2xs" v-bind="modelValue.avatar" />
         </template>

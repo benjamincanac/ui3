@@ -62,7 +62,6 @@ const { data: users, pending } = await useFetch('https://jsonplaceholder.typicod
         :filter="false"
         icon="i-heroicons-user"
         placeholder="Search users..."
-        @update:open="searchTerm = ''"
       >
         <template #leading="{ modelValue }">
           <UAvatar v-if="modelValue?.avatar" size="2xs" v-bind="modelValue.avatar" />

@@ -28,8 +28,10 @@ type SelectMenuVariants = VariantProps<typeof selectMenu>
 
 export interface SelectMenuProps<T> extends Omit<ComboboxRootProps<T>, 'asChild' | 'dir' | 'filterFunction' | 'displayValue' | 'multiple'>, UseComponentIconsProps {
   id?: string
-  /** The placeholder text when the input is empty. */
+  /** The placeholder text when the select is empty. */
   placeholder?: string
+  /** The placeholder text when the search input is empty. */
+  searchPlaceholder?: string
   color?: SelectMenuVariants['color']
   variant?: SelectMenuVariants['variant']
   size?: SelectMenuVariants['size']
@@ -84,9 +86,9 @@ import { UIcon, UChip, UAvatar } from '#components'
 import { get } from '#ui/utils'
 
 const props = withDefaults(defineProps<SelectMenuProps<T>>(), {
-  type: 'text',
-  autofocusDelay: 0,
   portal: true,
+  autofocusDelay: 0,
+  searchPlaceholder: 'Search...',
   filter: () => ['label']
 })
 const emits = defineEmits<SelectMenuEmits<T>>()
@@ -142,13 +144,6 @@ function filterFunction(items: ArrayOrWrapped<AcceptableValue>, searchTerm: stri
 }
 
 const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0]) ? props.items : [props.items]) as SelectMenuItem[][] : [])
-
-function onUpdateModelValue() {
-  setTimeout(() => {
-    searchTerm.value = ''
-  }, 0)
-  emitFormChange()
-}
 </script>
 
 <template>
@@ -162,8 +157,7 @@ function onUpdateModelValue() {
     :disabled="disabled"
     :display-value="displayValue"
     :filter-function="filterFunction"
-    @update:model-value="onUpdateModelValue"
-    @keydown.enter="$event.preventDefault()"
+    @update:model-value="emitFormChange()"
   >
     <ComboboxAnchor as-child>
       <ComboboxTrigger :class="ui.base({ class: props.class })" tabindex="0">
@@ -198,7 +192,7 @@ function onUpdateModelValue() {
           </slot>
         </ComboboxEmpty>
 
-        <ComboboxInput placeholder="Search..." :class="ui.input()" autofocus autocomplete="off" @blur="emitFormBlur()" />
+        <ComboboxInput :placeholder="searchPlaceholder" :class="ui.input()" autofocus autocomplete="off" @blur="emitFormBlur()" />
 
         <ComboboxViewport :class="ui.viewport()">
           <ComboboxGroup v-for="(group, groupIndex) in groups" :key="`group-${groupIndex}`" :class="ui.group()">
@@ -209,12 +203,7 @@ function onUpdateModelValue() {
 
               <ComboboxSeparator v-else-if="item?.type === 'separator'" :class="ui.separator()" />
 
-              <ComboboxItem
-                v-else
-                :class="ui.item()"
-                :disabled="item.disabled"
-                :value="item"
-              >
+              <ComboboxItem v-else :class="ui.item()" :disabled="item.disabled" :value="item">
                 <slot name="item" :item="(item as T)" :index="index">
                   <slot name="item-leading" :item="(item as T)" :index="index">
                     <UAvatar v-if="item.avatar" size="2xs" v-bind="item.avatar" :class="ui.itemLeadingAvatar()" />
