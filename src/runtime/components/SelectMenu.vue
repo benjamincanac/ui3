@@ -166,7 +166,7 @@ function onUpdateModelValue() {
     @keydown.enter="$event.preventDefault()"
   >
     <ComboboxAnchor as-child>
-      <ComboboxTrigger :class="ui.base({ class: props.class })">
+      <ComboboxTrigger :class="ui.base({ class: props.class })" tabindex="0">
         <span v-if="isLeading || !!slots.leading" :class="ui.leading()">
           <slot name="leading" :model-value="(modelValue as T)" :open="open">
             <UIcon v-if="leadingIconName" :name="leadingIconName" :class="ui.leadingIcon()" />

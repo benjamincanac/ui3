@@ -1,8 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`SelectMenu > renders with class correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9 rounded-full" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9 rounded-full" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -50,8 +50,8 @@ exports[`SelectMenu > renders with class correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with color gray correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -99,8 +99,8 @@ exports[`SelectMenu > renders with color gray correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with color green correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-transparent text-gray-900 dark:text-white ring ring-inset ring-green-500 dark:ring-green-400 focus:ring-2 focus:ring-green-500 dark:focus:ring-green-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-transparent text-gray-900 dark:text-white ring ring-inset ring-green-500 dark:ring-green-400 focus-visible:ring-2 focus-visible:ring-green-500 dark:focus-visible:ring-green-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -148,8 +148,8 @@ exports[`SelectMenu > renders with color green correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with color primary correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-transparent text-gray-900 dark:text-white ring ring-inset ring-primary-500 dark:ring-primary-400 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-transparent text-gray-900 dark:text-white ring ring-inset ring-primary-500 dark:ring-primary-400 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -197,8 +197,8 @@ exports[`SelectMenu > renders with color primary correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with color red correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-transparent text-gray-900 dark:text-white ring ring-inset ring-red-500 dark:ring-red-400 focus:ring-2 focus:ring-red-500 dark:focus:ring-red-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-transparent text-gray-900 dark:text-white ring ring-inset ring-red-500 dark:ring-red-400 focus-visible:ring-2 focus-visible:ring-red-500 dark:focus-visible:ring-red-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -246,8 +246,8 @@ exports[`SelectMenu > renders with color red correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with color white correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -295,8 +295,8 @@ exports[`SelectMenu > renders with color white correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with default slot correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if-->Default slot<span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if-->Default slot<span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -344,8 +344,8 @@ exports[`SelectMenu > renders with default slot correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with defaultValue correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -393,8 +393,8 @@ exports[`SelectMenu > renders with defaultValue correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with disabled correctly 1`] = `
-"<button disabled="" type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" data-disabled="" aria-disabled="true" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button disabled="" type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" data-disabled="" aria-disabled="true" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -442,7 +442,7 @@ exports[`SelectMenu > renders with disabled correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with icon correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pl-9 pr-9" style="pointer-events: auto;" dir="ltr"><span class="absolute inset-y-0 start-0 flex items-center pl-2.5"><span class="iconify i-heroicons:magnifying-glass shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span></button>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pl-9 pr-9" style="pointer-events: auto;" dir="ltr"><span class="absolute inset-y-0 start-0 flex items-center pl-2.5"><span class="iconify i-heroicons:magnifying-glass shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span></button>
 <!--teleport start-->
 
 
@@ -489,8 +489,8 @@ exports[`SelectMenu > renders with icon correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with id correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr" id="id">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr" id="id">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -538,8 +538,8 @@ exports[`SelectMenu > renders with id correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with item slot correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -577,8 +577,8 @@ exports[`SelectMenu > renders with item slot correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with item-label slot correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -626,8 +626,8 @@ exports[`SelectMenu > renders with item-label slot correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with item-leading slot correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -665,8 +665,8 @@ exports[`SelectMenu > renders with item-leading slot correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with item-trailing slot correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -714,8 +714,8 @@ exports[`SelectMenu > renders with item-trailing slot correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with items correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -763,7 +763,7 @@ exports[`SelectMenu > renders with items correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with leading and icon correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pl-9 pr-9" style="pointer-events: auto;" dir="ltr"><span class="absolute inset-y-0 start-0 flex items-center pl-2.5"><span class="iconify i-heroicons:magnifying-glass shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span></button>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pl-9 pr-9" style="pointer-events: auto;" dir="ltr"><span class="absolute inset-y-0 start-0 flex items-center pl-2.5"><span class="iconify i-heroicons:magnifying-glass shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span></button>
 <!--teleport start-->
 
 
@@ -810,7 +810,7 @@ exports[`SelectMenu > renders with leading and icon correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with leading slot correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pl-9 pr-9" style="pointer-events: auto;" dir="ltr"><span class="absolute inset-y-0 start-0 flex items-center pl-2.5">Leading slot</span><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span></button>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pl-9 pr-9" style="pointer-events: auto;" dir="ltr"><span class="absolute inset-y-0 start-0 flex items-center pl-2.5">Leading slot</span><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span></button>
 <!--teleport start-->
 
 
@@ -857,7 +857,7 @@ exports[`SelectMenu > renders with leading slot correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with leadingIcon correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pl-9 pr-9" style="pointer-events: auto;" dir="ltr"><span class="absolute inset-y-0 start-0 flex items-center pl-2.5"><span class="iconify i-heroicons:magnifying-glass shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span></button>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pl-9 pr-9" style="pointer-events: auto;" dir="ltr"><span class="absolute inset-y-0 start-0 flex items-center pl-2.5"><span class="iconify i-heroicons:magnifying-glass shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span></button>
 <!--teleport start-->
 
 
@@ -904,8 +904,8 @@ exports[`SelectMenu > renders with leadingIcon correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with loading correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:arrow-path-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5 animate-spin" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:arrow-path-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5 animate-spin" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -953,8 +953,8 @@ exports[`SelectMenu > renders with loading correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with loadingIcon correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:sparkles shrink-0 text-gray-400 dark:text-gray-500 size-5 animate-spin" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:sparkles shrink-0 text-gray-400 dark:text-gray-500 size-5 animate-spin" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1002,8 +1002,8 @@ exports[`SelectMenu > renders with loadingIcon correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with modelValue correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="truncate">Backlog</span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate">Backlog</span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1051,8 +1051,8 @@ exports[`SelectMenu > renders with modelValue correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with name correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1100,8 +1100,8 @@ exports[`SelectMenu > renders with name correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with placeholder correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50">Enter your username</span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50">Enter your username</span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1149,8 +1149,8 @@ exports[`SelectMenu > renders with placeholder correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with required correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1198,8 +1198,8 @@ exports[`SelectMenu > renders with required correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with size lg correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-3 py-2 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-10" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-3"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-3 py-2 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-10" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-3"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1247,8 +1247,8 @@ exports[`SelectMenu > renders with size lg correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with size md correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1296,8 +1296,8 @@ exports[`SelectMenu > renders with size md correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with size sm correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-xs shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-8" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-4" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-xs shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-8" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-4" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1345,8 +1345,8 @@ exports[`SelectMenu > renders with size sm correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with size xl correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-3 py-2 text-base shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-11" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-3"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-6" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-3 py-2 text-base shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-11" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-3"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-6" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1394,8 +1394,8 @@ exports[`SelectMenu > renders with size xl correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with size xs correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2 py-1 text-xs shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-7" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-4" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2 py-1 text-xs shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-7" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-4" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1443,8 +1443,8 @@ exports[`SelectMenu > renders with size xs correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with trailing and icon correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1492,8 +1492,8 @@ exports[`SelectMenu > renders with trailing and icon correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with trailing slot correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5">Trailing slot</span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5">Trailing slot</span>
 </button>
 <!--teleport start-->
 
@@ -1541,8 +1541,8 @@ exports[`SelectMenu > renders with trailing slot correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with trailingIcon correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:magnifying-glass shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:magnifying-glass shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1590,8 +1590,8 @@ exports[`SelectMenu > renders with trailingIcon correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with ui correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="false" aria-controls="" data-state="closed" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="false" aria-controls="" data-state="closed" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 <!--teleport end-->
@@ -1599,8 +1599,8 @@ exports[`SelectMenu > renders with ui correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with variant none correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm bg-transparent focus:ring-0 focus:shadow-none pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm bg-transparent pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
@@ -1648,8 +1648,8 @@ exports[`SelectMenu > renders with variant none correctly 1`] = `
 `;
 
 exports[`SelectMenu > renders with variant outline correctly 1`] = `
-"<button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
-  <!--v-if--><span class="text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
+"<button type="button" tabindex="0" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="true" aria-controls="" data-state="open" aria-disabled="false" class="relative group rounded-md inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 px-2.5 py-1.5 text-sm shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring ring-inset ring-gray-300 dark:ring-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 pr-9" style="pointer-events: auto;" dir="ltr">
+  <!--v-if--><span class="truncate text-current/50"> </span><span class="absolute inset-y-0 end-0 flex items-center pr-2.5"><span class="iconify i-heroicons:chevron-down-20-solid shrink-0 text-gray-400 dark:text-gray-500 size-5" aria-hidden="true"></span></span>
 </button>
 <!--teleport start-->
 
