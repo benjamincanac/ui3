@@ -110,7 +110,7 @@ const ui = computed(() => tv({ extend: progress, slots: props.ui })({
 </script>
 
 <template>
-  <div :class="ui.wrapper({ class: props.class })">
+  <div :class="ui.root({ class: props.class })">
     <slot v-if="status || $slots.status" name="status" v-bind="{ percent }">
       <div
         v-if="!isSteps"
@@ -125,7 +125,7 @@ const ui = computed(() => tv({ extend: progress, slots: props.ui })({
     <ProgressRoot
       v-bind="rootProps"
       :max="realMax"
-      :class="ui.root()"
+      :class="ui.base()"
       style="transform: translateZ(0)"
     >
       <ProgressIndicator

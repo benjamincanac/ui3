@@ -1,7 +1,7 @@
 export default (config: { colors: string[] }) => ({
   slots: {
-    wrapper: '',
-    root: 'relative overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700',
+    root: '',
+    base: 'relative overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700',
     indicator: 'rounded-full size-full transition-transform duration-[660ms] ease-[cubic-bezier(0.65, 0, 0.35, 1)]',
     statusContainer: 'flex transition-all duration-[660ms] ease-[cubic-bezier(0.65, 0, 0.35, 1)]',
     status: 'text-end w-fit text-gray-400 dark:text-gray-500',
@@ -41,12 +41,12 @@ export default (config: { colors: string[] }) => ({
     },
     orientation: {
       horizontal: {
-        wrapper: 'w-full',
-        root: 'w-full'
+        root: 'w-full',
+        base: 'w-full'
       },
       vertical: {
-        wrapper: 'h-full flex flex-row-reverse gap-x-1',
-        root: 'h-full'
+        root: 'h-full flex flex-row-reverse gap-x-1',
+        base: 'h-full'
       }
     }
   },
@@ -54,7 +54,7 @@ export default (config: { colors: string[] }) => ({
     orientation: 'horizontal',
     size: '2xs',
     class: {
-      root: 'h-px',
+      base: 'h-px',
       statusContainer: 'flex-row min-w-fit',
       status: 'text-xs'
     }
@@ -62,7 +62,7 @@ export default (config: { colors: string[] }) => ({
     orientation: 'horizontal',
     size: 'xs',
     class: {
-      root: 'h-0.5',
+      base: 'h-0.5',
       statusContainer: 'flex-row min-w-fit',
       status: 'text-xs',
       stepsContainer: 'text-xs'
@@ -71,7 +71,7 @@ export default (config: { colors: string[] }) => ({
     orientation: 'horizontal',
     size: 'sm',
     class: {
-      root: 'h-1',
+      base: 'h-1',
       statusContainer: 'flex-row min-w-fit',
       status: 'text-sm',
       stepsContainer: 'text-sm'
@@ -80,7 +80,7 @@ export default (config: { colors: string[] }) => ({
     orientation: 'horizontal',
     size: 'md',
     class: {
-      root: 'h-2',
+      base: 'h-2',
       statusContainer: 'flex-row min-w-fit',
       status: 'text-sm',
       stepsContainer: 'text-sm'
@@ -89,7 +89,7 @@ export default (config: { colors: string[] }) => ({
     orientation: 'horizontal',
     size: 'lg',
     class: {
-      root: 'h-3',
+      base: 'h-3',
       statusContainer: 'flex-row min-w-fit',
       status: 'text-sm',
       stepsContainer: 'text-sm'
@@ -98,7 +98,7 @@ export default (config: { colors: string[] }) => ({
     orientation: 'horizontal',
     size: 'xl',
     class: {
-      root: 'h-4',
+      base: 'h-4',
       statusContainer: 'flex-row min-w-fit',
       status: 'text-base',
       stepsContainer: 'text-base'
@@ -107,7 +107,7 @@ export default (config: { colors: string[] }) => ({
     orientation: 'horizontal',
     size: '2xl',
     class: {
-      root: 'h-5',
+      base: 'h-5',
       statusContainer: 'flex-row min-w-fit',
       status: 'text-base',
       stepsContainer: 'text-base'
@@ -116,7 +116,7 @@ export default (config: { colors: string[] }) => ({
     orientation: 'vertical',
     size: '2xs',
     class: {
-      root: 'w-px',
+      base: 'w-px',
       statusContainer: 'flex-col min-h-fit',
       status: 'text-xs',
       stepsContainer: 'text-xs'
@@ -125,7 +125,7 @@ export default (config: { colors: string[] }) => ({
     orientation: 'vertical',
     size: 'xs',
     class: {
-      root: 'w-0.5',
+      base: 'w-0.5',
       statusContainer: 'flex-col min-h-fit',
       status: 'text-xs',
       stepsContainer: 'text-xs'
@@ -134,7 +134,7 @@ export default (config: { colors: string[] }) => ({
     orientation: 'vertical',
     size: 'sm',
     class: {
-      root: 'w-1',
+      base: 'w-1',
       statusContainer: 'flex-col min-h-fit',
       status: 'text-sm',
       stepsContainer: 'text-sm'
@@ -143,7 +143,7 @@ export default (config: { colors: string[] }) => ({
     orientation: 'vertical',
     size: 'md',
     class: {
-      root: 'w-2',
+      base: 'w-2',
       statusContainer: 'flex-col min-h-fit',
       status: 'text-sm',
       stepsContainer: 'text-sm'
@@ -152,7 +152,7 @@ export default (config: { colors: string[] }) => ({
     orientation: 'vertical',
     size: 'lg',
     class: {
-      root: 'w-3',
+      base: 'w-3',
       statusContainer: 'flex-col min-h-fit',
       status: 'text-sm',
       stepsContainer: 'text-sm'
@@ -161,7 +161,7 @@ export default (config: { colors: string[] }) => ({
     orientation: 'vertical',
     size: 'xl',
     class: {
-      root: 'w-4',
+      base: 'w-4',
       statusContainer: 'flex-col min-h-fit',
       status: 'text-base',
       stepsContainer: 'text-base'
@@ -170,7 +170,7 @@ export default (config: { colors: string[] }) => ({
     orientation: 'vertical',
     size: '2xl',
     class: {
-      root: 'w-5',
+      base: 'w-5',
       statusContainer: 'flex-col min-h-fit',
       status: 'text-base',
       stepsContainer: 'text-base'
