@@ -3,6 +3,7 @@ import type { ZodSchema } from 'zod'
 import type { Schema as JoiSchema } from 'joi'
 import type { ObjectSchema as YupObjectSchema } from 'yup'
 import type { ObjectSchemaAsync as ValibotObjectSchema } from 'valibot'
+import type { GetObjectField } from './utils'
 
 export interface Form<T> {
   validate (opts?: { name: string | string[], silent?: false, nested?: boolean }): Promise<T | false>
@@ -64,18 +65,17 @@ export type FormEvent =
   | FormChildDetachEvent
 
 export interface FormInjectedOptions {
-  disabled?: ComputedRef<boolean>
-  validateOnInputDelay?: ComputedRef<number>
+  disabled?: boolean
+  validateOnInputDelay?: number
 }
 
 export interface FormFieldInjectedOptions<T> {
-  inputId: Ref<string | undefined>
-  name: ComputedRef<string | undefined>
-  // @ts-expect-error FIXME: TS doesn't like this
-  size: ComputedRef<T['size']>
-  error: ComputedRef<string | boolean | undefined>
-  eagerValidation: ComputedRef<boolean | undefined>
-  validateOnInputDelay: ComputedRef<number | undefined>
+  id: string
+  name?: string
+  size?: GetObjectField<T, 'size'>
+  error?: string | boolean
+  eagerValidation?: boolean
+  validateOnInputDelay?: number
 }
 
 export class FormValidationException extends Error {

@@ -1,37 +1,36 @@
 <script lang="ts">
 import { tv } from 'tailwind-variants'
-import type { DropdownMenuRootProps, DropdownMenuRootEmits, DropdownMenuContentProps, DropdownMenuArrowProps } from 'radix-vue'
+import type { DropdownMenuRootProps, DropdownMenuRootEmits, DropdownMenuContentProps, DropdownMenuArrowProps, DropdownMenuTriggerProps, DropdownMenuItemProps } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/dropdown-menu'
-import type { AvatarProps, IconProps, KbdProps, LinkProps } from '#ui/types'
+import type { AvatarProps, KbdProps, LinkProps } from '#ui/types'
+import type { DynamicSlots } from '#ui/types/utils'
 
 const appConfig = _appConfig as AppConfig & { ui: { dropdownMenu: Partial<typeof theme> } }
 
 const dropdownMenu = tv({ extend: tv(theme), ...(appConfig.ui?.dropdownMenu || {}) })
 
-export interface DropdownMenuItem extends Omit<LinkProps, 'type'> {
+export interface DropdownMenuItem extends Omit<LinkProps, 'type'>, Pick<DropdownMenuItemProps, 'disabled'> {
   label?: string
-  icon?: IconProps['name']
+  icon?: string
   avatar?: AvatarProps
-  disabled?: boolean
   content?: Omit<DropdownMenuContentProps, 'asChild' | 'forceMount'>
-  shortcuts?: string[] | KbdProps[]
+  kbds?: KbdProps['value'][] | KbdProps[]
   /**
    * The item type.
-   * @defaultValue "link"
+   * @defaultValue `'item'`
    */
-  type?: 'label' | 'link'
+  type?: 'label' | 'separator' | 'item'
   slot?: string
   open?: boolean
   defaultOpen?: boolean
-  select? (e: Event): void
   children?: DropdownMenuItem[] | DropdownMenuItem[][]
+  select? (e: Event): void
 }
 
-export interface DropdownMenuProps<T> extends Omit<DropdownMenuRootProps, 'dir'> {
+export interface DropdownMenuProps<T> extends Omit<DropdownMenuRootProps, 'dir'>, Pick<DropdownMenuTriggerProps, 'disabled'> {
   items?: T[] | T[][]
-  disabled?: boolean
   content?: Omit<DropdownMenuContentProps, 'asChild' | 'forceMount'>
   arrow?: boolean | Omit<DropdownMenuArrowProps, 'asChild'>
   portal?: boolean
@@ -43,14 +42,13 @@ export interface DropdownMenuEmits extends DropdownMenuRootEmits {}
 
 type SlotProps<T> = (props: { item: T, active?: boolean, index: number }) => any
 
-export interface DropdownMenuSlots<T> {
-  default(): any
-  leading: SlotProps<T>
-  label: SlotProps<T>
-  trailing: SlotProps<T>
-  item: SlotProps<T>
-  [key: string]: SlotProps<T>
-}
+export type DropdownMenuSlots<T extends { slot?: string }> = {
+  'default'(): any
+  'item': SlotProps<T>
+  'item-leading': SlotProps<T>
+  'item-label': SlotProps<T>
+  'item-trailing': SlotProps<T>
+} & DynamicSlots<T, SlotProps<T>>
 </script>
 
 <script setup lang="ts" generic="T extends DropdownMenuItem">
@@ -71,14 +69,14 @@ const slots = defineSlots<DropdownMenuSlots<T>>()
 const rootProps = useForwardPropsEmits(reactivePick(props, 'defaultOpen', 'open', 'modal'), emits)
 const contentProps = toRef(() => defu(props.content, { side: 'bottom', sideOffset: 8 }) as DropdownMenuContentProps)
 const arrowProps = toRef(() => props.arrow as DropdownMenuArrowProps)
-const proxySlots = omit(slots, ['default'])
+const proxySlots = omit(slots, ['default']) as Record<string, DropdownMenuSlots<T>[string]>
 
 const ui = computed(() => tv({ extend: dropdownMenu, slots: props.ui })())
 </script>
 
 <template>
   <DropdownMenuRoot v-bind="rootProps">
-    <DropdownMenuTrigger v-if="$slots.default" as-child :disabled="disabled">
+    <DropdownMenuTrigger v-if="!!slots.default" as-child :disabled="disabled">
       <slot />
     </DropdownMenuTrigger>
 

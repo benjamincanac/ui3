@@ -1,28 +1,26 @@
 <script lang="ts">
 import { tv } from 'tailwind-variants'
-import type { AccordionRootProps, AccordionRootEmits, AccordionContentProps } from 'radix-vue'
+import type { AccordionRootProps, AccordionRootEmits, AccordionContentProps, AccordionItemProps } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/accordion'
-import type { IconProps } from '#ui/types'
+import type { DynamicSlots } from '#ui/types/utils'
 
 const appConfig = _appConfig as AppConfig & { ui: { accordion: Partial<typeof theme> } }
 
 const accordion = tv({ extend: tv(theme), ...(appConfig.ui?.accordion || {}) })
 
-export interface AccordionItem {
+export interface AccordionItem extends Partial<Pick<AccordionItemProps, 'disabled' | 'value'>> {
   label?: string
-  icon?: IconProps['name']
-  trailingIcon?: IconProps['name']
+  icon?: string
+  trailingIcon?: string
   slot?: string
-  value?: string
   content?: string
-  disabled?: boolean
 }
 
 export interface AccordionProps<T> extends Omit<AccordionRootProps, 'asChild' | 'dir' | 'orientation'> {
   items?: T[]
-  trailingIcon?: IconProps['name']
+  trailingIcon?: string
   content?: Omit<AccordionContentProps, 'asChild'>
   class?: any
   ui?: Partial<typeof accordion.slots>
@@ -32,14 +30,12 @@ export interface AccordionEmits extends AccordionRootEmits {}
 
 type SlotProps<T> = (props: { item: T, index: number }) => any
 
-export type AccordionSlots<T> = {
-  default: SlotProps<T>
+export type AccordionSlots<T extends { slot?: string }> = {
   leading: SlotProps<T>
-  label: SlotProps<T>
+  default: SlotProps<T>
   trailing: SlotProps<T>
   content: SlotProps<T>
-  [key: string]: SlotProps<T>
-}
+} & DynamicSlots<T, SlotProps<T>>
 </script>
 
 <script setup lang="ts" generic="T extends AccordionItem">
@@ -53,7 +49,7 @@ const props = withDefaults(defineProps<AccordionProps<T>>(), {
   collapsible: true
 })
 const emits = defineEmits<AccordionEmits>()
-defineSlots<AccordionSlots<T>>()
+const slots = defineSlots<AccordionSlots<T>>()
 
 const appConfig = useAppConfig()
 const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'collapsible', 'defaultValue', 'disabled', 'modelValue', 'type'), emits)
@@ -67,23 +63,21 @@ const ui = computed(() => tv({ extend: accordion, slots: props.ui })({ disabled:
     <AccordionItem v-for="(item, index) in items" :key="index" :value="item.value || String(index)" :disabled="item.disabled" :class="ui.item()">
       <AccordionHeader :class="ui.header()">
         <AccordionTrigger :class="ui.trigger({ disabled: item.disabled })">
-          <slot :item="item" :index="index">
-            <slot name="leading" :item="item" :index="index">
-              <UIcon v-if="item.icon" :name="item.icon" :class="ui.leadingIcon()" />
-            </slot>
+          <slot name="leading" :item="item" :index="index">
+            <UIcon v-if="item.icon" :name="item.icon" :class="ui.leadingIcon()" />
+          </slot>
 
-            <span v-if="item.label || $slots.label" :class="ui.label()">
-              <slot name="label" :item="item" :index="index">{{ item.label }}</slot>
-            </span>
+          <span v-if="item.label || !!slots.default" :class="ui.label()">
+            <slot :item="item" :index="index">{{ item.label }}</slot>
+          </span>
 
-            <slot name="trailing" :item="item" :index="index">
-              <UIcon :name="item.trailingIcon || trailingIcon || appConfig.ui.icons.chevronDown" :class="ui.trailingIcon()" />
-            </slot>
+          <slot name="trailing" :item="item" :index="index">
+            <UIcon :name="item.trailingIcon || trailingIcon || appConfig.ui.icons.chevronDown" :class="ui.trailingIcon()" />
           </slot>
         </AccordionTrigger>
       </AccordionHeader>
 
-      <AccordionContent v-if="item.content || $slots.content || (item.slot && $slots[item.slot])" v-bind="contentProps" :class="ui.content()">
+      <AccordionContent v-if="item.content || !!slots.content || (item.slot && !!slots[item.slot])" v-bind="contentProps" :class="ui.content()">
         <slot :name="item.slot || 'content'" :item="item" :index="index">
           {{ item.content }}
         </slot>

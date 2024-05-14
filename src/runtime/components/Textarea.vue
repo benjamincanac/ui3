@@ -13,6 +13,7 @@ type TextareaVariants = VariantProps<typeof textarea>
 export interface TextareaProps {
   id?: string
   name?: string
+  /** The placeholder text when the textarea is empty. */
   placeholder?: string
   color?: TextareaVariants['color']
   variant?: TextareaVariants['variant']
@@ -30,6 +31,7 @@ export interface TextareaProps {
 
 export interface TextareaEmits {
   (e: 'blur', event: FocusEvent): void
+  (e: 'change', event: Event): void
 }
 
 export interface TextareaSlots {
@@ -47,15 +49,14 @@ defineOptions({ inheritAttrs: false })
 const props = withDefaults(defineProps<TextareaProps>(), {
   rows: 3,
   maxrows: 0,
-  autofocusDelay: 100
+  autofocusDelay: 0
 })
-
-const emit = defineEmits<TextareaEmits>()
 defineSlots<TextareaSlots>()
+const emits = defineEmits<TextareaEmits>()
 
 const [modelValue, modelModifiers] = defineModel<string | number>()
 
-const { emitFormBlur, emitFormInput, size, color, inputId, name, disabled } = useFormField<TextareaProps>(props)
+const { emitFormBlur, emitFormInput, size, color, id, name, disabled } = useFormField<TextareaProps>(props)
 
 const ui = computed(() => tv({ extend: textarea, slots: props.ui })({
   color: color.value,
@@ -104,11 +105,13 @@ function onChange(event: Event) {
   if (modelModifiers.trim) {
     (event.target as HTMLInputElement).value = value.trim()
   }
+
+  emits('change', event)
 }
 
 function onBlur(event: FocusEvent) {
   emitFormBlur()
-  emit('blur', event)
+  emits('blur', event)
 }
 
 onMounted(() => {
@@ -153,7 +156,7 @@ onMounted(() => {
 <template>
   <div :class="ui.root({ class: props.class })">
     <textarea
-      :id="inputId"
+      :id="id"
       ref="textareaRef"
       :value="modelValue"
       :name="name"

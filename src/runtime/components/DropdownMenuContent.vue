@@ -16,7 +16,7 @@ interface DropdownMenuContentProps<T> extends Omit<RadixDropdownMenuContentProps
 
 interface DropdownMenuContentEmits extends RadixDropdownMenuContentEmits {}
 
-interface DropdownMenuContentSlots<T> extends DropdownMenuSlots<T> {}
+type DropdownMenuContentSlots<T extends { slot?: string }> = DropdownMenuSlots<T>
 </script>
 
 <script setup lang="ts" generic="T extends DropdownMenuItem">
@@ -34,7 +34,7 @@ const slots = defineSlots<DropdownMenuContentSlots<T>>()
 
 const appConfig = useAppConfig()
 const contentProps = useForwardPropsEmits(reactiveOmit(props, 'sub', 'items', 'portal', 'class', 'ui'), emits)
-const proxySlots = omit(slots, ['default'])
+const proxySlots = omit(slots, ['default']) as Record<string, DropdownMenuContentSlots<T>[string]>
 
 const [DefineItemTemplate, ReuseItemTemplate] = createReusableTemplate()
 
@@ -43,25 +43,27 @@ const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0
 
 <template>
   <DefineItemTemplate v-slot="{ item, active, index }">
-    <slot name="leading" :item="item" :active="active" :index="index">
-      <UAvatar v-if="item.avatar" size="2xs" v-bind="item.avatar" :class="ui.linkLeadingAvatar({ active })" />
-      <UIcon v-else-if="item.icon" :name="item.icon" :class="ui.linkLeadingIcon({ active })" />
+    <slot :name="item.slot || 'item'" :item="item" :index="index">
+      <slot :name="item.slot ? `${item.slot}-leading`: 'item-leading'" :item="item" :active="active" :index="index">
+        <UAvatar v-if="item.avatar" size="2xs" v-bind="item.avatar" :class="ui.itemLeadingAvatar({ active })" />
+        <UIcon v-else-if="item.icon" :name="item.icon" :class="ui.itemLeadingIcon({ active })" />
+      </slot>
+
+      <span v-if="item.label || !!slots[item.slot ? `${item.slot}-label`: 'item-label']" :class="ui.itemLabel()">
+        <slot :name="item.slot ? `${item.slot}-label`: 'item-label'" :item="item" :active="active" :index="index">
+          {{ item.label }}
+        </slot>
+      </span>
+
+      <span v-if="item.children?.length || item.kbds?.length || !!slots[item.slot ? `${item.slot}-trailing`: 'item-trailing']" :class="ui.itemTrailing()">
+        <slot :name="item.slot ? `${item.slot}-trailing`: 'item-trailing'" :item="item" :active="active" :index="index">
+          <UIcon v-if="item.children?.length" :name="appConfig.ui.icons.chevronRight" :class="ui.itemTrailingIcon()" />
+          <span v-else-if="item.kbds?.length" :class="ui.itemTrailingKbds()">
+            <UKbd v-for="(kbd, kbdIndex) in item.kbds" :key="kbdIndex" size="md" v-bind="typeof kbd === 'string' ? { value: kbd } : kbd" />
+          </span>
+        </slot>
+      </span>
     </slot>
-
-    <span v-if="item.label || $slots.label" :class="ui.linkLabel()">
-      <slot name="label" :item="item" :active="active" :index="index">
-        {{ item.label }}
-      </slot>
-    </span>
-
-    <span v-if="$slots.trailing || item.children?.length || item.shortcuts?.length" :class="ui.linkTrailing()">
-      <slot name="trailing" :item="item" :active="active" :index="index">
-        <UIcon v-if="item.children?.length" :name="appConfig.ui.icons.chevronRight" :class="ui.linkTrailingIcon()" />
-        <span v-else-if="item.shortcuts?.length" :class="ui.linkTrailingShortcuts()">
-          <UKbd v-for="(shortcut, shortcutIndex) in item.shortcuts" :key="shortcutIndex" size="md" v-bind="typeof shortcut === 'string' ? { value: shortcut } : shortcut" />
-        </span>
-      </slot>
-    </span>
   </DefineItemTemplate>
 
   <DropdownMenu.Portal :disabled="!portal">
@@ -69,10 +71,9 @@ const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0
       <DropdownMenu.Group v-for="(group, groupIndex) in groups" :key="`group-${groupIndex}`" :class="ui.group()">
         <template v-for="(item, index) in group" :key="`group-${groupIndex}-${index}`">
           <DropdownMenu.Label v-if="item.type === 'label'" :class="ui.label()">
-            <slot :name="item.slot || 'item'" :item="item" :index="index">
-              <ReuseItemTemplate :item="item" :index="index" />
-            </slot>
+            <ReuseItemTemplate :item="item" :index="index" />
           </DropdownMenu.Label>
+          <DropdownMenu.Separator v-else-if="item.type === 'separator'" :class="ui.separator()" />
           <DropdownMenu.Sub v-else-if="item?.children?.length">
             <DropdownMenu.SubTrigger
               as="button"
@@ -81,11 +82,9 @@ const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0
               :open="item.open"
               :default-open="item.defaultOpen"
               :text-value="item.label"
-              :class="ui.link()"
+              :class="ui.item()"
             >
-              <slot :name="item.slot || 'item'" :item="item" :index="index">
-                <ReuseItemTemplate :item="item" :index="index" />
-              </slot>
+              <ReuseItemTemplate :item="item" :index="index" />
             </DropdownMenu.SubTrigger>
 
             <UDropdownMenuContent
@@ -106,13 +105,11 @@ const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0
             </UDropdownMenuContent>
           </DropdownMenu.Sub>
           <DropdownMenu.Item v-else as-child :disabled="item.disabled" :text-value="item.label" @select="item.select">
-            <slot :name="item.slot || 'item'" :item="item" :index="index">
-              <ULink v-slot="{ active, ...slotProps }" v-bind="omit((item as DropdownMenuItem), ['label', 'icon', 'avatar', 'shortcuts', 'slot', 'open', 'defaultOpen', 'select', 'children', 'type'])" custom>
-                <ULinkBase v-bind="slotProps" :class="ui.link({ active })">
-                  <ReuseItemTemplate :item="item" :active="active" :index="index" />
-                </ULinkBase>
-              </ULink>
-            </slot>
+            <ULink v-slot="{ active, ...slotProps }" v-bind="omit((item as DropdownMenuItem), ['label', 'icon', 'avatar', 'content', 'kbds', 'slot', 'open', 'defaultOpen', 'select', 'children', 'type'])" custom>
+              <ULinkBase v-bind="slotProps" :class="ui.item({ active })">
+                <ReuseItemTemplate :item="item" :active="active" :index="index" />
+              </ULinkBase>
+            </ULink>
           </DropdownMenu.Item>
         </template>
       </DropdownMenu.Group>

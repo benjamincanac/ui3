@@ -16,6 +16,7 @@ export interface InputProps extends UseComponentIconsProps {
   id?: string
   name?: string
   type?: InputHTMLAttributes['type']
+  /** The placeholder text when the input is empty. */
   placeholder?: string
   color?: InputVariants['color']
   variant?: InputVariants['variant']
@@ -30,6 +31,7 @@ export interface InputProps extends UseComponentIconsProps {
 
 export interface InputEmits {
   (e: 'blur', event: FocusEvent): void
+  (e: 'change', event: Event): void
 }
 
 export interface InputSlots {
@@ -41,35 +43,36 @@ export interface InputSlots {
 
 <script lang="ts" setup>
 import { ref, computed, onMounted } from 'vue'
-import { useComponentIcons, useFormField } from '#imports'
+import { useComponentIcons, useFormField, useButtonGroup } from '#imports'
+import { UIcon } from '#components'
 import { looseToNumber } from '#ui/utils'
 
 defineOptions({ inheritAttrs: false })
 
 const props = withDefaults(defineProps<InputProps>(), {
   type: 'text',
-  autofocusDelay: 100
+  autofocusDelay: 0
 })
+const emits = defineEmits<InputEmits>()
+const slots = defineSlots<InputSlots>()
 
 const [modelValue, modelModifiers] = defineModel<string | number>()
 
-const emit = defineEmits<InputEmits>()
-defineSlots<InputSlots>()
-
-const { emitFormBlur, emitFormInput, size, color, inputId, name, disabled } = useFormField<InputProps>(props)
+const { emitFormBlur, emitFormInput, size: formGroupSize, color, id, name, disabled } = useFormField<InputProps>(props)
+const { orientation, size: buttonGroupSize } = useButtonGroup<InputProps>(props)
 const { isLeading, isTrailing, leadingIconName, trailingIconName } = useComponentIcons(props)
-// const { size: sizeButtonGroup, rounded } = useInjectButtonGroup({ ui, props })
 
-// const size = computed(() => sizeButtonGroup.value || sizeFormGroup.value)
+const inputSize = computed(() => buttonGroupSize.value || formGroupSize.value)
 
 const ui = computed(() => tv({ extend: input, slots: props.ui })({
   type: props.type as InputVariants['type'],
   color: color.value,
   variant: props.variant,
-  size: size?.value,
+  size: inputSize?.value,
   loading: props.loading,
-  leading: isLeading.value,
-  trailing: isTrailing.value
+  leading: isLeading.value || !!slots.leading,
+  trailing: isTrailing.value || !!slots.trailing,
+  buttonGroup: orientation.value
 }))
 
 const inputRef = ref<HTMLInputElement | null>(null)
@@ -111,11 +114,13 @@ function onChange(event: Event) {
   if (modelModifiers.trim) {
     (event.target as HTMLInputElement).value = value.trim()
   }
+
+  emits('change', event)
 }
 
 function onBlur(event: FocusEvent) {
   emitFormBlur()
-  emit('blur', event)
+  emits('blur', event)
 }
 
 onMounted(() => {
@@ -128,7 +133,7 @@ onMounted(() => {
 <template>
   <div :class="ui.root({ class: props.class })">
     <input
-      :id="inputId"
+      :id="id"
       ref="inputRef"
       :type="type"
       :value="modelValue"
@@ -136,6 +141,7 @@ onMounted(() => {
       :placeholder="placeholder"
       :class="ui.base()"
       :disabled="disabled"
+      :required="required"
       v-bind="$attrs"
       @input="onInput"
       @blur="onBlur"
@@ -144,15 +150,15 @@ onMounted(() => {
 
     <slot />
 
-    <span v-if="(isLeading && leadingIconName) || $slots.leading" :class="ui.leading()">
+    <span v-if="isLeading || !!slots.leading" :class="ui.leading()">
       <slot name="leading">
-        <UIcon v-if="isLeading && leadingIconName" :name="leadingIconName" :class="ui.leadingIcon()" />
+        <UIcon v-if="leadingIconName" :name="leadingIconName" :class="ui.leadingIcon()" />
       </slot>
     </span>
 
-    <span v-if="(isTrailing && trailingIconName) || $slots.trailing" :class="ui.trailing()">
+    <span v-if="isTrailing || !!slots.trailing" :class="ui.trailing()">
       <slot name="trailing">
-        <UIcon v-if="isTrailing && trailingIconName" :name="trailingIconName" :class="ui.trailingIcon()" />
+        <UIcon v-if="trailingIconName" :name="trailingIconName" :class="ui.trailingIcon()" />
       </slot>
     </span>
   </div>

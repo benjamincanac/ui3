@@ -4,13 +4,13 @@ import type { FormSubmitEvent, Form } from '#ui/types/form'
 
 const schema = z.object({
   input: z.string().min(10),
-  // inputMenu: z.any().refine(option => option?.value === 'option-2', {
-  //   message: 'Select Option 2'
-  // }),
+  inputMenu: z.any().refine(option => option?.value === 'option-2', {
+    message: 'Select Option 2'
+  }),
   textarea: z.string().min(10),
-  // select: z.string().refine(value => value === 'option-2', {
-  //   message: 'Select Option 2'
-  // }),
+  select: z.string().refine(value => value === 'option-2', {
+    message: 'Select Option 2'
+  }),
   // selectMenu: z.any().refine(option => option?.value === 'option-2', {
   //   message: 'Select Option 2'
   // }),
@@ -31,7 +31,7 @@ type Schema = z.output<typeof schema>
 const state = reactive<Partial<Schema>>({})
 const form = ref<Form<Schema>>()
 
-const options = [
+const items = [
   { label: 'Option 1', value: 'option-1' },
   { label: 'Option 2', value: 'option-2' },
   { label: 'Option 3', value: 'option-3' }
@@ -54,8 +54,16 @@ function onSubmit(event: FormSubmitEvent<Schema>) {
       <UInput v-model="state.input" placeholder="john@lennon.com" />
     </UFormField>
 
-    <UFormField label="Text area" name="textarea">
+    <UFormField label="Textarea" name="textarea">
       <UTextarea v-model="state.textarea" />
+    </UFormField>
+
+    <UFormField name="select">
+      <USelect v-model="state.select" :items="items" />
+    </UFormField>
+
+    <UFormField name="inputMenu">
+      <UInputMenu v-model="state.inputMenu" :items="items" />
     </UFormField>
 
     <UFormField name="checkbox">
@@ -63,7 +71,7 @@ function onSubmit(event: FormSubmitEvent<Schema>) {
     </UFormField>
 
     <UFormField name="radioGroup">
-      <URadioGroup v-model="state.radioGroup" legend="Radio group" :options="options" />
+      <URadioGroup v-model="state.radioGroup" legend="Radio group" :items="items" />
     </UFormField>
 
     <UFormField name="switch">

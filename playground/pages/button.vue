@@ -72,7 +72,7 @@ const variants = Object.keys(theme.variants.variant)
         :size="(size as any)"
       />
     </div>
-    <div class="flex items-center gap-2 ml-[-67px]">
+    <div class="flex items-center gap-2 ml-[-68px]">
       <UButton v-for="size in sizes" :key="size" icon="i-heroicons-rocket-launch" :size="(size as any)" />
     </div>
     <div class="flex items-center gap-2">

@@ -1,36 +1,47 @@
-import { computed } from 'vue'
+import { computed, toValue, type MaybeRefOrGetter } from 'vue'
 import { useAppConfig } from '#imports'
-import type { IconProps } from '#ui/types'
 
 export interface UseComponentIconsProps {
-  icon?: IconProps['name']
+  /** Display an icon based on the `leading` and `trailing` props.value. */
+  icon?: string
+  /** When `true`, the icon will be displayed on the left side. */
   leading?: boolean
-  leadingIcon?: IconProps['name']
+  /** Display an icon on the left side. */
+  leadingIcon?: string
+  /** When `true`, the icon will be displayed on the right side. */
   trailing?: boolean
-  trailingIcon?: IconProps['name']
+  /** Display an icon on the right side. */
+  trailingIcon?: string
+  /** When `true`, the loading icon will be displayed. */
   loading?: boolean
-  loadingIcon?: IconProps['name']
+  /**
+   * The icon when the `loading` prop is `true`.
+   * @defaultValue `appConfig.ui.icons.loading`
+   */
+  loadingIcon?: string
 }
 
-export function useComponentIcons(props: UseComponentIconsProps) {
+export function useComponentIcons(componentProps: MaybeRefOrGetter<UseComponentIconsProps>) {
   const appConfig = useAppConfig()
 
-  const isLeading = computed(() => (props.icon && props.leading) || (props.icon && !props.trailing) || (props.loading && !props.trailing && !props.trailingIcon) || !!props.leadingIcon)
-  const isTrailing = computed(() => (props.icon && props.trailing) || (props.loading && props.trailing) || !!props.trailingIcon)
+  const props = computed(() => toValue(componentProps))
+
+  const isLeading = computed(() => (props.value.icon && props.value.leading) || (props.value.icon && !props.value.trailing) || (props.value.loading && !props.value.trailing) || !!props.value.leadingIcon)
+  const isTrailing = computed(() => (props.value.icon && props.value.trailing) || (props.value.loading && props.value.trailing) || !!props.value.trailingIcon)
 
   const leadingIconName = computed(() => {
-    if (props.loading) {
-      return props.loadingIcon || appConfig.ui.icons.loading
+    if (props.value.loading) {
+      return props.value.loadingIcon || appConfig.ui.icons.loading
     }
 
-    return props.leadingIcon || props.icon
+    return props.value.leadingIcon || props.value.icon
   })
   const trailingIconName = computed(() => {
-    if (props.loading && !isLeading.value) {
-      return props.loadingIcon || appConfig.ui.icons.loading
+    if (props.value.loading && !isLeading.value) {
+      return props.value.loadingIcon || appConfig.ui.icons.loading
     }
 
-    return props.trailingIcon || props.icon
+    return props.value.trailingIcon || props.value.icon
   })
 
   return {

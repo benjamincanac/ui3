@@ -5,7 +5,7 @@ import type { ToastRootProps, ToastRootEmits } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/toast'
-import type { AvatarProps, ButtonProps, IconProps, ToasterContext } from '#ui/types'
+import type { AvatarProps, ButtonProps, ToasterContext } from '#ui/types'
 
 const appConfig = _appConfig as AppConfig & { ui: { toast: Partial<typeof theme> } }
 
@@ -16,7 +16,7 @@ type ToastVariants = VariantProps<typeof toast>
 export interface ToastProps extends Omit<ToastRootProps, 'asChild' | 'forceMount'> {
   title?: string
   description?: string | VNode | (() => VNode)
-  icon?: IconProps['name']
+  icon?: string
   avatar?: AvatarProps
   color?: ToastVariants['color']
   actions?: ButtonProps[]
@@ -31,6 +31,7 @@ export interface ToastSlots {
   leading(): any
   title(): any
   description(): any
+  actions(): any
   close(): any
 }
 </script>
@@ -44,7 +45,7 @@ import { UIcon, UAvatar } from '#components'
 
 const props = defineProps<ToastProps>()
 const emits = defineEmits<ToastEmits>()
-defineSlots<ToastSlots>()
+const slots = defineSlots<ToastSlots>()
 
 const toaster = inject<ToasterContext>('Toaster')
 
@@ -88,12 +89,12 @@ defineExpose({
     </slot>
 
     <div :class="ui.wrapper()">
-      <ToastTitle v-if="title || $slots.title" :class="ui.title()">
+      <ToastTitle v-if="title || !!slots.title" :class="ui.title()">
         <slot name="title">
           {{ title }}
         </slot>
       </ToastTitle>
-      <template v-if="description || $slots.description">
+      <template v-if="description || !!slots.description">
         <ToastDescription v-if="description && isVNode(description)" :as="description" />
         <ToastDescription v-else :class="ui.description()">
           <slot name="description">
@@ -103,17 +104,21 @@ defineExpose({
       </template>
 
       <div v-if="multiline && actions?.length" :class="ui.actions({ multiline: true })">
-        <ToastAction v-for="(action, index) in actions" :key="index" :alt-text="action.label || 'Action'" as-child @click.stop>
-          <UButton size="xs" :color="color" v-bind="action" />
-        </ToastAction>
+        <slot name="actions">
+          <ToastAction v-for="(action, index) in actions" :key="index" :alt-text="action.label || 'Action'" as-child @click.stop>
+            <UButton size="xs" :color="color" v-bind="action" />
+          </ToastAction>
+        </slot>
       </div>
     </div>
 
     <div v-if="(!multiline && actions?.length) || close !== null" :class="ui.actions({ multiline: false })">
       <template v-if="!multiline">
-        <ToastAction v-for="(action, index) in actions" :key="index" :alt-text="action.label || 'Action'" as-child @click.stop>
-          <UButton size="xs" :color="color" v-bind="action" />
-        </ToastAction>
+        <slot name="actions">
+          <ToastAction v-for="(action, index) in actions" :key="index" :alt-text="action.label || 'Action'" as-child @click.stop>
+            <UButton size="xs" :color="color" v-bind="action" />
+          </ToastAction>
+        </slot>
       </template>
 
       <ToastClose as-child>

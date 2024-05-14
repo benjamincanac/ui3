@@ -4,7 +4,6 @@ import type { SwitchRootProps } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/switch'
-import type { IconProps } from '#ui/types'
 
 const appConfig = _appConfig as AppConfig & { ui: { switch: Partial<typeof theme> } }
 
@@ -16,9 +15,9 @@ export interface SwitchProps extends Omit<SwitchRootProps, 'asChild' | 'checked'
   color?: SwitchVariants['color']
   size?: SwitchVariants['size']
   loading?: boolean
-  loadingIcon?: IconProps['name']
-  checkedIcon?: IconProps['name']
-  uncheckedIcon?: IconProps['name']
+  loadingIcon?: string
+  checkedIcon?: string
+  uncheckedIcon?: string
   label?: string
   description?: string
   defaultValue?: boolean
@@ -39,15 +38,15 @@ import { reactivePick } from '@vueuse/core'
 import { useId, useAppConfig, useFormField } from '#imports'
 
 const props = defineProps<SwitchProps>()
-defineSlots<SwitchSlots>()
+const slots = defineSlots<SwitchSlots>()
+
+const modelValue = defineModel<boolean | undefined>({ default: undefined })
 
 const appConfig = useAppConfig()
 const rootProps = useForwardProps(reactivePick(props, 'as', 'required', 'value'))
 
-const modelValue = defineModel<boolean | undefined>({ default: undefined })
-
-const { inputId: _inputId, emitFormChange, size, color, name, disabled } = useFormField<SwitchProps>(props)
-const inputId = _inputId.value ?? useId()
+const { id: _id, emitFormChange, size, color, name, disabled } = useFormField<SwitchProps>(props)
+const id = _id.value ?? useId()
 
 const ui = computed(() => tv({ extend: switchTv, slots: props.ui })({
   size: size.value,
@@ -56,27 +55,20 @@ const ui = computed(() => tv({ extend: switchTv, slots: props.ui })({
   loading: props.loading,
   disabled: disabled.value || props.loading
 }))
-
-// FIXME: I think there's a race condition between this and the v-model event.
-// This must be triggered after the value updates, otherwise the form validates
-// the previous value.
-async function onChecked() {
-  emitFormChange()
-}
 </script>
 
 <template>
   <div :class="ui.root({ class: props.class })">
     <div :class="ui.container()">
       <SwitchRoot
-        :id="inputId"
+        :id="id"
         v-model:checked="modelValue"
         :default-checked="defaultValue"
         v-bind="rootProps"
         :name="name"
         :disabled="disabled || loading"
         :class="ui.base()"
-        @update:checked="onChecked"
+        @update:checked="emitFormChange()"
       >
         <SwitchThumb :class="ui.thumb()">
           <UIcon v-if="loading" :name="loadingIcon || appConfig.ui.icons.loading" :class="ui.icon({ checked: true, unchecked: true })" />
@@ -87,13 +79,13 @@ async function onChecked() {
         </SwitchThumb>
       </SwitchRoot>
     </div>
-    <div v-if="(label || $slots.label) || (description || $slots.description)" :class="ui.wrapper()">
-      <Label v-if="label || $slots.label" :for="inputId" :class="ui.label()">
+    <div v-if="(label || !!slots.label) || (description || !!slots.description)" :class="ui.wrapper()">
+      <Label v-if="label || !!slots.label" :for="id" :class="ui.label()">
         <slot name="label" :label="label">
           {{ label }}
         </slot>
       </Label>
-      <p v-if="description || $slots.description" :class="ui.description()">
+      <p v-if="description || !!slots.description" :class="ui.description()">
         <slot name="description" :description="description">
           {{ description }}
         </slot>

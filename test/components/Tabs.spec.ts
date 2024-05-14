@@ -5,7 +5,9 @@ import ComponentRender from '../component-render'
 describe('Tabs', () => {
   const items = [{
     label: 'Tab1',
-    icon: 'i-heroicons-home',
+    avatar: {
+      src: 'https://avatars.githubusercontent.com/u/739984?v=4'
+    },
     content: 'This is the content shown for Tab1'
   }, {
     label: 'Tab2',
@@ -14,7 +16,8 @@ describe('Tabs', () => {
   }, {
     label: 'Tab3',
     icon: 'i-heroicons-bell',
-    content: 'Finally, this is the content for Tab3'
+    content: 'Finally, this is the content for Tab3',
+    slot: 'custom'
   }]
 
   const props = { items }
@@ -28,9 +31,8 @@ describe('Tabs', () => {
     ['with class', { props: { ...props, class: 'w-96' } }],
     ['with ui', { props: { ...props, ui: { content: 'w-full ring ring-gray-200 dark:ring-gray-800' } } }],
     // Slots
-    ['with default slot', { props, slots: { default: () => 'Default slot' } }],
     ['with leading slot', { props, slots: { leading: () => 'Leading slot' } }],
-    ['with label slot', { props, slots: { label: () => 'Label slot' } }],
+    ['with default slot', { props, slots: { default: () => 'Default slot' } }],
     ['with trailing slot', { props, slots: { trailing: () => 'Trailing slot' } }],
     ['with content slot', { props, slots: { content: () => 'Content slot' } }],
     ['with custom slot', { props, slots: { custom: () => 'Custom slot' } }]

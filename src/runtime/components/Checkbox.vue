@@ -1,10 +1,10 @@
 <script lang="ts">
+import type { InputHTMLAttributes } from 'vue'
 import { tv, type VariantProps } from 'tailwind-variants'
 import type { CheckboxRootProps } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/checkbox'
-import type { IconProps } from '#ui/types'
 
 const appConfig = _appConfig as AppConfig & { ui: { checkbox: Partial<typeof theme> } }
 
@@ -17,9 +17,17 @@ export interface CheckboxProps extends Omit<CheckboxRootProps, 'asChild' | 'chec
   description?: string
   color?: CheckboxVariants['color']
   size?: CheckboxVariants['size']
-  icon?: IconProps['name']
-  indeterminate?: boolean
-  indeterminateIcon?: IconProps['name']
+  /**
+   * The icon displayed when checked.
+   * @defaultValue `appConfig.ui.icons.check`
+   */
+  icon?: string
+  indeterminate?: InputHTMLAttributes['indeterminate']
+  /**
+   * The icon displayed when the checkbox is indeterminate.
+   * @defaultValue `appConfig.ui.icons.minus`
+   */
+  indeterminateIcon?: string
   defaultValue?: boolean
   class?: any
   ui?: Partial<typeof checkbox.slots>
@@ -38,15 +46,15 @@ import { reactivePick } from '@vueuse/core'
 import { useId, useAppConfig, useFormField } from '#imports'
 
 const props = defineProps<CheckboxProps>()
-defineSlots<CheckboxSlots>()
+const slots = defineSlots<CheckboxSlots>()
+
+const modelValue = defineModel<boolean | undefined>({ default: undefined })
 
 const rootProps = useForwardProps(reactivePick(props, 'as', 'required', 'value'))
 
 const appConfig = useAppConfig()
-const { inputId: _inputId, emitFormChange, size, color, name, disabled } = useFormField<CheckboxProps>(props)
-const inputId = _inputId.value ?? useId()
-
-const modelValue = defineModel<boolean | undefined>({ default: undefined })
+const { id: _id, emitFormChange, size, color, name, disabled } = useFormField<CheckboxProps>(props)
+const id = _id.value ?? useId()
 
 const indeterminate = computed(() => (modelValue.value === undefined && props.indeterminate))
 
@@ -67,42 +75,35 @@ const ui = computed(() => tv({ extend: checkbox, slots: props.ui })({
   checked: modelValue.value ?? props.defaultValue,
   indeterminate: indeterminate.value
 }))
-
-// FIXME: I think there's a race condition between this and the v-model event.
-// This must be triggered after the value updates, otherwise the form validates
-// the previous value.
-function onChecked() {
-  emitFormChange()
-}
 </script>
 
 <template>
   <div :class="ui.root({ class: props.class })">
     <div :class="ui.container()">
       <CheckboxRoot
-        :id="inputId"
+        :id="id"
         v-model:checked="checked"
         :default-checked="defaultValue"
         v-bind="rootProps"
         :name="name"
         :disabled="disabled"
         :class="ui.base()"
-        @update:checked="onChecked"
+        @update:checked="emitFormChange()"
       >
-        <CheckboxIndicator :class="ui.indicator()">
+        <CheckboxIndicator as-child>
           <UIcon v-if="indeterminate" :name="indeterminateIcon || appConfig.ui.icons.minus" :class="ui.icon()" />
           <UIcon v-else :name="icon || appConfig.ui.icons.check" :class="ui.icon()" />
         </CheckboxIndicator>
       </CheckboxRoot>
     </div>
 
-    <div v-if="(label || $slots.label) || (description || $slots.description)" :class="ui.wrapper()">
-      <Label v-if="label || $slots.label" :for="inputId" :class="ui.label()">
+    <div v-if="(label || !!slots.label) || (description || !!slots.description)" :class="ui.wrapper()">
+      <Label v-if="label || !!slots.label" :for="id" :class="ui.label()">
         <slot name="label" :label="label">
           {{ label }}
         </slot>
       </Label>
-      <p v-if="description || $slots.description" :class="ui.description()">
+      <p v-if="description || !!slots.description" :class="ui.description()">
         <slot name="description" :description="description">
           {{ description }}
         </slot>

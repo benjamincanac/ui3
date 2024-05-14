@@ -4,7 +4,6 @@ import type { AvatarFallbackProps } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/avatar'
-import type { IconProps } from '#ui/types'
 
 const appConfig = _appConfig as AppConfig & { ui: { avatar: Partial<typeof theme> } }
 
@@ -16,7 +15,7 @@ export interface AvatarProps extends Omit<AvatarFallbackProps, 'as' | 'asChild'>
   as?: string | object
   src?: string
   alt?: string
-  icon?: IconProps['name']
+  icon?: string
   text?: string
   size?: AvatarVariants['size']
   class?: any
@@ -29,6 +28,7 @@ import { computed } from 'vue'
 import { AvatarRoot, AvatarImage, AvatarFallback, useForwardProps } from 'radix-vue'
 import { reactivePick } from '@vueuse/core'
 import { UIcon } from '#components'
+import { useAvatarGroup } from '#imports'
 
 const props = defineProps<AvatarProps>()
 
@@ -36,7 +36,9 @@ const fallbackProps = useForwardProps(reactivePick(props, 'delayMs'))
 
 const fallback = computed(() => props.text || (props.alt || '').split(' ').map(word => word.charAt(0)).join('').substring(0, 2))
 
-const ui = computed(() => tv({ extend: avatar, slots: props.ui })({ size: props.size }))
+const { size } = useAvatarGroup(props)
+
+const ui = computed(() => tv({ extend: avatar, slots: props.ui })({ size: size.value }))
 </script>
 
 <template>

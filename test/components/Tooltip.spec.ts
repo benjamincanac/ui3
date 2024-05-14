@@ -10,18 +10,26 @@ const TooltipWrapper = defineComponent({
     UTooltip: Tooltip
   },
   inheritAttrs: false,
-  template: '<TooltipProvider><UTooltip v-bind="$attrs"><slot /></UTooltip></TooltipProvider>'
+  template: `<TooltipProvider>
+  <UTooltip v-bind="$attrs">
+    <template v-for="(_, name) in $slots" #[name]="slotData">
+      <slot :name="name" v-bind="slotData" />
+    </template>
+  </UTooltip>
+</TooltipProvider>`
 })
 
 describe('Tooltip', () => {
+  const props = { text: 'Tooltip', open: true, portal: false }
+
   it.each([
     // Props
-    ['with text', { props: { text: 'Tooltip', open: true, portal: false } }],
-    ['with arrow', { props: { text: 'Tooltip', arrow: true, open: true, portal: false } }],
-    ['with shortcuts', { props: { text: 'Tooltip', shortcuts: ['⌘', 'K'], open: true, portal: false } }],
+    ['with text', { props }],
+    ['with arrow', { props: { ...props, arrow: true } }],
+    ['with kbds', { props: { ...props, kbds: ['meta', 'K'] } }],
     // Slots
-    ['with default slot', { props: { text: 'Tooltip', shortcuts: ['⌘', 'K'], open: true, portal: false }, slots: { default: () => 'Default slot' } }],
-    ['with content slot', { props: { open: true, portal: false }, slots: { content: () => 'Content slot' } }]
+    ['with default slot', { props, slots: { default: () => 'Default slot' } }],
+    ['with content slot', { props, slots: { content: () => 'Content slot' } }]
   ])('renders %s correctly', async (nameOrHtml: string, options: { props?: TooltipProps, slots?: Partial<TooltipSlots> }) => {
     const html = await ComponentRender(nameOrHtml, options, TooltipWrapper)
     expect(html).toMatchSnapshot()
