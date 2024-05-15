@@ -1,32 +1,52 @@
 export default (config: { colors: string[] }) => ({
   slots: {
-    root: '',
+    root: 'gap-2',
     base: 'relative overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700',
-    indicator: 'rounded-full size-full transition-transform duration-[660ms] ease-[cubic-bezier(0.65, 0, 0.35, 1)]',
-    statusContainer: 'flex transition-all duration-[660ms] ease-[cubic-bezier(0.65, 0, 0.35, 1)]',
-    status: 'text-end w-fit text-gray-400 dark:text-gray-500',
-    stepsContainer: 'grid grid-cols-1',
-    step: 'transition-all truncate text-end row-start-1 col-start-1'
+    indicator: 'rounded-full size-full transition-transform duration-200 ease-out',
+    status: 'flex justify-end text-gray-400 dark:text-gray-500 transition-transform',
+    steps: 'grid items-end',
+    step: 'transition-opacity truncate text-end row-start-1 col-start-1'
   },
   variants: {
     animation: {
-      'carousel': {},
-      'carousel-inverse': {},
-      'swing': {},
-      'elastic': {}
+      'carousel': '',
+      'carousel-inverse': '',
+      'swing': '',
+      'elastic': ''
     },
     color: Object.fromEntries(config.colors.map((color: string) => [color, {
       indicator: `bg-${color}-500 dark:bg-${color}-400`,
-      stepsContainer: `text-${color}-500 dark:text-${color}-400`
+      steps: `text-${color}-500 dark:text-${color}-400`
     }])),
     size: {
-      '2xs': '',
-      'xs': '',
-      'sm': '',
-      'md': '',
-      'lg': '',
-      'xl': '',
-      '2xl': ''
+      '2xs': {
+        status: 'text-xs',
+        steps: 'text-xs'
+      },
+      'xs': {
+        status: 'text-xs',
+        steps: 'text-xs'
+      },
+      'sm': {
+        status: 'text-sm',
+        steps: 'text-sm'
+      },
+      'md': {
+        status: 'text-sm',
+        steps: 'text-sm'
+      },
+      'lg': {
+        status: 'text-sm',
+        steps: 'text-sm'
+      },
+      'xl': {
+        status: 'text-base',
+        steps: 'text-base'
+      },
+      '2xl': {
+        status: 'text-base',
+        steps: 'text-base'
+      }
     },
     step: {
       active: {
@@ -41,172 +61,140 @@ export default (config: { colors: string[] }) => ({
     },
     orientation: {
       horizontal: {
-        root: 'w-full',
-        base: 'w-full'
+        root: 'w-full flex flex-col',
+        base: 'w-full',
+        status: 'flex-row'
       },
       vertical: {
-        root: 'h-full flex flex-row-reverse gap-x-1',
-        base: 'h-full'
+        root: 'h-full flex flex-row-reverse',
+        base: 'h-full',
+        status: 'flex-col'
+      }
+    },
+    inverted: {
+      true: {
+        status: 'self-end'
       }
     }
   },
   compoundVariants: [{
+    inverted: true,
+    orientation: 'horizontal',
+    class: {
+      step: 'text-start',
+      status: 'flex-row-reverse'
+    }
+  }, {
+    inverted: true,
+    orientation: 'vertical',
+    class: {
+      steps: 'items-start',
+      status: 'flex-col-reverse'
+    }
+  }, {
     orientation: 'horizontal',
     size: '2xs',
-    class: {
-      base: 'h-px',
-      statusContainer: 'flex-row min-w-fit',
-      status: 'text-xs'
-    }
+    class: 'h-px'
   }, {
     orientation: 'horizontal',
     size: 'xs',
-    class: {
-      base: 'h-0.5',
-      statusContainer: 'flex-row min-w-fit',
-      status: 'text-xs',
-      stepsContainer: 'text-xs'
-    }
+    class: 'h-0.5'
   }, {
     orientation: 'horizontal',
     size: 'sm',
-    class: {
-      base: 'h-1',
-      statusContainer: 'flex-row min-w-fit',
-      status: 'text-sm',
-      stepsContainer: 'text-sm'
-    }
+    class: 'h-1'
   }, {
     orientation: 'horizontal',
     size: 'md',
-    class: {
-      base: 'h-2',
-      statusContainer: 'flex-row min-w-fit',
-      status: 'text-sm',
-      stepsContainer: 'text-sm'
-    }
+    class: 'h-2'
   }, {
     orientation: 'horizontal',
     size: 'lg',
-    class: {
-      base: 'h-3',
-      statusContainer: 'flex-row min-w-fit',
-      status: 'text-sm',
-      stepsContainer: 'text-sm'
-    }
+    class: 'h-3'
   }, {
     orientation: 'horizontal',
     size: 'xl',
-    class: {
-      base: 'h-4',
-      statusContainer: 'flex-row min-w-fit',
-      status: 'text-base',
-      stepsContainer: 'text-base'
-    }
+    class: 'h-4'
   }, {
     orientation: 'horizontal',
     size: '2xl',
-    class: {
-      base: 'h-5',
-      statusContainer: 'flex-row min-w-fit',
-      status: 'text-base',
-      stepsContainer: 'text-base'
-    }
+    class: 'h-5'
   }, {
     orientation: 'vertical',
     size: '2xs',
-    class: {
-      base: 'w-px',
-      statusContainer: 'flex-col min-h-fit',
-      status: 'text-xs',
-      stepsContainer: 'text-xs'
-    }
+    class: 'w-px'
   }, {
     orientation: 'vertical',
     size: 'xs',
-    class: {
-      base: 'w-0.5',
-      statusContainer: 'flex-col min-h-fit',
-      status: 'text-xs',
-      stepsContainer: 'text-xs'
-    }
+    class: 'w-0.5'
   }, {
     orientation: 'vertical',
     size: 'sm',
-    class: {
-      base: 'w-1',
-      statusContainer: 'flex-col min-h-fit',
-      status: 'text-sm',
-      stepsContainer: 'text-sm'
-    }
+    class: 'w-1'
   }, {
     orientation: 'vertical',
     size: 'md',
-    class: {
-      base: 'w-2',
-      statusContainer: 'flex-col min-h-fit',
-      status: 'text-sm',
-      stepsContainer: 'text-sm'
-    }
+    class: 'w-2'
   }, {
     orientation: 'vertical',
     size: 'lg',
-    class: {
-      base: 'w-3',
-      statusContainer: 'flex-col min-h-fit',
-      status: 'text-sm',
-      stepsContainer: 'text-sm'
-    }
+    class: 'w-3'
   }, {
     orientation: 'vertical',
     size: 'xl',
-    class: {
-      base: 'w-4',
-      statusContainer: 'flex-col min-h-fit',
-      status: 'text-base',
-      stepsContainer: 'text-base'
-    }
+    class: 'w-4'
   }, {
     orientation: 'vertical',
     size: '2xl',
+    class: 'w-5'
+  }, {
+    orientation: 'horizontal',
+    animation: 'carousel',
     class: {
-      base: 'w-5',
-      statusContainer: 'flex-col min-h-fit',
-      status: 'text-base',
-      stepsContainer: 'text-base'
+      indicator: 'data-[state=indeterminate]:animate-[carousel_2s_ease-in-out_infinite]'
+    }
+  }, {
+    orientation: 'vertical',
+    animation: 'carousel',
+    class: {
+      indicator: 'data-[state=indeterminate]:animate-[carousel-vertical_2s_ease-in-out_infinite]'
     }
   }, {
     orientation: 'horizontal',
-    animation: 'carousel',
-    class: { indicator: 'data-[state=indeterminate]:animate-[carousel_2s_ease-in-out_infinite]' }
-  }, {
-    orientation: 'vertical',
-    animation: 'carousel',
-    class: { indicator: 'data-[state=indeterminate]:animate-[carousel-vertical_2s_ease-in-out_infinite]' }
-  }, {
-    orientation: 'horizontal',
     animation: 'carousel-inverse',
-    class: { indicator: 'data-[state=indeterminate]:animate-[carousel-inverse_2s_ease-in-out_infinite]' }
+    class: {
+      indicator: 'data-[state=indeterminate]:animate-[carousel-inverse_2s_ease-in-out_infinite]'
+    }
   }, {
     orientation: 'vertical',
     animation: 'carousel-inverse',
-    class: { indicator: 'data-[state=indeterminate]:animate-[carousel-inverse-vertical_2s_ease-in-out_infinite]' }
+    class: {
+      indicator: 'data-[state=indeterminate]:animate-[carousel-inverse-vertical_2s_ease-in-out_infinite]'
+    }
   }, {
     orientation: 'horizontal',
     animation: 'swing',
-    class: { indicator: 'data-[state=indeterminate]:animate-[swing_2s_ease-in-out_infinite]' }
+    class: {
+      indicator: 'data-[state=indeterminate]:animate-[swing_2s_ease-in-out_infinite]'
+    }
   }, {
     orientation: 'vertical',
     animation: 'swing',
-    class: { indicator: 'data-[state=indeterminate]:animate-[swing-vertical_2s_ease-in-out_infinite]' }
+    class: {
+      indicator: 'data-[state=indeterminate]:animate-[swing-vertical_2s_ease-in-out_infinite]'
+    }
   }, {
     orientation: 'horizontal',
     animation: 'elastic',
-    class: { indicator: 'data-[state=indeterminate]:animate-[elastic_2s_ease-in-out_infinite]' }
+    class: {
+      indicator: 'data-[state=indeterminate]:animate-[elastic_2s_ease-in-out_infinite]'
+    }
   }, {
     orientation: 'vertical',
     animation: 'elastic',
-    class: { indicator: 'data-[state=indeterminate]:animate-[elastic-vertical_2s_ease-in-out_infinite]' }
+    class: {
+      indicator: 'data-[state=indeterminate]:animate-[elastic-vertical_2s_ease-in-out_infinite]'
+    }
   }],
   defaultVariants: {
     animation: 'carousel',
