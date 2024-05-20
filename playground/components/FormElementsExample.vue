@@ -85,7 +85,7 @@ function onSubmit(event: FormSubmitEvent<Schema>) {
     </UFormField>
 
     <UFormField name="checkbox">
-      <UCheckbox v-model="state.checkbox" label="I accept the terms and conditions" />
+      <UCheckbox v-model="state.checkbox" label="Check me" />
     </UFormField>
 
     <UFormField name="radioGroup">
@@ -93,10 +93,10 @@ function onSubmit(event: FormSubmitEvent<Schema>) {
     </UFormField>
 
     <UFormField name="switch">
-      <USwitch v-model="state.switch" />
+      <USwitch v-model="state.switch" label="Switch me" />
     </UFormField>
 
-    <UFormField name="slider">
+    <UFormField name="slider" label="Slider">
       <USlider v-model="state.slider" />
     </UFormField>
 
