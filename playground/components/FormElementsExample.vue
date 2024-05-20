@@ -11,9 +11,9 @@ const schema = z.object({
   select: z.string().refine(value => value === 'option-2', {
     message: 'Select Option 2'
   }),
-  // selectMenu: z.any().refine(option => option?.value === 'option-2', {
-  //   message: 'Select Option 2'
-  // }),
+  selectMenu: z.any().refine(option => option?.value === 'option-2', {
+    message: 'Select Option 2'
+  }),
   switch: z.boolean().refine(value => value === true, {
     message: 'Toggle me'
   }),
@@ -59,7 +59,11 @@ function onSubmit(event: FormSubmitEvent<Schema>) {
     </UFormField>
 
     <UFormField name="select">
-      <USelect v-model="state.select" :items="items" />
+      <USelect class="w-44" v-model="state.select" :items="items" />
+    </UFormField>
+
+    <UFormField name="selectMenu">
+      <USelectMenu class="w-44" v-model="state.selectMenu" :items="items" />
     </UFormField>
 
     <UFormField name="inputMenu">
