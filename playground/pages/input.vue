@@ -7,7 +7,7 @@ const sizes = Object.keys(theme.variants.size)
 <template>
   <div class="flex flex-col items-center gap-4">
     <div class="flex flex-col gap-4 w-60">
-      <UInput placeholder="Search..." autofocus />
+      <UInput autofocus />
       <UInput placeholder="Search..." color="gray" />
       <UInput placeholder="Search..." color="primary" />
       <UInput placeholder="Search..." variant="none" />
@@ -18,9 +18,8 @@ const sizes = Object.keys(theme.variants.size)
       <UInput icon="i-heroicons-calendar" type="date" :model-value="new Date().toISOString().substring(0, 10)" />
       <UInput icon="i-heroicons-lock-closed" type="password" model-value="password" />
       <UInput loading placeholder="Search..." />
-      <UInput loading leading-icon="i-heroicons-magnifying-glass" placeholder="Search..." />
       <UInput loading trailing placeholder="Search..." />
-      <UInput loading trailing-icon="i-heroicons-magnifying-glass" placeholder="Search..." />
+      <UInput loading icon="i-heroicons-magnifying-glass" trailing-icon="i-heroicons-chevron-down" placeholder="Search..." />
     </div>
     <div class="flex items-center gap-4">
       <UInput

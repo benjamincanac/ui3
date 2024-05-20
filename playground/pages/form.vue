@@ -103,7 +103,7 @@ function onSubmit(event: FormSubmitEvent<Schema>) {
         </p>
         <FormElementsExample />
       </div>
-<div>
+      <div>
         <p class="text-lg font-bold underline mb-4">
           Disabled
         </p>

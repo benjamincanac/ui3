@@ -2,7 +2,7 @@ import { buttonGroupVariant } from './button-group'
 
 export default (config: { colors: string[] }) => ({
   slots: {
-    base: 'rounded-md font-medium inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75',
+    base: 'rounded-md font-medium inline-flex items-center focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors',
     label: '',
     leadingIcon: 'shrink-0',
     leadingAvatar: 'shrink-0',
@@ -90,7 +90,7 @@ export default (config: { colors: string[] }) => ({
   })), ...config.colors.map((color: string) => ({
     color,
     variant: 'subtle',
-    class: `text-${color}-500 dark:text-${color}-400 ring ring-inset ring-${color}-500/25 dark:ring-${color}-400/25 bg-${color}-500/10 hover:bg-${color}-100 disabled:bg-${color}-50 dark:bg-${color}-400/10 dark:hover:bg-${color}-950 dark:disabled:bg-${color}-400/10 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-${color}-500 dark:focus-visible:ring-${color}-400`
+    class: `text-${color}-500 dark:text-${color}-400 ring ring-inset ring-${color}-500/25 dark:ring-${color}-400/25 bg-${color}-500/10 hover:bg-${color}-500/20 disabled:bg-${color}-500/10 dark:bg-${color}-400/10 dark:hover:bg-${color}-400/20 dark:disabled:bg-${color}-400/10 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-${color}-500 dark:focus-visible:ring-${color}-400`
   })), ...config.colors.map((color: string) => ({
     color,
     variant: 'ghost',

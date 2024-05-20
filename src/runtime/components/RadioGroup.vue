@@ -1,9 +1,10 @@
 <script lang="ts">
 import { tv, type VariantProps } from 'tailwind-variants'
-import type { RadioGroupRootProps, RadioGroupRootEmits } from 'radix-vue'
+import type { RadioGroupRootProps, RadioGroupRootEmits, RadioGroupItemProps } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/radio-group'
+import type { AcceptableValue } from '#ui/types/utils'
 
 const appConfig = _appConfig as AppConfig & { ui: { radioGroup: Partial<typeof theme> } }
 
@@ -11,15 +12,14 @@ const radioGroup = tv({ extend: tv(theme), ...(appConfig.ui?.radioGroup || {}) }
 
 type RadioGroupVariants = VariantProps<typeof radioGroup>
 
-export type RadioGroupOption<T> = {
-  label: string
-  value: T
+export interface RadioGroupItem extends Pick<RadioGroupItemProps, 'disabled' | 'value'> {
+  label?: string
   description?: string
 }
 
 export interface RadioGroupProps<T> extends Omit<RadioGroupRootProps, 'asChild' | 'dir'> {
   legend?: string
-  options?: string[] | RadioGroupOption<T>[]
+  items?: T[]
   class?: any
   size?: RadioGroupVariants['size']
   color?: RadioGroupVariants['color']
@@ -28,14 +28,16 @@ export interface RadioGroupProps<T> extends Omit<RadioGroupRootProps, 'asChild' 
 
 export type RadioGroupEmits = RadioGroupRootEmits
 
+type SlotProps<T> = (props: { item: T }) => any
+
 export interface RadioGroupSlots<T> {
   legend(): any
-  label(props: { option: RadioGroupOption<T> }): any
-  description(props: { option: RadioGroupOption<T> }): any
+  label: SlotProps<T>
+  description: SlotProps<T>
 }
 </script>
 
-<script setup lang="ts" generic="T extends string | undefined">
+<script setup lang="ts" generic="T extends RadioGroupItem | AcceptableValue">
 import { computed } from 'vue'
 import { RadioGroupRoot, RadioGroupItem, RadioGroupIndicator, Label, useForwardPropsEmits } from 'radix-vue'
 import { reactivePick } from '@vueuse/core'
@@ -58,24 +60,24 @@ const ui = computed(() => tv({ extend: radioGroup, slots: props.ui })({
   orientation: props.orientation
 }))
 
-function normalizeOption(option: any) {
-  if (['string', 'number', 'boolean'].includes(typeof option)) {
+function normalizeItem(item: any) {
+  if (['string', 'number', 'boolean'].includes(typeof item)) {
     return {
-      id: `${id}:${option}`,
-      value: option,
-      label: option
+      id: `${id}:${item}`,
+      value: item,
+      label: item
     }
   }
 
   return {
-    ...option,
-    id: `${id}:${option.value}`
+    ...item,
+    id: `${id}:${item.value}`
   }
 }
 
-const normalizedOptions = computed(() => {
-  if (!props.options) return []
-  return props.options.map(normalizeOption)
+const normalizedItems = computed(() => {
+  if (!props.items) return []
+  return props.items.map(normalizeItem)
 })
 </script>
 
@@ -94,11 +96,11 @@ const normalizedOptions = computed(() => {
           {{ legend }}
         </slot>
       </legend>
-      <div v-for="option in normalizedOptions" :key="option.value" :class="ui.option()">
+      <div v-for="item in normalizedItems" :key="item.value" :class="ui.item()">
         <div :class="ui.container()">
           <RadioGroupItem
-            :id="option.id"
-            :value="option.value"
+            :id="item.id"
+            :value="item.value"
             :disabled="disabled"
             :class="ui.base()"
           >
@@ -107,12 +109,12 @@ const normalizedOptions = computed(() => {
         </div>
 
         <div :class="ui.wrapper()">
-          <Label :class="ui.label()" :for="option.id">
-            <slot name="label" v-bind="{ option }">{{ option.label }}</slot>
+          <Label :class="ui.label()" :for="item.id">
+            <slot name="label" :item="item">{{ item.label }}</slot>
           </Label>
-          <p v-if="option.description || !!slots.description" :class="ui.description()">
-            <slot name="description" v-bind="{ option }">
-              {{ option.description }}
+          <p v-if="item.description || !!slots.description" :class="ui.description()">
+            <slot name="description" :item="item">
+              {{ item.description }}
             </slot>
           </p>
         </div>
