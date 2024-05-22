@@ -11,7 +11,7 @@ defineProps<{
     <template #footer>
       <div class="flex w-full justify-between">
         <p>Count: {{ count }}</p>
-        <UButton color="orange" label="Close" @click="modal.close()" />
+        <UButton color="gray" label="Close" @click="modal.close()" />
       </div>
     </template>
   </UModal>

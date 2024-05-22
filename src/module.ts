@@ -50,7 +50,7 @@ export default defineNuxtModule<ModuleOptions>({
       src: resolve('./runtime/plugins/colors')
     })
     addPlugin({
-      src: resolve('./runtime/plugins/modals')
+      src: resolve('./runtime/plugins/modal')
     })
 
     addComponentsDir({
