@@ -7,6 +7,9 @@ const schema = z.object({
   inputMenu: z.any().refine(option => option?.value === 'option-2', {
     message: 'Select Option 2'
   }),
+  inputMenuMultiple: z.any().refine(values => !!values?.find((option: any) => option.value === 'option-2'), {
+    message: 'Include Option 2'
+  }),
   textarea: z.string().min(10),
   select: z.string().refine(value => value === 'option-2', {
     message: 'Select Option 2'
@@ -15,9 +18,6 @@ const schema = z.object({
     message: 'Select Option 2'
   }),
   selectMenuMultiple: z.any().refine(values => !!values?.find((option: any) => option.value === 'option-2'), {
-    message: 'Include Option 2'
-  }),
-  inputMenuMultiple: z.any().refine(values => !!values?.find((option: any) => option.value === 'option-2'), {
     message: 'Include Option 2'
   }),
   switch: z.boolean().refine(value => value === true, {
@@ -65,15 +65,15 @@ function onSubmit(event: FormSubmitEvent<Schema>) {
     </UFormField>
 
     <UFormField name="select" label="Select">
-      <USelect class="w-44" v-model="state.select" :items="items" />
+      <USelect v-model="state.select" class="w-44" :items="items" />
     </UFormField>
 
     <UFormField name="selectMenu" label="Select Menu">
-      <USelectMenu class="w-44" v-model="state.selectMenu" :items="items" />
+      <USelectMenu v-model="state.selectMenu" class="w-44" :items="items" />
     </UFormField>
 
     <UFormField name="selectMenuMultiple" label="Select Menu (Multiple)">
-      <USelectMenu class="w-44" v-model="state.selectMenuMultiple" multiple :items="items" />
+      <USelectMenu v-model="state.selectMenuMultiple" class="w-44" multiple :items="items" />
     </UFormField>
 
     <UFormField name="inputMenu" label="Input Menu">
