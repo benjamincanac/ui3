@@ -12,9 +12,8 @@ export interface ProviderProps extends ConfigProviderProps {
 import { toRef } from 'vue'
 import { ConfigProvider, TooltipProvider, useForwardProps } from 'radix-vue'
 import { reactivePick } from '@vueuse/core'
-import ModalProvider from '../providers/ModalProvider.vue'
 import { useId } from '#imports'
-import { UToaster } from '#components'
+import { UToaster, UModalProvider } from '#components'
 
 const props = withDefaults(defineProps<ProviderProps>(), {
   useId: () => useId()
@@ -33,6 +32,6 @@ const toasterProps = toRef(() => props.toaster)
       </UToaster>
     </TooltipProvider>
 
-    <ModalProvider />
+    <UModalProvider />
   </ConfigProvider>
 </template>
