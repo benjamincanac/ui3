@@ -76,7 +76,7 @@ const ui = computed(() => tv({ extend: tabs, slots: props.ui })({
 
       <TabsTrigger v-for="(item, index) of items" :key="index" :value="item.value || String(index)" :disabled="item.disabled" :class="ui.trigger()">
         <slot name="leading" :item="item" :index="index">
-          <UAvatar v-if="item.avatar" size="2xs" v-bind="item.avatar" :class="ui.leadingAvatar()" />
+          <UAvatar v-if="item.avatar" :size="ui.avatarSize()" v-bind="item.avatar" :class="ui.leadingAvatar()" />
           <UIcon v-else-if="item.icon" :name="item.icon" :class="ui.leadingIcon()" />
         </slot>
 
