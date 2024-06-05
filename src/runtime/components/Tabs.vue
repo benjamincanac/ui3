@@ -28,6 +28,7 @@ export interface TabsProps<T> extends Omit<TabsRootProps, 'asChild'> {
   content?: boolean | Omit<TabsContentProps, 'asChild' | 'value'>
   class?: any
   ui?: Partial<typeof tabs.slots>
+  size?: TabsVariants['size']
 }
 
 export interface TabsEmits extends TabsRootEmits {}
@@ -51,7 +52,8 @@ import { reactivePick } from '@vueuse/core'
 const props = withDefaults(defineProps<TabsProps<T>>(), {
   content: true,
   defaultValue: '0',
-  orientation: 'horizontal'
+  orientation: 'horizontal',
+  size: 'md'
 })
 const emits = defineEmits<TabsEmits>()
 const slots = defineSlots<TabsSlots<T>>()
@@ -62,7 +64,8 @@ const contentProps = toRef(() => defu(props.content || {}, { forceMount: true })
 const ui = computed(() => tv({ extend: tabs, slots: props.ui })({
   color: props.color,
   variant: props.variant,
-  orientation: props.orientation
+  orientation: props.orientation,
+  size: props.size
 }))
 </script>
 
