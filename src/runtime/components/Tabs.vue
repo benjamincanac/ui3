@@ -52,8 +52,7 @@ import { reactivePick } from '@vueuse/core'
 const props = withDefaults(defineProps<TabsProps<T>>(), {
   content: true,
   defaultValue: '0',
-  orientation: 'horizontal',
-  size: 'md'
+  orientation: 'horizontal'
 })
 const emits = defineEmits<TabsEmits>()
 const slots = defineSlots<TabsSlots<T>>()

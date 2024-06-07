@@ -130,6 +130,7 @@ export default (config: { colors: string[] }) => ({
   }],
   defaultVariants: {
     color: 'white',
-    variant: 'pill'
+    variant: 'pill',
+    size: 'md'
   }
 })
