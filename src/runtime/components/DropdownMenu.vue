@@ -11,7 +11,7 @@ const appConfig = _appConfig as AppConfig & { ui: { dropdownMenu: Partial<typeof
 
 const dropdownMenu = tv({ extend: tv(theme), ...(appConfig.ui?.dropdownMenu || {}) })
 
-export interface DropdownMenuItem extends Omit<LinkProps, 'type'>, Pick<DropdownMenuItemProps, 'disabled'> {
+export interface DropdownMenuItem extends Omit<LinkProps, 'type' | 'custom'>, Pick<DropdownMenuItemProps, 'disabled'> {
   label?: string
   icon?: string
   avatar?: AvatarProps
@@ -19,14 +19,14 @@ export interface DropdownMenuItem extends Omit<LinkProps, 'type'>, Pick<Dropdown
   kbds?: KbdProps['value'][] | KbdProps[]
   /**
    * The item type.
-   * @defaultValue `'item'`
+   * @defaultValue `'link'`
    */
-  type?: 'label' | 'separator' | 'item'
+  type?: 'label' | 'separator' | 'link'
   slot?: string
   open?: boolean
   defaultOpen?: boolean
   children?: DropdownMenuItem[] | DropdownMenuItem[][]
-  select? (e: Event): void
+  select?(e: Event): void
 }
 
 export interface DropdownMenuProps<T> extends Omit<DropdownMenuRootProps, 'dir'>, Pick<DropdownMenuTriggerProps, 'disabled'> {
@@ -43,7 +43,7 @@ export interface DropdownMenuEmits extends DropdownMenuRootEmits {}
 type SlotProps<T> = (props: { item: T, active?: boolean, index: number }) => any
 
 export type DropdownMenuSlots<T extends { slot?: string }> = {
-  'default'(): any
+  'default'(props: { open: boolean }): any
   'item': SlotProps<T>
   'item-leading': SlotProps<T>
   'item-label': SlotProps<T>
@@ -75,9 +75,9 @@ const ui = computed(() => tv({ extend: dropdownMenu, slots: props.ui })())
 </script>
 
 <template>
-  <DropdownMenuRoot v-bind="rootProps">
+  <DropdownMenuRoot v-slot="{ open }" v-bind="rootProps">
     <DropdownMenuTrigger v-if="!!slots.default" as-child :disabled="disabled">
-      <slot />
+      <slot :open="open" />
     </DropdownMenuTrigger>
 
     <UDropdownMenuContent :class="ui.content({ class: props.class })" :ui="ui" v-bind="contentProps" :items="items" :portal="portal">

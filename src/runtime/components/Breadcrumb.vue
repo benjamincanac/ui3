@@ -11,7 +11,7 @@ const appConfig = _appConfig as AppConfig & { ui: { breadcrumb: Partial<typeof t
 
 const breadcrumb = tv({ extend: tv(theme), ...(appConfig.ui?.breadcrumb || {}) })
 
-export interface BreadcrumbItem extends LinkProps {
+export interface BreadcrumbItem extends Omit<LinkProps, 'custom'> {
   label?: string
   icon?: string
   avatar?: AvatarProps
@@ -41,7 +41,7 @@ import { computed } from 'vue'
 import { Primitive } from 'radix-vue'
 import { useAppConfig } from '#imports'
 import { ULink, UIcon, UAvatar } from '#components'
-import { omit } from '#ui/utils'
+import { pickLinkProps } from '#ui/utils/link'
 
 const props = defineProps<BreadcrumbProps<T>>()
 const slots = defineSlots<BreadcrumbSlots<T>>()
@@ -55,15 +55,15 @@ const ui = computed(() => tv({ extend: breadcrumb, slots: props.ui })())
   <Primitive :as="as" aria-label="breadcrumb" :class="ui.root({ class: props.class })">
     <ol :class="ui.list()">
       <template v-for="(item, index) in items" :key="index">
-        <li :class="ui.itemWrapper()">
-          <ULink as="span" v-bind="omit(item, ['label', 'icon', 'avatar', 'slot'])" :aria-current="index === items!.length - 1 ? 'page' : undefined" :class="ui.item({ active: index === items!.length - 1, disabled: !!item.disabled, to: !!item.to })" raw>
+        <li :class="ui.item()">
+          <ULink v-bind="pickLinkProps(item)" as="span" :aria-current="index === items!.length - 1 ? 'page' : undefined" :class="ui.link({ active: index === items!.length - 1, disabled: !!item.disabled, to: !!item.to })" raw>
             <slot :name="item.slot || 'item'" :item="item" :index="index">
               <slot :name="item.slot ? `${item.slot}-leading`: 'item-leading'" :item="item" :active="index === items!.length - 1" :index="index">
-                <UAvatar v-if="item.avatar" size="2xs" v-bind="item.avatar" :class="ui.itemLeadingAvatar({ active: index === items!.length - 1 })" />
-                <UIcon v-else-if="item.icon" :name="item.icon" :class="ui.itemLeadingIcon({ active: index === items!.length - 1 })" />
+                <UAvatar v-if="item.avatar" size="2xs" v-bind="item.avatar" :class="ui.linkLeadingAvatar({ active: index === items!.length - 1 })" />
+                <UIcon v-else-if="item.icon" :name="item.icon" :class="ui.linkLeadingIcon({ active: index === items!.length - 1 })" />
               </slot>
 
-              <span v-if="item.label || !!slots[item.slot ? `${item.slot}-label`: 'item-label']" :class="ui.itemLabel()">
+              <span v-if="item.label || !!slots[item.slot ? `${item.slot}-label`: 'item-label']" :class="ui.linkLabel()">
                 <slot :name="item.slot ? `${item.slot}-label`: 'item-label'" :item="item" :active="index === items!.length - 1" :index="index">
                   {{ item.label }}
                 </slot>

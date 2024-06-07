@@ -11,7 +11,7 @@ const appConfig = _appConfig as AppConfig & { ui: { contextMenu: Partial<typeof 
 
 const contextMenu = tv({ extend: tv(theme), ...(appConfig.ui?.contextMenu || {}) })
 
-export interface ContextMenuItem extends Omit<LinkProps, 'type'>, Pick<ContextMenuItemProps, 'disabled'> {
+export interface ContextMenuItem extends Omit<LinkProps, 'type' | 'custom'>, Pick<ContextMenuItemProps, 'disabled'> {
   label?: string
   icon?: string
   avatar?: AvatarProps
@@ -19,14 +19,14 @@ export interface ContextMenuItem extends Omit<LinkProps, 'type'>, Pick<ContextMe
   kbds?: KbdProps['value'][] | KbdProps[]
   /**
    * The item type.
-   * @defaultValue `'item'`
+   * @defaultValue `'link'`
    */
-  type?: 'label' | 'separator' | 'item'
+  type?: 'label' | 'separator' | 'link'
   slot?: string
   open?: boolean
   defaultOpen?: boolean
   children?: ContextMenuItem[] | ContextMenuItem[][]
-  select? (e: Event): void
+  select?(e: Event): void
 }
 
 export interface ContextMenuProps<T> extends Omit<ContextMenuRootProps, 'dir'>, Pick<ContextMenuTriggerProps, 'disabled'> {

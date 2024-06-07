@@ -56,8 +56,8 @@ export interface SelectEmits extends SelectRootEmits {}
 type SlotProps<T> = (props: { item: T, index: number }) => any
 
 export interface SelectSlots<T> {
-  'leading'(): any
-  'trailing'(): any
+  'leading'(props: { modelValue: string, open: boolean }): any
+  'trailing'(props: { modelValue: string, open: boolean }): any
   'item': SlotProps<T>
   'item-leading': SlotProps<T>
   'item-label': SlotProps<T>
@@ -85,7 +85,7 @@ const contentProps = toRef(() => defu(props.content, { side: 'bottom', sideOffse
 
 const { emitFormChange, size: formGroupSize, color, id, name, disabled } = useFormField<InputProps>(props)
 const { orientation, size: buttonGroupSize } = useButtonGroup<InputProps>(props)
-const { isLeading, isTrailing, leadingIconName, trailingIconName } = useComponentIcons<InputProps>(defu(props, { trailingIcon: appConfig.ui.icons.chevronDown }))
+const { isLeading, isTrailing, leadingIconName, trailingIconName } = useComponentIcons(toRef(() => defu(props, { trailingIcon: appConfig.ui.icons.chevronDown })))
 
 const selectSize = computed(() => buttonGroupSize.value || formGroupSize.value)
 
@@ -104,23 +104,24 @@ const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0
 
 <template>
   <SelectRoot
-    v-bind="rootProps"
     :id="id"
+    v-slot="{ modelValue, open }"
+    v-bind="rootProps"
     :name="name"
     :disabled="disabled"
     @update:model-value="emitFormChange()"
   >
     <SelectTrigger :class="ui.base({ class: props.class })">
       <span v-if="isLeading || !!slots.leading" :class="ui.leading()">
-        <slot name="leading">
+        <slot name="leading" :model-value="modelValue" :open="open">
           <UIcon v-if="leadingIconName" :name="leadingIconName" :class="ui.leadingIcon()" />
         </slot>
       </span>
 
-      <SelectValue :placeholder="placeholder ?? '&nbsp'" :class="ui.value()" />
+      <SelectValue :placeholder="placeholder ?? '&nbsp;'" :class="ui.value()" />
 
       <span v-if="isTrailing || !!slots.trailing" :class="ui.trailing()">
-        <slot name="trailing">
+        <slot name="trailing" :model-value="modelValue" :open="open">
           <UIcon v-if="trailingIconName" :name="trailingIconName" :class="ui.trailingIcon()" />
         </slot>
       </span>
@@ -135,12 +136,7 @@ const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0
                 {{ item.label }}
               </SelectLabel>
               <SelectSeparator v-else-if="item?.type === 'separator'" :class="ui.separator()" />
-              <SelectItem
-                v-else
-                :class="ui.item()"
-                :disabled="item.disabled"
-                :value="typeof item === 'object' ? item.value : item"
-              >
+              <SelectItem v-else :class="ui.item()" :disabled="item.disabled" :value="typeof item === 'object' ? item.value : item">
                 <slot name="item" :item="(item as T)" :index="index">
                   <slot name="item-leading" :item="(item as T)" :index="index">
                     <UAvatar v-if="item.avatar" size="2xs" v-bind="item.avatar" :class="ui.itemLeadingAvatar()" />

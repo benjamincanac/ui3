@@ -5,8 +5,21 @@ import { addTemplates } from './templates'
 import icons from './theme/icons'
 
 export interface ModuleOptions {
+  /**
+   * Prefix for components
+   * @defaultValue U
+   */
   prefix?: string
+  /**
+   * Colors to generate classes for (based on TailwindCSS colors)
+   * @defaultValue ['primary', 'red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchia', 'pink', 'rose']
+   */
   colors?: string[]
+  /**
+   * Disable color transitions
+   * @defaultValue true
+   */
+  transitions?: boolean
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -19,12 +32,15 @@ export default defineNuxtModule<ModuleOptions>({
   },
   defaults: {
     prefix: 'U',
-    colors: undefined
+    colors: undefined,
+    transitions: true
   },
   async setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
 
-    options.colors = options.colors?.length ? ['primary', ...options.colors] : ['primary', 'red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchia', 'pink', 'rose']
+    options.colors = options.colors?.length ? [...new Set(['primary', ...options.colors])] : ['primary', 'red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchia', 'pink', 'rose']
+
+    nuxt.options.ui = options
 
     nuxt.options.alias['#ui'] = resolve('./runtime')
 
@@ -48,6 +64,12 @@ export default defineNuxtModule<ModuleOptions>({
 
     addPlugin({
       src: resolve('./runtime/plugins/colors')
+    })
+    addPlugin({
+      src: resolve('./runtime/plugins/modal')
+    })
+    addPlugin({
+      src: resolve('./runtime/plugins/slideover')
     })
 
     addComponentsDir({

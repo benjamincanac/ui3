@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import theme from '#build/ui/select'
+import type { User } from '~/types'
 
 const sizes = Object.keys(theme.variants.size)
-
-import type { User } from '~/types'
 
 const fruits = ['Apple', 'Banana', 'Blueberry', 'Grapes', 'Pineapple']
 const vegetables = ['Aubergine', 'Broccoli', 'Carrot', 'Courgette', 'Leek']
@@ -50,7 +49,6 @@ const { data: users, pending } = await useFetch('https://jsonplaceholder.typicod
       <USelect :items="items" placeholder="Disabled" disabled />
       <USelect :items="items" placeholder="Required" required />
       <USelect :items="items" loading placeholder="Search..." />
-      <USelect :items="items" loading leading-icon="i-heroicons-magnifying-glass" placeholder="Search..." />
       <USelect :items="statuses" placeholder="Search status..." icon="i-heroicons-magnifying-glass" trailing-icon="i-heroicons-chevron-up-down-20-solid" />
       <USelect :items="users || []" :loading="pending" icon="i-heroicons-user" placeholder="Search users..." />
     </div>
