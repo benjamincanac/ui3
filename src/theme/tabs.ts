@@ -8,7 +8,7 @@ export default (config: { colors: string[] }) => ({
     leadingIcon: 'shrink-0',
     leadingAvatar: 'shrink-0',
     label: 'truncate',
-    avatarSize: ''
+    leadingAvatarSize: ''
   },
   variants: {
     color: {
@@ -42,27 +42,27 @@ export default (config: { colors: string[] }) => ({
       xs: {
         trigger: 'px-2 py-1 text-xs gap-1',
         leadingIcon: 'size-4',
-        avatarSize: '3xs'
+        leadingAvatarSize: '3xs'
       },
       sm: {
         trigger: 'px-2.5 py-1.5 text-xs gap-1.5',
         leadingIcon: 'size-4',
-        avatarSize: '3xs'
+        leadingAvatarSize: '3xs'
       },
       md: {
         trigger: 'px-3 py-1.5 text-sm gap-1.5',
         leadingIcon: 'size-5',
-        avatarSize: '2xs'
+        leadingAvatarSize: '2xs'
       },
       lg: {
         trigger: 'px-3 py-2 text-sm gap-2',
         leadingIcon: 'size-5',
-        avatarSize: '2xs'
+        leadingAvatarSize: '2xs'
       },
       xl: {
         trigger: 'px-3 py-2 text-base gap-2',
         leadingIcon: 'size-6',
-        avatarSize: 'xs'
+        leadingAvatarSize: 'xs'
       }
     }
   },
