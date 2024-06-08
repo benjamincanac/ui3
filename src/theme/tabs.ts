@@ -9,8 +9,8 @@ export default (options: Required<ModuleOptions>) => ({
     content: 'focus:outline-none w-full',
     leadingIcon: 'shrink-0',
     leadingAvatar: 'shrink-0',
-    label: 'truncate',
-    leadingAvatarSize: ''
+    leadingAvatarSize: '',
+    label: 'truncate'
   },
   variants: {
     color: {
