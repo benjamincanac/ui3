@@ -1,11 +1,13 @@
-export default (config: { colors: string[] }) => ({
+import type { ModuleOptions } from '../module'
+
+export default (options: Required<ModuleOptions>) => ({
   slots: {
     root: 'gap-2',
     base: 'relative overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700',
     indicator: 'rounded-full size-full transition-transform duration-200 ease-out',
-    status: 'flex justify-end text-gray-400 dark:text-gray-500 transition-transform',
+    status: 'flex justify-end text-gray-400 dark:text-gray-500 transition-[width] duration-200',
     steps: 'grid items-end',
-    step: 'transition-opacity truncate text-end row-start-1 col-start-1'
+    step: 'truncate text-end row-start-1 col-start-1 transition-opacity'
   },
   variants: {
     animation: {
@@ -15,7 +17,7 @@ export default (config: { colors: string[] }) => ({
       'elastic': ''
     },
     color: {
-      ...Object.fromEntries(config.colors.map((color: string) => [color, {
+      ...Object.fromEntries(options.colors.map((color: string) => [color, {
         indicator: `bg-${color}-500 dark:bg-${color}-400`,
         steps: `text-${color}-500 dark:text-${color}-400`
       }])),

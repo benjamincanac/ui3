@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url'
 import { kebabCase } from 'scule'
 import { addTemplate, addTypeTemplate } from '@nuxt/kit'
 import type { Nuxt } from '@nuxt/schema'
@@ -176,7 +177,7 @@ export function addTemplates(options: ModuleOptions, nuxt: Nuxt) {
       transform: translateY(200%)
     }
   }
-  
+
   @keyframes carousel-inverse {
     0%,
     100% {
@@ -190,7 +191,7 @@ export function addTemplates(options: ModuleOptions, nuxt: Nuxt) {
     }
   }
   @keyframes carousel-inverse-vertical {
-    0%
+    0%,
     100% {
       height: 50%
     }
@@ -201,7 +202,7 @@ export function addTemplates(options: ModuleOptions, nuxt: Nuxt) {
       transform: translateY(-100%)
     }
   }
-  
+
   @keyframes swing {
     0%,
     100% {
@@ -228,7 +229,7 @@ export function addTemplates(options: ModuleOptions, nuxt: Nuxt) {
       transform: translateY(125%)
     }
   }
-  
+
   @keyframes elastic {
     /* Firefox doesn't do "margin: 0 auto", we have to play with margin-left */
     0%,
@@ -284,7 +285,7 @@ export function addTemplates(options: ModuleOptions, nuxt: Nuxt) {
       write: true,
       getContents: async () => {
         const template = (theme as any)[component]
-        const result = typeof template === 'function' ? template({ colors: options.colors }) : template
+        const result = typeof template === 'function' ? template(options) : template
 
         const variants = Object.keys(result.variants || {})
 
@@ -296,6 +297,16 @@ export function addTemplates(options: ModuleOptions, nuxt: Nuxt) {
             const replaced = match.replace(/("[^"]+")/g, '$1 as const')
             return `${before}${replaced}${after}`
           })
+        }
+
+        // For local development, directly import from theme
+        if (process.env.DEV) {
+          return [
+            `import template from ${JSON.stringify(fileURLToPath(new URL(`./theme/${kebabCase(component)}`, import.meta.url)))}`,
+            `const result = typeof template === 'function' ? template(${JSON.stringify(options)}) : template`,
+            `export default result`,
+            `/* export default ${json} */`
+          ].join('\n')
         }
 
         return `export default ${json}`

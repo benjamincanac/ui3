@@ -1,5 +1,5 @@
 <script lang="ts">
-import { tv } from 'tailwind-variants'
+import { tv, type VariantProps } from 'tailwind-variants'
 import type { TabsRootProps, TabsRootEmits, TabsContentProps, TabsTriggerProps } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
@@ -19,9 +19,13 @@ export interface TabsItem extends Partial<Pick<TabsTriggerProps, 'disabled' | 'v
   content?: string
 }
 
+type TabsVariants = VariantProps<typeof tabs>
+
 export interface TabsProps<T> extends Omit<TabsRootProps, 'asChild'> {
   items?: T[]
-  content?: Omit<TabsContentProps, 'asChild' | 'value'>
+  color?: TabsVariants['color']
+  variant?: TabsVariants['variant']
+  content?: boolean | Omit<TabsContentProps, 'asChild' | 'value'>
   class?: any
   ui?: Partial<typeof tabs.slots>
 }
@@ -45,6 +49,7 @@ import { TabsRoot, TabsList, TabsIndicator, TabsTrigger, TabsContent, useForward
 import { reactivePick } from '@vueuse/core'
 
 const props = withDefaults(defineProps<TabsProps<T>>(), {
+  content: true,
   defaultValue: '0',
   orientation: 'horizontal'
 })
@@ -52,9 +57,13 @@ const emits = defineEmits<TabsEmits>()
 const slots = defineSlots<TabsSlots<T>>()
 
 const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'defaultValue', 'orientation', 'activationMode', 'modelValue'), emits)
-const contentProps = toRef(() => defu(props.content, { forceMount: true }) as TabsContentProps)
+const contentProps = toRef(() => defu(props.content || {}, { forceMount: true }) as TabsContentProps)
 
-const ui = computed(() => tv({ extend: tabs, slots: props.ui })({ orientation: props.orientation }))
+const ui = computed(() => tv({ extend: tabs, slots: props.ui })({
+  color: props.color,
+  variant: props.variant,
+  orientation: props.orientation
+}))
 </script>
 
 <template>
@@ -76,10 +85,12 @@ const ui = computed(() => tv({ extend: tabs, slots: props.ui })({ orientation: p
       </TabsTrigger>
     </TabsList>
 
-    <TabsContent v-for="(item, index) of items" :key="index" v-bind="contentProps" :value="item.value || String(index)" :class="ui.content()">
-      <slot :name="item.slot || 'content'" :item="item" :index="index">
-        {{ item.content }}
-      </slot>
-    </TabsContent>
+    <template v-if="!!content">
+      <TabsContent v-for="(item, index) of items" :key="index" v-bind="contentProps" :value="item.value || String(index)" :class="ui.content()">
+        <slot :name="item.slot || 'content'" :item="item" :index="index">
+          {{ item.content }}
+        </slot>
+      </TabsContent>
+    </template>
   </TabsRoot>
 </template>
