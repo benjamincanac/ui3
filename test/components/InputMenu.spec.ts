@@ -1,7 +1,9 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, test } from 'vitest'
 import InputMenu, { type InputMenuProps, type InputMenuSlots } from '../../src/runtime/components/InputMenu.vue'
 import ComponentRender from '../component-render'
 import theme from '#build/ui/input'
+import { renderForm } from '../utils/form'
+import { flushPromises, mount } from '@vue/test-utils'
 
 describe('InputMenu', () => {
   const sizes = Object.keys(theme.variants.size) as any
@@ -34,7 +36,7 @@ describe('InputMenu', () => {
     ['with defaultValue', { props: { ...props, defaultValue: items[0] } }],
     ['with id', { props: { ...props, id: 'id' } }],
     ['with name', { props: { ...props, name: 'name' } }],
-    ['with placeholder', { props: { ...props, placeholder: 'Select a status' } }],
+    ['with placeholder', { props: { ...props, placeholder: 'InputMenu a status' } }],
     ['with disabled', { props: { ...props, disabled: true } }],
     ['with required', { props: { ...props, required: true } }],
     ['with icon', { props: { ...props, icon: 'i-heroicons-magnifying-glass' } }],
@@ -63,5 +65,81 @@ describe('InputMenu', () => {
   ])('renders %s correctly', async (nameOrHtml: string, options: { props?: InputMenuProps<typeof items[number]>, slots?: Partial<InputMenuSlots<typeof items[number]>> }) => {
     const html = await ComponentRender(nameOrHtml, options, InputMenu)
     expect(html).toMatchSnapshot()
+  })
+
+  describe('emits', () => {
+    test('update:modelValue event', async () => {
+      const wrapper = mount(InputMenu, { props: { items: ['Option 1', 'Option 2'] } })
+      const input = wrapper.findComponent({ name: 'ComboboxRoot' })
+      await input.setValue('Option 1')
+
+      expect(wrapper.emitted()).toMatchObject({ 'update:modelValue': [['Option 1']] })
+    })
+
+    test('change event', async () => {
+      const wrapper = mount(InputMenu, { props: { items: ['Option 1', 'Option 2'] } })
+      const input = wrapper.findComponent({ name: 'ComboboxRoot' })
+      await input.setValue('Option 1')
+      expect(wrapper.emitted()).toMatchObject({ change: [[{ type: 'change' }]] })
+    })
+
+    test('blur event', async () => {
+      const wrapper = mount(InputMenu, { props: { items: ['Option 1', 'Option 2'] } })
+      const input = wrapper.findComponent({ name: 'ComboboxInput' })
+      await input.trigger('blur')
+      expect(wrapper.emitted()).toMatchObject({ blur: [[{ type: 'blur' }]] })
+    })
+  })
+
+  describe('form integration', async () => {
+    async function createForm(validateOn?: string[]) {
+      const wrapper = await renderForm({
+        props: {
+          validateOn,
+          validateOnInputDelay: 0,
+          async validate(state: any) {
+            if (state.value !== 'Option 2')
+              return [{ name: 'value', message: 'Error message' }]
+            return []
+          }
+        },
+        slotVars: {
+          items: ['Option 1', 'Option 2']
+        },
+        slotTemplate: `
+        <UFormField name="value">
+          <UInputMenu id="input" v-model="state.value" :items="items" />
+        </UFormField>
+        `
+      })
+      const input = wrapper.findComponent({ name: 'ComboboxRoot' })
+      return {
+        wrapper,
+        input
+      }
+    }
+
+    test('validate on blur works', async () => {
+      const { wrapper } = await createForm(['blur'])
+      const input = wrapper.findComponent({ name: 'ComboboxInput' })
+      await input.trigger('update:open')
+      expect(wrapper.text()).toContain('Error message')
+
+      await input.setValue('Option 2')
+      await input.trigger('blur')
+      expect(wrapper.text()).not.toContain('Error message')
+    })
+
+    test('validate on change works', async () => {
+      const { input, wrapper } = await createForm(['change'])
+
+      input.setValue('Option 1')
+      await flushPromises()
+      expect(wrapper.text()).toContain('Error message')
+
+      input.setValue('Option 2')
+      await flushPromises()
+      expect(wrapper.text()).not.toContain('Error message')
+    })
   })
 })
