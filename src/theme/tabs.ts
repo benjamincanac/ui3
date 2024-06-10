@@ -5,10 +5,11 @@ export default (options: Required<ModuleOptions>) => ({
     root: 'flex items-center gap-2',
     list: 'relative flex p-1 group',
     indicator: 'absolute transition-[translate,width] duration-200',
-    trigger: ['relative inline-flex items-center justify-center gap-1.5 shrink-0 px-3 py-1.5 data-[state=inactive]:text-gray-500 dark:data-[state=inactive]:text-gray-400 hover:data-[state=inactive]:text-gray-700 dark:hover:data-[state=inactive]:text-gray-200 text-sm font-medium rounded-md disabled:cursor-not-allowed disabled:opacity-75 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 focus:outline-none', options.transitions && 'transition-colors'],
+    trigger: ['relative inline-flex items-center shrink-0 data-[state=inactive]:text-gray-500 dark:data-[state=inactive]:text-gray-400 hover:data-[state=inactive]:text-gray-700 dark:hover:data-[state=inactive]:text-gray-200 font-medium rounded-md disabled:cursor-not-allowed disabled:opacity-75 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 focus:outline-none', options.transitions && 'transition-colors'],
     content: 'focus:outline-none w-full',
-    leadingIcon: 'shrink-0 size-5',
+    leadingIcon: 'shrink-0',
     leadingAvatar: 'shrink-0',
+    leadingAvatarSize: '',
     label: 'truncate'
   },
   variants: {
@@ -32,11 +33,39 @@ export default (options: Required<ModuleOptions>) => ({
       horizontal: {
         root: 'flex-col',
         list: 'w-full',
-        indicator: 'left-0 w-[--radix-tabs-indicator-size] translate-x-[--radix-tabs-indicator-position]'
+        indicator: 'left-0 w-[--radix-tabs-indicator-size] translate-x-[--radix-tabs-indicator-position]',
+        trigger: 'justify-center'
       },
       vertical: {
-        list: 'flex-col items-center',
+        list: 'flex-col',
         indicator: 'top-0 h-[--radix-tabs-indicator-size] translate-y-[--radix-tabs-indicator-position]'
+      }
+    },
+    size: {
+      xs: {
+        trigger: 'px-2 py-1 text-xs gap-1',
+        leadingIcon: 'size-4',
+        leadingAvatarSize: '3xs'
+      },
+      sm: {
+        trigger: 'px-2.5 py-1.5 text-xs gap-1.5',
+        leadingIcon: 'size-4',
+        leadingAvatarSize: '3xs'
+      },
+      md: {
+        trigger: 'px-3 py-1.5 text-sm gap-1.5',
+        leadingIcon: 'size-5',
+        leadingAvatarSize: '2xs'
+      },
+      lg: {
+        trigger: 'px-3 py-2 text-sm gap-2',
+        leadingIcon: 'size-5',
+        leadingAvatarSize: '2xs'
+      },
+      xl: {
+        trigger: 'px-3 py-2 text-base gap-2',
+        leadingIcon: 'size-6',
+        leadingAvatarSize: 'xs'
       }
     }
   },
@@ -57,7 +86,8 @@ export default (options: Required<ModuleOptions>) => ({
     orientation: 'vertical',
     variant: 'pill',
     class: {
-      indicator: 'inset-x-1'
+      indicator: 'inset-x-1',
+      list: 'items-center'
     }
   }, {
     orientation: 'vertical',
@@ -104,6 +134,7 @@ export default (options: Required<ModuleOptions>) => ({
   }],
   defaultVariants: {
     color: 'white',
-    variant: 'pill'
+    variant: 'pill',
+    size: 'md'
   }
 })
