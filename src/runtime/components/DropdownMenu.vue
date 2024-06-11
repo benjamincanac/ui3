@@ -1,5 +1,5 @@
 <script lang="ts">
-import { tv } from 'tailwind-variants'
+import { tv, type VariantProps } from 'tailwind-variants'
 import type { DropdownMenuRootProps, DropdownMenuRootEmits, DropdownMenuContentProps, DropdownMenuArrowProps, DropdownMenuTriggerProps, DropdownMenuItemProps } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
@@ -29,11 +29,14 @@ export interface DropdownMenuItem extends Omit<LinkProps, 'type' | 'custom'>, Pi
   select?(e: Event): void
 }
 
+type DropdownVariants = VariantProps<typeof dropdownMenu>
+
 export interface DropdownMenuProps<T> extends Omit<DropdownMenuRootProps, 'dir'>, Pick<DropdownMenuTriggerProps, 'disabled'> {
   items?: T[] | T[][]
   content?: Omit<DropdownMenuContentProps, 'asChild' | 'forceMount'>
   arrow?: boolean | Omit<DropdownMenuArrowProps, 'asChild'>
   portal?: boolean
+  size?: DropdownVariants['size']
   class?: any
   ui?: Partial<typeof dropdownMenu.slots>
 }
@@ -71,7 +74,9 @@ const contentProps = toRef(() => defu(props.content, { side: 'bottom', sideOffse
 const arrowProps = toRef(() => props.arrow as DropdownMenuArrowProps)
 const proxySlots = omit(slots, ['default']) as Record<string, DropdownMenuSlots<T>[string]>
 
-const ui = computed(() => tv({ extend: dropdownMenu, slots: props.ui })())
+const ui = computed(() => tv({ extend: dropdownMenu, slots: props.ui })({
+  size: props.size
+}))
 </script>
 
 <template>
