@@ -33,8 +33,20 @@ type DropdownVariants = VariantProps<typeof dropdownMenu>
 
 export interface DropdownMenuProps<T> extends Omit<DropdownMenuRootProps, 'dir'>, Pick<DropdownMenuTriggerProps, 'disabled'> {
   items?: T[] | T[][]
+  /**
+   * The content of the menu.
+   * @defaultValue `{ side: 'bottom', sideOffset: 8 }`
+   */
   content?: Omit<DropdownMenuContentProps, 'asChild' | 'forceMount'>
+  /**
+   * Display an arrow alongside the menu.
+   * @defaultValue `false`
+   */
   arrow?: boolean | Omit<DropdownMenuArrowProps, 'asChild'>
+  /**
+   * Render the menu in a portal.
+   * @defaultValue `true`
+   */
   portal?: boolean
   size?: DropdownVariants['size']
   class?: any

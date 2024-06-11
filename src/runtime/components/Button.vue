@@ -17,9 +17,10 @@ export interface ButtonProps extends UseComponentIconsProps, Omit<LinkProps, 'cu
   color?: ButtonVariants['color']
   variant?: ButtonVariants['variant']
   size?: ButtonVariants['size']
+  /** Render the button with equal padding on all sides. */
   square?: boolean
+  /** Render the button full width. */
   block?: boolean
-  truncate?: boolean
   class?: any
   ui?: Partial<typeof button.slots>
 }
@@ -51,7 +52,6 @@ const ui = computed(() => tv({ extend: button, slots: props.ui })({
   variant: props.variant,
   size: buttonSize.value,
   loading: props.loading,
-  truncate: props.truncate,
   block: props.block,
   square: props.square || (!slots.default && !props.label),
   leading: isLeading.value,
