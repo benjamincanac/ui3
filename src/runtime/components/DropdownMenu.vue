@@ -32,6 +32,7 @@ export interface DropdownMenuItem extends Omit<LinkProps, 'type' | 'custom'>, Pi
 type DropdownVariants = VariantProps<typeof dropdownMenu>
 
 export interface DropdownMenuProps<T> extends Omit<DropdownMenuRootProps, 'dir'>, Pick<DropdownMenuTriggerProps, 'disabled'> {
+  size?: DropdownVariants['size']
   items?: T[] | T[][]
   /**
    * The content of the menu.
@@ -48,7 +49,6 @@ export interface DropdownMenuProps<T> extends Omit<DropdownMenuRootProps, 'dir'>
    * @defaultValue `true`
    */
   portal?: boolean
-  size?: DropdownVariants['size']
   class?: any
   ui?: Partial<typeof dropdownMenu.slots>
 }

@@ -4,8 +4,8 @@ export default (options: Required<ModuleOptions>) => ({
   slots: {
     content: 'min-w-32 bg-white dark:bg-gray-900 shadow-lg rounded-md ring ring-gray-200 dark:ring-gray-800 divide-y divide-gray-200 dark:divide-gray-800 overflow-y-auto scroll-py-1 data-[state=open]:animate-[scale-in_100ms_ease-out] data-[state=closed]:animate-[scale-out_100ms_ease-in]',
     arrow: 'fill-gray-200 dark:fill-gray-800',
-    group: 'isolate',
-    label: 'w-full flex items-center gap-1.5 p-1.5 text-sm font-semibold text-gray-900 dark:text-white',
+    group: 'isolate p-1',
+    label: 'w-full flex items-center font-semibold text-gray-900 dark:text-white',
     separator: '-mx-1 my-1 h-px bg-gray-200 dark:bg-gray-800',
     item: 'group relative w-full flex items-center select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75',
     itemLeadingIcon: 'shrink-0',
@@ -13,10 +13,10 @@ export default (options: Required<ModuleOptions>) => ({
     itemLeadingAvatarSize: '',
     itemTrailing: 'ms-auto inline-flex',
     itemTrailingIcon: 'shrink-0',
-    itemTrailingKbds: 'hidden lg:inline-flex items-center shrink-0 gap-0.5',
+    itemTrailingKbds: 'hidden lg:inline-flex items-center shrink-0',
     itemTrailingKbdsSize: '',
     itemLabel: 'truncate',
-    itemLabelExternalIcon: 'align-top text-gray-400 dark:text-gray-500'
+    itemLabelExternalIcon: 'size-3 align-top text-gray-400 dark:text-gray-500'
   },
   variants: {
     active: {
@@ -31,54 +31,49 @@ export default (options: Required<ModuleOptions>) => ({
     },
     size: {
       xs: {
-        group: 'p-1',
-        item: 'px-2 py-1 text-xs gap-1',
+        label: 'gap-1 p-1 text-xs',
+        item: 'gap-1 p-1 text-xs',
         itemLeadingIcon: 'size-4',
         itemLeadingAvatarSize: '3xs',
         itemTrailingIcon: 'size-4',
         itemTrailingKbds: 'gap-0.5',
-        itemTrailingKbdsSize: 'sm',
-        itemLabelExternalIcon: 'size-2'
+        itemTrailingKbdsSize: 'sm'
       },
       sm: {
-        group: 'p-1',
-        item: 'px-2.5 py-1.5 text-xs gap-1.5',
+        label: 'gap-1.5 p-1.5 text-xs',
+        item: 'gap-1.5 p-1.5 text-xs',
         itemLeadingIcon: 'size-4',
         itemLeadingAvatarSize: '3xs',
         itemTrailingIcon: 'size-4',
         itemTrailingKbds: 'gap-0.5',
-        itemTrailingKbdsSize: 'sm',
-        itemLabelExternalIcon: 'size-2'
+        itemTrailingKbdsSize: 'sm'
       },
       md: {
-        group: 'p-1',
-        item: 'px-2.5 py-1.5 text-sm gap-1.5',
+        label: 'gap-1.5 p-1.5 text-sm',
+        item: 'gap-1.5 p-1.5 text-sm',
         itemLeadingIcon: 'size-5',
         itemLeadingAvatarSize: '2xs',
         itemTrailingIcon: 'size-5',
         itemTrailingKbds: 'gap-0.5',
-        itemTrailingKbdsSize: 'md',
-        itemLabelExternalIcon: 'size-3'
+        itemTrailingKbdsSize: 'md'
       },
       lg: {
-        group: 'p-1.5',
-        item: 'px-3 py-2 text-sm gap-2',
+        label: 'p-2 text-sm gap-2',
+        item: 'p-2 text-sm gap-2',
         itemLeadingIcon: 'size-5',
         itemLeadingAvatarSize: '2xs',
         itemTrailingIcon: 'size-5',
         itemTrailingKbds: 'gap-1',
-        itemTrailingKbdsSize: 'md',
-        itemLabelExternalIcon: 'size-3'
+        itemTrailingKbdsSize: 'md'
       },
       xl: {
-        group: 'p-2',
-        item: 'px-3 py-2 text-base gap-2',
+        label: 'p-2 text-base gap-2',
+        item: 'p-2 text-base gap-2',
         itemLeadingIcon: 'size-6',
         itemLeadingAvatarSize: 'xs',
         itemTrailingIcon: 'size-6',
         itemTrailingKbds: 'gap-1',
-        itemTrailingKbdsSize: 'lg',
-        itemLabelExternalIcon: 'size-4'
+        itemTrailingKbdsSize: 'lg'
       }
     }
   },
