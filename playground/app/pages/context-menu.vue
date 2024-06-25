@@ -6,7 +6,7 @@ const items = [
     label: 'My account',
     avatar: {
       src: 'https://avatars.githubusercontent.com/u/739984?v=4'
-    },
+    }
   }],
   [{
     label: 'Appearance',
@@ -82,12 +82,12 @@ defineShortcuts(extractShortcuts(items))
 </script>
 
 <template>
-    <div class="flex items-center gap-2">
-      <USelectMenu v-model="size" :items="sizes" placeholder="Size"/>
-      <UContextMenu :items="items" class="min-w-48" :size=size>
-        <div class="flex items-center justify-center rounded-md border border-dashed border-gray-300 dark:border-gray-700 text-sm aspect-video w-72">
-          Right click here
-        </div>
-      </UContextMenu>
-    </div>
+  <div class="flex items-center gap-2">
+    <USelectMenu v-model="size" :items="sizes" placeholder="Size" />
+    <UContextMenu :items="items" class="min-w-48" :size="size">
+      <div class="flex items-center justify-center rounded-md border border-dashed border-gray-300 dark:border-gray-700 text-sm aspect-video w-72">
+        Right click here
+      </div>
+    </UContextMenu>
+  </div>
 </template>

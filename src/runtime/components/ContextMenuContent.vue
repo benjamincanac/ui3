@@ -2,7 +2,7 @@
 import { tv } from 'tailwind-variants'
 import type { ContextMenuContentProps as RadixContextMenuContentProps, ContextMenuContentEmits as RadixContextMenuContentEmits } from 'radix-vue'
 import theme from '#build/ui/context-menu'
-import type { KbdProps, AvatarProps ,ContextMenuItem, ContextMenuSlots } from '../types'
+import type { KbdProps, AvatarProps, ContextMenuItem, ContextMenuSlots } from '../types'
 
 const contextMenu = tv(theme)()
 
