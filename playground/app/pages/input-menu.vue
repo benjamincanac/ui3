@@ -73,7 +73,7 @@ const { data: users, pending } = await useFetch('https://jsonplaceholder.typicod
       <UInputMenu
         v-for="size in sizes"
         :key="size"
-        :items="items"
+        :items="statuses"
         placeholder="Search..."
         :size="(size as any)"
         class="w-60"
@@ -83,7 +83,7 @@ const { data: users, pending } = await useFetch('https://jsonplaceholder.typicod
       <UInputMenu
         v-for="size in sizes"
         :key="size"
-        :items="items"
+        :items="users || []"
         icon="i-heroicons-magnifying-glass"
         placeholder="Search..."
         :size="(size as any)"
