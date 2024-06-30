@@ -1,10 +1,14 @@
 <script lang="ts">
 import type { ConfigProviderProps, TooltipProviderProps } from 'radix-vue'
-import type { ToasterProps } from '#ui/types'
+import type { ToasterProps } from '../types'
 
 export interface ProviderProps extends ConfigProviderProps {
   tooltip?: TooltipProviderProps
   toaster?: ToasterProps | null
+}
+
+export interface ProviderSlors {
+  default(props?: {}): any
 }
 </script>
 
@@ -18,6 +22,7 @@ import { UToaster, UModalProvider, USlideoverProvider } from '#components'
 const props = withDefaults(defineProps<ProviderProps>(), {
   useId: () => useId()
 })
+defineSlots<ProviderSlors>()
 
 const configProviderProps = useForwardProps(reactivePick(props, 'dir', 'scrollBody', 'useId'))
 const tooltipProps = toRef(() => props.tooltip)

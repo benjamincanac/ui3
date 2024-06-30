@@ -4,8 +4,8 @@ import type { ContextMenuRootProps, ContextMenuRootEmits, ContextMenuContentProp
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/context-menu'
-import type { AvatarProps, KbdProps, LinkProps } from '#ui/types'
-import type { DynamicSlots } from '#ui/types/utils'
+import type { AvatarProps, KbdProps, LinkProps } from '../types'
+import type { DynamicSlots } from '../types/utils'
 
 const appConfig = _appConfig as AppConfig & { ui: { contextMenu: Partial<typeof theme> } }
 
@@ -15,11 +15,11 @@ export interface ContextMenuItem extends Omit<LinkProps, 'type' | 'custom'>, Pic
   label?: string
   icon?: string
   avatar?: AvatarProps
-  content?: Omit<ContextMenuContentProps, 'asChild' | 'forceMount'>
+  content?: Omit<ContextMenuContentProps, 'as' | 'asChild' | 'forceMount'>
   kbds?: KbdProps['value'][] | KbdProps[]
   /**
    * The item type.
-   * @defaultValue `'link'`
+   * @defaultValue 'link'
    */
   type?: 'label' | 'separator' | 'link'
   slot?: string
@@ -31,7 +31,12 @@ export interface ContextMenuItem extends Omit<LinkProps, 'type' | 'custom'>, Pic
 
 export interface ContextMenuProps<T> extends Omit<ContextMenuRootProps, 'dir'>, Pick<ContextMenuTriggerProps, 'disabled'> {
   items?: T[] | T[][]
-  content?: Omit<ContextMenuContentProps, 'asChild' | 'forceMount'>
+  /** The content of the menu. */
+  content?: Omit<ContextMenuContentProps, 'as' | 'asChild' | 'forceMount'>
+  /**
+   * Render the menu in a portal.
+   * @defaultValue true
+   */
   portal?: boolean
   class?: any
   ui?: Partial<typeof contextMenu.slots>
@@ -42,7 +47,7 @@ export interface ContextMenuEmits extends ContextMenuRootEmits {}
 type SlotProps<T> = (props: { item: T, active?: boolean, index: number }) => any
 
 export type ContextMenuSlots<T extends { slot?: string }> = {
-  'default'(): any
+  'default'(props?: {}): any
   'item': SlotProps<T>
   'item-leading': SlotProps<T>
   'item-label': SlotProps<T>
@@ -55,7 +60,7 @@ import { computed, toRef } from 'vue'
 import { ContextMenuRoot, ContextMenuTrigger, useForwardPropsEmits } from 'radix-vue'
 import { reactivePick } from '@vueuse/core'
 import { UContextMenuContent } from '#components'
-import { omit } from '#ui/utils'
+import { omit } from '../utils'
 
 const props = withDefaults(defineProps<ContextMenuProps<T>>(), {
   portal: true,

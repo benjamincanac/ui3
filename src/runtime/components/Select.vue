@@ -4,9 +4,9 @@ import type { SelectRootProps, SelectRootEmits, SelectContentProps, SelectArrowP
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/select'
-import type { UseComponentIconsProps } from '#ui/composables/useComponentIcons'
-import type { AvatarProps, ChipProps, InputProps } from '#ui/types'
-import type { AcceptableValue } from '#ui/types/utils'
+import type { UseComponentIconsProps } from '../composables/useComponentIcons'
+import type { AvatarProps, ChipProps, InputProps } from '../types'
+import type { AcceptableValue } from '../types/utils'
 
 const appConfig = _appConfig as AppConfig & { ui: { select: Partial<typeof theme> } }
 
@@ -19,14 +19,14 @@ export interface SelectItem extends Pick<SelectItemProps, 'disabled' | 'value'> 
   chip?: ChipProps
   /**
    * The item type.
-   * @defaultValue `'item'`
+   * @defaultValue 'item'
    */
   type?: 'label' | 'separator' | 'item'
 }
 
 type SelectVariants = VariantProps<typeof select>
 
-export interface SelectProps<T> extends Omit<SelectRootProps, 'asChild' | 'dir'>, UseComponentIconsProps {
+export interface SelectProps<T> extends Omit<SelectRootProps, 'dir'>, UseComponentIconsProps {
   id?: string
   /** The placeholder text when the select is empty. */
   placeholder?: string
@@ -35,16 +35,28 @@ export interface SelectProps<T> extends Omit<SelectRootProps, 'asChild' | 'dir'>
   size?: SelectVariants['size']
   /**
    * The icon displayed to open the menu.
-   * @defaultValue `appConfig.ui.icons.chevronDown`
+   * @defaultValue appConfig.ui.icons.chevronDown
    */
   trailingIcon?: string
   /**
    * The icon displayed when an item is selected.
-   * @defaultValue `appConfig.ui.icons.check`
+   * @defaultValue appConfig.ui.icons.check
    */
   selectedIcon?: string
-  content?: Omit<SelectContentProps, 'asChild' | 'forceMount'>
-  arrow?: boolean | Omit<SelectArrowProps, 'asChild'>
+  /**
+   * The content of the menu.
+   * @defaultValue { side: 'bottom', sideOffset: 8, position: 'popper' }
+   */
+  content?: Omit<SelectContentProps, 'as' | 'asChild' | 'forceMount'>
+  /**
+   * Display an arrow alongside the menu.
+   * @defaultValue false
+   */
+  arrow?: boolean | Omit<SelectArrowProps, 'as' | 'asChild'>
+  /**
+   * Render the menu in a portal.
+   * @defaultValue true
+   */
   portal?: boolean
   items?: T[] | T[][]
   class?: any

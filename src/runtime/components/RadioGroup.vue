@@ -4,7 +4,7 @@ import type { RadioGroupRootProps, RadioGroupRootEmits, RadioGroupItemProps } fr
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/radio-group'
-import type { AcceptableValue } from '#ui/types/utils'
+import type { AcceptableValue } from '../types/utils'
 
 const appConfig = _appConfig as AppConfig & { ui: { radioGroup: Partial<typeof theme> } }
 
@@ -17,21 +17,31 @@ export interface RadioGroupItem extends Pick<RadioGroupItemProps, 'disabled' | '
   description?: string
 }
 
-export interface RadioGroupProps<T> extends Omit<RadioGroupRootProps, 'asChild' | 'dir'> {
+export interface RadioGroupProps<T> extends Pick<RadioGroupRootProps, 'defaultValue' | 'disabled' | 'loop' | 'modelValue' | 'name' | 'required'> {
+  /**
+   * The element or component this component should render as.
+   * @defaultValue `div`
+   */
+  as?: any
   legend?: string
   items?: T[]
-  class?: any
   size?: RadioGroupVariants['size']
   color?: RadioGroupVariants['color']
+  /**
+   * The orientation the radio buttons are laid out.
+   * @defaultValue 'vertical'
+   */
+  orientation?: RadioGroupRootProps['orientation']
+  class?: any
   ui?: Partial<typeof radioGroup.slots>
 }
 
 export interface RadioGroupEmits extends RadioGroupRootEmits {}
 
-type SlotProps<T> = (props: { item: T }) => any
+type SlotProps<T> = (props: { item: T, modelValue?: string }) => any
 
 export interface RadioGroupSlots<T> {
-  legend(): any
+  legend(props?: {}): any
   label: SlotProps<T>
   description: SlotProps<T>
 }
@@ -43,7 +53,9 @@ import { RadioGroupRoot, RadioGroupItem, RadioGroupIndicator, Label, useForwardP
 import { reactivePick } from '@vueuse/core'
 import { useId, useFormField } from '#imports'
 
-const props = withDefaults(defineProps<RadioGroupProps<T>>(), { orientation: 'vertical' })
+const props = withDefaults(defineProps<RadioGroupProps<T>>(), {
+  orientation: 'vertical'
+})
 const emits = defineEmits<RadioGroupEmits>()
 const slots = defineSlots<RadioGroupSlots<T>>()
 
@@ -84,6 +96,7 @@ const normalizedItems = computed(() => {
 <template>
   <RadioGroupRoot
     :id="id"
+    v-slot="{ modelValue }"
     v-bind="rootProps"
     :name="name"
     :disabled="disabled"
@@ -110,10 +123,10 @@ const normalizedItems = computed(() => {
 
         <div :class="ui.wrapper()">
           <Label :class="ui.label()" :for="item.id">
-            <slot name="label" :item="item">{{ item.label }}</slot>
+            <slot name="label" :item="item" :model-value="modelValue">{{ item.label }}</slot>
           </Label>
           <p v-if="item.description || !!slots.description" :class="ui.description()">
-            <slot name="description" :item="item">
+            <slot name="description" :item="item" :model-value="modelValue">
               {{ item.description }}
             </slot>
           </p>

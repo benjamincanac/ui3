@@ -4,7 +4,7 @@ import { tv, type VariantProps } from 'tailwind-variants'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/input'
-import type { UseComponentIconsProps } from '#ui/composables/useComponentIcons'
+import type { UseComponentIconsProps } from '../composables/useComponentIcons'
 
 const appConfig = _appConfig as AppConfig & { ui: { input: Partial<typeof theme> } }
 
@@ -32,12 +32,13 @@ export interface InputProps extends UseComponentIconsProps {
 export interface InputEmits {
   (e: 'blur', event: FocusEvent): void
   (e: 'change', event: Event): void
+  (e: 'update:modelValue', payload: string | number): void
 }
 
 export interface InputSlots {
-  leading(): any
-  default(): any
-  trailing(): any
+  leading(props?: {}): any
+  default(props?: {}): any
+  trailing(props?: {}): any
 }
 </script>
 
@@ -45,7 +46,7 @@ export interface InputSlots {
 import { ref, computed, onMounted } from 'vue'
 import { useComponentIcons, useFormField, useButtonGroup } from '#imports'
 import { UIcon } from '#components'
-import { looseToNumber } from '#ui/utils'
+import { looseToNumber } from '../utils'
 
 defineOptions({ inheritAttrs: false })
 

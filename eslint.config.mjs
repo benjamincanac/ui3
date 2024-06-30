@@ -13,9 +13,6 @@ export default createConfigForNuxt({
   'import/order': 'off',
   'vue/multi-word-component-names': 'off',
   'vue/max-attributes-per-line': ['error', { singleline: 5 }],
-  '@typescript-eslint/no-explicit-any': 'off'
-}).append({
-  ignores: [
-    'docs/**'
-  ]
+  '@typescript-eslint/no-explicit-any': 'off',
+  '@typescript-eslint/ban-types': 'off'
 })

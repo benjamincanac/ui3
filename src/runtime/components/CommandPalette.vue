@@ -6,9 +6,9 @@ import type { AppConfig } from '@nuxt/schema'
 import type { UseFuseOptions } from '@vueuse/integrations/useFuse'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/command-palette'
-import type { UseComponentIconsProps } from '#ui/composables/useComponentIcons'
-import type { AvatarProps, ButtonProps, ChipProps, KbdProps, InputProps } from '#ui/types'
-import type { DynamicSlots } from '#ui/types/utils'
+import type { UseComponentIconsProps } from '../composables/useComponentIcons'
+import type { AvatarProps, ButtonProps, ChipProps, KbdProps, InputProps } from '../types'
+import type { DynamicSlots } from '../types/utils'
 
 const appConfig = _appConfig as AppConfig & { ui: { commandPalette: Partial<typeof theme> } }
 
@@ -39,18 +39,35 @@ export interface CommandPaletteGroup<T> {
 export interface CommandPaletteProps<G, T> extends Pick<ComboboxRootProps, 'as' | 'multiple' | 'disabled' | 'modelValue' | 'defaultValue'>, Pick<UseComponentIconsProps, 'loading' | 'loadingIcon'> {
   /**
    * The icon displayed in the input.
-   * @defaultValue `appConfig.ui.icons.search`
+   * @defaultValue appConfig.ui.icons.search
    */
   icon?: string
   /**
    * The icon displayed when an item is selected.
-   * @defaultValue `appConfig.ui.icons.check`
+   * @defaultValue appConfig.ui.icons.check
    */
   selectedIcon?: string
+  /**
+   * The placeholder text for the input.
+   * @defaultValue 'Type a command or search...'
+   */
   placeholder?: InputProps['placeholder']
-  /** Display a close button in the input, clicking it will emit the `close` event. */
+  /**
+   * Display a close button in the input (useful when inside a `UModal`).
+   * Will render with `{ size: 'md', color: 'gray', variant: 'ghost' }`.
+   * @defaultValue false
+   */
   close?: ButtonProps | boolean
+  /**
+   * The icon displayed in the close button.
+   * @defaultValue appConfig.ui.icons.close
+   */
+  closeIcon?: string
   groups?: G[]
+  /**
+   * Options for [useFuse](https://vueuse.org/integrations/useFuse).
+   * @defaultValue { ignoreLocation: true, threshold: 0.1, keys: ['label', 'suffix'], resultLimit: 12, matchAllWhenSearchEmpty: true }
+   */
   fuse?: UseFuseOptions<T>
   class?: any
   ui?: Partial<typeof commandPalette.slots>
@@ -62,7 +79,7 @@ type SlotProps<T> = (props: { item: T, index: number }) => any
 
 export type CommandPaletteSlots<G extends { slot?: string }, T extends { slot?: string }> = {
   'empty'(props: { searchTerm?: string }): any
-  'close'(): any
+  'close'(props?: {}): any
   'item': SlotProps<T>
   'item-leading': SlotProps<T>
   'item-label': SlotProps<T>
@@ -78,8 +95,8 @@ import { reactivePick } from '@vueuse/core'
 import { useFuse } from '@vueuse/integrations/useFuse'
 import { UInput, UAvatar, UIcon, UKbd, UChip } from '#components'
 import { useAppConfig } from '#imports'
-import { omit } from '#ui/utils'
-import { highlight } from '#ui/utils/fuse'
+import { omit } from '../utils'
+import { highlight } from '../utils/fuse'
 
 const props = withDefaults(defineProps<CommandPaletteProps<G, T>>(), {
   modelValue: '',
@@ -171,12 +188,12 @@ const groups = computed(() => {
           <slot name="close" :class="ui.close()">
             <UButton
               v-if="close"
-              :icon="appConfig.ui.icons.close"
+              :icon="closeIcon || appConfig.ui.icons.close"
               size="md"
               color="gray"
               variant="ghost"
               aria-label="Close"
-              v-bind="typeof close === 'object' ? close : {}"
+              v-bind="typeof close === 'object' ? close : undefined"
               :class="ui.close()"
               @click="emits('update:open', false)"
             />

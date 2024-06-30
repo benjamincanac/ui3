@@ -3,8 +3,8 @@ import { tv, type VariantProps } from 'tailwind-variants'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/button'
-import type { LinkProps } from '#ui/components/Link.vue'
-import type { UseComponentIconsProps } from '#ui/composables/useComponentIcons'
+import type { LinkProps } from './Link.vue'
+import type { UseComponentIconsProps } from '../composables/useComponentIcons'
 
 const appConfig = _appConfig as AppConfig & { ui: { button: Partial<typeof theme> } }
 
@@ -12,22 +12,23 @@ const button = tv({ extend: tv(theme), ...(appConfig.ui?.button || {}) })
 
 type ButtonVariants = VariantProps<typeof button>
 
-export interface ButtonProps extends UseComponentIconsProps, Omit<LinkProps, 'custom'> {
+export interface ButtonProps extends UseComponentIconsProps, Omit<LinkProps, 'raw' | 'custom'> {
   label?: string
   color?: ButtonVariants['color']
   variant?: ButtonVariants['variant']
   size?: ButtonVariants['size']
+  /** Render the button with equal padding on all sides. */
   square?: boolean
+  /** Render the button full width. */
   block?: boolean
-  truncate?: boolean
   class?: any
   ui?: Partial<typeof button.slots>
 }
 
 export interface ButtonSlots {
-  leading(): any
-  default(): any
-  trailing(): any
+  leading(props?: {}): any
+  default(props?: {}): any
+  trailing(props?: {}): any
 }
 </script>
 
@@ -36,7 +37,7 @@ import { computed } from 'vue'
 import { useForwardProps } from 'radix-vue'
 import { useComponentIcons, useButtonGroup } from '#imports'
 import { UIcon, ULink } from '#components'
-import { pickLinkProps } from '#ui/utils/link'
+import { pickLinkProps } from '../utils/link'
 
 const props = defineProps<ButtonProps>()
 const slots = defineSlots<ButtonSlots>()
@@ -51,7 +52,6 @@ const ui = computed(() => tv({ extend: button, slots: props.ui })({
   variant: props.variant,
   size: buttonSize.value,
   loading: props.loading,
-  truncate: props.truncate,
   block: props.block,
   square: props.square || (!slots.default && !props.label),
   leading: isLeading.value,

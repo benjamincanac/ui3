@@ -12,11 +12,23 @@ const popover = tv({ extend: tv(theme), ...(appConfig.ui?.popover || {}) })
 export interface PopoverProps extends PopoverRootProps, Pick<HoverCardRootProps, 'openDelay' | 'closeDelay'> {
   /**
    * The display mode of the popover.
-   * @defaultValue `"click"`
+   * @defaultValue 'click'
    */
   mode?: 'click' | 'hover'
-  content?: Omit<PopoverContentProps, 'asChild' | 'forceMount'>
-  arrow?: boolean | Omit<PopoverArrowProps, 'asChild'>
+  /**
+   * The content of the popover.
+   * @defaultValue { side: 'bottom', sideOffset: 8 }
+   */
+  content?: Omit<PopoverContentProps, 'as' | 'asChild' | 'forceMount'>
+  /**
+   * Display an arrow alongside the popover.
+   * @defaultValue false
+   */
+  arrow?: boolean | Omit<PopoverArrowProps, 'as' | 'asChild'>
+  /**
+   * Render the popover in a portal.
+   * @defaultValue true
+   */
   portal?: boolean
   class?: any
   ui?: Partial<typeof popover.slots>
@@ -26,7 +38,7 @@ export interface PopoverEmits extends PopoverRootEmits {}
 
 export interface PopoverSlots {
   default(props: { open: boolean }): any
-  content(): any
+  content(props?: {}): any
 }
 </script>
 

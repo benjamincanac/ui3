@@ -4,6 +4,8 @@ import tailwindcss from '@tailwindcss/vite'
 import { addTemplates } from './templates'
 import icons from './theme/icons'
 
+export type * from './runtime/types'
+
 export interface ModuleOptions {
   /**
    * Prefix for components
@@ -27,7 +29,7 @@ export default defineNuxtModule<ModuleOptions>({
     name: 'ui',
     configKey: 'ui',
     compatibility: {
-      nuxt: '^3.10.0'
+      nuxt: '>=3.10.0'
     }
   },
   defaults: {
@@ -40,6 +42,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     options.colors = options.colors?.length ? [...new Set(['primary', ...options.colors])] : ['primary', 'red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchia', 'pink', 'rose']
 
+    // @ts-expect-error - Add ui options to nuxt
     nuxt.options.ui = options
 
     nuxt.options.alias['#ui'] = resolve('./runtime')
@@ -50,9 +53,13 @@ export default defineNuxtModule<ModuleOptions>({
       icons
     })
 
+    // Isolate root node from portaled components
+    nuxt.options.app.rootAttrs = nuxt.options.app.rootAttrs || {}
+    nuxt.options.app.rootAttrs.class = [nuxt.options.app.rootAttrs.class, 'isolate'].filter(Boolean).join(' ')
+
     addVitePlugin(tailwindcss)
 
-    await installModule('nuxt-icon', {
+    await installModule('@nuxt/icon', {
       componentName: 'UIcon',
       cssLayer: 'components'
     })

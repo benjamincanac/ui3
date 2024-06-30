@@ -1,11 +1,11 @@
 <script lang="ts">
-import { tv } from 'tailwind-variants'
+import { tv, type VariantProps } from 'tailwind-variants'
 import type { DropdownMenuRootProps, DropdownMenuRootEmits, DropdownMenuContentProps, DropdownMenuArrowProps, DropdownMenuTriggerProps, DropdownMenuItemProps } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/dropdown-menu'
-import type { AvatarProps, KbdProps, LinkProps } from '#ui/types'
-import type { DynamicSlots } from '#ui/types/utils'
+import type { AvatarProps, KbdProps, LinkProps } from '../types'
+import type { DynamicSlots } from '../types/utils'
 
 const appConfig = _appConfig as AppConfig & { ui: { dropdownMenu: Partial<typeof theme> } }
 
@@ -15,11 +15,11 @@ export interface DropdownMenuItem extends Omit<LinkProps, 'type' | 'custom'>, Pi
   label?: string
   icon?: string
   avatar?: AvatarProps
-  content?: Omit<DropdownMenuContentProps, 'asChild' | 'forceMount'>
+  content?: Omit<DropdownMenuContentProps, 'as' | 'asChild' | 'forceMount'>
   kbds?: KbdProps['value'][] | KbdProps[]
   /**
    * The item type.
-   * @defaultValue `'link'`
+   * @defaultValue 'link'
    */
   type?: 'label' | 'separator' | 'link'
   slot?: string
@@ -29,10 +29,25 @@ export interface DropdownMenuItem extends Omit<LinkProps, 'type' | 'custom'>, Pi
   select?(e: Event): void
 }
 
+type DropdownVariants = VariantProps<typeof dropdownMenu>
+
 export interface DropdownMenuProps<T> extends Omit<DropdownMenuRootProps, 'dir'>, Pick<DropdownMenuTriggerProps, 'disabled'> {
+  size?: DropdownVariants['size']
   items?: T[] | T[][]
-  content?: Omit<DropdownMenuContentProps, 'asChild' | 'forceMount'>
-  arrow?: boolean | Omit<DropdownMenuArrowProps, 'asChild'>
+  /**
+   * The content of the menu.
+   * @defaultValue { side: 'bottom', sideOffset: 8 }
+   */
+  content?: Omit<DropdownMenuContentProps, 'as' | 'asChild' | 'forceMount'>
+  /**
+   * Display an arrow alongside the menu.
+   * @defaultValue false
+   */
+  arrow?: boolean | Omit<DropdownMenuArrowProps, 'as' | 'asChild'>
+  /**
+   * Render the menu in a portal.
+   * @defaultValue true
+   */
   portal?: boolean
   class?: any
   ui?: Partial<typeof dropdownMenu.slots>
@@ -57,7 +72,7 @@ import { defu } from 'defu'
 import { DropdownMenuRoot, DropdownMenuTrigger, DropdownMenuArrow, useForwardPropsEmits } from 'radix-vue'
 import { reactivePick } from '@vueuse/core'
 import { UDropdownMenuContent } from '#components'
-import { omit } from '#ui/utils'
+import { omit } from '../utils'
 
 const props = withDefaults(defineProps<DropdownMenuProps<T>>(), {
   portal: true,
@@ -71,7 +86,9 @@ const contentProps = toRef(() => defu(props.content, { side: 'bottom', sideOffse
 const arrowProps = toRef(() => props.arrow as DropdownMenuArrowProps)
 const proxySlots = omit(slots, ['default']) as Record<string, DropdownMenuSlots<T>[string]>
 
-const ui = computed(() => tv({ extend: dropdownMenu, slots: props.ui })())
+const ui = computed(() => tv({ extend: dropdownMenu, slots: props.ui })({
+  size: props.size
+}))
 </script>
 
 <template>

@@ -4,8 +4,8 @@ import type { NavigationMenuRootProps, NavigationMenuRootEmits, NavigationMenuIt
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/navigation-menu'
-import type { AvatarProps, BadgeProps, LinkProps } from '#ui/types'
-import type { DynamicSlots } from '#ui/types/utils'
+import type { AvatarProps, BadgeProps, LinkProps } from '../types'
+import type { DynamicSlots } from '../types/utils'
 
 const appConfig = _appConfig as AppConfig & { ui: { navigationMenu: Partial<typeof theme> } }
 
@@ -31,21 +31,34 @@ export interface NavigationMenuItem extends Omit<LinkProps, 'custom'>, Pick<Navi
 
 type NavigationMenuVariants = VariantProps<typeof navigationMenu>
 
-export interface NavigationMenuProps<T> extends Omit<NavigationMenuRootProps, 'asChild' | 'dir'> {
+export interface NavigationMenuProps<T> extends Pick<NavigationMenuRootProps, 'defaultValue' | 'delayDuration' | 'disableClickTrigger' | 'disableHoverTrigger' | 'modelValue' | 'skipDelayDuration'> {
+  /**
+   * The element or component this component should render as.
+   * @defaultValue `div`
+   */
+  as?: any
   /**
    * The icon displayed to open the menu.
-   * @defaultValue `appConfig.ui.icons.chevronDown`
+   * @defaultValue appConfig.ui.icons.chevronDown
    */
   trailingIcon?: string
   items?: T[] | T[][]
   color?: NavigationMenuVariants['color']
   variant?: NavigationMenuVariants['variant']
   /**
-   * Display a line next to the active item.
+   * The orientation of the menu.
+   * @defaultValue 'horizontal'
    */
+  orientation?: NavigationMenuRootProps['orientation']
+  /** Display a line next to the active item. */
   highlight?: boolean
   highlightColor?: NavigationMenuVariants['highlightColor']
-  content?: Omit<NavigationMenuContentProps, 'asChild' | 'forceMount'>
+  /** The content of the menu. */
+  content?: Omit<NavigationMenuContentProps, 'as' | 'asChild' | 'forceMount'>
+  /**
+   * Display an arrow alongside the menu.
+   * @defaultValue false
+   */
   arrow?: boolean
   class?: any
   ui?: Partial<typeof navigationMenu.slots>
@@ -68,7 +81,7 @@ import { computed, toRef } from 'vue'
 import { NavigationMenuRoot, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, NavigationMenuIndicator, NavigationMenuViewport, useForwardPropsEmits } from 'radix-vue'
 import { reactivePick } from '@vueuse/core'
 import { UIcon, UAvatar, UBadge, ULink, ULinkBase } from '#components'
-import { pickLinkProps } from '#ui/utils/link'
+import { pickLinkProps } from '../utils/link'
 
 const props = withDefaults(defineProps<NavigationMenuProps<T>>(), {
   orientation: 'horizontal',

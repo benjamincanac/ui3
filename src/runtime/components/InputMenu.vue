@@ -5,9 +5,9 @@ import type { ComboboxRootProps, ComboboxRootEmits, ComboboxContentProps, Combob
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/input-menu'
-import type { UseComponentIconsProps } from '#ui/composables/useComponentIcons'
-import type { AvatarProps, ChipProps, InputProps } from '#ui/types'
-import type { AcceptableValue, ArrayOrWrapped } from '#ui/types/utils'
+import type { UseComponentIconsProps } from '../composables/useComponentIcons'
+import type { AvatarProps, ChipProps, InputProps } from '../types'
+import type { AcceptableValue, ArrayOrWrapped } from '../types/utils'
 
 const appConfig = _appConfig as AppConfig & { ui: { inputMenu: Partial<typeof theme> } }
 
@@ -20,14 +20,19 @@ export interface InputMenuItem extends Pick<ComboboxItemProps, 'disabled'> {
   chip?: ChipProps
   /**
    * The item type.
-   * @defaultValue `'item'`
+   * @defaultValue 'item'
    */
   type?: 'label' | 'separator' | 'item'
 }
 
 type InputMenuVariants = VariantProps<typeof inputMenu>
 
-export interface InputMenuProps<T> extends Omit<ComboboxRootProps<T>, 'asChild' | 'dir' | 'filterFunction' | 'displayValue'>, UseComponentIconsProps {
+export interface InputMenuProps<T> extends Pick<ComboboxRootProps<T>, 'modelValue' | 'defaultValue' | 'open' | 'defaultOpen' | 'searchTerm' | 'multiple' | 'disabled' | 'name' | 'resetSearchTermOnBlur'>, UseComponentIconsProps {
+  /**
+   * The element or component this component should render as.
+   * @defaultValue 'div'
+   */
+  as?: any
   id?: string
   type?: InputHTMLAttributes['type']
   /** The placeholder text when the input is empty. */
@@ -40,27 +45,39 @@ export interface InputMenuProps<T> extends Omit<ComboboxRootProps<T>, 'asChild' 
   autofocusDelay?: number
   /**
    * The icon displayed to open the menu.
-   * @defaultValue `appConfig.ui.icons.chevronDown`
+   * @defaultValue appConfig.ui.icons.chevronDown
    */
   trailingIcon?: string
   /**
    * The icon displayed when an item is selected.
-   * @defaultValue `appConfig.ui.icons.check`
+   * @defaultValue appConfig.ui.icons.check
    */
   selectedIcon?: string
   /**
    * The icon displayed to delete a tag.
    * Works only when `multiple` is `true`.
-   * @defaultValue `appConfig.ui.icons.close`
+   * @defaultValue appConfig.ui.icons.close
    */
   deleteIcon?: string
-  content?: Omit<ComboboxContentProps, 'asChild' | 'forceMount'>
-  arrow?: boolean | Omit<ComboboxArrowProps, 'asChild'>
+  /**
+   * The content of the menu.
+   * @defaultValue { side: 'bottom', sideOffset: 8, position: 'popper' }
+   */
+  content?: Omit<ComboboxContentProps, 'as' | 'asChild' | 'forceMount'>
+  /**
+   * Display an arrow alongside the menu.
+   * @defaultValue false
+   */
+  arrow?: boolean | Omit<ComboboxArrowProps, 'as' | 'asChild'>
+  /**
+   * Render the menu in a portal.
+   * @defaultValue true
+   */
   portal?: boolean
   /**
    * Whether to filter items or not, can be an array of fields to filter.
    * When `false`, items will not be filtered which is useful for custom filtering.
-   * @defaultValue `['label']`
+   * @defaultValue ['label']
    */
   filter?: boolean | string[]
   items?: T[] | T[][]
@@ -92,7 +109,7 @@ import { defu } from 'defu'
 import { reactivePick } from '@vueuse/core'
 import { useAppConfig, useFormField, useButtonGroup, useComponentIcons } from '#imports'
 import { UIcon, UChip, UAvatar } from '#components'
-import { get } from '#ui/utils'
+import { get } from '../utils'
 
 defineOptions({ inheritAttrs: false })
 
@@ -108,7 +125,7 @@ const slots = defineSlots<InputMenuSlots<T>>()
 const searchTerm = defineModel<string>('searchTerm', { default: '' })
 
 const appConfig = useAppConfig()
-const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'modelValue', 'defaultValue', 'open', 'defaultOpen', 'multiple'), emits)
+const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'modelValue', 'defaultValue', 'open', 'defaultOpen', 'multiple', 'resetSearchTermOnBlur'), emits)
 const contentProps = toRef(() => defu(props.content, { side: 'bottom', sideOffset: 8, position: 'popper' }) as ComboboxContentProps)
 const { emitFormBlur, emitFormChange, size: formGroupSize, color, id, name, disabled } = useFormField<InputProps>(props)
 const { orientation, size: buttonGroupSize } = useButtonGroup<InputProps>(props)
@@ -193,9 +210,9 @@ onMounted(() => {
         v-slot="{ modelValue: tags }: { modelValue: AcceptableValue[] }"
         :model-value="(modelValue as string[])"
         :disabled="disabled"
-        @blur="emitFormBlur()"
         delimiter=""
         as-child
+        @blur="emitFormBlur()"
       >
         <TagsInputItem v-for="(item, index) in tags" :key="index" :value="(item as string)" :class="ui.tagsItem()">
           <TagsInputItemText :class="ui.tagsItemText()">

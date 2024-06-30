@@ -4,8 +4,8 @@ import type { TabsRootProps, TabsRootEmits, TabsContentProps, TabsTriggerProps }
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/tabs'
-import type { AvatarProps } from '#ui/types'
-import type { DynamicSlots } from '#ui/types/utils'
+import type { AvatarProps } from '../types'
+import type { DynamicSlots } from '../types/utils'
 
 const appConfig = _appConfig as AppConfig & { ui: { tabs: Partial<typeof theme> } }
 
@@ -21,12 +21,26 @@ export interface TabsItem extends Partial<Pick<TabsTriggerProps, 'disabled' | 'v
 
 type TabsVariants = VariantProps<typeof tabs>
 
-export interface TabsProps<T> extends Omit<TabsRootProps, 'asChild'> {
+export interface TabsProps<T> extends Pick<TabsRootProps, 'defaultValue' | 'modelValue' | 'activationMode'> {
+  /**
+   * The element or component this component should render as.
+   * @defaultValue 'div'
+   */
+  as?: any
   items?: T[]
   color?: TabsVariants['color']
   variant?: TabsVariants['variant']
   size?: TabsVariants['size']
-  content?: boolean | Omit<TabsContentProps, 'asChild' | 'value'>
+  /**
+   * The orientation of the tabs.
+   * @defaultValue 'horizontal'
+   */
+  orientation?: TabsRootProps['orientation']
+  /**
+   * The content of the tabs, can be disabled to prevent rendering the content.
+   * @defaultValue true
+   */
+  content?: boolean | Omit<TabsContentProps, 'as' | 'asChild' | 'value'>
   class?: any
   ui?: Partial<typeof tabs.slots>
 }

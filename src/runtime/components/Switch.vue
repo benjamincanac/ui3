@@ -11,15 +11,28 @@ const switchTv = tv({ extend: tv(theme), ...(appConfig.ui?.switch || {}) })
 
 type SwitchVariants = VariantProps<typeof switchTv>
 
-export interface SwitchProps extends Omit<SwitchRootProps, 'asChild' | 'checked' | 'defaultChecked'> {
+export interface SwitchProps extends Pick<SwitchRootProps, 'disabled' | 'id' | 'name' | 'required' | 'value'> {
+  /**
+   * The element or component this component should render as.
+   * @defaultValue `div`
+   */
+  as?: any
   color?: SwitchVariants['color']
   size?: SwitchVariants['size']
+  /** When `true`, the loading icon will be displayed. */
   loading?: boolean
+  /**
+   * The icon when the `loading` prop is `true`.
+   * @defaultValue appConfig.ui.icons.loading
+   */
   loadingIcon?: string
+  /** Display an icon when the switch is checked. */
   checkedIcon?: string
+  /** Display an icon when the switch is unchecked. */
   uncheckedIcon?: string
   label?: string
   description?: string
+  /** The state of the switch when it is initially rendered. Use when you do not need to control its state. */
   defaultValue?: boolean
   class?: any
   ui?: Partial<typeof switchTv.slots>
@@ -28,6 +41,10 @@ export interface SwitchProps extends Omit<SwitchRootProps, 'asChild' | 'checked'
 export interface SwitchSlots {
   label(props: { label?: string }): any
   description(props: { description?: string }): any
+}
+
+export interface SwitchEmits {
+  (e: 'update:modelValue', payload: boolean): void
 }
 </script>
 
@@ -39,6 +56,7 @@ import { useId, useAppConfig, useFormField } from '#imports'
 
 const props = defineProps<SwitchProps>()
 const slots = defineSlots<SwitchSlots>()
+defineEmits<SwitchEmits>()
 
 const modelValue = defineModel<boolean | undefined>({ default: undefined })
 

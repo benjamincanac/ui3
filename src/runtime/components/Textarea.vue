@@ -32,17 +32,18 @@ export interface TextareaProps {
 export interface TextareaEmits {
   (e: 'blur', event: FocusEvent): void
   (e: 'change', event: Event): void
+  (e: 'update:modelValue', payload: string | number): void
 }
 
 export interface TextareaSlots {
-  default(): any
+  default(props?: {}): any
 }
 </script>
 
 <script lang="ts" setup>
 import { ref, computed, onMounted, nextTick, watch } from 'vue'
 import { useFormField } from '#imports'
-import { looseToNumber } from '#ui/utils'
+import { looseToNumber } from '../utils'
 
 defineOptions({ inheritAttrs: false })
 

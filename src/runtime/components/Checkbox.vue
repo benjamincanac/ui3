@@ -12,22 +12,23 @@ const checkbox = tv({ extend: tv(theme), ...(appConfig.ui?.checkbox || {}) })
 
 type CheckboxVariants = VariantProps<typeof checkbox>
 
-export interface CheckboxProps extends Omit<CheckboxRootProps, 'asChild' | 'checked' | 'defaultChecked'> {
+export interface CheckboxProps extends Pick<CheckboxRootProps, 'disabled' | 'required' | 'name' | 'value' | 'id'> {
   label?: string
   description?: string
   color?: CheckboxVariants['color']
   size?: CheckboxVariants['size']
   /**
    * The icon displayed when checked.
-   * @defaultValue `appConfig.ui.icons.check`
+   * @defaultValue appConfig.ui.icons.check
    */
   icon?: string
   indeterminate?: InputHTMLAttributes['indeterminate']
   /**
    * The icon displayed when the checkbox is indeterminate.
-   * @defaultValue `appConfig.ui.icons.minus`
+   * @defaultValue appConfig.ui.icons.minus
    */
   indeterminateIcon?: string
+  /** The checked state of the checkbox when it is initially rendered. Use when you do not need to control its checked state. */
   defaultValue?: boolean
   class?: any
   ui?: Partial<typeof checkbox.slots>
@@ -36,6 +37,10 @@ export interface CheckboxProps extends Omit<CheckboxRootProps, 'asChild' | 'chec
 export interface CheckboxSlots {
   label(props: { label?: string }): any
   description(props: { description?: string }): any
+}
+
+export interface CheckboxEmits {
+  (e: 'update:modelValue', payload: boolean): void
 }
 </script>
 
@@ -47,10 +52,11 @@ import { useId, useAppConfig, useFormField } from '#imports'
 
 const props = defineProps<CheckboxProps>()
 const slots = defineSlots<CheckboxSlots>()
+defineEmits<CheckboxEmits>()
 
 const modelValue = defineModel<boolean | undefined>({ default: undefined })
 
-const rootProps = useForwardProps(reactivePick(props, 'as', 'required', 'value'))
+const rootProps = useForwardProps(reactivePick(props, 'required', 'value'))
 
 const appConfig = useAppConfig()
 const { id: _id, emitFormChange, size, color, name, disabled } = useFormField<CheckboxProps>(props)

@@ -5,42 +5,63 @@ import pkg from '../package.json'
 const { resolve } = createResolver(import.meta.url)
 
 export default defineNuxtConfig({
-  extends: [
-    process.env.NUXT_UI_PRO_PATH ? resolve(process.env.NUXT_UI_PRO_PATH, 'docs') : process.env.NUXT_GITHUB_TOKEN && ['github:nuxt/ui-pro/docs#dev', { giget: { auth: process.env.NUXT_GITHUB_TOKEN } }]
-  ],
+  app: {
+    head: {
+      bodyAttrs: {
+        class: 'antialiased font-sans text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-900'
+      }
+    }
+  },
+  // extends: [
+  //   process.env.NUXT_UI_PRO_PATH ? resolve(process.env.NUXT_UI_PRO_PATH, 'docs') : process.env.NUXT_GITHUB_TOKEN && ['github:nuxt/ui-pro/docs#dev', { giget: { auth: process.env.NUXT_GITHUB_TOKEN } }]
+  // ],
   modules: [
+    module,
+    '@nuxt/ui-pro',
     '@nuxt/content',
     '@nuxt/fonts',
     '@nuxt/image',
-    module,
-    '@nuxt/ui-pro',
-    '@nuxtjs/plausible',
+    // '@nuxtjs/plausible',
     '@vueuse/nuxt',
-    'nuxt-og-image',
     // 'modules/content-examples-code'
+    'nuxt-component-meta',
+    'nuxt-og-image'
   ],
+  future: {
+    compatibilityVersion: 4
+  },
   runtimeConfig: {
     public: {
       version: pkg.version
     }
   },
-  ui: {
-    global: true
+  // ui: {
+  //   global: true
+  // },
+  icon: {
+    customCollections: [{
+      prefix: 'custom',
+      dir: resolve('./app/assets/icons')
+    }]
   },
   content: {
     sources: {
-      pro: process.env.NUXT_UI_PRO_PATH ? {
-        prefix: '/pro',
-        driver: 'fs',
-        base: resolve(process.env.NUXT_UI_PRO_PATH, 'docs/content/pro')
-      } : process.env.NUXT_GITHUB_TOKEN && {
-        prefix: '/pro',
-        driver: 'github',
-        repo: 'nuxt/ui-pro',
-        branch: 'dev',
-        dir: 'docs/content/pro',
-        token: process.env.NUXT_GITHUB_TOKEN || ''
-      }
+      pro: process.env.NUXT_UI_PRO_PATH
+        ? {
+            prefix: '/pro',
+            driver: 'fs',
+            base: resolve(process.env.NUXT_UI_PRO_PATH, 'docs/app/content/pro')
+          }
+        : process.env.NUXT_GITHUB_TOKEN
+          ? {
+              prefix: '/pro',
+              driver: 'github',
+              repo: 'nuxt/ui-pro',
+              branch: 'dev',
+              dir: 'docs/app/content/pro',
+              token: process.env.NUXT_GITHUB_TOKEN || ''
+            }
+          : undefined
     }
   },
   image: {
@@ -49,10 +70,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       routes: [
-        '/',
-        '/getting-started',
-        '/dev/getting-started',
-        '/api/search.json',
+        '/getting-started/installation',
         '/api/releases.json',
         '/api/pulls.json'
       ],
@@ -60,28 +78,30 @@ export default defineNuxtConfig({
     }
   },
   routeRules: {
-    '/components': { redirect: '/components/app', prerender: false },
-    '/dev/components': { redirect: '/dev/components/app', prerender: false }
+    '/': { redirect: '/getting-started/installation', prerender: false },
+    '/components': { redirect: '/components/app', prerender: false }
   },
   componentMeta: {
     exclude: [
-      // '@nuxt/content',
+      '@nuxt/content',
+      '@nuxt/icon',
+      '@nuxt/image',
       // '@nuxt/ui-templates',
-      // '@nuxtjs/color-mode',
-      // '@nuxtjs/mdc',
-      // 'nuxt/dist',
-      // 'nuxt-og-image',
+      '@nuxtjs/color-mode',
+      '@nuxtjs/mdc',
+      'nuxt/dist',
+      'nuxt-og-image',
       // 'nuxt-site-config',
-      resolve('./components'),
+      resolve('./app/components')
       // process.env.NUXT_UI_PRO_PATH ? resolve(process.env.NUXT_UI_PRO_PATH, 'docs', 'components') : '.c12'
     ],
-    // metaFields: {
-    //   type: false,
-    //   props: true,
-    //   slots: true,
-    //   events: false,
-    //   exposed: false
-    // }
+    metaFields: {
+      type: false,
+      props: true,
+      slots: true,
+      events: true,
+      exposed: false
+    }
   },
   hooks: {
     // Related to https://github.com/nuxt/nuxt/pull/22558
@@ -95,12 +115,12 @@ export default defineNuxtConfig({
     //   })
     // }
   },
+  // vite: {
+  //   optimizeDeps: {
+  //     include: ['date-fns']
+  //   }
+  // },
   typescript: {
     strict: false
-  },
-  vite: {
-    optimizeDeps: {
-      include: ['date-fns']
-    }
   }
 })

@@ -4,9 +4,9 @@ import type { ComboboxRootProps, ComboboxRootEmits, ComboboxContentProps, Combob
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/select-menu'
-import type { UseComponentIconsProps } from '#ui/composables/useComponentIcons'
-import type { AvatarProps, ChipProps, InputProps } from '#ui/types'
-import type { AcceptableValue, ArrayOrWrapped } from '#ui/types/utils'
+import type { UseComponentIconsProps } from '../composables/useComponentIcons'
+import type { AvatarProps, ChipProps, InputProps } from '../types'
+import type { AcceptableValue, ArrayOrWrapped } from '../types/utils'
 
 const appConfig = _appConfig as AppConfig & { ui: { selectMenu: Partial<typeof theme> } }
 
@@ -19,14 +19,14 @@ export interface SelectMenuItem extends Pick<ComboboxItemProps, 'disabled'> {
   chip?: ChipProps
   /**
    * The item type.
-   * @defaultValue `'item'`
+   * @defaultValue 'item'
    */
   type?: 'label' | 'separator' | 'item'
 }
 
 type SelectMenuVariants = VariantProps<typeof selectMenu>
 
-export interface SelectMenuProps<T> extends Omit<ComboboxRootProps<T>, 'asChild' | 'dir' | 'filterFunction' | 'displayValue'>, UseComponentIconsProps {
+export interface SelectMenuProps<T> extends Pick<ComboboxRootProps<T>, 'modelValue' | 'defaultValue' | 'open' | 'defaultOpen' | 'searchTerm' | 'multiple' | 'disabled' | 'name' | 'resetSearchTermOnBlur'>, UseComponentIconsProps {
   id?: string
   /** The placeholder text when the select is empty. */
   placeholder?: string
@@ -38,21 +38,33 @@ export interface SelectMenuProps<T> extends Omit<ComboboxRootProps<T>, 'asChild'
   required?: boolean
   /**
    * The icon displayed to open the menu.
-   * @defaultValue `appConfig.ui.icons.chevronDown`
+   * @defaultValue appConfig.ui.icons.chevronDown
    */
   trailingIcon?: string
   /**
    * The icon displayed when an item is selected.
-   * @defaultValue `appConfig.ui.icons.check`
+   * @defaultValue appConfig.ui.icons.check
    */
   selectedIcon?: string
-  content?: Omit<ComboboxContentProps, 'asChild' | 'forceMount'>
-  arrow?: boolean | Omit<ComboboxArrowProps, 'asChild'>
+  /**
+   * The content of the menu.
+   * @defaultValue { side: 'bottom', sideOffset: 8, position: 'popper' }
+   */
+  content?: Omit<ComboboxContentProps, 'as' | 'asChild' | 'forceMount'>
+  /**
+   * Display an arrow alongside the menu.
+   * @defaultValue false
+   */
+  arrow?: boolean | Omit<ComboboxArrowProps, 'as' | 'asChild'>
+  /**
+   * Render the menu in a portal.
+   * @defaultValue true
+   */
   portal?: boolean
   /**
    * Whether to filter items or not, can be an array of fields to filter.
    * When `false`, items will not be filtered which is useful for custom filtering.
-   * @defaultValue `['label']`
+   * @defaultValue ['label']
    */
   filter?: boolean | string[]
   items?: T[] | T[][]
@@ -83,7 +95,7 @@ import { defu } from 'defu'
 import { reactivePick } from '@vueuse/core'
 import { useAppConfig, useFormField, useButtonGroup, useComponentIcons } from '#imports'
 import { UIcon, UChip, UAvatar } from '#components'
-import { get } from '#ui/utils'
+import { get } from '../utils'
 
 const props = withDefaults(defineProps<SelectMenuProps<T>>(), {
   portal: true,
@@ -97,7 +109,7 @@ const slots = defineSlots<SelectMenuSlots<T>>()
 const searchTerm = defineModel<string>('searchTerm', { default: '' })
 
 const appConfig = useAppConfig()
-const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'modelValue', 'defaultValue', 'open', 'defaultOpen', 'multiple'), emits)
+const rootProps = useForwardPropsEmits(reactivePick(props, 'modelValue', 'defaultValue', 'open', 'defaultOpen', 'multiple', 'resetSearchTermOnBlur'), emits)
 const contentProps = toRef(() => defu(props.content, { side: 'bottom', sideOffset: 8, position: 'popper' }) as ComboboxContentProps)
 const { emitFormBlur, emitFormChange, size: formGroupSize, color, id, name, disabled } = useFormField<InputProps>(props)
 const { orientation, size: buttonGroupSize } = useButtonGroup<InputProps>(props)
@@ -190,13 +202,13 @@ const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0
 
     <ComboboxPortal :disabled="!portal">
       <ComboboxContent :class="ui.content()" v-bind="contentProps">
+        <ComboboxInput :placeholder="searchPlaceholder" :class="ui.input()" autofocus autocomplete="off" @blur="emitFormBlur()" />
+
         <ComboboxEmpty :class="ui.empty()">
           <slot name="empty" :search-term="searchTerm">
             {{ searchTerm ? `No results for ${searchTerm}` : 'No results' }}
           </slot>
         </ComboboxEmpty>
-
-        <ComboboxInput :placeholder="searchPlaceholder" :class="ui.input()" autofocus autocomplete="off" @blur="emitFormBlur()" />
 
         <ComboboxViewport :class="ui.viewport()">
           <ComboboxGroup v-for="(group, groupIndex) in groups" :key="`group-${groupIndex}`" :class="ui.group()">

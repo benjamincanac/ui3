@@ -10,11 +10,21 @@ const appConfig = _appConfig as AppConfig & { ui: { drawer: Partial<typeof theme
 
 const drawer = tv({ extend: tv(theme), ...(appConfig.ui?.drawer || {}) })
 
-export interface DrawerProps extends Omit<DrawerRootProps, 'asChild'> {
+export interface DrawerProps extends Pick<DrawerRootProps, 'activeSnapPoint' | 'closeThreshold' | 'defaultOpen' | 'direction' | 'dismissible' | 'fadeFromIndex' | 'fixed' | 'modal' | 'nested' | 'open' | 'scrollLockTimeout' | 'shouldScaleBackground' | 'snapPoints'> {
+  /**
+   * The element or component this component should render as.
+   * @defaultValue 'div'
+   */
+  as?: any
   title?: string
   description?: string
-  content?: Omit<DialogContentProps, 'asChild' | 'forceMount'>
+  /** The content of the drawer. */
+  content?: Omit<DialogContentProps, 'as' | 'asChild' | 'forceMount'>
   overlay?: boolean
+  /**
+   * Render the drawer in a portal.
+   * @defaultValue true
+   */
   portal?: boolean
   class?: any
   ui?: Partial<typeof drawer.slots>
@@ -23,14 +33,14 @@ export interface DrawerProps extends Omit<DrawerRootProps, 'asChild'> {
 export interface DrawerEmits extends DrawerRootEmits {}
 
 export interface DrawerSlots {
-  default(): any
-  handle(): any
-  content(): any
-  header(): any
-  title(): any
-  description(): any
-  body(): any
-  footer(): any
+  default(props?: {}): any
+  handle(props?: {}): any
+  content(props?: {}): any
+  header(props?: {}): any
+  title(props?: {}): any
+  description(props?: {}): any
+  body(props?: {}): any
+  footer(props?: {}): any
 }
 </script>
 

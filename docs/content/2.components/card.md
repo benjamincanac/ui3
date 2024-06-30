@@ -1,9 +1,9 @@
 ---
-description: Display a card for content with a header, body and footer.
+description: Display content in a card with a header, body and footer.
 links:
   - label: GitHub
     icon: i-simple-icons-github
-    to: https://github.com/nuxt/ui/blob/dev/src/runtime/components/layout/Card.vue
+    to: https://github.com/nuxt/ui/blob/dev/src/runtime/components/Card.vue
 ---
 
 ## Usage
@@ -16,20 +16,20 @@ componentProps:
 ---
 ::
 
-## Slots
+## Usage
 
-### `header`
+## Examples
 
-Use the `#header` slot to fill the header.
+## API
 
-### `footer`
-
-Use the `#footer` slot to fill the footer.
-
-## Props
+### Props
 
 :component-props
 
-## Config
+### Slots
 
-:component-preset
+:component-slots
+
+## Theme
+
+:component-theme
