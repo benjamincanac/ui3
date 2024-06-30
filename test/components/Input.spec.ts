@@ -73,19 +73,15 @@ describe('Input', () => {
   describe('emits', () => {
     test('update:modelValue event', async () => {
       const wrapper = mount(Input)
-
       const input = wrapper.find('input')
       await input.setValue('bob@dylan.com')
-
       expect(wrapper.emitted()).toMatchObject({ 'update:modelValue': [['bob@dylan.com']] })
     })
 
     test('change event', async () => {
       const wrapper = mount(Input)
-
       const input = wrapper.find('input')
       await input.setValue('bob@dylan.com')
-
       expect(wrapper.emitted()).toMatchObject({ change: [[{ type: 'change' }]] })
     })
 

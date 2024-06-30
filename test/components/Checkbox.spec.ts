@@ -37,21 +37,15 @@ describe('Checkbox', () => {
   describe('emits', () => {
     test('update:modelValue event', async () => {
       const wrapper = mount(Checkbox)
-
       const input = wrapper.findComponent({ name: 'CheckboxRoot' })
-      await input.trigger('update:checked')
-      await flushPromises()
-
+      await input.vm.$emit('update:checked', true)
       expect(wrapper.emitted()).toMatchObject({ 'update:modelValue': [[true]] })
     })
 
     test('change event', async () => {
       const wrapper = mount(Checkbox)
-
       const input = wrapper.findComponent({ name: 'CheckboxRoot' })
-      await input.trigger('update:checked')
-      await flushPromises()
-
+      await input.vm.$emit('update:checked', false)
       expect(wrapper.emitted()).toMatchObject({ change: [[{ type: 'change' }]] })
     })
   })
@@ -83,23 +77,24 @@ describe('Checkbox', () => {
 
     test('validate on change works', async () => {
       const { input, wrapper } = await createForm(['change'])
-      await input.setValue(false)
-      await input.trigger('update:checked')
+      await input.vm.$emit('update:checked', false)
       await flushPromises()
+
       expect(wrapper.text()).toContain('Error message')
 
-      await input.trigger('update:checked')
+      await input.vm.$emit('update:checked', true)
       await flushPromises()
       expect(wrapper.text()).not.toContain('Error message')
     })
 
     test('validate on input works', async () => {
       const { input, wrapper } = await createForm(['input'])
-      await input.trigger('update:checked')
+      await input.vm.$emit('update:checked', false)
       await flushPromises()
+
       expect(wrapper.text()).toContain('Error message')
 
-      await input.trigger('update:checked')
+      await input.vm.$emit('update:checked', true)
       await flushPromises()
       expect(wrapper.text()).not.toContain('Error message')
     })

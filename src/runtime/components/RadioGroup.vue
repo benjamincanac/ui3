@@ -95,7 +95,7 @@ const normalizedItems = computed(() => {
 const rootRef = ref()
 
 function onUpdate(value: any) {
-  const event = new Event('change', { bubbles: true, cancelable: true, target: { value } })
+  const event = new Event('change', { target: { value } })
   emits('change', event)
   emitFormChange()
   emitFormInput()

@@ -33,18 +33,16 @@ describe('Slider', () => {
       const wrapper = mount(Slider)
 
       const input = wrapper.findComponent({ name: 'SliderRoot' })
-      await input.setValue(1)
-      await flushPromises()
+      input.vm.$emit('update:modelValue', 1)
 
-      expect(wrapper.emitted()).toMatchObject({ 'update:modelValue': [[1]] })
+      expect(wrapper.emitted()).toMatchObject({ 'update:modelValue': [[1], [1]] })
     })
 
     test('change event', async () => {
       const wrapper = mount(Slider)
 
       const input = wrapper.findComponent({ name: 'SliderRoot' })
-      await input.setValue(1)
-      await flushPromises()
+      input.vm.$emit('valueCommit')
 
       expect(wrapper.emitted()).toMatchObject({ change: [[{ type: 'change' }]] })
     })
@@ -77,11 +75,14 @@ describe('Slider', () => {
 
     test('validate on change works', async () => {
       const { input, wrapper } = await createForm(['change'])
+
       await input.setValue(10)
+      input.vm.$emit('valueCommit')
       await flushPromises()
       expect(wrapper.text()).toContain('Error message')
 
       await input.setValue(40)
+      input.vm.$emit('valueCommit')
       await flushPromises()
       expect(wrapper.text()).not.toContain('Error message')
     })

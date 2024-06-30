@@ -92,7 +92,7 @@ describe('SelectMenu', () => {
     test('blur event', async () => {
       const wrapper = mount(SelectMenu, { props: { items: ['Option 1', 'Option 2'] } })
       const input = wrapper.findComponent({ name: 'ComboboxRoot' })
-      await input.trigger('update:open')
+      input.vm.$emit('update:open', false)
       expect(wrapper.emitted()).toMatchObject({ blur: [[{ type: 'blur' }]] })
     })
   })
@@ -127,11 +127,15 @@ describe('SelectMenu', () => {
 
     test('validate on blur works', async () => {
       const { input, wrapper } = await createForm(['blur'])
-      await input.trigger('update:open')
+      input.vm.$emit('update:open', false)
+      await flushPromises()
+
       expect(wrapper.text()).toContain('Error message')
 
       await input.setValue('Option 2')
-      await input.trigger('blur')
+      input.vm.$emit('update:open', false)
+      await flushPromises()
+
       expect(wrapper.text()).not.toContain('Error message')
     })
 

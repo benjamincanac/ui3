@@ -74,23 +74,20 @@ describe('Select', () => {
       const wrapper = mount(Select, { props: { items: ['Option 1', 'Option 2'] } })
       const input = wrapper.findComponent({ name: 'SelectRoot' })
       await input.setValue('Option 1')
-
       expect(wrapper.emitted()).toMatchObject({ 'update:modelValue': [['Option 1']] })
     })
 
     test('change event', async () => {
       const wrapper = mount(Select, { props: { items: ['Option 1', 'Option 2'] } })
-
       const input = wrapper.findComponent({ name: 'SelectRoot' })
       await input.setValue('Option 1')
-
       expect(wrapper.emitted()).toMatchObject({ change: [[{ type: 'change' }]] })
     })
 
     test('blur event', async () => {
       const wrapper = mount(Select, { props: { items: ['Option 1', 'Option 2'] } })
       const input = wrapper.findComponent({ name: 'SelectRoot' })
-      await input.trigger('update:open')
+      await input.vm.$emit('update:open', false)
       expect(wrapper.emitted()).toMatchObject({ blur: [[{ type: 'blur' }]] })
     })
   })
@@ -125,11 +122,14 @@ describe('Select', () => {
 
     test('validate on blur works', async () => {
       const { input, wrapper } = await createForm(['blur'])
-      await input.trigger('update:open')
+      await input.vm.$emit('update:open', false)
+      await flushPromises()
       expect(wrapper.text()).toContain('Error message')
 
       await input.setValue('Option 2')
-      await input.trigger('blur')
+      await input.vm.$emit('update:open', false)
+      await flushPromises()
+
       expect(wrapper.text()).not.toContain('Error message')
     })
 

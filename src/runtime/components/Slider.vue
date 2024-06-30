@@ -30,7 +30,9 @@ export interface SliderProps extends Pick<SliderRootProps, 'name' | 'disabled' |
   ui?: Partial<typeof slider.slots>
 }
 
-export interface SliderEmits extends SliderRootEmits { }
+export interface SliderEmits extends Omit<SliderRootEmits, 'valueCommit'> {
+  change: [payload: Event]
+}
 </script>
 
 <script setup lang="ts">
@@ -80,6 +82,12 @@ const ui = computed(() => tv({ extend: slider, slots: props.ui })({
   color: color.value,
   orientation: props.orientation
 }))
+
+function onChange(value: any) {
+  const event = new Event('change', { target: { value } })
+  emits('change', event)
+  emitFormChange()
+}
 </script>
 
 <template>
@@ -92,7 +100,7 @@ const ui = computed(() => tv({ extend: slider, slots: props.ui })({
     :class="ui.root({ class: props.class })"
     :default-value="defaultSliderValue"
     @update:model-value="emitFormInput()"
-    @value-commit="emitFormChange()"
+    @value-commit="onChange"
   >
     <SliderTrack :class="ui.track()">
       <SliderRange :class="ui.range()" />

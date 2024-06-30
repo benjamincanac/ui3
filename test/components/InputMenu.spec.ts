@@ -73,7 +73,6 @@ describe('InputMenu', () => {
       const wrapper = mount(InputMenu, { props: { items: ['Option 1', 'Option 2'] } })
       const input = wrapper.findComponent({ name: 'ComboboxRoot' })
       await input.setValue('Option 1')
-
       expect(wrapper.emitted()).toMatchObject({ 'update:modelValue': [['Option 1']] })
     })
 
@@ -86,8 +85,8 @@ describe('InputMenu', () => {
 
     test('blur event', async () => {
       const wrapper = mount(InputMenu, { props: { items: ['Option 1', 'Option 2'] } })
-      const input = wrapper.findComponent({ name: 'ComboboxInput' })
-      await input.trigger('blur')
+      const input = wrapper.findComponent({ name: 'ComboboxRoot' })
+      await input.vm.$emit('update:open', false)
       expect(wrapper.emitted()).toMatchObject({ blur: [[{ type: 'blur' }]] })
     })
   })
@@ -121,13 +120,16 @@ describe('InputMenu', () => {
     }
 
     test('validate on blur works', async () => {
-      const { wrapper } = await createForm(['blur'])
-      const input = wrapper.findComponent({ name: 'ComboboxInput' })
-      await input.trigger('update:open')
+      const { wrapper, input } = await createForm(['blur'])
+      await input.vm.$emit('update:open', false)
+      await flushPromises()
+
       expect(wrapper.text()).toContain('Error message')
 
       await input.setValue('Option 2')
-      await input.trigger('blur')
+      await input.vm.$emit('update:open', false)
+      await flushPromises()
+
       expect(wrapper.text()).not.toContain('Error message')
     })
 
