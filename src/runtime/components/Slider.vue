@@ -30,7 +30,7 @@ export interface SliderProps extends Pick<SliderRootProps, 'name' | 'disabled' |
   ui?: Partial<typeof slider.slots>
 }
 
-export interface SliderEmits extends Omit<SliderRootEmits, 'update:modelValue'> { }
+export interface SliderEmits extends SliderRootEmits { }
 </script>
 
 <script setup lang="ts">
