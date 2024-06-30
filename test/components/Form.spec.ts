@@ -14,6 +14,7 @@ import {
   UInput,
   UFormField
 } from '#components'
+import { flushPromises } from '@vue/test-utils'
 
 describe('Form', () => {
   it.each([
@@ -95,7 +96,7 @@ describe('Form', () => {
     await passwordInput.setValue('short')
 
     await form.trigger('submit.prevent')
-
+    await flushPromises()
     // @ts-expect-error object is possibly undefined
     expect(wrapper.emitted('error')[0][0].errors).toMatchObject([
       {
@@ -109,6 +110,7 @@ describe('Form', () => {
 
     await passwordInput.setValue('validpassword')
     await form.trigger('submit.prevent')
+    await flushPromises()
 
     expect(wrapper.emitted()).toHaveProperty('submit')
     expect(wrapper.emitted('submit')![0][0]).toMatchObject({
