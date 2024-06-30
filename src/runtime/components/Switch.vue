@@ -94,7 +94,7 @@ function onUpdate(value: any) {
         :name="name"
         :disabled="disabled || loading"
         :class="ui.base()"
-        @update:checked="onUpdate()"
+        @update:checked="onUpdate"
       >
         <SwitchThumb :class="ui.thumb()">
           <UIcon v-if="loading" :name="loadingIcon || appConfig.ui.icons.loading" :class="ui.icon({ checked: true, unchecked: true })" />

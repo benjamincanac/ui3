@@ -4,6 +4,7 @@ import ComponentRender from '../component-render'
 import theme from '#build/ui/checkbox'
 import { renderForm } from '../utils/form'
 import { mount, flushPromises } from '@vue/test-utils'
+import type { FormInputEvents } from '~/src/module'
 
 describe('Checkbox', () => {
   const sizes = Object.keys(theme.variants.size) as any
@@ -51,7 +52,7 @@ describe('Checkbox', () => {
   })
 
   describe('form integration', async () => {
-    async function createForm(validateOn?: string[]) {
+    async function createForm(validateOn?: FormInputEvents[]) {
       const wrapper = await renderForm({
         props: {
           validateOn,

@@ -5,6 +5,7 @@ import ComponentRender from '../component-render'
 import theme from '#build/ui/input'
 
 import { renderForm } from '../utils/form'
+import type { FormInputEvents } from '~/src/module'
 
 describe('Input', () => {
   const sizes = Object.keys(theme.variants.size) as any
@@ -94,7 +95,7 @@ describe('Input', () => {
   })
 
   describe('form integration', async () => {
-    async function createForm(validateOn?: string[]) {
+    async function createForm(validateOn?: FormInputEvents[]) {
       const wrapper = await renderForm({
         props: {
           validateOn,

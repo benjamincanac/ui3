@@ -1,6 +1,6 @@
 const useContentExamplesCodeState = () => useState('content-examples-code', () => ({}))
 
-export async function fetchContentExampleCode (name?: string) {
+export async function fetchContentExampleCode(name?: string) {
   if (!name) return
   const state = useContentExamplesCodeState()
 

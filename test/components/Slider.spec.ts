@@ -4,6 +4,7 @@ import ComponentRender from '../component-render'
 import theme from '#build/ui/slider'
 import { flushPromises, mount } from '@vue/test-utils'
 import { renderForm } from '../utils/form'
+import type { FormInputEvents } from '~/src/module'
 
 describe('Slider', () => {
   const sizes = Object.keys(theme.variants.size) as any
@@ -49,7 +50,7 @@ describe('Slider', () => {
   })
 
   describe('form integration', async () => {
-    async function createForm(validateOn?: string[]) {
+    async function createForm(validateOn?: FormInputEvents[]) {
       const wrapper = await renderForm({
         props: {
           validateOn,

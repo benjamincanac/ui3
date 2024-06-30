@@ -36,7 +36,9 @@ export interface RadioGroupProps<T> extends Pick<RadioGroupRootProps, 'defaultVa
   ui?: Partial<typeof radioGroup.slots>
 }
 
-export interface RadioGroupEmits extends RadioGroupRootEmits {}
+export type RadioGroupEmits = RadioGroupRootEmits & {
+  change: [payload: Event]
+}
 
 type SlotProps<T> = (props: { item: T, modelValue?: string }) => any
 

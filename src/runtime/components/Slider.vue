@@ -30,7 +30,7 @@ export interface SliderProps extends Pick<SliderRootProps, 'name' | 'disabled' |
   ui?: Partial<typeof slider.slots>
 }
 
-export interface SliderEmits extends Omit<SliderRootEmits, 'valueCommit'> {
+export type SliderEmits = Omit<SliderRootEmits, 'valueCommit'> & {
   change: [payload: Event]
 }
 </script>

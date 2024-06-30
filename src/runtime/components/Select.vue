@@ -63,7 +63,7 @@ export interface SelectProps<T> extends Omit<SelectRootProps, 'dir'>, UseCompone
   ui?: Partial<typeof select.slots>
 }
 
-export interface SelectEmits extends SelectRootEmits {
+export type SelectEmits = SelectRootEmits & {
   change: [payload: Event]
   blur: [payload: FocusEvent]
   focus: [payload: FocusEvent]

@@ -88,6 +88,7 @@ export interface InputMenuProps<T> extends Pick<ComboboxRootProps<T>, 'modelValu
 export type InputMenuEmits<T> = ComboboxRootEmits<T> & {
   change: [payload: Event]
   blur: [payload: FocusEvent]
+  focus: [payload: FocusEvent]
 }
 
 type SlotProps<T> = (props: { item: T, index: number }) => any
@@ -190,7 +191,6 @@ onMounted(() => {
     autoFocus()
   }, props.autofocusDelay)
 })
-
 
 function onUpdate(value: any) {
   const event = new Event('change', { target: { value } })

@@ -101,7 +101,7 @@ function onUpdate(value: any) {
         :name="name"
         :disabled="disabled"
         :class="ui.base()"
-        @update:checked="onUpdate()"
+        @update:checked="onUpdate"
       >
         <CheckboxIndicator as-child>
           <UIcon v-if="indeterminate" :name="indeterminateIcon || appConfig.ui.icons.minus" :class="ui.icon()" />
