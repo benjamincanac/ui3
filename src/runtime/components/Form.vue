@@ -20,11 +20,11 @@ export interface FormProps<T extends object> {
   validateOn?: FormInputEvents[]
   disabled?: boolean
   validateOnInputDelay?: number
+  onSubmit: (payload: FormSubmitEvent<T>) => void | Promise<void>
   class?: any
 }
 
 export interface FormEmits<T extends object> {
-  (e: 'submit', payload: FormSubmitEvent<T>): void
   (e: 'error', payload: FormErrorEvent): void
 }
 
@@ -34,7 +34,7 @@ export interface FormSlots {
 </script>
 
 <script lang="ts" setup generic="T extends object">
-import { provide, inject, nextTick, ref, onUnmounted, onMounted, computed } from 'vue'
+import { provide, inject, nextTick, ref, onUnmounted, onMounted, computed, readonly } from 'vue'
 import { useEventBus } from '@vueuse/core'
 import { getYupErrors, isYupSchema, getValibotError, isValibotSchema, getZodErrors, isZodSchema, getJoiErrors, isJoiSchema } from '../utils/form'
 
@@ -157,6 +157,9 @@ async function _validate(opts: { name?: string | string[], silent?: boolean, nes
   return props.state as T
 }
 
+const loading = ref(false)
+provide('form-loading', loading)
+
 async function onSubmit(payload: Event) {
   const event = payload as SubmitEvent
 
@@ -166,7 +169,11 @@ async function onSubmit(payload: Event) {
       ...event,
       data: props.state
     }
-    emits('submit', submitEvent)
+    if (props.onSubmit) {
+      loading.value = true
+      await props.onSubmit(submitEvent)
+      loading.value = false
+    }
   } catch (error) {
     if (!(error instanceof FormValidationException)) {
       throw error
@@ -185,6 +192,7 @@ async function onSubmit(payload: Event) {
 defineExpose<Form<T>>({
   validate: _validate,
   errors,
+  loading: readonly(loading),
 
   setErrors(errs: FormError[], name?: string) {
     if (name) {
