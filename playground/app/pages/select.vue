@@ -2,7 +2,7 @@
 import theme from '#build/ui/select'
 import type { User } from '~/types'
 
-const sizes = Object.keys(theme.variants.size)
+const sizes = Object.keys(theme.variants.size) as Array<keyof typeof theme.variants.size>
 
 const fruits = ['Apple', 'Banana', 'Blueberry', 'Grapes', 'Pineapple']
 const vegetables = ['Aubergine', 'Broccoli', 'Carrot', 'Courgette', 'Leek']
@@ -58,7 +58,7 @@ const { data: users, status } = await useFetch('https://jsonplaceholder.typicode
         :key="size"
         :items="items"
         placeholder="Search..."
-        :size="(size as any)"
+        :size="size"
         class="w-60"
       />
     </div>
@@ -69,7 +69,7 @@ const { data: users, status } = await useFetch('https://jsonplaceholder.typicode
         :items="items"
         icon="i-heroicons-magnifying-glass"
         placeholder="Search..."
-        :size="(size as any)"
+        :size="size"
         class="w-60"
       />
     </div>
@@ -81,7 +81,7 @@ const { data: users, status } = await useFetch('https://jsonplaceholder.typicode
         icon="i-heroicons-magnifying-glass"
         trailing
         placeholder="Search..."
-        :size="(size as any)"
+        :size="size"
         class="w-60"
       />
     </div>
@@ -93,7 +93,7 @@ const { data: users, status } = await useFetch('https://jsonplaceholder.typicode
         :loading="status === 'pending'"
         icon="i-heroicons-user"
         placeholder="Search users..."
-        :size="(size as any)"
+        :size="size"
         class="w-60"
       />
     </div>
