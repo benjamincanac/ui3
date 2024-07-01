@@ -31,7 +31,7 @@ const statuses = [{
   icon: 'i-heroicons-x-circle'
 }]
 
-const { data: users, pending } = await useFetch('https://jsonplaceholder.typicode.com/users', {
+const { data: users, status } = await useFetch('https://jsonplaceholder.typicode.com/users', {
   transform: (data: User[]) => {
     return data?.map(user => ({ label: user.name, value: user.id, avatar: { src: `https://i.pravatar.cc/120?img=${user.id}` } })) || []
   },
@@ -50,7 +50,7 @@ const { data: users, pending } = await useFetch('https://jsonplaceholder.typicod
       <USelect :items="items" placeholder="Required" required />
       <USelect :items="items" loading placeholder="Search..." />
       <USelect :items="statuses" placeholder="Search status..." icon="i-heroicons-magnifying-glass" trailing-icon="i-heroicons-chevron-up-down-20-solid" />
-      <USelect :items="users || []" :loading="pending" icon="i-heroicons-user" placeholder="Search users..." />
+      <USelect :items="users || []" :loading="status === 'pending'" icon="i-heroicons-user" placeholder="Search users..." />
     </div>
     <div class="flex items-center gap-4">
       <USelect
@@ -81,6 +81,18 @@ const { data: users, pending } = await useFetch('https://jsonplaceholder.typicod
         icon="i-heroicons-magnifying-glass"
         trailing
         placeholder="Search..."
+        :size="(size as any)"
+        class="w-60"
+      />
+    </div>
+    <div class="flex items-center gap-4">
+      <USelect
+        v-for="size in sizes"
+        :key="size"
+        :items="users || []"
+        :loading="status === 'pending'"
+        icon="i-heroicons-user"
+        placeholder="Search users..."
         :size="(size as any)"
         class="w-60"
       />
