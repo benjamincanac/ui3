@@ -94,8 +94,6 @@ const normalizedItems = computed(() => {
   return props.items.map(normalizeItem)
 })
 
-const rootRef = ref()
-
 function onUpdate(value: any) {
   const event = new Event('change', { target: { value } })
   emits('change', event)
@@ -107,7 +105,6 @@ function onUpdate(value: any) {
 <template>
   <RadioGroupRoot
     :id="id"
-    ref="rootRef"
     v-slot="{ modelValue }"
     v-bind="rootProps"
     :name="name"
