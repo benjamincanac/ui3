@@ -13,6 +13,7 @@ export interface Form<T> {
   getErrors (path?: string): FormError[]
   submit (): Promise<void>
   disabled: ComputedRef<boolean>
+  loading: Readonly<Ref<boolean>>
 }
 
 export type FormSchema<T extends Record<string, any>> =

@@ -16,11 +16,40 @@ const state2 = reactive<Partial<Schema>>({})
 function onSubmit(event: FormSubmitEvent<Schema>) {
   console.log(event.data)
 }
+
+async function longSubmit(event: FormSubmitEvent<Schema>) {
+  await new Promise((res) => setTimeout(res, 2000))
+  console.log(event.data)
+}
 </script>
 
 <template>
   <div class="flex flex-col gap-4">
     <div class="flex gap-4">
+      <UForm
+        :state="state"
+        :schema="schema"
+        class="gap-4 flex flex-col w-60"
+        @submit="(event) => longSubmit(event)"
+      >
+        <UFormField label="Email" name="email">
+          <UInput v-model="state.email" placeholder="john@lennon.com" />
+        </UFormField>
+
+        <UFormField label="Password" name="password">
+          <UInput v-model="state.password" type="password" />
+        </UFormField>
+
+        <UFormField name="tos">
+          <UCheckbox v-model="state.tos" label="I accept the terms and conditions" />
+        </UFormField>
+
+        <div>
+          <UButton color="gray" type="submit" loading-auto>
+            Submit auto loading
+          </UButton>
+        </div>
+      </UForm>
       <UForm
         :state="state"
         :schema="schema"

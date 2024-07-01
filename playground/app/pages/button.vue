@@ -3,11 +3,19 @@ import theme from '#build/ui/button'
 
 const sizes = Object.keys(theme.variants.size)
 const variants = Object.keys(theme.variants.variant)
+
+async function longOperation() {
+  await new Promise((res) => setTimeout(res, 2000))
+}
 </script>
 
 <template>
   <div class="flex flex-col gap-2">
     <div class="flex items-center gap-2">
+     <UButton class="font-bold" @click="longOperation()" loading-auto>
+        Button auto loading
+      </UButton>
+
       <UButton class="font-bold">
         Button
       </UButton>
