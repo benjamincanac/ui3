@@ -20,11 +20,32 @@ export function addTemplates(options: ModuleOptions, nuxt: Nuxt) {
 
   @keyframes accordion-up {
     from { height: var(--radix-accordion-content-height); }
-    to { height: 0; }
+    to {
+      height: 0;
+      padding-bottom: 0;
+    }
   }
   @keyframes accordion-down {
-    from { height: 0; }
+    from {
+      height: 0;
+      padding-bottom: 0;
+    }
     to { height: var(--radix-accordion-content-height); }
+  }
+
+  @keyframes accordion-left {
+    from { width: var(--radix-accordion-content-width); }
+    to {
+      width: 0;
+      padding-right: 0;
+    }
+  }
+  @keyframes accordion-right {
+    from {
+      width: 0;
+      padding-right: 0;
+    }
+    to { width: var(--radix-accordion-content-width); }
   }
 
   @keyframes collapsible-up {

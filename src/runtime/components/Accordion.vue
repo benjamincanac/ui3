@@ -18,7 +18,7 @@ export interface AccordionItem extends Partial<Pick<AccordionItemProps, 'disable
   content?: string
 }
 
-export interface AccordionProps<T> extends Pick<AccordionRootProps, 'collapsible' | 'defaultValue' | 'modelValue' | 'type' | 'disabled'> {
+export interface AccordionProps<T> extends Pick<AccordionRootProps, 'collapsible' | 'defaultValue' | 'modelValue' | 'type' | 'orientation' | 'disabled'> {
   /**
    * The element or component this component should render as.
    * @defaultValue 'div'
@@ -32,6 +32,7 @@ export interface AccordionProps<T> extends Pick<AccordionRootProps, 'collapsible
   trailingIcon?: string
   /** The content of the accordion. */
   content?: Omit<AccordionContentProps, 'as' | 'asChild'>
+  orientation?: AccordionRootProps['orientation']
   class?: any
   ui?: Partial<typeof accordion.slots>
 }
@@ -56,16 +57,20 @@ import { useAppConfig } from '#imports'
 
 const props = withDefaults(defineProps<AccordionProps<T>>(), {
   type: 'single',
-  collapsible: true
+  collapsible: true,
+  orientation: 'vertical'
 })
 const emits = defineEmits<AccordionEmits>()
 const slots = defineSlots<AccordionSlots<T>>()
 
 const appConfig = useAppConfig()
-const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'collapsible', 'defaultValue', 'disabled', 'modelValue', 'type'), emits)
+const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'collapsible', 'defaultValue', 'disabled', 'modelValue', 'orientation', 'type'), emits)
 const contentProps = toRef(() => props.content)
 
-const ui = computed(() => tv({ extend: accordion, slots: props.ui })({ disabled: props.disabled }))
+const ui = computed(() => tv({ extend: accordion, slots: props.ui })({
+  disabled: props.disabled,
+  orientation: props.orientation
+}))
 </script>
 
 <template>
@@ -89,7 +94,10 @@ const ui = computed(() => tv({ extend: accordion, slots: props.ui })({ disabled:
           </span>
 
           <slot name="trailing" :item="item" :index="index" :open="open">
-            <UIcon :name="item.trailingIcon || trailingIcon || appConfig.ui.icons.chevronDown" :class="ui.trailingIcon()" />
+            <UIcon
+              :name="item.trailingIcon || trailingIcon || (rootProps.orientation === 'vertical' ? appConfig.ui.icons.chevronDown : appConfig.ui.icons.chevronRight)"
+              :class="ui.trailingIcon()"
+            />
           </slot>
         </AccordionTrigger>
       </AccordionHeader>

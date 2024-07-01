@@ -29,11 +29,20 @@ const items = [{
 </script>
 
 <template>
-  <UCard :ui="{ body: 'p-0 sm:p-0' }">
-    <UAccordion :items="items" class="w-96" :ui="{ trigger: 'px-3.5', content: 'px-3.5' }">
-      <template #custom="{ item }">
-        <span class="text-gray-500 dark:text-gray-400">Custom: {{ item.content }}</span>
-      </template>
-    </UAccordion>
-  </UCard>
+  <div class="flex flex-col items-center gap-4">
+    <UCard :ui="{ body: 'p-0 sm:p-0' }">
+      <UAccordion :items="items" class="w-96">
+        <template #custom="{ item }">
+          <span class="text-gray-500 dark:text-gray-400">Custom: {{ item.content }}</span>
+        </template>
+      </UAccordion>
+    </UCard>
+    <UCard :ui="{ body: 'p-0 sm:p-0' }">
+      <UAccordion orientation="horizontal" :items="items" class="h-48" :ui="{ content: 'w-72' }">
+        <template #custom="{ item }">
+          <span class="text-gray-500 dark:text-gray-400">Custom: {{ item.content }}</span>
+        </template>
+      </UAccordion>
+    </UCard>
+  </div>
 </template>
