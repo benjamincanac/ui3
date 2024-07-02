@@ -64,7 +64,7 @@ export default defineNuxtConfig({
           : undefined
     },
     highlight: {
-      langs: ['diff']
+      langs: ['bash', 'ts', 'diff', 'vue', 'json', 'yml', 'css', 'mdc']
     }
   },
   image: {
