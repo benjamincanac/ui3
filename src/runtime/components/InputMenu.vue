@@ -94,8 +94,8 @@ export type InputMenuEmits<T> = ComboboxRootEmits<T> & {
 type SlotProps<T> = (props: { item: T, index: number }) => any
 
 export type InputMenuSlots<T> = {
-  'leading'(props: { modelValue: T, open: boolean }): any
-  'trailing'(props: { modelValue: T, open: boolean }): any
+  'leading'(props: { modelValue: T, open: boolean, ui: any }): any
+  'trailing'(props: { modelValue: T, open: boolean, ui: any }): any
   'empty'(props: { searchTerm?: string }): any
   'item': SlotProps<T>
   'item-leading': SlotProps<T>
@@ -281,13 +281,13 @@ function onUpdateOpen(value: boolean) {
       />
 
       <span v-if="isLeading || !!slots.leading" :class="ui.leading()">
-        <slot name="leading" :model-value="(modelValue as T)" :open="open">
+        <slot name="leading" :model-value="(modelValue as T)" :open="open" :ui="ui">
           <UIcon v-if="leadingIconName" :name="leadingIconName" :class="ui.leadingIcon()" />
         </slot>
       </span>
 
       <ComboboxTrigger v-if="isTrailing || !!slots.trailing" :class="ui.trailing()">
-        <slot name="trailing" :model-value="(modelValue as T)" :open="open">
+        <slot name="trailing" :model-value="(modelValue as T)" :open="open" :ui="ui">
           <UIcon v-if="trailingIconName" :name="trailingIconName" :class="ui.trailingIcon()" />
         </slot>
       </ComboboxTrigger>
