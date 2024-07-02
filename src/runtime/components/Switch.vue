@@ -11,14 +11,19 @@ const switchTv = tv({ extend: tv(theme), ...(appConfig.ui?.switch || {}) })
 
 type SwitchVariants = VariantProps<typeof switchTv>
 
-export interface SwitchProps extends Omit<SwitchRootProps, 'asChild' | 'checked' | 'defaultChecked'> {
+export interface SwitchProps extends Pick<SwitchRootProps, 'disabled' | 'id' | 'name' | 'required' | 'value'> {
+  /**
+   * The element or component this component should render as.
+   * @defaultValue `div`
+   */
+  as?: any
   color?: SwitchVariants['color']
   size?: SwitchVariants['size']
   /** When `true`, the loading icon will be displayed. */
   loading?: boolean
   /**
    * The icon when the `loading` prop is `true`.
-   * @defaultValue `appConfig.ui.icons.loading`
+   * @defaultValue appConfig.ui.icons.loading
    */
   loadingIcon?: string
   /** Display an icon when the switch is checked. */
@@ -37,6 +42,11 @@ export interface SwitchSlots {
   label(props: { label?: string }): any
   description(props: { description?: string }): any
 }
+
+export interface SwitchEmits {
+  (e: 'update:modelValue', payload: boolean): void
+  (e: 'change', payload: Event): void
+}
 </script>
 
 <script setup lang="ts">
@@ -47,13 +57,14 @@ import { useId, useAppConfig, useFormField } from '#imports'
 
 const props = defineProps<SwitchProps>()
 const slots = defineSlots<SwitchSlots>()
+const emits = defineEmits<SwitchEmits>()
 
 const modelValue = defineModel<boolean | undefined>({ default: undefined })
 
 const appConfig = useAppConfig()
 const rootProps = useForwardProps(reactivePick(props, 'as', 'required', 'value'))
 
-const { id: _id, emitFormChange, size, color, name, disabled } = useFormField<SwitchProps>(props)
+const { id: _id, emitFormChange, emitFormInput, size, color, name, disabled } = useFormField<SwitchProps>(props)
 const id = _id.value ?? useId()
 
 const ui = computed(() => tv({ extend: switchTv, slots: props.ui })({
@@ -63,6 +74,13 @@ const ui = computed(() => tv({ extend: switchTv, slots: props.ui })({
   loading: props.loading,
   disabled: disabled.value || props.loading
 }))
+
+function onUpdate(value: any) {
+  const event = new Event('change', { target: { value } })
+  emits('change', event)
+  emitFormChange()
+  emitFormInput()
+}
 </script>
 
 <template>
@@ -76,7 +94,7 @@ const ui = computed(() => tv({ extend: switchTv, slots: props.ui })({
         :name="name"
         :disabled="disabled || loading"
         :class="ui.base()"
-        @update:checked="emitFormChange()"
+        @update:checked="onUpdate"
       >
         <SwitchThumb :class="ui.thumb()">
           <UIcon v-if="loading" :name="loadingIcon || appConfig.ui.icons.loading" :class="ui.icon({ checked: true, unchecked: true })" />

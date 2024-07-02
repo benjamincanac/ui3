@@ -6,7 +6,7 @@ import type { KbdProps, AvatarProps, DropdownMenuItem, DropdownMenuSlots } from 
 
 const dropdownMenu = tv(theme)()
 
-interface DropdownMenuContentProps<T> extends Omit<RadixDropdownMenuContentProps, 'asChild' | 'forceMount'> {
+interface DropdownMenuContentProps<T> extends Omit<RadixDropdownMenuContentProps, 'as' | 'asChild' | 'forceMount'> {
   items?: T[] | T[][]
   portal?: boolean
   sub?: boolean
@@ -17,7 +17,7 @@ interface DropdownMenuContentProps<T> extends Omit<RadixDropdownMenuContentProps
 interface DropdownMenuContentEmits extends RadixDropdownMenuContentEmits {}
 
 type DropdownMenuContentSlots<T extends { slot?: string }> = Omit<DropdownMenuSlots<T>, 'default'> & {
-  default(): any
+  default(props?: {}): any
 }
 </script>
 

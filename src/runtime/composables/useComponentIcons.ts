@@ -2,7 +2,7 @@ import { computed, toValue, type MaybeRefOrGetter } from 'vue'
 import { useAppConfig } from '#imports'
 
 export interface UseComponentIconsProps {
-  /** Display an icon based on the `leading` and `trailing` props.value. */
+  /** Display an icon based on the `leading` and `trailing` props. */
   icon?: string
   /** When `true`, the icon will be displayed on the left side. */
   leading?: boolean
@@ -16,7 +16,7 @@ export interface UseComponentIconsProps {
   loading?: boolean
   /**
    * The icon when the `loading` prop is `true`.
-   * @defaultValue `appConfig.ui.icons.loading`
+   * @defaultValue appConfig.ui.icons.loading
    */
   loadingIcon?: string
 }

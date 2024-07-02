@@ -36,36 +36,42 @@ export interface CommandPaletteGroup<T> {
   highlightedIcon?: string
 }
 
-export interface CommandPaletteProps<G, T> extends Pick<ComboboxRootProps, 'as' | 'multiple' | 'disabled' | 'modelValue' | 'defaultValue'>, Pick<UseComponentIconsProps, 'loading' | 'loadingIcon'> {
+export interface CommandPaletteProps<G, T> extends Pick<ComboboxRootProps, 'multiple' | 'disabled' | 'modelValue' | 'defaultValue'>, Pick<UseComponentIconsProps, 'loading' | 'loadingIcon'> {
+  /**
+   * The element or component this component should render as.
+   * @defaultValue 'div'
+   */
+  as?: any
   /**
    * The icon displayed in the input.
-   * @defaultValue `appConfig.ui.icons.search`
+   * @defaultValue appConfig.ui.icons.search
    */
   icon?: string
   /**
    * The icon displayed when an item is selected.
-   * @defaultValue `appConfig.ui.icons.check`
+   * @defaultValue appConfig.ui.icons.check
    */
   selectedIcon?: string
   /**
    * The placeholder text for the input.
-   * @defaultValue `'Type a command or search...'`
+   * @defaultValue 'Type a command or search...'
    */
   placeholder?: InputProps['placeholder']
   /**
    * Display a close button in the input (useful when inside a `UModal`).
-   * @defaultValue `false` (`{ size: 'md', color: 'gray', variant: 'ghost' }`)
+   * `{ size: 'md', color: 'gray', variant: 'ghost' }`
+   * @defaultValue false
    */
   close?: ButtonProps | boolean
   /**
    * The icon displayed in the close button.
-   * @defaultValue `appConfig.ui.icons.close`
+   * @defaultValue appConfig.ui.icons.close
    */
   closeIcon?: string
   groups?: G[]
   /**
    * Options for [useFuse](https://vueuse.org/integrations/useFuse).
-   * @defaultValue `{ ignoreLocation: true, threshold: 0.1, keys: ['label', 'suffix'], resultLimit: 12, matchAllWhenSearchEmpty: true }`
+   * @defaultValue { ignoreLocation: true, threshold: 0.1, keys: ['label', 'suffix'], resultLimit: 12, matchAllWhenSearchEmpty: true }
    */
   fuse?: UseFuseOptions<T>
   class?: any
@@ -78,7 +84,7 @@ type SlotProps<T> = (props: { item: T, index: number }) => any
 
 export type CommandPaletteSlots<G extends { slot?: string }, T extends { slot?: string }> = {
   'empty'(props: { searchTerm?: string }): any
-  'close'(): any
+  'close'(props?: {}): any
   'item': SlotProps<T>
   'item-leading': SlotProps<T>
   'item-label': SlotProps<T>

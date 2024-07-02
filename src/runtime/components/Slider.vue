@@ -11,12 +11,17 @@ const slider = tv({ extend: tv(theme), ...(appConfig.ui?.slider || {}) })
 
 type SliderVariants = VariantProps<typeof slider>
 
-export interface SliderProps extends Omit<SliderRootProps, 'asChild' | 'modelValue' | 'defaultValue' | 'dir' | 'orientation'> {
+export interface SliderProps extends Pick<SliderRootProps, 'name' | 'disabled' | 'inverted' | 'min' | 'max' | 'step' | 'minStepsBetweenThumbs'> {
+  /**
+   * The element or component this component should render as.
+   * @defaultValue `div`
+   */
+  as?: any
   size?: SliderVariants['size']
   color?: SliderVariants['color']
   /**
    * The orientation of the slider.
-   * @defaultValue `'horizontal'`
+   * @defaultValue 'horizontal'
    */
   orientation?: SliderRootProps['orientation']
   /** The value of the slider when initially rendered. Use when you do not need to control the state of the slider. */
@@ -25,7 +30,9 @@ export interface SliderProps extends Omit<SliderRootProps, 'asChild' | 'modelVal
   ui?: Partial<typeof slider.slots>
 }
 
-export interface SliderEmits extends Omit<SliderRootEmits, 'update:modelValue'> {}
+export type SliderEmits = Omit<SliderRootEmits, 'valueCommit'> & {
+  change: [payload: Event]
+}
 </script>
 
 <script setup lang="ts">
@@ -46,7 +53,7 @@ const modelValue = defineModel<number | number[]>()
 
 const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'orientation', 'min', 'max', 'step', 'minStepsBetweenThumbs', 'inverted'), emits)
 
-const { id, emitFormChange, size, color, name, disabled } = useFormField<SliderProps>(props)
+const { id, emitFormChange, emitFormInput, size, color, name, disabled } = useFormField<SliderProps>(props)
 
 const defaultSliderValue = computed(() => {
   if (typeof props.defaultValue === 'number') {
@@ -75,6 +82,12 @@ const ui = computed(() => tv({ extend: slider, slots: props.ui })({
   color: color.value,
   orientation: props.orientation
 }))
+
+function onChange(value: any) {
+  const event = new Event('change', { target: { value } })
+  emits('change', event)
+  emitFormChange()
+}
 </script>
 
 <template>
@@ -86,7 +99,8 @@ const ui = computed(() => tv({ extend: slider, slots: props.ui })({
     :disabled="disabled"
     :class="ui.root({ class: props.class })"
     :default-value="defaultSliderValue"
-    @update:model-value="emitFormChange()"
+    @update:model-value="emitFormInput()"
+    @value-commit="onChange"
   >
     <SliderTrack :class="ui.track()">
       <SliderRange :class="ui.range()" />

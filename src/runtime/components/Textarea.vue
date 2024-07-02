@@ -32,10 +32,11 @@ export interface TextareaProps {
 export interface TextareaEmits {
   (e: 'blur', event: FocusEvent): void
   (e: 'change', event: Event): void
+  (e: 'update:modelValue', payload: string | number): void
 }
 
 export interface TextareaSlots {
-  default(): any
+  default(props?: {}): any
 }
 </script>
 
@@ -56,7 +57,7 @@ const emits = defineEmits<TextareaEmits>()
 
 const [modelValue, modelModifiers] = defineModel<string | number>()
 
-const { emitFormBlur, emitFormInput, size, color, id, name, disabled } = useFormField<TextareaProps>(props)
+const { emitFormBlur, emitFormInput, emitFormChange, size, color, id, name, disabled } = useFormField<TextareaProps>(props)
 
 const ui = computed(() => tv({ extend: textarea, slots: props.ui })({
   color: color.value,
@@ -106,6 +107,7 @@ function onChange(event: Event) {
     (event.target as HTMLInputElement).value = value.trim()
   }
 
+  emitFormChange()
   emits('change', event)
 }
 

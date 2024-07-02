@@ -16,31 +16,32 @@ export interface SlideoverProps extends DialogRootProps {
   title?: string
   description?: string
   /** The content of the slideover. */
-  content?: Omit<DialogContentProps, 'asChild' | 'forceMount'>
+  content?: Omit<DialogContentProps, 'as' | 'asChild' | 'forceMount'>
   /**
    * Display an overlay behind the slideover.
-   * @defaultValue `true`
+   * @defaultValue true
    */
   overlay?: boolean
   /**
    * Open & close the slideover with a transition.
-   * @defaultValue `true`
+   * @defaultValue true
    */
   transition?: boolean
   side?: SlideoverVariants['side']
   /**
    * Render the slideover in a portal.
-   * @defaultValue `true`
+   * @defaultValue true
    */
   portal?: boolean
   /**
    * Display a close button to dismiss the slideover.
-   * @defaultValue `true` (`{ size: 'md', color: 'gray', variant: 'ghost' }`)
+   * `{ size: 'md', color: 'gray', variant: 'ghost' }`
+   * @defaultValue true
    */
   close?: ButtonProps | boolean
   /**
    * The icon displayed in the close button.
-   * @defaultValue `appConfig.ui.icons.close`
+   * @defaultValue appConfig.ui.icons.close
    */
   closeIcon?: string
   /** When `true`, the slideover will not close when clicking outside. */
@@ -53,13 +54,13 @@ export interface SlideoverEmits extends DialogRootEmits {}
 
 export interface SlideoverSlots {
   default(props: { open: boolean }): any
-  content(): any
-  header(): any
-  title(): any
-  description(): any
+  content(props?: {}): any
+  header(props?: {}): any
+  title(props?: {}): any
+  description(props?: {}): any
   close(props: { class: string }): any
-  body(): any
-  footer(): any
+  body(props?: {}): any
+  footer(props?: {}): any
 }
 </script>
 

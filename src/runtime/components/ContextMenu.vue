@@ -1,5 +1,5 @@
 <script lang="ts">
-import { tv } from 'tailwind-variants'
+import { tv, type VariantProps } from 'tailwind-variants'
 import type { ContextMenuRootProps, ContextMenuRootEmits, ContextMenuContentProps, ContextMenuTriggerProps, ContextMenuItemProps } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
@@ -15,11 +15,11 @@ export interface ContextMenuItem extends Omit<LinkProps, 'type' | 'custom'>, Pic
   label?: string
   icon?: string
   avatar?: AvatarProps
-  content?: Omit<ContextMenuContentProps, 'asChild' | 'forceMount'>
+  content?: Omit<ContextMenuContentProps, 'as' | 'asChild' | 'forceMount'>
   kbds?: KbdProps['value'][] | KbdProps[]
   /**
    * The item type.
-   * @defaultValue `'link'`
+   * @defaultValue 'link'
    */
   type?: 'label' | 'separator' | 'link'
   slot?: string
@@ -29,13 +29,16 @@ export interface ContextMenuItem extends Omit<LinkProps, 'type' | 'custom'>, Pic
   select?(e: Event): void
 }
 
+type ContextMenuVariants = VariantProps<typeof contextMenu>
+
 export interface ContextMenuProps<T> extends Omit<ContextMenuRootProps, 'dir'>, Pick<ContextMenuTriggerProps, 'disabled'> {
+  size?: ContextMenuVariants['size']
   items?: T[] | T[][]
   /** The content of the menu. */
-  content?: Omit<ContextMenuContentProps, 'asChild' | 'forceMount'>
+  content?: Omit<ContextMenuContentProps, 'as' | 'asChild' | 'forceMount'>
   /**
    * Render the menu in a portal.
-   * @defaultValue `true`
+   * @defaultValue true
    */
   portal?: boolean
   class?: any
@@ -47,7 +50,7 @@ export interface ContextMenuEmits extends ContextMenuRootEmits {}
 type SlotProps<T> = (props: { item: T, active?: boolean, index: number }) => any
 
 export type ContextMenuSlots<T extends { slot?: string }> = {
-  'default'(): any
+  'default'(props?: {}): any
   'item': SlotProps<T>
   'item-leading': SlotProps<T>
   'item-label': SlotProps<T>
@@ -73,7 +76,9 @@ const rootProps = useForwardPropsEmits(reactivePick(props, 'modal'), emits)
 const contentProps = toRef(() => props.content as ContextMenuContentProps)
 const proxySlots = omit(slots, ['default']) as Record<string, ContextMenuSlots<T>[string]>
 
-const ui = computed(() => tv({ extend: contextMenu, slots: props.ui })())
+const ui = computed(() => tv({ extend: contextMenu, slots: props.ui })({
+  size: props.size
+}))
 </script>
 
 <template>

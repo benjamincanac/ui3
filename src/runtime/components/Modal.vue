@@ -14,23 +14,24 @@ export interface ModalProps extends DialogRootProps {
   title?: string
   description?: string
   /** The content of the modal. */
-  content?: Omit<DialogContentProps, 'asChild' | 'forceMount'>
+  content?: Omit<DialogContentProps, 'as' | 'asChild' | 'forceMount'>
   overlay?: boolean
   transition?: boolean
   fullscreen?: boolean
   /**
    * Render the modal in a portal.
-   * @defaultValue `true`
+   * @defaultValue true
    */
   portal?: boolean
   /**
    * Display a close button to dismiss the modal.
-   * @defaultValue `true` (`{ size: 'md', color: 'gray', variant: 'ghost' }`)
+   * `{ size: 'md', color: 'gray', variant: 'ghost' }`
+   * @defaultValue true
    */
   close?: ButtonProps | boolean
   /**
    * The icon displayed in the close button.
-   * @defaultValue `appConfig.ui.icons.close`
+   * @defaultValue appConfig.ui.icons.close
    */
   closeIcon?: string
   /** When `true`, the modal will not close when clicking outside. */
@@ -43,13 +44,13 @@ export interface ModalEmits extends DialogRootEmits {}
 
 export interface ModalSlots {
   default(props: { open: boolean }): any
-  content(): any
-  header(): any
-  title(): any
-  description(): any
+  content(props?: {}): any
+  header(props?: {}): any
+  title(props?: {}): any
+  description(props?: {}): any
   close(props: { class: string }): any
-  body(): any
-  footer(): any
+  body(props?: {}): any
+  footer(props?: {}): any
 }
 </script>
 

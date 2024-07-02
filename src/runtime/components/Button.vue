@@ -12,7 +12,7 @@ const button = tv({ extend: tv(theme), ...(appConfig.ui?.button || {}) })
 
 type ButtonVariants = VariantProps<typeof button>
 
-export interface ButtonProps extends UseComponentIconsProps, Omit<LinkProps, 'custom'> {
+export interface ButtonProps extends UseComponentIconsProps, Omit<LinkProps, 'raw' | 'custom'> {
   label?: string
   color?: ButtonVariants['color']
   variant?: ButtonVariants['variant']
@@ -26,9 +26,9 @@ export interface ButtonProps extends UseComponentIconsProps, Omit<LinkProps, 'cu
 }
 
 export interface ButtonSlots {
-  leading(): any
-  default(): any
-  trailing(): any
+  leading(props?: {}): any
+  default(props?: {}): any
+  trailing(props?: {}): any
 }
 </script>
 

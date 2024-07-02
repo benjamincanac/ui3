@@ -9,7 +9,6 @@ const props = defineProps<{
 const route = useRoute()
 const config = useRuntimeConfig().public
 
-const open = inject<Ref<boolean>>('open')
 const navigation = inject<Ref<NavItem[]>>('navigation')
 
 const items = computed(() => props.links.map(({ icon, ...link }) => link))
@@ -30,13 +29,13 @@ const items = computed(() => props.links.map(({ icon, ...link }) => link))
       </NuxtLink>
     </template>
 
-    <UNavigationMenu :items="items" variant="link" />
+    <!-- <UNavigationMenu :items="items" variant="link" /> -->
 
     <template #right>
       <!-- <ColorPicker /> -->
 
       <UTooltip text="Search" :kbds="['meta', 'K']">
-        <UButton aria-label="Search" icon="i-heroicons-magnifying-glass-20-solid" color="gray" variant="ghost" @click="open = true" />
+        <UContentSearchButton />
       </UTooltip>
 
       <!-- <UColorModeButton /> -->

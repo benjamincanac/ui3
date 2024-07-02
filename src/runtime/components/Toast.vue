@@ -1,5 +1,4 @@
 <script lang="ts">
-import { isVNode, type VNode } from 'vue'
 import { tv, type VariantProps } from 'tailwind-variants'
 import type { ToastRootProps, ToastRootEmits } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
@@ -13,9 +12,14 @@ const toast = tv({ extend: tv(theme), ...(appConfig.ui?.toast || {}) })
 
 type ToastVariants = VariantProps<typeof toast>
 
-export interface ToastProps extends Omit<ToastRootProps, 'asChild' | 'forceMount'> {
+export interface ToastProps extends Pick<ToastRootProps, 'defaultOpen' | 'open' | 'type' | 'duration'> {
+  /**
+   * The element or component this component should render as.
+   * @defaultValue 'div'
+   */
+  as?: any
   title?: string
-  description?: string | VNode | (() => VNode)
+  description?: string
   icon?: string
   avatar?: AvatarProps
   color?: ToastVariants['color']
@@ -27,12 +31,13 @@ export interface ToastProps extends Omit<ToastRootProps, 'asChild' | 'forceMount
   actions?: ButtonProps[]
   /**
    * Display a close button to dismiss the toast.
-   * @defaultValue `true` (`{ size: 'md', color: 'gray', variant: 'link' }`)
+   * `{ size: 'md', color: 'gray', variant: 'link' }`
+   * @defaultValue true
    */
   close?: ButtonProps | boolean
   /**
    * The icon displayed in the close button.
-   * @defaultValue `appConfig.ui.icons.close`
+   * @defaultValue appConfig.ui.icons.close
    */
   closeIcon?: string
   class?: any
@@ -42,10 +47,10 @@ export interface ToastProps extends Omit<ToastRootProps, 'asChild' | 'forceMount
 export interface ToastEmits extends ToastRootEmits {}
 
 export interface ToastSlots {
-  leading(): any
-  title(): any
-  description(): any
-  actions(): any
+  leading(props?: {}): any
+  title(props?: {}): any
+  description(props?: {}): any
+  actions(props?: {}): any
   close(props: { class: string }): any
 }
 </script>
@@ -57,7 +62,9 @@ import { reactivePick } from '@vueuse/core'
 import { useAppConfig } from '#imports'
 import { UIcon, UAvatar } from '#components'
 
-const props = withDefaults(defineProps<ToastProps>(), { close: true })
+const props = withDefaults(defineProps<ToastProps>(), {
+  close: true
+})
 const emits = defineEmits<ToastEmits>()
 const slots = defineSlots<ToastSlots>()
 
@@ -109,8 +116,7 @@ defineExpose({
         </slot>
       </ToastTitle>
       <template v-if="description || !!slots.description">
-        <ToastDescription v-if="description && isVNode(description)" :as="description" />
-        <ToastDescription v-else :class="ui.description()">
+        <ToastDescription :class="ui.description()">
           <slot name="description">
             {{ description }}
           </slot>

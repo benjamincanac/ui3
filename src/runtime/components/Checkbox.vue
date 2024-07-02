@@ -12,20 +12,20 @@ const checkbox = tv({ extend: tv(theme), ...(appConfig.ui?.checkbox || {}) })
 
 type CheckboxVariants = VariantProps<typeof checkbox>
 
-export interface CheckboxProps extends Omit<CheckboxRootProps, 'asChild' | 'checked' | 'defaultChecked'> {
+export interface CheckboxProps extends Pick<CheckboxRootProps, 'disabled' | 'required' | 'name' | 'value' | 'id'> {
   label?: string
   description?: string
   color?: CheckboxVariants['color']
   size?: CheckboxVariants['size']
   /**
    * The icon displayed when checked.
-   * @defaultValue `appConfig.ui.icons.check`
+   * @defaultValue appConfig.ui.icons.check
    */
   icon?: string
   indeterminate?: InputHTMLAttributes['indeterminate']
   /**
    * The icon displayed when the checkbox is indeterminate.
-   * @defaultValue `appConfig.ui.icons.minus`
+   * @defaultValue appConfig.ui.icons.minus
    */
   indeterminateIcon?: string
   /** The checked state of the checkbox when it is initially rendered. Use when you do not need to control its checked state. */
@@ -38,6 +38,11 @@ export interface CheckboxSlots {
   label(props: { label?: string }): any
   description(props: { description?: string }): any
 }
+
+export interface CheckboxEmits {
+  (e: 'update:modelValue', payload: boolean): void
+  (e: 'change', payload: Event): void
+}
 </script>
 
 <script setup lang="ts">
@@ -48,13 +53,14 @@ import { useId, useAppConfig, useFormField } from '#imports'
 
 const props = defineProps<CheckboxProps>()
 const slots = defineSlots<CheckboxSlots>()
+const emits = defineEmits<CheckboxEmits>()
 
 const modelValue = defineModel<boolean | undefined>({ default: undefined })
 
-const rootProps = useForwardProps(reactivePick(props, 'as', 'required', 'value'))
+const rootProps = useForwardProps(reactivePick(props, 'required', 'value'))
 
 const appConfig = useAppConfig()
-const { id: _id, emitFormChange, size, color, name, disabled } = useFormField<CheckboxProps>(props)
+const { id: _id, emitFormChange, emitFormInput, size, color, name, disabled } = useFormField<CheckboxProps>(props)
 const id = _id.value ?? useId()
 
 const indeterminate = computed(() => (modelValue.value === undefined && props.indeterminate))
@@ -75,6 +81,13 @@ const ui = computed(() => tv({ extend: checkbox, slots: props.ui })({
   disabled: disabled.value,
   checked: (modelValue.value ?? props.defaultValue) || indeterminate.value
 }))
+
+function onUpdate(value: any) {
+  const event = new Event('change', { target: { value } })
+  emits('change', event)
+  emitFormChange()
+  emitFormInput()
+}
 </script>
 
 <template>
@@ -88,7 +101,7 @@ const ui = computed(() => tv({ extend: checkbox, slots: props.ui })({
         :name="name"
         :disabled="disabled"
         :class="ui.base()"
-        @update:checked="emitFormChange()"
+        @update:checked="onUpdate"
       >
         <CheckboxIndicator as-child>
           <UIcon v-if="indeterminate" :name="indeterminateIcon || appConfig.ui.icons.minus" :class="ui.icon()" />

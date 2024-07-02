@@ -31,10 +31,15 @@ export interface NavigationMenuItem extends Omit<LinkProps, 'custom'>, Pick<Navi
 
 type NavigationMenuVariants = VariantProps<typeof navigationMenu>
 
-export interface NavigationMenuProps<T> extends Omit<NavigationMenuRootProps, 'asChild' | 'dir' | 'orientation'> {
+export interface NavigationMenuProps<T> extends Pick<NavigationMenuRootProps, 'defaultValue' | 'delayDuration' | 'disableClickTrigger' | 'disableHoverTrigger' | 'modelValue' | 'skipDelayDuration'> {
+  /**
+   * The element or component this component should render as.
+   * @defaultValue `div`
+   */
+  as?: any
   /**
    * The icon displayed to open the menu.
-   * @defaultValue `appConfig.ui.icons.chevronDown`
+   * @defaultValue appConfig.ui.icons.chevronDown
    */
   trailingIcon?: string
   items?: T[] | T[][]
@@ -42,17 +47,17 @@ export interface NavigationMenuProps<T> extends Omit<NavigationMenuRootProps, 'a
   variant?: NavigationMenuVariants['variant']
   /**
    * The orientation of the menu.
-   * @defaultValue `'horizontal'`
+   * @defaultValue 'horizontal'
    */
   orientation?: NavigationMenuRootProps['orientation']
   /** Display a line next to the active item. */
   highlight?: boolean
   highlightColor?: NavigationMenuVariants['highlightColor']
   /** The content of the menu. */
-  content?: Omit<NavigationMenuContentProps, 'asChild' | 'forceMount'>
+  content?: Omit<NavigationMenuContentProps, 'as' | 'asChild' | 'forceMount'>
   /**
    * Display an arrow alongside the menu.
-   * @defaultValue `false`
+   * @defaultValue false
    */
   arrow?: boolean
   class?: any

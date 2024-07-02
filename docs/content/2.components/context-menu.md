@@ -2,35 +2,32 @@
 title: ContextMenu
 description: Display a menu that appears on right click.
 links:
+  - label: Radix Vue
+    icon: i-custom-radix-vue
+    to: https://www.radix-vue.com/components/context-menu.html
   - label: GitHub
     icon: i-simple-icons-github
-    to: https://github.com/nuxt/ui/blob/dev/src/runtime/components/overlays/ContextMenu.vue
+    to: https://github.com/nuxt/ui/blob/dev/src/runtime/components/ContextMenu.vue
 ---
 
 ## Usage
 
-:component-example{component="context-menu-example"}
+## Examples
 
-## Popper
+## API
 
-Use the `popper` prop to customize the popper instance.
-
-### Arrow
-
-:component-example{component="context-menu-example-arrow"}
-
-### Placement
-
-:component-example{component="context-menu-example-placement"}
-
-### Offset
-
-:component-example{component="context-menu-example-offset"}
-
-## Props
+### Props
 
 :component-props
 
-## Config
+### Slots
 
-:component-preset
+:component-slots
+
+### Events
+
+:component-events
+
+## Theme
+
+:component-theme

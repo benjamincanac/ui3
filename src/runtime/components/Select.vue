@@ -19,14 +19,14 @@ export interface SelectItem extends Pick<SelectItemProps, 'disabled' | 'value'> 
   chip?: ChipProps
   /**
    * The item type.
-   * @defaultValue `'item'`
+   * @defaultValue 'item'
    */
   type?: 'label' | 'separator' | 'item'
 }
 
 type SelectVariants = VariantProps<typeof select>
 
-export interface SelectProps<T> extends Omit<SelectRootProps, 'asChild' | 'dir'>, UseComponentIconsProps {
+export interface SelectProps<T> extends Omit<SelectRootProps, 'dir'>, UseComponentIconsProps {
   id?: string
   /** The placeholder text when the select is empty. */
   placeholder?: string
@@ -35,27 +35,27 @@ export interface SelectProps<T> extends Omit<SelectRootProps, 'asChild' | 'dir'>
   size?: SelectVariants['size']
   /**
    * The icon displayed to open the menu.
-   * @defaultValue `appConfig.ui.icons.chevronDown`
+   * @defaultValue appConfig.ui.icons.chevronDown
    */
   trailingIcon?: string
   /**
    * The icon displayed when an item is selected.
-   * @defaultValue `appConfig.ui.icons.check`
+   * @defaultValue appConfig.ui.icons.check
    */
   selectedIcon?: string
   /**
    * The content of the menu.
-   * @defaultValue `{ side: 'bottom', sideOffset: 8, position: 'popper' }`
+   * @defaultValue { side: 'bottom', sideOffset: 8, position: 'popper' }
    */
-  content?: Omit<SelectContentProps, 'asChild' | 'forceMount'>
+  content?: Omit<SelectContentProps, 'as' | 'asChild' | 'forceMount'>
   /**
    * Display an arrow alongside the menu.
-   * @defaultValue `false`
+   * @defaultValue false
    */
-  arrow?: boolean | Omit<SelectArrowProps, 'asChild'>
+  arrow?: boolean | Omit<SelectArrowProps, 'as' | 'asChild'>
   /**
    * Render the menu in a portal.
-   * @defaultValue `true`
+   * @defaultValue true
    */
   portal?: boolean
   items?: T[] | T[][]
@@ -63,7 +63,11 @@ export interface SelectProps<T> extends Omit<SelectRootProps, 'asChild' | 'dir'>
   ui?: Partial<typeof select.slots>
 }
 
-export interface SelectEmits extends SelectRootEmits {}
+export type SelectEmits = SelectRootEmits & {
+  change: [payload: Event]
+  blur: [payload: FocusEvent]
+  focus: [payload: FocusEvent]
+}
 
 type SlotProps<T> = (props: { item: T, index: number }) => any
 
@@ -95,7 +99,7 @@ const appConfig = useAppConfig()
 const rootProps = useForwardPropsEmits(reactivePick(props, 'modelValue', 'defaultValue', 'open', 'defaultOpen', 'disabled', 'autocomplete', 'required'), emits)
 const contentProps = toRef(() => defu(props.content, { side: 'bottom', sideOffset: 8, position: 'popper' }) as SelectContentProps)
 
-const { emitFormChange, emitFormBlur, size: formGroupSize, color, id, name, disabled } = useFormField<InputProps>(props)
+const { emitFormChange, emitFormInput, emitFormBlur, size: formGroupSize, color, id, name, disabled } = useFormField<InputProps>(props)
 const { orientation, size: buttonGroupSize } = useButtonGroup<InputProps>(props)
 const { isLeading, isTrailing, leadingIconName, trailingIconName } = useComponentIcons(toRef(() => defu(props, { trailingIcon: appConfig.ui.icons.chevronDown })))
 
@@ -113,8 +117,22 @@ const ui = computed(() => tv({ extend: select, slots: props.ui })({
 
 const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0]) ? props.items : [props.items]) as SelectItem[][] : [])
 
+function onUpdate(value: any) {
+  const event = new Event('change', { target: { value } })
+  emits('change', event)
+
+  emitFormChange()
+  emitFormInput()
+}
 function onUpdateOpen(value: boolean) {
-  if (!value) emitFormBlur()
+  if (!value) {
+    const event = new FocusEvent('blur')
+    emits('blur', event)
+    emitFormBlur()
+  } else {
+    const event = new FocusEvent('focus')
+    emits('focus', event)
+  }
 }
 </script>
 
@@ -125,7 +143,7 @@ function onUpdateOpen(value: boolean) {
     v-bind="rootProps"
     :name="name"
     :disabled="disabled"
-    @update:model-value="emitFormChange()"
+    @update:model-value="onUpdate"
     @update:open="onUpdateOpen"
   >
     <SelectTrigger :class="ui.base({ class: props.class })">

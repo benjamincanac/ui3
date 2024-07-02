@@ -18,15 +18,20 @@ export interface AccordionItem extends Partial<Pick<AccordionItemProps, 'disable
   content?: string
 }
 
-export interface AccordionProps<T> extends Omit<AccordionRootProps, 'asChild' | 'dir' | 'orientation'> {
+export interface AccordionProps<T> extends Pick<AccordionRootProps, 'collapsible' | 'defaultValue' | 'modelValue' | 'type' | 'disabled'> {
+  /**
+   * The element or component this component should render as.
+   * @defaultValue 'div'
+   */
+  as?: any
   items?: T[]
   /**
    * The icon displayed on the right side of the trigger.
-   * @defaultValue `appConfig.ui.icons.chevronDown`
+   * @defaultValue appConfig.ui.icons.chevronDown
    */
   trailingIcon?: string
   /** The content of the accordion. */
-  content?: Omit<AccordionContentProps, 'asChild'>
+  content?: Omit<AccordionContentProps, 'as' | 'asChild'>
   class?: any
   ui?: Partial<typeof accordion.slots>
 }

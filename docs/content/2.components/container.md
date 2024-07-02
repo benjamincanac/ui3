@@ -3,23 +3,23 @@ description: A container lets you center and constrain the width of your content
 links:
   - label: GitHub
     icon: i-simple-icons-github
-    to: https://github.com/nuxt/ui/blob/dev/src/runtime/components/layout/Container.vue
+    to: https://github.com/nuxt/ui/blob/dev/src/runtime/components/Container.vue
 ---
 
 ## Usage
 
-::component-example
----
-component: 'container-example'
-componentProps:
-  class: 'w-full'
----
-::
+## Examples
 
-## Props
+## API
+
+### Props
 
 :component-props
 
-## Config
+### Slots
 
-:component-preset
+:component-slots
+
+## Theme
+
+:component-theme

@@ -17,17 +17,17 @@ export interface TooltipProps extends TooltipRootProps {
   kbds?: KbdProps['value'][] | KbdProps[]
   /**
    * The content of the tooltip.
-   * @defaultValue `{ side: 'bottom', sideOffset: 8 }`
+   * @defaultValue { side: 'bottom', sideOffset: 8 }
    */
-  content?: Omit<TooltipContentProps, 'asChild'>
+  content?: Omit<TooltipContentProps, 'as' | 'asChild'>
   /**
    * Display an arrow alongside the tooltip.
-   * @defaultValue `false`
+   * @defaultValue false
    */
-  arrow?: boolean | Omit<TooltipArrowProps, 'asChild'>
+  arrow?: boolean | Omit<TooltipArrowProps, 'as' | 'asChild'>
   /**
    * Render the tooltip in a portal.
-   * @defaultValue `true`
+   * @defaultValue true
    */
   portal?: boolean
   class?: any
@@ -38,7 +38,7 @@ export interface TooltipEmits extends TooltipRootEmits {}
 
 export interface TooltipSlots {
   default(props: { open: boolean }): any
-  content(): any
+  content(props?: {}): any
 }
 </script>
 
@@ -49,7 +49,9 @@ import { TooltipRoot, TooltipTrigger, TooltipPortal, TooltipContent, TooltipArro
 import { reactivePick } from '@vueuse/core'
 import { UKbd } from '#components'
 
-const props = withDefaults(defineProps<TooltipProps>(), { portal: true })
+const props = withDefaults(defineProps<TooltipProps>(), {
+  portal: true
+})
 const emits = defineEmits<TooltipEmits>()
 const slots = defineSlots<TooltipSlots>()
 

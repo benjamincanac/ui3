@@ -1,7 +1,5 @@
 <script lang="ts">
-import { isVNode, type VNode } from 'vue'
 import { tv, type VariantProps } from 'tailwind-variants'
-import type { PrimitiveProps } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/alert'
@@ -13,9 +11,14 @@ const alert = tv({ extend: tv(theme), ...(appConfig.ui?.alert || {}) })
 
 type AlertVariants = VariantProps<typeof alert>
 
-export interface AlertProps extends Omit<PrimitiveProps, 'asChild'> {
+export interface AlertProps {
+  /**
+   * The element or component this component should render as.
+   * @defaultValue 'div'
+   */
+  as?: any
   title?: string
-  description?: string | VNode | (() => VNode)
+  description?: string
   icon?: string
   avatar?: AvatarProps
   color?: AlertVariants['color']
@@ -28,13 +31,14 @@ export interface AlertProps extends Omit<PrimitiveProps, 'asChild'> {
   actions?: ButtonProps[]
   /**
    * Display a close button to dismiss the alert.
+   * `{ size: 'md', color: 'gray', variant: 'link' }`
    * @emits `close`
-   * @defaultValue `false` (`{ size: 'md', color: 'gray', variant: 'link' }`)
+   * @defaultValue false
    */
   close?: ButtonProps | boolean
   /**
    * The icon displayed in the close button.
-   * @defaultValue `appConfig.ui.icons.close`
+   * @defaultValue appConfig.ui.icons.close
    */
   closeIcon?: string
   class?: any
@@ -46,10 +50,10 @@ export interface AlertEmits {
 }
 
 export interface AlertSlots {
-  leading(): any
-  title(): any
-  description(): any
-  actions(): any
+  leading(props?: {}): any
+  title(props?: {}): any
+  description(props?: {}): any
+  actions(props?: {}): any
   close(props: { class: string }): any
 }
 </script>
@@ -60,7 +64,7 @@ import { Primitive } from 'radix-vue'
 import { useAppConfig } from '#imports'
 import { UIcon, UAvatar } from '#components'
 
-const props = withDefaults(defineProps<AlertProps>(), { as: 'div' })
+const props = defineProps<AlertProps>()
 const emits = defineEmits<AlertEmits>()
 const slots = defineSlots<AlertSlots>()
 
@@ -88,8 +92,7 @@ const ui = computed(() => tv({ extend: alert, slots: props.ui })({
         </slot>
       </div>
       <template v-if="description || !!slots.description">
-        <component :is="description" v-if="description && isVNode(description)" />
-        <div v-else :class="ui.description()">
+        <div :class="ui.description()">
           <slot name="description">
             {{ description }}
           </slot>

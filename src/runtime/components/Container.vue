@@ -1,6 +1,5 @@
 <script lang="ts">
 import { tv } from 'tailwind-variants'
-import type { PrimitiveProps } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/container'
@@ -9,19 +8,24 @@ const appConfig = _appConfig as AppConfig & { ui: { container: Partial<typeof th
 
 const container = tv({ extend: tv(theme), ...(appConfig.ui?.container || {}) })
 
-export interface ContainerProps extends Omit<PrimitiveProps, 'asChild'> {
+export interface ContainerProps {
+  /**
+   * The element or component this component should render as.
+   * @defaultValue 'div'
+   */
+  as?: any
   class?: any
 }
 
 export interface ContainerSlots {
-  default(): any
+  default(props?: {}): any
 }
 </script>
 
 <script setup lang="ts">
 import { Primitive } from 'radix-vue'
 
-const props = withDefaults(defineProps<ContainerProps>(), { as: 'div' })
+const props = defineProps<ContainerProps>()
 defineSlots<ContainerSlots>()
 </script>
 
