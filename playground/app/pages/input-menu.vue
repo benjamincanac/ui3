@@ -3,7 +3,7 @@ import { refDebounced } from '@vueuse/core'
 import type { User } from '~/types'
 import theme from '#build/ui/input-menu'
 
-const sizes = Object.keys(theme.variants.size)
+const sizes = Object.keys(theme.variants.size) as Array<keyof typeof theme.variants.size>
 
 const fruits = ['Apple', 'Banana', 'Blueberry', 'Grapes', 'Pineapple']
 const vegetables = ['Aubergine', 'Broccoli', 'Carrot', 'Courgette', 'Leek']
@@ -75,7 +75,7 @@ const { data: users, pending } = await useFetch('https://jsonplaceholder.typicod
         :key="size"
         :items="items"
         placeholder="Search..."
-        :size="(size as any)"
+        :size="size"
         class="w-60"
       />
     </div>
@@ -111,7 +111,7 @@ const { data: users, pending } = await useFetch('https://jsonplaceholder.typicod
         multiple
         icon="i-heroicons-magnifying-glass"
         placeholder="Search..."
-        :size="(size as any)"
+        :size="size"
         class="w-60"
       />
     </div>
