@@ -335,7 +335,7 @@ function onUpdateOpen(value: boolean) {
                     <slot name="item-trailing" :item="(item as T)" :index="index" />
 
                     <ComboboxItemIndicator as-child>
-                      <UIcon :name="selectedIcon || appConfig.ui.icons.check" :class="ui.itemTrailingSelectedIcon()" />
+                      <UIcon :name="selectedIcon || appConfig.ui.icons.check" :class="ui.itemTrailingIcon()" />
                     </ComboboxItemIndicator>
                   </span>
                 </slot>
