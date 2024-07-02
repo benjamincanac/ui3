@@ -26,44 +26,44 @@ export default (options: Required<ModuleOptions>) => {
     variants: {
       size: {
         xs: {
-          label: 'gap-1 p-1 text-xs',
-          item: 'gap-1 p-1 text-xs',
+          label: 'p-1 text-[10px]/3 gap-1',
+          item: 'p-1 text-xs gap-1',
           itemLeadingIcon: 'size-4',
           itemLeadingAvatarSize: '3xs',
           itemLeadingChipSize: 'sm',
-          itemTrailingSelectedIcon: 'size-4'
+          itemTrailingIcon: 'size-4'
         },
         sm: {
-          label: 'gap-1.5 p-1.5 text-xs',
-          item: 'gap-1.5 p-1.5 text-xs',
+          label: 'p-1.5 text-[10px]/3 gap-1.5',
+          item: 'p-1.5 text-xs gap-1.5',
           itemLeadingIcon: 'size-4',
           itemLeadingAvatarSize: '3xs',
           itemLeadingChipSize: 'sm',
-          itemTrailingSelectedIcon: 'size-4'
+          itemTrailingIcon: 'size-4'
         },
         md: {
-          label: 'gap-1.5 p-1.5 text-sm',
-          item: 'gap-1.5 p-1.5 text-sm',
+          label: 'p-1.5 text-xs gap-1.5',
+          item: 'p-1.5 text-sm gap-1.5',
           itemLeadingIcon: 'size-5',
           itemLeadingAvatarSize: '2xs',
           itemLeadingChipSize: 'md',
-          itemTrailingSelectedIcon: 'size-5'
+          itemTrailingIcon: 'size-5'
         },
         lg: {
-          label: 'p-2 text-sm gap-2',
+          label: 'p-2 text-xs gap-2',
           item: 'p-2 text-sm gap-2',
           itemLeadingIcon: 'size-5',
           itemLeadingAvatarSize: '2xs',
           itemLeadingChipSize: 'md',
-          itemTrailingSelectedIcon: 'size-5'
+          itemTrailingIcon: 'size-5'
         },
         xl: {
-          label: 'p-2 text-base gap-2',
+          label: 'p-2 text-sm gap-2',
           item: 'p-2 text-base gap-2',
           itemLeadingIcon: 'size-6',
           itemLeadingAvatarSize: 'xs',
           itemLeadingChipSize: 'lg',
-          itemTrailingSelectedIcon: 'size-6'
+          itemTrailingIcon: 'size-6'
         }
       }
     },
