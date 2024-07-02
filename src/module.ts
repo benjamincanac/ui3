@@ -48,14 +48,19 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.alias['#ui'] = resolve('./runtime')
 
     nuxt.options.appConfig.ui = defu(nuxt.options.appConfig.ui || {}, {
-      primary: 'green',
-      gray: 'cool',
+      colors: {
+        primary: 'green',
+        gray: 'cool'
+      },
       icons
     })
 
     // Isolate root node from portaled components
     nuxt.options.app.rootAttrs = nuxt.options.app.rootAttrs || {}
     nuxt.options.app.rootAttrs.class = [nuxt.options.app.rootAttrs.class, 'isolate'].filter(Boolean).join(' ')
+
+    // Add keyframes for animations
+    nuxt.options.css.push(resolve('./runtime/assets/css/animations.css'))
 
     addVitePlugin(tailwindcss)
 
