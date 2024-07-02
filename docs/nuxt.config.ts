@@ -62,6 +62,9 @@ export default defineNuxtConfig({
               token: process.env.NUXT_GITHUB_TOKEN || ''
             }
           : undefined
+    },
+    highlight: {
+      langs: ['diff']
     }
   },
   image: {
