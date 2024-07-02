@@ -166,6 +166,7 @@ function filterFunction(items: ArrayOrWrapped<AcceptableValue>, searchTerm: stri
 const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0]) ? props.items : [props.items]) as SelectMenuItem[][] : [])
 
 function onUpdate(value: any) {
+  // @ts-expect-error - 'target' does not exist in type 'EventInit'
   const event = new Event('change', { target: { value } })
   emits('change', event)
   emitFormChange()

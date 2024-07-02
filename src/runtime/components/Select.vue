@@ -118,6 +118,7 @@ const ui = computed(() => tv({ extend: select, slots: props.ui })({
 const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0]) ? props.items : [props.items]) as SelectItem[][] : [])
 
 function onUpdate(value: any) {
+  // @ts-expect-error - 'target' does not exist in type 'EventInit'
   const event = new Event('change', { target: { value } })
   emits('change', event)
 
