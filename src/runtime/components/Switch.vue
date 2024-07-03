@@ -4,6 +4,7 @@ import type { SwitchRootProps } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/switch'
+import type { PartialString } from '../types/utils'
 
 const appConfig = _appConfig as AppConfig & { ui: { switch: Partial<typeof theme> } }
 
@@ -35,17 +36,17 @@ export interface SwitchProps extends Pick<SwitchRootProps, 'disabled' | 'id' | '
   /** The state of the switch when it is initially rendered. Use when you do not need to control its state. */
   defaultValue?: boolean
   class?: any
-  ui?: Partial<typeof switchTv.slots>
-}
-
-export interface SwitchSlots {
-  label(props: { label?: string }): any
-  description(props: { description?: string }): any
+  ui?: PartialString<typeof switchTv.slots>
 }
 
 export interface SwitchEmits {
   (e: 'update:modelValue', payload: boolean): void
   (e: 'change', payload: Event): void
+}
+
+export interface SwitchSlots {
+  label(props: { label?: string }): any
+  description(props: { description?: string }): any
 }
 </script>
 
@@ -67,7 +68,7 @@ const rootProps = useForwardProps(reactivePick(props, 'as', 'required', 'value')
 const { id: _id, emitFormChange, emitFormInput, size, color, name, disabled } = useFormField<SwitchProps>(props)
 const id = _id.value ?? useId()
 
-const ui = computed(() => tv({ extend: switchTv, slots: props.ui })({
+const ui = computed(() => switchTv({
   size: size.value,
   color: color.value,
   required: props.required,
@@ -86,7 +87,7 @@ function onUpdate(value: any) {
 
 <template>
   <div :class="ui.root({ class: props.class })">
-    <div :class="ui.container()">
+    <div :class="ui.container({ class: props.ui?.container })">
       <SwitchRoot
         :id="id"
         v-model:checked="modelValue"
@@ -94,25 +95,25 @@ function onUpdate(value: any) {
         v-bind="rootProps"
         :name="name"
         :disabled="disabled || loading"
-        :class="ui.base()"
+        :class="ui.base({ class: props.ui?.base })"
         @update:checked="onUpdate"
       >
-        <SwitchThumb :class="ui.thumb()">
-          <UIcon v-if="loading" :name="loadingIcon || appConfig.ui.icons.loading" :class="ui.icon({ checked: true, unchecked: true })" />
+        <SwitchThumb :class="ui.thumb({ class: props.ui?.thumb })">
+          <UIcon v-if="loading" :name="loadingIcon || appConfig.ui.icons.loading" :class="ui.icon({ class: props.ui?.icon, checked: true, unchecked: true })" />
           <template v-else>
-            <UIcon v-if="checkedIcon" :name="checkedIcon" :class="ui.icon({ checked: true })" />
-            <UIcon v-if="uncheckedIcon" :name="uncheckedIcon" :class="ui.icon({ unchecked: true })" />
+            <UIcon v-if="checkedIcon" :name="checkedIcon" :class="ui.icon({ class: props.ui?.icon, checked: true })" />
+            <UIcon v-if="uncheckedIcon" :name="uncheckedIcon" :class="ui.icon({ class: props.ui?.icon, unchecked: true })" />
           </template>
         </SwitchThumb>
       </SwitchRoot>
     </div>
-    <div v-if="(label || !!slots.label) || (description || !!slots.description)" :class="ui.wrapper()">
-      <Label v-if="label || !!slots.label" :for="id" :class="ui.label()">
+    <div v-if="(label || !!slots.label) || (description || !!slots.description)" :class="ui.wrapper({ class: props.ui?.wrapper })">
+      <Label v-if="label || !!slots.label" :for="id" :class="ui.label({ class: props.ui?.label })">
         <slot name="label" :label="label">
           {{ label }}
         </slot>
       </Label>
-      <p v-if="description || !!slots.description" :class="ui.description()">
+      <p v-if="description || !!slots.description" :class="ui.description({ class: props.ui?.description })">
         <slot name="description" :description="description">
           {{ description }}
         </slot>

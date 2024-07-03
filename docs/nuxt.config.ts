@@ -21,7 +21,7 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxt/fonts',
     '@nuxt/image',
-    // '@nuxtjs/plausible',
+    '@nuxtjs/plausible',
     '@vueuse/nuxt',
     // 'modules/content-examples-code'
     'nuxt-component-meta',
@@ -62,6 +62,9 @@ export default defineNuxtConfig({
               token: process.env.NUXT_GITHUB_TOKEN || ''
             }
           : undefined
+    },
+    highlight: {
+      langs: ['bash', 'ts', 'diff', 'vue', 'json', 'yml', 'css', 'mdc']
     }
   },
   image: {
@@ -89,6 +92,7 @@ export default defineNuxtConfig({
       // '@nuxt/ui-templates',
       '@nuxtjs/color-mode',
       '@nuxtjs/mdc',
+      '@nuxtjs/plausible',
       'nuxt/dist',
       'nuxt-og-image',
       // 'nuxt-site-config',
@@ -120,6 +124,9 @@ export default defineNuxtConfig({
   //     include: ['date-fns']
   //   }
   // },
+  site: {
+    url: 'https://ui3.nuxt.com'
+  },
   typescript: {
     strict: false
   }

@@ -29,13 +29,13 @@ export interface ChipProps {
   ui?: Partial<typeof chip.slots>
 }
 
+export interface ChipEmits {
+  (e: 'update:show', payload: boolean): void
+}
+
 export interface ChipSlots {
   default(props?: {}): any
   content(props?: {}): any
-}
-
-export interface ChipEmits {
-  (e: 'update:show', payload: boolean): void
 }
 </script>
 
@@ -51,7 +51,7 @@ const show = defineModel<boolean>('show', { default: true })
 
 const { size } = useAvatarGroup(props)
 
-const ui = computed(() => tv({ extend: chip, slots: props.ui })({
+const ui = computed(() => chip({
   color: props.color,
   size: size.value,
   position: props.position,
@@ -64,7 +64,7 @@ const ui = computed(() => tv({ extend: chip, slots: props.ui })({
   <Primitive :as="as" :class="ui.root({ class: props.class })">
     <slot />
 
-    <span v-if="show" :class="ui.base()">
+    <span v-if="show" :class="ui.base({ class: props.ui?.base })">
       <slot name="content">
         {{ text }}
       </slot>
