@@ -317,7 +317,7 @@ function onUpdateOpen(value: boolean) {
                     <UIcon v-else-if="item.icon" :name="item.icon" :class="ui.itemLeadingIcon({ class: props.ui?.itemLeadingIcon })" />
                     <UChip
                       v-else-if="item.chip"
-                      size="md"
+                      :size="(ui.itemLeadingChipSize() as ChipProps['size'])"
                       inset
                       standalone
                       v-bind="item.chip"
