@@ -126,7 +126,29 @@ defineShortcuts(extractShortcuts(items))
     <div class="flex flex-col items-center gap-8">
       <USelectMenu v-model="size" :items="sizes" placeholder="Size" />
 
-      <UDropdownMenu :items="items" :size="size" arrow :content="{ side: 'bottom', align: 'start' }" class="min-w-48">
+      <UDropdownMenu
+        color="gray"
+        :items="items"
+        :size="size"
+        arrow
+        :content="{ side: 'bottom', align: 'start' }"
+        class="min-w-48"
+      >
+        <UButton label="Open" color="white" icon="i-heroicons-user" />
+
+        <template #custom-trailing>
+          <UIcon name="i-heroicons-check-badge" class="shrink-0 size-5 text-primary-500 dark:text-primary-400" />
+        </template>
+      </UDropdownMenu>
+
+      <UDropdownMenu
+        color="white"
+        :items="items"
+        :size="size"
+        arrow
+        :content="{ side: 'bottom', align: 'start' }"
+        class="min-w-48"
+      >
         <UButton label="Open" color="white" icon="i-heroicons-user" />
 
         <template #custom-trailing>
