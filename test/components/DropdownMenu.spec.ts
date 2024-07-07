@@ -128,6 +128,7 @@ describe('DropdownMenu', () => {
     ['with arrow', { props: { ...props, arrow: true } }],
     ...sizes.map((size: string) => [`with size ${size}`, { props: { ...props, size } }]),
     ['with class', { props: { ...props, class: 'min-w-96' } }],
+    ['with color', { props: { ...props, color: 'gray' } }],
     ['with ui', { props: { ...props, ui: { itemLeadingIcon: 'size-4' } } }],
     // Slots
     ['with default slot', { props, slots: { default: () => 'Default slot' } }],
