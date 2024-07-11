@@ -5,6 +5,7 @@ import theme from '#build/ui/dropdown-menu'
 
 describe('DropdownMenu', () => {
   const sizes = Object.keys(theme.variants.size) as any
+  const variants = Object.keys(theme.variants.variant as any)
 
   const items = [
     [{
@@ -128,6 +129,7 @@ describe('DropdownMenu', () => {
     ['with arrow', { props: { ...props, arrow: true } }],
     ...sizes.map((size: string) => [`with size ${size}`, { props: { ...props, size } }]),
     ['with class', { props: { ...props, class: 'min-w-96' } }],
+    ...variants.map((variant: string) => [`with variant ${variant}`, { props: { ...props, variant } }]),
     ['with ui', { props: { ...props, ui: { itemLeadingIcon: 'size-4' } } }],
     // Slots
     ['with default slot', { props, slots: { default: () => 'Default slot' } }],

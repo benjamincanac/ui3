@@ -2,11 +2,11 @@ import type { ModuleOptions } from '../module'
 
 export default (options: Required<ModuleOptions>) => ({
   slots: {
-    content: 'min-w-32 bg-white dark:bg-gray-900 shadow-lg rounded-md ring ring-gray-200 dark:ring-gray-800 divide-y divide-gray-200 dark:divide-gray-800 overflow-y-auto scroll-py-1 data-[state=open]:animate-[scale-in_100ms_ease-out] data-[state=closed]:animate-[scale-out_100ms_ease-in]',
+    content: 'min-w-32 shadow-lg rounded-md ring divide-y divide-gray-200 overflow-y-auto scroll-py-1 data-[state=open]:animate-[scale-in_100ms_ease-out] data-[state=closed]:animate-[scale-out_100ms_ease-in]',
     arrow: 'fill-gray-200 dark:fill-gray-800',
     group: 'p-1 isolate',
     label: 'w-full flex items-center font-semibold text-gray-900 dark:text-white',
-    separator: '-mx-1 my-1 h-px bg-gray-200 dark:bg-gray-800',
+    separator: '-mx-1 my-1 h-px bg-gray-200',
     item: 'group relative w-full flex items-center select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75',
     itemLeadingIcon: 'shrink-0',
     itemLeadingAvatar: 'shrink-0',
@@ -25,7 +25,7 @@ export default (options: Required<ModuleOptions>) => ({
         itemLeadingIcon: 'text-gray-700 dark:text-gray-200'
       },
       false: {
-        item: ['text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-[state=open]:text-gray-900 dark:data-[state=open]:text-white data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50 data-[state=open]:before:bg-gray-50 dark:data-[state=open]:before:bg-gray-800/50', options.transitions && 'transition-colors before:transition-colors'],
+        item: ['text-gray-700 dark:text-gray-200 data-highlighted:text-gray-900 dark:data-highlighted:text-white data-[state=open]:text-gray-900 dark:data-[state=open]:text-white', options.transitions && 'transition-colors before:transition-colors'],
         itemLeadingIcon: ['text-gray-400 dark:text-gray-500 group-data-highlighted:text-gray-700 dark:group-data-highlighted:text-gray-200 group-data-[state=open]:text-gray-700 dark:group-data-[state=open]:text-gray-200', options.transitions && 'transition-colors']
       }
     },
@@ -75,9 +75,51 @@ export default (options: Required<ModuleOptions>) => ({
         itemTrailingKbds: 'gap-1',
         itemTrailingKbdsSize: 'lg'
       }
+    },
+    variant: {
+      outline: {
+        content: 'bg-white dark:bg-gray-900 ring-gray-200 dark:ring-gray-800 dark:divide-gray-800',
+        separator: 'dark:bg-gray-800'
+      },
+      subtle: {
+        content: 'bg-gray-50 dark:bg-gray-800 ring-gray-300 dark:ring-gray-700 dark:divide-gray-800',
+        separator: 'dark:bg-gray-700'
+      }
     }
   },
+  compoundVariants: [
+    {
+      active: true,
+      variant: 'outline',
+      class: {
+        item: 'before:bg-gray-100 dark:before:bg-gray-800'
+      }
+    },
+    {
+      active: false,
+      variant: 'outline',
+      class: {
+        item: 'data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50 data-[state=open]:before:bg-gray-50 dark:data-[state=open]:before:bg-gray-800/50'
+      }
+    },
+    {
+      active: true,
+      variant: 'subtle',
+      class: {
+        item: 'before:bg-gray-200 dark:before:bg-gray-700'
+      }
+    },
+    {
+      active: false,
+      variant: 'subtle',
+      class: {
+        item: 'data-highlighted:before:bg-gray-100 dark:data-highlighted:before:bg-gray-700/50 data-[state=open]:before:bg-gray-100 dark:data-[state=open]:before:bg-gray-700/50'
+      }
+    }
+  ],
   defaultVariants: {
-    size: 'md'
+    size: 'md',
+    variant: 'outline',
+    active: false
   }
 })
