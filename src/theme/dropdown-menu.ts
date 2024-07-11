@@ -76,12 +76,12 @@ export default (options: Required<ModuleOptions>) => ({
         itemTrailingKbdsSize: 'lg'
       }
     },
-    color: {
-      white: {
+    variant: {
+      outline: {
         content: 'bg-white dark:bg-gray-900 ring-gray-200 dark:ring-gray-800 dark:divide-gray-800',
         separator: 'dark:bg-gray-800'
       },
-      gray: {
+      subtle: {
         content: 'bg-gray-50 dark:bg-gray-800 ring-gray-300 dark:ring-gray-700 dark:divide-gray-800',
         separator: 'dark:bg-gray-700'
       }
@@ -90,28 +90,28 @@ export default (options: Required<ModuleOptions>) => ({
   compoundVariants: [
     {
       active: true,
-      color: 'white',
+      variant: 'outline',
       class: {
         item: 'before:bg-gray-100 dark:before:bg-gray-800'
       }
     },
     {
       active: false,
-      color: 'white',
+      variant: 'outline',
       class: {
         item: 'data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50 data-[state=open]:before:bg-gray-50 dark:data-[state=open]:before:bg-gray-800/50'
       }
     },
     {
       active: true,
-      color: 'gray',
+      variant: 'subtle',
       class: {
         item: 'before:bg-gray-200 dark:before:bg-gray-700'
       }
     },
     {
       active: false,
-      color: 'gray',
+      variant: 'subtle',
       class: {
         item: 'data-highlighted:before:bg-gray-100 dark:data-highlighted:before:bg-gray-700/50 data-[state=open]:before:bg-gray-100 dark:data-[state=open]:before:bg-gray-700/50'
       }
@@ -119,7 +119,7 @@ export default (options: Required<ModuleOptions>) => ({
   ],
   defaultVariants: {
     size: 'md',
-    color: 'white',
+    variant: 'outline',
     active: false
   }
 })
