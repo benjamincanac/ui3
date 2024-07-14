@@ -125,7 +125,7 @@ describe('Form', () => {
     expect(wrapper.html()).toMatchSnapshot('without error')
   })
 
-  describe('api', async () => {
+  describe('exposed methods', async () => {
     let wrapper: any
     let form: any
     let state: any
@@ -184,6 +184,35 @@ describe('Form', () => {
 
       const passwordField = wrapper.find('#passwordField')
       expect(passwordField.text()).toBe('')
+    })
+
+    test('setErrors with name filter works', async () => {
+      form.value.setErrors([{
+        name: 'email',
+        message: 'this is an error'
+      }], 'email')
+
+      expect(form.value.errors).toMatchObject([{
+        id: 'emailInput',
+        name: 'email',
+        message: 'this is an error'
+      }])
+
+      form.value.setErrors([{
+        name: 'password',
+        message: 'this is another error'
+      }], 'password')
+
+      expect(form.value.errors).toMatchObject([{
+        id: 'emailInput',
+        name: 'email',
+        message: 'this is an error'
+      },
+      {
+        id: 'passwordInput',
+        name: 'password',
+        message: 'this is another error'
+      }])
     })
 
     test('clear works', async () => {
@@ -257,6 +286,36 @@ describe('Form', () => {
       })
     })
 
+    test('validate name works', async () => {
+      await expect(form.value.validate({ name: 'email' })).rejects.toThrow('Form validation exception')
+      await expect(form.value.validate({ name: 'email' })).rejects.toMatchObject({ errors: [{ id: 'emailInput', name: 'email', message: 'Required' }] })
+
+      state.email = 'bob@dylan.com'
+
+      expect(await form.value.validate({ name: 'email' })).toMatchObject({
+        email: 'bob@dylan.com'
+      })
+    })
+
+    test('validate does not emit by default', async () => {
+      await expect(form.value.validate()).rejects.toThrow('Form validation exception')
+
+      const component = wrapper.findComponent({ name: 'Form' })
+      expect(component.emitted('error')).toBeUndefined()
+    })
+
+    test('validate emit works', async () => {
+      expect(await form.value.validate({ emit: true })).toBe(false)
+
+      const component = wrapper.findComponent({ name: 'Form' })
+      expect(component.emitted('error')![0][0]).toMatchObject({
+        errors: [
+          { id: 'emailInput', name: 'email', message: 'Required' },
+          { id: 'passwordInput', name: 'password', message: 'Required' }
+        ]
+      })
+    })
+
     test('getErrors works', async () => {
       await form.value.submit()
       const errors = form.value.getErrors()
@@ -319,7 +378,7 @@ describe('Form', () => {
       state = wrapper.setupState.state
     })
 
-    test('submit error works', async () => {
+    test('submit works', async () => {
       await form.value.submit()
 
       expect(wrapper.setupState.onSubmit).not.toHaveBeenCalled()
@@ -335,7 +394,7 @@ describe('Form', () => {
       expect(nestedField.text()).toBe('Required')
     })
 
-    test('submit works when child is disabled', async () => {
+    test('submit works when child is not rendered', async () => {
       await form.value.submit()
       expect(wrapper.setupState.onError).toHaveBeenCalledTimes(1)
       vi.resetAllMocks()
