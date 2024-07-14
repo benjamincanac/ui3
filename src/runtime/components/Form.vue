@@ -163,7 +163,7 @@ async function onSubmit(payload: Event) {
   try {
     await _validate({ nested: true })
     const submitEvent: FormSubmitEvent<any> = {
-      ...event,
+      ...new SubmitEvent(),
       data: props.state
     }
     emits('submit', submitEvent)
@@ -183,7 +183,34 @@ async function onSubmit(payload: Event) {
 }
 
 defineExpose<Form<T>>({
-  validate: _validate,
+  async validate(
+    opts: {
+      name?: string | string[]
+      nested?: boolean
+      emit?: boolean
+    } = { nested: true, emit: false }
+  ): Promise<T | false> {
+    try {
+      return await _validate(opts)
+    } catch (error) {
+      if (!(error instanceof FormValidationException)) {
+        throw error
+      }
+
+      if (opts.emit) {
+        const errorEvent: FormErrorEvent = {
+          ...new SubmitEvent('submit'),
+          errors: error.errors,
+          childrens: error.childrens
+        }
+        emits('error', errorEvent)
+        return false
+      }
+
+      throw error
+    }
+  },
+
   errors,
 
   setErrors(errs: FormError[], name?: string) {
