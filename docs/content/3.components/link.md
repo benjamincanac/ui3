@@ -1,5 +1,4 @@
 ---
-title: 'Link'
 description: Render a NuxtLink but with superpowers.
 links:
   - label: GitHub
@@ -65,8 +64,8 @@ ignore:
 props:
   raw: true
   to: /components/link
-  active-class: 'font-bold'
-  inactive-class: 'text-gray-500 dark:text-gray-500'
+  activeClass: 'font-bold'
+  inactiveClass: 'text-gray-500 dark:text-gray-500'
 slots:
   default: Link
 ---

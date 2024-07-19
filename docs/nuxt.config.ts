@@ -117,11 +117,19 @@ export default defineNuxtConfig({
   hooks: {
     'components:extend': (components) => {
       const globals = components.filter(c => [
+        'UAlert',
+        'UAvatar',
+        'UAvatarGroup',
         'UBadge',
+        'UBreadcrumb',
         'UButton',
+        'UButtonGroup',
         'UIcon',
+        'UInput',
         'UKbd',
-        'ULink'
+        'ULink',
+        'UProgress',
+        'UTabs'
       ].includes(c.pascalName))
 
       globals.forEach(c => c.global = 'sync')

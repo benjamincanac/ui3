@@ -72,7 +72,7 @@ slots:
 
 ### Icon
 
-Use the `icon` prop to show any icon from [Iconify](https://icones.js.org).
+Use the `icon` prop to show an [Icon](/components/icon) inside the Button.
 
 ::component-code
 ---
@@ -91,8 +91,8 @@ Use the `leading` and `trailing` props to set the icon position or the `leading-
 ::component-code
 ---
 props:
-  leading-icon: ''
-  trailing-icon: i-heroicons-arrow-right
+  leadingIcon: ''
+  trailingIcon: i-heroicons-arrow-right
   size: md
 slots:
   default: Button
@@ -115,19 +115,23 @@ props:
 
 Use the `loading` prop to show a loading icon and disable the Button.
 
-Use the `loading-icon` prop or globally in `appConfig.ui.icons.loading` to set a different icon.
+Use the `loading-icon` prop to customize this icon. Defaults to `i-heroicons-arrow-path-20-solid`.
 
 ::component-code
 ---
 props:
   loading: true
-  loading-icon: ''
+  loadingIcon: ''
   trailing: false
 slots:
   default: Button
 ---
 
 Button
+::
+
+::tip
+You can customize this icon globally in your `app.config.ts` under `ui.icons.loading` key.
 ::
 
 ### Disabled
@@ -168,6 +172,9 @@ Use the `ui` prop to override the slots styles of the Button.
 ---
 ignore:
   - ui
+  - color
+  - variant
+  - icon
 props:
   icon: i-heroicons-rocket-launch
   color: gray
