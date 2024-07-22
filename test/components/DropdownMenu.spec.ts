@@ -128,8 +128,8 @@ describe('DropdownMenu', () => {
     ['with disabled', { props: { ...props, disabled: true } }],
     ['with arrow', { props: { ...props, arrow: true } }],
     ...sizes.map((size: string) => [`with size ${size}`, { props: { ...props, size } }]),
-    ['with class', { props: { ...props, class: 'min-w-96' } }],
     ...variants.map((variant: string) => [`with variant ${variant}`, { props: { ...props, variant } }]),
+    ['with class', { props: { ...props, class: 'min-w-96' } }],
     ['with ui', { props: { ...props, ui: { itemLeadingIcon: 'size-4' } } }],
     // Slots
     ['with default slot', { props, slots: { default: () => 'Default slot' } }],

@@ -2,11 +2,11 @@ import type { ModuleOptions } from '../module'
 
 export default (options: Required<ModuleOptions>) => ({
   slots: {
-    content: 'min-w-32 shadow-lg rounded-md ring divide-y divide-gray-200 overflow-y-auto scroll-py-1 data-[state=open]:animate-[scale-in_100ms_ease-out] data-[state=closed]:animate-[scale-out_100ms_ease-in]',
-    arrow: 'fill-gray-200 dark:fill-gray-800',
+    content: 'min-w-32 shadow-lg rounded-md ring divide-y overflow-y-auto scroll-py-1 data-[state=open]:animate-[scale-in_100ms_ease-out] data-[state=closed]:animate-[scale-out_100ms_ease-in]',
+    arrow: '',
     group: 'p-1 isolate',
     label: 'w-full flex items-center font-semibold text-gray-900 dark:text-white',
-    separator: '-mx-1 my-1 h-px bg-gray-200',
+    separator: '-mx-1 my-1 h-px',
     item: 'group relative w-full flex items-center select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75',
     itemLeadingIcon: 'shrink-0',
     itemLeadingAvatar: 'shrink-0',
@@ -21,7 +21,7 @@ export default (options: Required<ModuleOptions>) => ({
   variants: {
     active: {
       true: {
-        item: 'text-gray-900 dark:text-white before:bg-gray-100 dark:before:bg-gray-800',
+        item: 'text-gray-900 dark:text-white',
         itemLeadingIcon: 'text-gray-700 dark:text-gray-200'
       },
       false: {
@@ -78,48 +78,44 @@ export default (options: Required<ModuleOptions>) => ({
     },
     variant: {
       outline: {
-        content: 'bg-white dark:bg-gray-900 ring-gray-200 dark:ring-gray-800 dark:divide-gray-800',
-        separator: 'dark:bg-gray-800'
+        content: 'bg-white dark:bg-gray-900 ring-gray-200 dark:ring-gray-800 divide-gray-200 dark:divide-gray-800',
+        arrow: 'fill-gray-200 dark:fill-gray-800',
+        separator: 'bg-gray-200 dark:bg-gray-800'
       },
       subtle: {
-        content: 'bg-gray-50 dark:bg-gray-800 ring-gray-300 dark:ring-gray-700 dark:divide-gray-800',
-        separator: 'dark:bg-gray-700'
+        content: 'bg-gray-100 dark:bg-gray-800 ring-gray-300 dark:ring-gray-700 divide-gray-300 dark:divide-gray-700',
+        arrow: 'fill-gray-300 dark:fill-gray-700',
+        separator: 'bg-gray-300 dark:bg-gray-700'
       }
     }
   },
-  compoundVariants: [
-    {
-      active: true,
-      variant: 'outline',
-      class: {
-        item: 'before:bg-gray-100 dark:before:bg-gray-800'
-      }
-    },
-    {
-      active: false,
-      variant: 'outline',
-      class: {
-        item: 'data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50 data-[state=open]:before:bg-gray-50 dark:data-[state=open]:before:bg-gray-800/50'
-      }
-    },
-    {
-      active: true,
-      variant: 'subtle',
-      class: {
-        item: 'before:bg-gray-200 dark:before:bg-gray-700'
-      }
-    },
-    {
-      active: false,
-      variant: 'subtle',
-      class: {
-        item: 'data-highlighted:before:bg-gray-100 dark:data-highlighted:before:bg-gray-700/50 data-[state=open]:before:bg-gray-100 dark:data-[state=open]:before:bg-gray-700/50'
-      }
+  compoundVariants: [{
+    active: true,
+    variant: 'outline',
+    class: {
+      item: 'before:bg-gray-100 dark:before:bg-gray-800'
     }
-  ],
+  }, {
+    active: false,
+    variant: 'outline',
+    class: {
+      item: 'data-highlighted:before:bg-gray-50 dark:data-highlighted:before:bg-gray-800/50 data-[state=open]:before:bg-gray-50 dark:data-[state=open]:before:bg-gray-800/50'
+    }
+  }, {
+    active: true,
+    variant: 'subtle',
+    class: {
+      item: 'before:bg-white dark:before:bg-gray-900'
+    }
+  }, {
+    active: false,
+    variant: 'subtle',
+    class: {
+      item: 'data-highlighted:before:bg-gray-100 dark:data-highlighted:before:bg-gray-700/50 data-[state=open]:before:bg-gray-100 dark:data-[state=open]:before:bg-gray-700/50'
+    }
+  }],
   defaultVariants: {
     size: 'md',
-    variant: 'outline',
-    active: false
+    variant: 'outline'
   }
 })
