@@ -88,7 +88,7 @@ const groups = computed(() => props.items?.length ? (Array.isArray(props.items[0
               :open="item.open"
               :default-open="item.defaultOpen"
               :text-value="item.label"
-              :class="ui.item({ class: uiOverride?.item })"
+              :class="ui.item({ class: uiOverride?.item, active: false })"
             >
               <ReuseItemTemplate :item="item" :index="index" />
             </DropdownMenu.SubTrigger>
