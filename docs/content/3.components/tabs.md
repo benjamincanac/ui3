@@ -11,14 +11,16 @@ links:
 
 ## Usage
 
+### Items
+
 Use the `items` prop as an array of objects with the following properties:
 
 - `label?: string`{lang="ts-type"}
 - `icon?: string`{lang="ts-type"}
 - `avatar?: AvatarProps`{lang="ts-type"}
-- `slot?: string`{lang="ts-type"}
+- [`slot?: string`{lang="ts-type"}](#with-custom-slot)
 - `content?: string`{lang="ts-type"}
-- `value?: StringOrNumber`{lang="ts-type"}
+- `value?: string | number`{lang="ts-type"}
 - `disabled?: boolean`{lang="ts-type"}
 
 ::component-code
@@ -39,8 +41,59 @@ props:
 ---
 ::
 
+### Content
+
+Use the `content` prop to control how the Tabs are rendered.
+
+You can set it to `false` to prevent the Tabs from rendering any content and act as a toggle.
+
+::component-code
+---
+ignore:
+  - content
+external:
+  - items
+hide:
+  - class
+props:
+  class: 'w-full'
+  content: false
+  items:
+    - label: Account
+      icon: 'i-heroicons-user'
+      content: 'This is the account content.'
+    - label: Password
+      icon: 'i-heroicons-lock-closed'
+      content: 'This is the password content.'
+---
+::
+
+You can also choose to only render the content of the active tab by setting `content.forceMount` to `false`.
+
+::component-code
+---
+ignore:
+  - content.forceMount
+external:
+  - items
+hide:
+  - class
+props:
+  class: 'w-full'
+  content:
+    forceMount: false
+  items:
+    - label: Account
+      icon: 'i-heroicons-user'
+      content: 'This is the account content.'
+    - label: Password
+      icon: 'i-heroicons-lock-closed'
+      content: 'This is the password content.'
+---
+::
+
 ::tip
-You can use Tabs without content by setting the `content` prop to `false`.
+You can inspect the DOM to see that the content of the inactive tab is not rendered.
 ::
 
 ### Style
@@ -50,7 +103,6 @@ Use the `color` and `variant` props to change the style of the Tabs.
 ::component-code
 ---
 ignore:
-  - items
   - content
 external:
   - items
@@ -74,7 +126,6 @@ Use the `size` prop to change the size of the Tabs.
 ::component-code
 ---
 ignore:
-  - items
   - content
 external:
   - items
@@ -98,7 +149,6 @@ Use the `orientation` prop to change the orientation of the Tabs.
 ::component-code
 ---
 ignore:
-  - items
   - content
 external:
   - items
@@ -115,33 +165,11 @@ props:
 ---
 ::
 
-### Default value
+## Examples
 
-Use the `default-value` prop to set the default value of the Tabs with the index of the item. You can also pass the value of one of the items if provided.
+### Control active tab
 
-::component-code
----
-ignore:
-  - items
-  - content
-  - defaultValue
-external:
-  - items
-hide:
-  - class
-props:
-  defaultValue: '1'
-  class: 'w-full'
-  content: false
-  items:
-    - label: Account
-    - label: Password
----
-::
-
-### Model value
-
-You can control the selected tab by using the `v-model` directive.
+You can control the active tab by using the `default-value` prop or the `v-model` directive with the index of the item.
 
 ::component-example
 ---
@@ -151,11 +179,13 @@ props:
 ---
 ::
 
-## Examples
+::tip
+You can also pass the `value` of one of the items if provided.
+::
 
 ### With content slot
 
-Use the `#content` slot to customize each item.
+Use the `#content` slot to customize the content of each item.
 
 ::component-example
 ---
@@ -167,7 +197,7 @@ props:
 
 ### With custom slot
 
-Use the `slot` property to customize a specific item with a form for example.
+Use the `slot` property to customize a specific item.
 
 ::component-example
 ---

@@ -1,6 +1,6 @@
 <script lang="ts">
 import { tv } from 'tailwind-variants'
-import type { AccordionRootProps, AccordionRootEmits, AccordionContentProps, AccordionItemProps } from 'radix-vue'
+import type { AccordionRootProps, AccordionRootEmits, AccordionItemProps } from 'radix-vue'
 import type { AppConfig } from '@nuxt/schema'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/accordion'
@@ -10,12 +10,14 @@ const appConfig = _appConfig as AppConfig & { ui: { accordion: Partial<typeof th
 
 const accordion = tv({ extend: tv(theme), ...(appConfig.ui?.accordion || {}) })
 
-export interface AccordionItem extends Partial<Pick<AccordionItemProps, 'disabled' | 'value'>> {
+export interface AccordionItem extends Pick<AccordionItemProps, 'disabled'> {
   label?: string
   icon?: string
   trailingIcon?: string
   slot?: string
   content?: string
+  /** A unique value for the accordion item. Defaults to the index. */
+  value?: string
 }
 
 export interface AccordionProps<T> extends Pick<AccordionRootProps, 'collapsible' | 'defaultValue' | 'modelValue' | 'type' | 'disabled'> {
@@ -30,8 +32,6 @@ export interface AccordionProps<T> extends Pick<AccordionRootProps, 'collapsible
    * @defaultValue appConfig.ui.icons.chevronDown
    */
   trailingIcon?: string
-  /** The content of the accordion. */
-  content?: Omit<AccordionContentProps, 'as' | 'asChild'>
   class?: any
   ui?: Partial<typeof accordion.slots>
 }
@@ -49,7 +49,7 @@ export type AccordionSlots<T extends { slot?: string }> = {
 </script>
 
 <script setup lang="ts" generic="T extends AccordionItem">
-import { computed, toRef } from 'vue'
+import { computed } from 'vue'
 import { AccordionRoot, AccordionItem, AccordionHeader, AccordionTrigger, AccordionContent, useForwardPropsEmits } from 'radix-vue'
 import { reactivePick } from '@vueuse/core'
 import { useAppConfig } from '#imports'
@@ -63,7 +63,6 @@ const slots = defineSlots<AccordionSlots<T>>()
 
 const appConfig = useAppConfig()
 const rootProps = useForwardPropsEmits(reactivePick(props, 'as', 'collapsible', 'defaultValue', 'disabled', 'modelValue', 'type'), emits)
-const contentProps = toRef(() => props.content)
 
 const ui = computed(() => accordion({
   disabled: props.disabled
@@ -96,7 +95,7 @@ const ui = computed(() => accordion({
         </AccordionTrigger>
       </AccordionHeader>
 
-      <AccordionContent v-if="item.content || !!slots.content || (item.slot && !!slots[item.slot])" v-bind="contentProps" :class="ui.content({ class: props.ui?.content })">
+      <AccordionContent v-if="item.content || !!slots.content || (item.slot && !!slots[item.slot])" :class="ui.content({ class: props.ui?.content })">
         <slot :name="item.slot || 'content'" :item="item" :index="index" :open="open">
           {{ item.content }}
         </slot>
