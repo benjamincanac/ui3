@@ -1,5 +1,5 @@
 ---
-description: Display an image element with fallback.
+description: An image element with fallback.
 links:
   - label: Avatar
     icon: i-custom-radix-vue
@@ -32,7 +32,7 @@ ignore:
   - src
 props:
   src: 'https://avatars.githubusercontent.com/u/739984?v=4'
-  size: md
+  size: xl
 ---
 ::
 
@@ -72,7 +72,7 @@ props:
 ---
 ::
 
-::tip
+::note
 The `alt` prop will be used as the `alt` attribute of the image.
 ::
 

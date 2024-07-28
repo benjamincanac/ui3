@@ -1,5 +1,5 @@
 ---
-description: Create a button with icon or link capabilities.
+description: A button element that can act as a link or trigger an action.
 links:
   - label: GitHub
     icon: i-simple-icons-github
@@ -45,15 +45,28 @@ slots:
 ---
 ::
 
-### Style
+### Color
 
-Use the `color` and `variant` props to change the style of the Button.
+Use the `color` prop to change the color of the Button.
 
 ::component-code
 ---
 props:
   color: gray
-  variant: solid
+slots:
+  default: Button
+---
+::
+
+### Variant
+
+Use the `variant` prop to change the variant of the Button.
+
+::component-code
+---
+props:
+  color: gray
+  variant: outline
 slots:
   default: Button
 ---
@@ -66,7 +79,7 @@ Use the `size` prop to change the size of the Button.
 ::component-code
 ---
 props:
-  size: md
+  size: xl
 slots:
   default: Button
 ---
@@ -93,7 +106,6 @@ Use the `leading` and `trailing` props to set the icon position or the `leading-
 ::component-code
 ---
 props:
-  leadingIcon: ''
   trailingIcon: i-heroicons-arrow-right
   size: md
 slots:
@@ -172,6 +184,7 @@ Use the `ui` prop to override the slots styles of the Button.
 
 ::component-code
 ---
+prettier: true
 ignore:
   - ui
   - color

@@ -1,5 +1,5 @@
 ---
-description: Display a short text to represent a status or a category.
+description: A short text to represent a status or a category.
 links:
   - label: GitHub
     icon: i-simple-icons-github
@@ -28,15 +28,28 @@ props:
 ---
 ::
 
-### Style
+### Color
 
-Use the `color` and `variant` props to change the style of the Badge.
+Use the `color` prop to change the color of the Badge.
 
 ::component-code
 ---
 props:
   color: gray
-  variant: solid
+slots:
+  default: Badge
+---
+::
+
+### Variant
+
+Use the `variant` props to change the variant of the Badge.
+
+::component-code
+---
+props:
+  color: gray
+  variant: outline
 slots:
   default: Badge
 ---
@@ -49,7 +62,7 @@ Use the `size` prop to change the size of the Badge.
 ::component-code
 ---
 props:
-  size: md
+  size: lg
 slots:
   default: Badge
 ---

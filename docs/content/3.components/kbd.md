@@ -1,6 +1,6 @@
 ---
 title: Keyboard Key
-description: Display a keyboard key in a text block.
+description: A kbd element to display a keyboard key.
 links:
   - label: GitHub
     icon: i-simple-icons-github
@@ -62,9 +62,9 @@ items:
 ---
 ::
 
-### Style
+### Variant
 
-Use the `variant` prop to change the style of the Kbd.
+Use the `variant` prop to change the variant of the Kbd.
 
 ::component-code
 ---
@@ -82,7 +82,7 @@ Use the `size` prop to change the size of the Kbd.
 ::component-code
 ---
 props:
-  size: md
+  size: lg
 slots:
   default: K
 ---

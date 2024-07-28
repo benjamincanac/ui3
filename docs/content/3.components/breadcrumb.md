@@ -1,5 +1,5 @@
 ---
-description: A list of links that indicate the current page's location within a navigational hierarchy.
+description: A hierarchy of links to navigate through a website.
 links:
   - label: GitHub
     icon: i-simple-icons-github
@@ -36,7 +36,7 @@ props:
 ---
 ::
 
-::tip
+::note
 A `span` will be rendered instead of a link when the `to` property is not defined.
 ::
 

@@ -42,9 +42,12 @@ export interface ChipSlots {
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Primitive } from 'radix-vue'
-import { useAvatarGroup } from '#imports'
+import { useAvatarGroup } from '../composables/useAvatarGroup'
 
-const props = defineProps<ChipProps>()
+const props = withDefaults(defineProps<ChipProps>(), {
+  inset: false,
+  standalone: false
+})
 defineSlots<ChipSlots>()
 
 const show = defineModel<boolean>('show', { default: true })
