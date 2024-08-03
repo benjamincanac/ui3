@@ -11,8 +11,6 @@ links:
 
 ## Usage
 
-### Items
-
 Use the `items` prop as an array of objects with the following properties:
 
 - `label?: string`{lang="ts-type"}
@@ -25,6 +23,8 @@ Use the `items` prop as an array of objects with the following properties:
 
 ::component-code
 ---
+ignore:
+  - items
 external:
   - items
 hide:
@@ -52,6 +52,7 @@ Set the `type` prop to `multiple` to allow multiple items to be active at the sa
 ---
 ignore:
   - type
+  - items
 external:
   - items
 hide:
@@ -80,6 +81,7 @@ When `type` is `single`, you can set the `collapsible` prop to `false` to preven
 ---
 ignore:
   - collapsible
+  - items
 external:
   - items
 hide:
@@ -108,6 +110,8 @@ You can also disable a specific item by using the `disabled` property in the ite
 
 ::component-code
 ---
+ignore:
+  - items
 external:
   - items
 hide:
@@ -137,6 +141,8 @@ You can also set an icon for a specific item by using the `trailingIcon` propert
 
 ::component-code
 ---
+ignore:
+  - items
 external:
   - items
 hide:
@@ -214,9 +220,9 @@ props:
 
 :component-slots
 
-### Events
+### Emits
 
-:component-events
+:component-emits
 
 ## Theme
 

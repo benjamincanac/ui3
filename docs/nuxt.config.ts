@@ -127,12 +127,18 @@ export default defineNuxtConfig({
         'UButtonGroup',
         'UCheckbox',
         'UChip',
+        'UCollapsible',
+        'UFormField',
         'UIcon',
         'UInput',
         'UKbd',
         'ULink',
         'UProgress',
+        'URadioGroup',
+        'USlider',
+        'USwitch',
         'UTabs',
+        'UTextarea',
         'UTooltip'
       ].includes(c.pascalName))
 

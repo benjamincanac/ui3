@@ -20,11 +20,11 @@ links:
 
 :component-slots
 
-### Events
+### Emits
 
-:component-events
+:component-emits
 
-### Exposed
+### Expose
 
 When accessing the component via a template ref, you can use the following:
 

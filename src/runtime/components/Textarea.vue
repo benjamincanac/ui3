@@ -32,9 +32,9 @@ export interface TextareaProps {
 }
 
 export interface TextareaEmits {
+  (e: 'update:modelValue', payload: string | number): void
   (e: 'blur', event: FocusEvent): void
   (e: 'change', event: Event): void
-  (e: 'update:modelValue', payload: string | number): void
 }
 
 export interface TextareaSlots {
@@ -149,6 +149,10 @@ function autoResize() {
 
 watch(() => modelValue, () => {
   nextTick(autoResize)
+})
+
+defineExpose({
+  textareaRef
 })
 
 onMounted(() => {

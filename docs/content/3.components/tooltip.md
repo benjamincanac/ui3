@@ -11,6 +11,8 @@ links:
 
 ## Usage
 
+Use a [Button](/components/button) or any other component in the default slot of the Tooltip.
+
 ::important
 Make sure to wrap your app with the [`App`](/components/app) component to make the Tooltip work properly.
 ::
@@ -58,7 +60,7 @@ slots:
 ::
 
 ::tip
-You can use special keys there like `meta` that will display as `⌘` on macOS and `Ctrl` on other platforms.
+You can use special keys like `meta` that displays as `⌘` on macOS and `Ctrl` on other platforms.
 ::
 
 ### Delay
@@ -164,12 +166,10 @@ slots:
 
 You can control the open state by using the `default-open` prop or the `v-model:open` directive.
 
-::component-example
----
-name: 'tooltip-open-example'
-props:
-  class: 'w-full'
----
+:component-example{name="tooltip-open-example"}
+
+::note
+In this example, press :kbd{value="O"} to toggle the Tooltip.
 ::
 
 ## API
@@ -182,9 +182,9 @@ props:
 
 :component-slots
 
-### Events
+### Emits
 
-:component-events
+:component-emits
 
 ## Theme
 

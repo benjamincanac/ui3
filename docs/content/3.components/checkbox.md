@@ -15,13 +15,12 @@ Use the `v-model` directive to control the checked state of the Checkbox.
 
 ::component-code
 ---
+ignore:
+  - modelValue
 external:
   - modelValue
-ignore:
-  - label
 props:
   modelValue: true
-  label: Check me
 ---
 ::
 
@@ -29,11 +28,8 @@ Use the `default-value` prop to set the initial value when you do not need to co
 
 ::component-code
 ---
-ignore:
-  - label
 props:
   defaultValue: true
-  label: Check me
 ---
 ::
 
@@ -45,12 +41,9 @@ Use the `indeterminate-icon` prop to customize this icon. Defaults to `i-heroico
 
 ::component-code
 ---
-ignore:
-  - label
 props:
   indeterminate: true
   indeterminateIcon: ''
-  label: Check me
 ---
 ::
 
@@ -65,6 +58,18 @@ Use the `label` prop to set the label of the Checkbox.
 ::component-code
 ---
 props:
+  label: Check me
+---
+::
+
+When using the `required` prop, an asterisk is added next to the label.
+
+::component-code
+---
+ignore:
+  - label
+props:
+  required: true
   label: Check me
 ---
 ::
@@ -135,20 +140,6 @@ props:
 ---
 ::
 
-### Required
-
-Use the `required` prop to make the Checkbox required.
-
-::component-code
----
-ignore:
-  - label
-props:
-  required: true
-  label: Check me
----
-::
-
 ### Disabled
 
 Use the `disabled` prop to disable the Checkbox.
@@ -163,8 +154,6 @@ props:
 ---
 ::
 
-## Examples
-
 ## API
 
 ### Props
@@ -175,9 +164,9 @@ props:
 
 :component-slots
 
-### Events
+### Emits
 
-:component-events
+:component-emits
 
 ## Theme
 

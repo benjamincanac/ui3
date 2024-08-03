@@ -43,14 +43,14 @@ const componentTheme = theme[camelName]
 const meta = await fetchComponentMeta(name as any)
 
 function mapKeys(obj, parentKey = '') {
-  return Object.entries(obj).flatMap(([key, value]) => {
+  return Object.entries(obj || {}).flatMap(([key, value]) => {
     if (typeof value === 'object' && !Array.isArray(value)) {
       return mapKeys(value, key)
     }
 
     const fullKey = parentKey ? `${parentKey}.${key}` : key
 
-    return !props.ignore?.includes(fullKey) && !props.hide?.includes(fullKey) && !props.external?.includes(fullKey) ? fullKey : undefined
+    return !props.ignore?.includes(fullKey) && !props.hide?.includes(fullKey) ? fullKey : undefined
   }).filter(Boolean)
 }
 
@@ -101,12 +101,12 @@ const code = computed(() => {
 <template>
   <${name}`
   for (const [key, value] of Object.entries(componentProps)) {
-    if (value === undefined || value === null || value === '' || props.hide?.includes(key)) {
+    if (key === 'modelValue') {
+      code += ` v-model="value"`
       continue
     }
 
-    if (key === 'modelValue') {
-      code += ` v-model="value"`
+    if (value === undefined || value === null || value === '' || props.hide?.includes(key)) {
       continue
     }
 
@@ -132,20 +132,23 @@ const code = computed(() => {
         continue
       }
 
-      code += ` ${prop?.type === 'number' ? ':' : ''}${name}="${value}"`
+      code += ` ${prop?.type.includes('number') ? ':' : ''}${name}="${value}"`
     }
   }
 
   if (props.slots) {
-    if (props.slots && Object.keys(props.slots).length === 1 && props.slots.default) {
-      code += `>${props.slots.default}</${name}>`
-    } else {
-      code += `>
-  ${Object.entries(props.slots).map(([key, value]) => `<template #${key}>
+    code += `>`
+    for (const [key, value] of Object.entries(props.slots)) {
+      if (key === 'default') {
+        code += props.slots.default
+      } else {
+        code += `
+  <template #${key}>
     ${value}
-  </template>`).join('\n  ')}
-</${name}>`
+  </template>`
+      }
     }
+    code += (Object.keys(props.slots).length > 1 ? '\n' : '') + `</${name}>`
   } else {
     code += ' />'
   }

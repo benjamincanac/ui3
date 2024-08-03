@@ -11,8 +11,6 @@ links:
 
 ## Usage
 
-### Items
-
 Use the `items` prop as an array of objects with the following properties:
 
 - `label?: string`{lang="ts-type"}
@@ -25,6 +23,8 @@ Use the `items` prop as an array of objects with the following properties:
 
 ::component-code
 ---
+ignore:
+  - items
 external:
   - items
 hide:
@@ -51,6 +51,7 @@ You can set it to `false` to prevent the Tabs from rendering any content and act
 ---
 ignore:
   - content
+  - items
 external:
   - items
 hide:
@@ -75,6 +76,7 @@ You can also choose to only render the content of the active tab by setting `con
 prettier: true
 ignore:
   - content.forceMount
+  - items
 external:
   - items
 hide:
@@ -105,6 +107,7 @@ Use the `color` prop to change the color of the Tabs.
 ---
 ignore:
   - content
+  - items
 external:
   - items
 hide:
@@ -127,6 +130,7 @@ Use the `variant` prop to change the variant of the Tabs.
 ---
 ignore:
   - content
+  - items
 external:
   - items
 hide:
@@ -150,6 +154,7 @@ Use the `size` prop to change the size of the Tabs.
 ---
 ignore:
   - content
+  - items
 external:
   - items
 hide:
@@ -167,12 +172,13 @@ props:
 
 ### Orientation
 
-Use the `orientation` prop to change the orientation of the Tabs.
+Use the `orientation` prop to change the orientation of the Tabs. Defaults to `horizontal`.
 
 ::component-code
 ---
 ignore:
   - content
+  - items
 external:
   - items
 hide:
@@ -240,9 +246,9 @@ props:
 
 :component-slots
 
-### Events
+### Emits
 
-:component-events
+:component-emits
 
 ## Theme
 

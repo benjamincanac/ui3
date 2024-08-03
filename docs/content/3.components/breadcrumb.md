@@ -8,8 +8,6 @@ links:
 
 ## Usage
 
-### Items
-
 Use the `items` prop as an array of objects with the following properties:
 
 - `label?: string`{lang="ts-type"}
@@ -17,10 +15,12 @@ Use the `items` prop as an array of objects with the following properties:
 - `avatar?: AvatarProps`{lang="ts-type"}
 - [`slot?: string`{lang="ts-type"}](#with-custom-slot)
 
-You can also pass any property from [NuxtLink](https://nuxt.com/docs/api/components/nuxt-link#props) component such as `to`, `target`, etc.
+You can also pass any property from the [Link](/components/link#props) component such as `to`, `target`, etc.
 
 ::component-code
 ---
+ignore:
+  - items
 external:
   - items
 props:
@@ -37,7 +37,7 @@ props:
 ::
 
 ::note
-A `span` will be rendered instead of a link when the `to` property is not defined.
+A `span` is rendered instead of a link when the `to` property is not defined.
 ::
 
 ### Separator
@@ -46,6 +46,8 @@ Use the `separator-icon` prop to customize the [Icon](/components/icon) between 
 
 ::component-code
 ---
+ignore:
+  - items
 external:
   - items
 props:
