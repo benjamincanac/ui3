@@ -111,7 +111,7 @@ export default (options: Required<ModuleOptions>) => ({
     active: false,
     variant: 'subtle',
     class: {
-      item: 'data-highlighted:before:bg-gray-100 dark:data-highlighted:before:bg-gray-700/50 data-[state=open]:before:bg-gray-100 dark:data-[state=open]:before:bg-gray-700/50'
+      item: 'data-highlighted:before:bg-gray-200 dark:data-highlighted:before:bg-gray-700/50 data-[state=open]:before:bg-gray-100 dark:data-[state=open]:before:bg-gray-700/50'
     }
   }],
   defaultVariants: {
