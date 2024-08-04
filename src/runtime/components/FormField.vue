@@ -15,7 +15,7 @@ export interface FormFieldProps {
   label?: string
   description?: string
   help?: string
-  error?: string
+  error?: string | boolean
   hint?: string
   size?: FormFieldVariants['size']
   required?: boolean
@@ -29,16 +29,17 @@ export interface FormFieldSlots {
   label(props: { label?: string }): any
   hint(props: { hint?: string }): any
   description(props: { description?: string }): any
-  error(props: { error?: string }): any
   help(props: { help?: string }): any
-  default(props: { error?: string }): any
+  error(props: { error?: string | boolean }): any
+  default(props: { error?: string | boolean }): any
 }
 </script>
 
 <script lang="ts" setup>
 import { computed, ref, inject, provide, type Ref } from 'vue'
 import { Label } from 'radix-vue'
-import { useId, formFieldInjectionKey } from '#imports'
+import { useId } from '#imports'
+import { formFieldInjectionKey } from '../composables/useFormField'
 import type { FormError } from '../types/form'
 
 const props = defineProps<FormFieldProps>()

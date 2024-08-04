@@ -1,5 +1,5 @@
 ---
-description: Display an image element with fallback.
+description: An image element with fallback.
 links:
   - label: Avatar
     icon: i-custom-radix-vue
@@ -10,6 +10,8 @@ links:
 ---
 
 ## Usage
+
+### Src
 
 Use the `src` prop to set the image URL. You can pass any property from HTML `<img>` element such as `alt`, `loading`, etc.
 
@@ -30,7 +32,7 @@ ignore:
   - src
 props:
   src: 'https://avatars.githubusercontent.com/u/739984?v=4'
-  size: md
+  size: xl
 ---
 ::
 
@@ -60,7 +62,7 @@ props:
 
 ### Alt
 
-When no icon or text is provided, the **initials** of the `alt` prop will be used as fallback.
+When no icon or text is provided, the **initials** of the `alt` prop is used as fallback.
 
 ::component-code
 ---
@@ -70,8 +72,8 @@ props:
 ---
 ::
 
-::tip
-The `alt` prop will be used as the `alt` attribute of the image.
+::note
+The `alt` prop is passed to the `img` element as the `alt` attribute.
 ::
 
 ## Examples
@@ -80,13 +82,13 @@ The `alt` prop will be used as the `alt` attribute of the image.
 
 You can use the [Tooltip](/components/tooltip) component to display a tooltip when hovering the Avatar.
 
-:component-example{name="AvatarTooltipExample"}
+:component-example{name="avatar-tooltip-example"}
 
 ### With chip
 
 You can use the [Chip](/components/chip) component to display a chip around the Avatar.
 
-:component-example{name="AvatarChipExample"}
+:component-example{name="avatar-chip-example"}
 
 ## API
 

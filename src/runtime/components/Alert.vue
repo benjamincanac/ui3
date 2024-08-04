@@ -62,7 +62,8 @@ export interface AlertSlots {
 import { computed } from 'vue'
 import { Primitive } from 'radix-vue'
 import { useAppConfig } from '#imports'
-import { UIcon, UAvatar } from '#components'
+import UIcon from './Icon.vue'
+import UAvatar from './Avatar.vue'
 
 const props = defineProps<AlertProps>()
 const emits = defineEmits<AlertEmits>()
@@ -91,13 +92,11 @@ const ui = computed(() => alert({
           {{ title }}
         </slot>
       </div>
-      <template v-if="description || !!slots.description">
-        <div :class="ui.description({ class: props.ui?.description })">
-          <slot name="description">
-            {{ description }}
-          </slot>
-        </div>
-      </template>
+      <div v-if="description || !!slots.description" :class="ui.description({ class: props.ui?.description })">
+        <slot name="description">
+          {{ description }}
+        </slot>
+      </div>
 
       <div v-if="multiline && actions?.length" :class="ui.actions({ class: props.ui?.actions, multiline: true })">
         <slot name="actions">

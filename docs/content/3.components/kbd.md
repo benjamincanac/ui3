@@ -1,6 +1,6 @@
 ---
 title: Keyboard Key
-description: Display a keyboard key in a text block.
+description: A kbd element to display a keyboard key.
 links:
   - label: GitHub
     icon: i-simple-icons-github
@@ -10,6 +10,8 @@ navigation:
 ---
 
 ## Usage
+
+### Value
 
 Use the default slot to set the value of the Kbd.
 
@@ -29,7 +31,7 @@ props:
 ---
 ::
 
-You can pass special keys to the `value` prop that goes through the [`useKbd`](https://github.com/benjamincanac/ui3/blob/dev/src/runtime/composables/useKbd.ts) composable. For example, the `meta` key will display as `⌘` on macOS and `Ctrl` on other platforms.
+You can pass special keys to the `value` prop that goes through the [`useKbd`](https://github.com/benjamincanac/ui3/blob/dev/src/runtime/composables/useKbd.ts) composable. For example, the `meta` key displays as `⌘` on macOS and `Ctrl` on other platforms.
 
 ::component-code
 ---
@@ -60,9 +62,9 @@ items:
 ---
 ::
 
-### Style
+### Variant
 
-Use the `variant` prop to change the style of the Kbd.
+Use the `variant` prop to change the variant of the Kbd.
 
 ::component-code
 ---
@@ -80,7 +82,7 @@ Use the `size` prop to change the size of the Kbd.
 ::component-code
 ---
 props:
-  size: md
+  size: lg
 slots:
   default: K
 ---

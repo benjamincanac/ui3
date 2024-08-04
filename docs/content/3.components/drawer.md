@@ -1,5 +1,5 @@
 ---
-description: Display a drawer element to show additional content.
+description: A drawer that slides in from the bottom of the screen.
 links:
   - label: Drawer
     icon: i-custom-radix-vue
@@ -23,9 +23,9 @@ links:
 
 :component-slots
 
-### Events
+### Emits
 
-:component-events
+:component-emits
 
 ## Theme
 

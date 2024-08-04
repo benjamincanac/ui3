@@ -1,5 +1,5 @@
 ---
-description: Display a callout to draw user attention.
+description: A callout to draw user's attention.
 links:
   - label: GitHub
     icon: i-simple-icons-github
@@ -7,6 +7,8 @@ links:
 ---
 
 ## Usage
+
+### Title
 
 Use the `title` prop to set the title of the Alert.
 
@@ -21,6 +23,7 @@ Use the `description` prop to set the description of the Alert.
 
 ::component-code
 ---
+prettier: true
 props:
   title: 'Heads up!'
   description: 'You can change the primary color in your app config.'
@@ -33,6 +36,7 @@ Use the `icon` prop to show an [Icon](/components/icon).
 
 ::component-code
 ---
+prettier: true
 ignore:
   - title
   - description
@@ -49,6 +53,7 @@ Use the `avatar` prop to show an [Avatar](/components/avatar).
 
 ::component-code
 ---
+prettier: true
 ignore:
   - title
   - description
@@ -59,18 +64,58 @@ props:
 ---
 ::
 
+### Color
+
+Use the `color` prop to change the color of the Alert.
+
+::component-code
+---
+prettier: true
+ignore:
+  - title
+  - description
+  - icon
+props:
+  color: gray
+  title: 'Heads up!'
+  description: 'You can change the primary color in your app config.'
+  icon: 'i-heroicons-command-line'
+---
+::
+
+### Variant
+
+Use the `variant` prop to change the variant of the Alert.
+
+::component-code
+---
+prettier: true
+ignore:
+  - title
+  - description
+  - icon
+props:
+  color: gray
+  variant: solid
+  title: 'Heads up!'
+  description: 'You can change the primary color in your app config.'
+  icon: 'i-heroicons-command-line'
+---
+::
+
 ### Close
 
 Use the `close` prop to display a [Button](/components/button) to dismiss the Alert.
 
-::note
+::tip
 A `close` event will be emitted when the close button is clicked.
 ::
 
-Use the `close-icon` prop to customize this icon. Defaults to `i-heroicons-x-mark-20-solid`.
+Use the `close-icon` prop to customize the button [Icon](/components/icon). Defaults to `i-heroicons-x-mark-20-solid`.
 
 ::component-code
 ---
+prettier: true
 ignore:
   - title
   - description
@@ -79,7 +124,7 @@ props:
   title: 'Heads up!'
   description: 'You can change the primary color in your app config.'
   close: true
-  close-icon: ''
+  closeIcon: ''
 ---
 ::
 
@@ -91,6 +136,7 @@ You can pass all the props of the [Button](/components/button) component to cust
 
 ::component-code
 ---
+prettier: true
 ignore:
   - title
   - description
@@ -112,6 +158,7 @@ Use the `actions` prop to add some [Button](/components/button) actions to the A
 
 ::component-code
 ---
+prettier: true
 ignore:
   - title
   - actions
@@ -126,26 +173,47 @@ props:
 ---
 ::
 
-::tip
-Actions will render differently when the description is not set. You can try to remove it.
+::note
+Actions renders differently when the description is not set. You can try to remove it.
 ::
 
-### Style
+## Examples
 
-Use the `color` and `variant` props to change the style of the Alert.
+### `class` prop
+
+Use the `class` prop to override the base styles of the Button.
 
 ::component-code
 ---
+prettier: true
 ignore:
+  - title
+  - description
+props:
+  title: 'Heads up!'
+  description: 'You can change the primary color in your app config.'
+  class: 'rounded-none'
+---
+::
+
+### `ui` prop
+
+Use the `ui` prop to override the slots styles of the Button.
+
+::component-code
+---
+prettier: true
+ignore:
+  - ui
   - title
   - description
   - icon
 props:
-  color: gray
-  variant: outline
   title: 'Heads up!'
   description: 'You can change the primary color in your app config.'
-  icon: 'i-heroicons-command-line'
+  icon: i-heroicons-rocket-launch
+  ui:
+    icon: 'size-11'
 ---
 ::
 
@@ -159,9 +227,9 @@ props:
 
 :component-slots
 
-### Events
+### Emits
 
-:component-events
+:component-emits
 
 ## Theme
 

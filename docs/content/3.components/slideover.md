@@ -1,5 +1,5 @@
 ---
-description: Display a dialog that slides in from the edge of the screen.
+description: A dialog that slides in from any side of the screen.
 links:
   - label: Dialog
     icon: i-custom-radix-vue
@@ -23,9 +23,9 @@ links:
 
 :component-slots
 
-### Events
+### Emits
 
-:component-events
+:component-emits
 
 ## Theme
 

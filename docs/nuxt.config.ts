@@ -117,14 +117,29 @@ export default defineNuxtConfig({
   hooks: {
     'components:extend': (components) => {
       const globals = components.filter(c => [
+        'UAccordion',
         'UAlert',
         'UAvatar',
         'UAvatarGroup',
         'UBadge',
+        'UBreadcrumb',
         'UButton',
+        'UButtonGroup',
+        'UCheckbox',
+        'UChip',
+        'UCollapsible',
+        'UFormField',
         'UIcon',
+        'UInput',
         'UKbd',
-        'ULink'
+        'ULink',
+        'UProgress',
+        'URadioGroup',
+        'USlider',
+        'USwitch',
+        'UTabs',
+        'UTextarea',
+        'UTooltip'
       ].includes(c.pascalName))
 
       globals.forEach(c => c.global = 'sync')

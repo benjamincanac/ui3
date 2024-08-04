@@ -1,3 +1,4 @@
+<!-- eslint-disable no-useless-escape -->
 <script setup lang="ts">
 import json5 from 'json5'
 import { upperFirst, camelCase, kebabCase } from 'scule'
@@ -5,12 +6,21 @@ import * as theme from '#build/ui'
 import { get, set } from '#ui/utils'
 
 const props = defineProps<{
-  /** List of props to ignore */
+  /** List of props to ignore in selection */
   ignore?: string[]
+  /** List of props to hide from code and selection */
+  hide?: string[]
+  /** List of props to externalize in script setup */
+  external?: string[]
   /** List of items for each prop */
   items?: { [key: string]: string[] }
   props?: { [key: string]: any }
   slots?: { [key: string]: any }
+  /**
+   * Whether to format the code with Prettier
+   * @defaultValue false
+   */
+  prettier?: boolean
 }>()
 
 const route = useRoute()
@@ -33,14 +43,14 @@ const componentTheme = theme[camelName]
 const meta = await fetchComponentMeta(name as any)
 
 function mapKeys(obj, parentKey = '') {
-  return Object.entries(obj).flatMap(([key, value]) => {
+  return Object.entries(obj || {}).flatMap(([key, value]) => {
     if (typeof value === 'object' && !Array.isArray(value)) {
       return mapKeys(value, key)
     }
 
     const fullKey = parentKey ? `${parentKey}.${key}` : key
 
-    return !props.ignore?.includes(fullKey) ? fullKey : undefined
+    return !props.ignore?.includes(fullKey) && !props.hide?.includes(fullKey) ? fullKey : undefined
   }).filter(Boolean)
 }
 
@@ -49,8 +59,9 @@ const options = computed(() => {
 
   return keys.map((key) => {
     const prop = meta?.meta?.props?.find((prop: any) => prop.name === key)
-    const items = props.items?.[key]?.length
-      ? props.items[key].map(item => ({
+    const propItems = get(props.items, key, [])
+    const items = propItems.length
+      ? propItems.map(item => ({
         value: item,
         label: item
       }))
@@ -64,7 +75,7 @@ const options = computed(() => {
 
     return {
       name: key,
-      label: kebabCase(key),
+      label: key,
       type: prop?.type,
       items
     }
@@ -72,11 +83,30 @@ const options = computed(() => {
 })
 
 const code = computed(() => {
-  let code = `\`\`\`vue
+  let code = `\`\`\`vue`
+
+  if (props.external?.length) {
+    code += `
+<script setup lang="ts">
+`
+    for (const key of props.external) {
+      code += `const ${key === 'modelValue' ? 'value' : key} = ref(${json5.stringify(componentProps[key], null, 2).replace(/,([ |\t\n]+[}|\]])/g, '$1')})
+`
+    }
+    code += `<\/script>
+`
+  }
+
+  code += `
 <template>
-<${name}`
+  <${name}`
   for (const [key, value] of Object.entries(componentProps)) {
-    if (value === undefined || value === null || value === '') {
+    if (key === 'modelValue') {
+      code += ` v-model="value"`
+      continue
+    }
+
+    if (value === undefined || value === null || value === '' || props.hide?.includes(key)) {
       continue
     }
 
@@ -87,35 +117,38 @@ const code = computed(() => {
       if (value && prop?.default === 'true') {
         continue
       }
-      if (!value && !prop?.default) {
+      if (!value && (!prop?.default || prop.default === 'false')) {
         continue
       }
 
       code += value ? ` ${name}` : ` :${key}="false"`
     } else if (typeof value === 'object') {
-      code += ` :${name}="${json5.stringify(value, null, 2).replace(/,([ |\t\n]+[}|\])])/g, '$1')}"`
+      const parsedValue = !props.external?.includes(key) ? json5.stringify(value, null, 2).replace(/,([ |\t\n]+[}|\])])/g, '$1') : key
+
+      code += ` :${name}="${parsedValue}"`
     } else {
       const propDefault = prop && (prop.default ?? prop.tags?.find(tag => tag.name === 'defaultValue')?.text ?? componentTheme?.defaultVariants?.[prop.name])
       if (propDefault === value) {
         continue
       }
 
-      code += ` ${prop?.type === 'number' ? ':' : ''}${name}="${value}"`
+      code += ` ${prop?.type.includes('number') ? ':' : ''}${name}="${value}"`
     }
   }
 
   if (props.slots) {
-    const hasOnlyDefaultSlot = props.slots && Object.keys(props.slots).length === 1 && props.slots.default
-
-    if (hasOnlyDefaultSlot) {
-      code += `>${props.slots.default}</${name}>`
-    } else {
-      code += `>
-  ${Object.entries(props.slots).map(([key, value]) => `<template #${key}>
+    code += `>`
+    for (const [key, value] of Object.entries(props.slots)) {
+      if (key === 'default') {
+        code += props.slots.default
+      } else {
+        code += `
+  <template #${key}>
     ${value}
-  </template>`).join('\n  ')}
-</${name}>`
+  </template>`
+      }
     }
+    code += (Object.keys(props.slots).length > 1 ? '\n' : '') + `</${name}>`
   } else {
     code += ' />'
   }
@@ -127,9 +160,17 @@ const code = computed(() => {
 })
 
 const { data: ast } = await useAsyncData(`component-code-${name}-${JSON.stringify({ props: componentProps, slots: props.slots })}`, async () => {
+  if (!props.prettier) {
+    return parseMarkdown(code.value)
+  }
+
   let formatted = ''
   try {
-    formatted = await $prettier.format(code.value, { trailingComma: 'none', vueIndentScriptAndStyle: true })
+    formatted = await $prettier.format(code.value, {
+      trailingComma: 'none',
+      semi: false,
+      singleQuote: true
+    })
   } catch (e) {
     formatted = code.value
   }
@@ -141,7 +182,7 @@ const { data: ast } = await useAsyncData(`component-code-${name}-${JSON.stringif
 <template>
   <div class="my-5">
     <div>
-      <div v-if="options.length" class="flex items-center gap-2.5 border border-gray-300 dark:border-gray-700 border-b-0 relative rounded-t-md px-4 py-2.5">
+      <div v-if="options.length" class="flex items-center gap-2.5 border border-gray-300 dark:border-gray-700 border-b-0 relative rounded-t-md px-4 py-2.5 overflow-x-auto">
         <template v-for="option in options" :key="option.name">
           <UFormField
             :label="option.label"
@@ -155,7 +196,7 @@ const { data: ast } = await useAsyncData(`component-code-${name}-${JSON.stringif
           >
             <USelectMenu
               v-if="option.items?.length"
-              v-model="componentProps[option.name]"
+              :model-value="getComponentProp(option.name)"
               :items="option.items"
               value-key="value"
               color="gray"
@@ -164,6 +205,7 @@ const { data: ast } = await useAsyncData(`component-code-${name}-${JSON.stringif
               :search="false"
               :class="[option.name === 'color' && 'pl-6']"
               :ui="{ itemLeadingChip: 'size-2' }"
+              @update:model-value="setComponentProp(option.name, $event)"
             >
               <template v-if="option.name === 'color'" #leading="{ modelValue, ui }">
                 <UChip
@@ -182,7 +224,7 @@ const { data: ast } = await useAsyncData(`component-code-${name}-${JSON.stringif
               :model-value="getComponentProp(option.name)"
               color="gray"
               variant="soft"
-              :ui="{ base: 'rounded rounded-l-none' }"
+              :ui="{ base: 'rounded rounded-l-none min-w-12' }"
               @update:model-value="setComponentProp(option.name, $event)"
             />
           </UFormField>

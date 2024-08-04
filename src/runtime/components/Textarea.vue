@@ -32,9 +32,9 @@ export interface TextareaProps {
 }
 
 export interface TextareaEmits {
+  (e: 'update:modelValue', payload: string | number): void
   (e: 'blur', event: FocusEvent): void
   (e: 'change', event: Event): void
-  (e: 'update:modelValue', payload: string | number): void
 }
 
 export interface TextareaSlots {
@@ -44,7 +44,7 @@ export interface TextareaSlots {
 
 <script lang="ts" setup>
 import { ref, computed, onMounted, nextTick, watch } from 'vue'
-import { useFormField } from '#imports'
+import { useFormField } from '../composables/useFormField'
 import { looseToNumber } from '../utils'
 
 defineOptions({ inheritAttrs: false })
@@ -149,6 +149,10 @@ function autoResize() {
 
 watch(() => modelValue, () => {
   nextTick(autoResize)
+})
+
+defineExpose({
+  textareaRef
 })
 
 onMounted(() => {

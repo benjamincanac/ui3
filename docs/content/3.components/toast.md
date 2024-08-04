@@ -1,5 +1,5 @@
 ---
-description: Display a toast notification in your app.
+description: A succinct message to provide information or feedback to the user.
 links:
   - label: Toast
     icon: i-custom-radix-vue
@@ -23,9 +23,9 @@ links:
 
 :component-slots
 
-### Events
+### Emits
 
-:component-events
+:component-emits
 
 ## Theme
 

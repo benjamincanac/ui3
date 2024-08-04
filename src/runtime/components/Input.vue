@@ -34,9 +34,9 @@ export interface InputProps extends UseComponentIconsProps {
 }
 
 export interface InputEmits {
+  (e: 'update:modelValue', payload: string | number): void
   (e: 'blur', event: FocusEvent): void
   (e: 'change', event: Event): void
-  (e: 'update:modelValue', payload: string | number): void
 }
 
 export interface InputSlots {
@@ -48,8 +48,10 @@ export interface InputSlots {
 
 <script lang="ts" setup>
 import { ref, computed, onMounted } from 'vue'
-import { useComponentIcons, useFormField, useButtonGroup } from '#imports'
-import { UIcon } from '#components'
+import { useButtonGroup } from '../composables/useButtonGroup'
+import { useComponentIcons } from '../composables/useComponentIcons'
+import { useFormField } from '../composables/useFormField'
+import UIcon from './Icon.vue'
 import { looseToNumber } from '../utils'
 
 defineOptions({ inheritAttrs: false })
@@ -130,6 +132,10 @@ function onBlur(event: FocusEvent) {
   emitFormBlur()
   emits('blur', event)
 }
+
+defineExpose({
+  inputRef
+})
 
 onMounted(() => {
   setTimeout(() => {

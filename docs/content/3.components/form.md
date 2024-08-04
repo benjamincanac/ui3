@@ -1,5 +1,5 @@
 ---
-description: Collect and validate form data.
+description: A form element that provides validation and submission handling.
 links:
   - label: GitHub
     icon: i-simple-icons-github
@@ -20,11 +20,11 @@ links:
 
 :component-slots
 
-### Events
+### Emits
 
-:component-events
+:component-emits
 
-### Exposed
+### Expose
 
 When accessing the component via a template ref, you can use the following:
 

@@ -1,5 +1,5 @@
 ---
-description: Render a NuxtLink but with superpowers.
+description: A wrapper around <NuxtLink> with extra props.
 links:
   - label: GitHub
     icon: i-simple-icons-github
@@ -8,7 +8,7 @@ links:
 
 ## Usage
 
-The Link component is a wrapper around [`<NuxtLink>`](https://nuxt.com/docs/api/components/nuxt-link) through the [`custom`](https://router.vuejs.org/api/interfaces/RouterLinkProps.html#Properties-custom) prop that provides a few extra props:
+The Link component is a wrapper around [`<NuxtLink>`](https://nuxt.com/docs/api/components/nuxt-link) using the [`custom`](https://router.vuejs.org/api/interfaces/RouterLinkProps.html#Properties-custom) prop. It provides a few extra props:
 
 - `inactive-class` prop to set a class when the link is inactive, `active-class` is used when active.
 - `exact` prop to style with `active-class` when the link is active and the route is exactly the same as the current route.
@@ -34,7 +34,7 @@ slots:
 ---
 ::
 
-::tip
+::note
 You can inspect the rendered HTML by changing the `to` prop.
 ::
 
@@ -51,7 +51,7 @@ slots:
 ---
 ::
 
-::tip
+::note
 Try changing the `to` prop to see the active and inactive states.
 ::
 
@@ -64,8 +64,8 @@ ignore:
 props:
   raw: true
   to: /components/link
-  active-class: 'font-bold'
-  inactive-class: 'text-gray-500 dark:text-gray-500'
+  activeClass: 'font-bold'
+  inactiveClass: 'text-gray-500 dark:text-gray-500'
 slots:
   default: Link
 ---

@@ -60,7 +60,8 @@ import { ref, computed, onMounted } from 'vue'
 import { ToastRoot, ToastTitle, ToastDescription, ToastAction, ToastClose, useForwardPropsEmits } from 'radix-vue'
 import { reactivePick } from '@vueuse/core'
 import { useAppConfig } from '#imports'
-import { UIcon, UAvatar } from '#components'
+import UIcon from './Icon.vue'
+import UAvatar from './Avatar.vue'
 
 const props = withDefaults(defineProps<ToastProps>(), {
   close: true
@@ -114,13 +115,11 @@ defineExpose({
           {{ title }}
         </slot>
       </ToastTitle>
-      <template v-if="description || !!slots.description">
-        <ToastDescription :class="ui.description({ class: props.ui?.description })">
-          <slot name="description">
-            {{ description }}
-          </slot>
-        </ToastDescription>
-      </template>
+      <ToastDescription v-if="description || !!slots.description" :class="ui.description({ class: props.ui?.description })">
+        <slot name="description">
+          {{ description }}
+        </slot>
+      </ToastDescription>
 
       <div v-if="multiline && actions?.length" :class="ui.actions({ class: props.ui?.actions, multiline: true })">
         <slot name="actions">

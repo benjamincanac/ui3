@@ -1,6 +1,6 @@
 ---
 title: SelectMenu
-description: Display a select menu with advanced features.
+description: An advanced searchable select element.
 links:
   - label: Combobox
     icon: i-custom-radix-vue
@@ -24,9 +24,9 @@ links:
 
 :component-slots
 
-### Events
+### Emits
 
-:component-events
+:component-emits
 
 ## Theme
 

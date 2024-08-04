@@ -1,5 +1,5 @@
 ---
-description: Create a button with icon or link capabilities.
+description: A button element that can act as a link or trigger an action.
 links:
   - label: GitHub
     icon: i-simple-icons-github
@@ -7,6 +7,8 @@ links:
 ---
 
 ## Usage
+
+### Label
 
 Use the default slot to set the label of the Button.
 
@@ -28,7 +30,7 @@ props:
 
 ### Link
 
-You can pass any property from [NuxtLink](https://nuxt.com/docs/api/components/nuxt-link#props) component such as `to`, `target`, etc.
+You can pass any property from the [Link](/components/link#props) component such as `to`, `target`, etc.
 
 ::component-code
 ---
@@ -43,15 +45,28 @@ slots:
 ---
 ::
 
-### Style
+### Color
 
-Use the `color` and `variant` props to change the style of the Button.
+Use the `color` prop to change the color of the Button.
 
 ::component-code
 ---
 props:
   color: gray
-  variant: solid
+slots:
+  default: Button
+---
+::
+
+### Variant
+
+Use the `variant` prop to change the variant of the Button.
+
+::component-code
+---
+props:
+  color: gray
+  variant: outline
 slots:
   default: Button
 ---
@@ -64,7 +79,7 @@ Use the `size` prop to change the size of the Button.
 ::component-code
 ---
 props:
-  size: md
+  size: xl
 slots:
   default: Button
 ---
@@ -91,8 +106,7 @@ Use the `leading` and `trailing` props to set the icon position or the `leading-
 ::component-code
 ---
 props:
-  leading-icon: ''
-  trailing-icon: i-heroicons-arrow-right
+  trailingIcon: i-heroicons-arrow-right
   size: md
 slots:
   default: Button
@@ -121,7 +135,7 @@ Use the `loading-icon` prop to customize this icon. Defaults to `i-heroicons-arr
 ---
 props:
   loading: true
-  loading-icon: ''
+  loadingIcon: ''
   trailing: false
 slots:
   default: Button
@@ -170,8 +184,12 @@ Use the `ui` prop to override the slots styles of the Button.
 
 ::component-code
 ---
+prettier: true
 ignore:
   - ui
+  - color
+  - variant
+  - icon
 props:
   icon: i-heroicons-rocket-launch
   color: gray

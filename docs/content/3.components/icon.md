@@ -1,9 +1,6 @@
 ---
-description: Add 200,000+ ready to use icons to your Nuxt application, based on Iconify.
+description: A wrapper around Nuxt Icon component to display icons.
 links:
-  - label: Iconify
-    icon: i-simple-icons-iconify
-    to: https://icones.js.org
   - label: Nuxt Icon
     icon: i-simple-icons-github
     to: https://github.com/nuxt/icon
@@ -21,6 +18,6 @@ props:
 ---
 ::
 
-::tip
-It's highly recommended to install the icons collections you need, read more about this in [Theming](/getting-started/theming#icons).
+::caution
+It's highly recommended to install the icons collections you need, read more about this in [Icons](/getting-started/icons).
 ::

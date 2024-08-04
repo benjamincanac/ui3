@@ -1,6 +1,6 @@
 ---
 title: InputMenu
-description: Display an autocomplete input with real-time suggestions.
+description: An autocomplete input with real-time suggestions.
 links:
   - label: Combobox
     icon: i-custom-radix-vue
@@ -24,9 +24,9 @@ links:
 
 :component-slots
 
-### Events
+### Emits
 
-:component-events
+:component-emits
 
 ## Theme
 
