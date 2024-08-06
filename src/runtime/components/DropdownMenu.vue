@@ -32,6 +32,7 @@ export interface DropdownMenuItem extends Omit<LinkProps, 'type' | 'raw' | 'cust
 type DropdownMenuVariants = VariantProps<typeof dropdownMenu>
 
 export interface DropdownMenuProps<T> extends Omit<DropdownMenuRootProps, 'dir'>, Pick<DropdownMenuTriggerProps, 'disabled'> {
+  variant?: DropdownMenuVariants['variant']
   size?: DropdownMenuVariants['size']
   items?: T[] | T[][]
   /**
@@ -87,7 +88,8 @@ const arrowProps = toRef(() => props.arrow as DropdownMenuArrowProps)
 const proxySlots = omit(slots, ['default']) as Record<string, DropdownMenuSlots<T>[string]>
 
 const ui = computed(() => dropdownMenu({
-  size: props.size
+  size: props.size,
+  variant: props.variant
 }))
 </script>
 

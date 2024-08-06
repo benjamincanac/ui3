@@ -115,8 +115,10 @@ const items = [
 ]
 
 const sizes = Object.keys(theme.variants.size)
+const variants = Object.keys(theme.variants.variant)
 
 const size = ref('md' as const)
+const variant = ref('outline' as const)
 
 defineShortcuts(extractShortcuts(items))
 </script>
@@ -124,10 +126,20 @@ defineShortcuts(extractShortcuts(items))
 <template>
   <div class="flex-1">
     <div class="flex flex-col items-center gap-8">
-      <USelectMenu v-model="size" :items="sizes" placeholder="Size" />
+      <div class="flex items-center gap-2">
+        <USelect v-model="size" :items="sizes" placeholder="Size" />
+        <USelect v-model="variant" :items="variants" placeholder="Variant" />
+      </div>
 
-      <UDropdownMenu :items="items" :size="size" arrow :content="{ side: 'bottom', align: 'start' }" class="min-w-48">
-        <UButton label="Open" color="gray" variant="outline" icon="i-heroicons-user" />
+      <UDropdownMenu
+        :items="items"
+        :variant="variant"
+        :size="size"
+        arrow
+        :content="{ side: 'bottom', align: 'start' }"
+        class="min-w-48"
+      >
+        <UButton label="Open" color="gray" :variant="variant" icon="i-heroicons-user" />
 
         <template #custom-trailing>
           <UIcon name="i-heroicons-check-badge" class="shrink-0 size-5 text-primary-500 dark:text-primary-400" />
