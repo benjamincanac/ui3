@@ -52,7 +52,7 @@
     "@tailwindcss/postcss": "4.0.0-alpha.18",
     "@tailwindcss/vite": "4.0.0-alpha.18",
     "@vueuse/core": "^10.11.0",
-    "@vueuse/integrations": "^10.11.0",
+    "@vueuse/integrations": "^11.0.1",
     "defu": "^6.1.4",
     "fuse.js": "^7.0.0",
     "ohash": "^1.1.3",
